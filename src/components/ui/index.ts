@@ -132,3 +132,4 @@ export {
   statusIndicatorVariants,
   type StatusIndicatorProps,
 } from './status-indicator';
+export { Alert, AlertTitle, AlertDescription, type AlertProps } from './alert';
