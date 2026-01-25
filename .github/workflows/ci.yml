@@ -170,17 +170,13 @@ jobs:
         run: |
           echo "🔄 Deploying Appski UI Components Storybook..."
           echo ""
-          echo "📦 Pulling latest Docker image with commit SHA..."
+          echo "📦 Pulling latest Docker image..."
           cd /opt/appski-ui-components
           
           # Copy production compose file
           cp ${{ github.workspace }}/docker-compose.prod.yml .
           
-          # Set commit SHA for image tag
-          export COMMIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
-          echo "Using image tag: $COMMIT_SHA"
-          
-          # Pull the specific image
+          # Pull the latest image
           docker compose -f docker-compose.prod.yml pull
           
           echo ""
@@ -201,7 +197,6 @@ jobs:
           if [ "$HTTP_CODE" == "200" ]; then
               echo "✅ SUCCESS! Storybook is running on port 6606"
               echo "🌐 Access at: http://10.15.10.9:6606"
-              echo "🏷️  Image tag: $COMMIT_SHA"
           else
               echo "❌ ERROR: Got HTTP $HTTP_CODE"
               exit 1
@@ -212,4 +207,4 @@ jobs:
           sudo systemctl status appski-ui-storybook.service --no-pager -l || true
           
           echo ""
-          echo "🎉 Deployment completed for commit $COMMIT_SHA"
+          echo "🎉 Deployment completed for commit ${{ github.sha }}"

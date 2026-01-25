@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   storybook-nginx:
-    image: code-server.jazinski.com/appski-ui-components:${COMMIT_SHA:-latest}
+    image: code-server.jazinski.com/appski-ui-components:latest
     container_name: appski-ui-storybook-nginx
     ports:
       - "3010:80"
