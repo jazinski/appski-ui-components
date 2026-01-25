@@ -1,24 +1,4 @@
-# Multi-stage build for Storybook UI hosting - Ultra lightweight
-FROM node:20-alpine AS builder
-
-WORKDIR /app
-
-# Copy package files
-COPY package.json bun.lockb ./
-
-# Install bun
-RUN npm install -g bun
-
-# Install dependencies
-RUN bun install --frozen-lockfile
-
-# Copy source code
-COPY . .
-
-# Build Storybook
-RUN bun run build-storybook
-
-# Production stage - serve with the lightest possible image
+# Production stage - serve pre-built Storybook with nginx
 FROM alpine:3.19
 
 # Install only nginx (no extras)
@@ -32,8 +12,8 @@ RUN adduser -D -u 1000 -g 'nginx' nginx && \
 # Copy custom nginx config
 COPY nginx.conf /etc/nginx/http.d/default.conf
 
-# Copy built Storybook from builder
-COPY --from=builder /app/storybook-static /usr/share/nginx/html
+# Copy pre-built Storybook static files (built in CI)
+COPY storybook-static /usr/share/nginx/html
 
 # Set ownership
 RUN chown -R nginx:nginx /usr/share/nginx/html
