@@ -1,50 +1,11 @@
 import { addons } from '@storybook/manager-api';
 import { create } from '@storybook/theming/create';
 
-const lightTheme = create({
-  base: 'light',
-  brandTitle: 'Appski UI Components',
-  brandUrl: 'https://github.com/jazinski/appski-ui-components',
-  brandImage: '/logo-light.jpg',
-  brandTarget: '_blank',
-
-  // UI colors
-  colorPrimary: '#6366f1', // indigo-500
-  colorSecondary: '#6366f1',
-
-  // App background
-  appBg: '#f8fafc', // slate-50
-  appContentBg: '#ffffff',
-  appPreviewBg: '#ffffff',
-  appBorderColor: '#e2e8f0', // slate-200
-  appBorderRadius: 8,
-
-  // Text colors
-  textColor: '#0f172a', // slate-900
-  textInverseColor: '#ffffff',
-
-  // Toolbar colors
-  barTextColor: '#64748b', // slate-500
-  barSelectedColor: '#6366f1',
-  barHoverColor: '#6366f1',
-  barBg: '#ffffff',
-
-  // Form colors
-  inputBg: '#ffffff',
-  inputBorder: '#e2e8f0',
-  inputTextColor: '#0f172a',
-  inputBorderRadius: 6,
-
-  // Font
-  fontBase: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-  fontCode: 'ui-monospace, SFMono-Regular, Monaco, Consolas, monospace',
-});
-
 const darkTheme = create({
   base: 'dark',
-  brandTitle: 'Appski UI Components',
+  brandTitle: 'Appski',
   brandUrl: 'https://github.com/jazinski/appski-ui-components',
-  brandImage: '/logo-dark.jpg',
+  brandImage: '/icon.png',
   brandTarget: '_blank',
 
   // UI colors
@@ -79,9 +40,47 @@ const darkTheme = create({
   fontCode: 'ui-monospace, SFMono-Regular, Monaco, Consolas, monospace',
 });
 
+const lightTheme = create({
+  base: 'light',
+  brandTitle: 'Appski',
+  brandUrl: 'https://github.com/jazinski/appski-ui-components',
+  brandImage: '/icon.png',
+  brandTarget: '_blank',
+
+  // UI colors
+  colorPrimary: '#6366f1', // indigo-500
+  colorSecondary: '#6366f1',
+
+  // App background
+  appBg: '#f8fafc', // slate-50
+  appContentBg: '#ffffff',
+  appPreviewBg: '#ffffff',
+  appBorderColor: '#e2e8f0', // slate-200
+  appBorderRadius: 8,
+
+  // Text colors
+  textColor: '#0f172a', // slate-900
+  textInverseColor: '#ffffff',
+
+  // Toolbar colors
+  barTextColor: '#64748b', // slate-500
+  barSelectedColor: '#6366f1',
+  barHoverColor: '#6366f1',
+  barBg: '#ffffff',
+
+  // Form colors
+  inputBg: '#ffffff',
+  inputBorder: '#e2e8f0',
+  inputTextColor: '#0f172a',
+  inputBorderRadius: 6,
+
+  // Font
+  fontBase: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+  fontCode: 'ui-monospace, SFMono-Regular, Monaco, Consolas, monospace',
+});
+
 addons.setConfig({
-  theme: lightTheme,
-  // Automatically switch between themes based on user's system preference
+  theme: darkTheme, // DEFAULT TO DARK MODE
   sidebar: {
     showRoots: true,
     collapsedRoots: [],
