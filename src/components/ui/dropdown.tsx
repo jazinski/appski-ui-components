@@ -187,14 +187,16 @@ export const DropdownTrigger: React.FC<DropdownTriggerProps> = ({ children, asCh
   };
 
   if (asChild && React.isValidElement(children)) {
-    return React.cloneElement(children, {
+    // Extract child props safely and merge with our props
+    const childProps = (children.props || {}) as Record<string, any>;
+    return React.cloneElement(children as React.ReactElement<any>, {
+      ...childProps,
       ref: triggerRef,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
       'aria-expanded': open,
-      'aria-haspopup': 'menu',
-      ...children.props,
-    } as any);
+      'aria-haspopup': 'menu' as const,
+    });
   }
 
   return (
@@ -226,9 +228,9 @@ export const DropdownContent: React.FC<DropdownContentProps> = ({
   align = 'start',
   side = 'bottom',
 }) => {
-  const { open, setOpen, contentRef, triggerRef } = useDropdownContext();
-  const [currentFocusIndex, setCurrentFocusIndex] = React.useState<number>(-1);
-  const itemRefs = React.useRef<(HTMLElement | null)[]>([]);
+  const { open, setOpen, contentRef } = useDropdownContext();
+  // Track focus index for keyboard navigation (setter is used in keyboard handlers)
+  const [_currentFocusIndex, setCurrentFocusIndex] = React.useState<number>(-1);
 
   // Get all focusable items
   const getFocusableItems = React.useCallback(() => {
