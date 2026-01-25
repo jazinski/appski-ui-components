@@ -133,3 +133,4 @@ export {
   type StatusIndicatorProps,
 } from './status-indicator';
 export { Alert, AlertTitle, AlertDescription, type AlertProps } from './alert';
+export { CodeBlock, type CodeBlockProps } from './code-block';
