@@ -10,7 +10,7 @@ export const appskiDarkTheme = create({
   // Brand
   brandTitle: 'Appski UI',
   brandUrl: 'https://ui.appski.me',
-  brandImage: './logo-dark.png',
+  brandImage: '/logo-dark.png',
   brandTarget: '_self',
 
   // Colors - Using Tailwind slate colors
