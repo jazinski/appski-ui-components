@@ -9,7 +9,7 @@ export const appskiDarkTheme = create({
   base: 'dark',
 
   // Brand
-  brandTitle: 'Appski UI',
+  brandTitle: 'Appski',
   brandUrl: 'https://ui.appski.me',
   brandImage: '/logo-dark.png',
   brandTarget: '_self',
