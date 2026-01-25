@@ -8,7 +8,7 @@ const darkTheme = create({
   base: 'dark',
   brandTitle: `Appski UI`,
   brandUrl: 'https://github.com/jazinski/appski-ui-components',
-  brandImage: undefined, // Remove image, use text only
+  brandImage: './logo-dark.png',
   brandTarget: '_blank',
 
   // UI colors - INDIGO THEME
@@ -80,38 +80,56 @@ style.innerHTML = `
     background-color: #1e293b !important;
   }
   
-  /* Style the brand title */
+  /* Style the brand link with logo */
   .sidebar-header a {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 4px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
     text-decoration: none !important;
   }
   
-  /* Main title - APPSKI in indigo */
+  /* Logo styling */
+  .sidebar-header img {
+    display: block !important;
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain !important;
+  }
+  
+  /* Brand title container */
   .sidebar-header a > div {
-    font-size: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+  
+  /* Main title - APPSKI UI in indigo */
+  .sidebar-header a > div > span:first-child {
+    font-size: 16px !important;
     font-weight: 700 !important;
     color: #818cf8 !important;
     letter-spacing: -0.02em !important;
-    line-height: 1 !important;
+    line-height: 1.2 !important;
   }
   
   /* Add commit hash after title */
   .sidebar-header a::after {
     content: 'commit: ${COMMIT_HASH}' !important;
-    font-size: 11px !important;
+    position: absolute !important;
+    bottom: 12px !important;
+    left: 16px !important;
+    font-size: 10px !important;
     font-weight: 500 !important;
     color: #64748b !important;
     font-family: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace !important;
-    opacity: 0.8 !important;
+    opacity: 0.7 !important;
     line-height: 1 !important;
   }
   
-  /* Remove image */
-  .sidebar-header img {
-    display: none !important;
+  .sidebar-header {
+    position: relative !important;
+    padding-bottom: 28px !important;
   }
   
   /* Hide theme toggle if it exists */

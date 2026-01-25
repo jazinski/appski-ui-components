@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react';
-import { withThemeByClassName } from '@storybook/addon-themes';
+import { themes } from '@storybook/theming';
 import '../src/styles.css';
 
 const preview: Preview = {
@@ -20,23 +20,9 @@ const preview: Preview = {
       ],
     },
     docs: {
-      theme: undefined, // Will use dark theme from manager
+      theme: themes.dark, // Use Storybook's built-in dark theme for docs
     },
-  },
-  decorators: [
-    withThemeByClassName({
-      themes: {
-        dark: 'dark',
-        light: '', // Keep light mode option but default to dark
-      },
-      defaultTheme: 'dark', // DEFAULT TO DARK MODE
-    }),
-  ],
-  globalTypes: {
-    // Override the theme toolbar to default to dark
-    theme: {
-      defaultValue: 'dark',
-    },
+    layout: 'padded',
   },
 };
 
