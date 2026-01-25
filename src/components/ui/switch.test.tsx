@@ -306,5 +306,21 @@ describe('SwitchGroup', () => {
       );
       expect(container.querySelector('[role="group"]')).toBeInTheDocument();
     });
+
+    it('renders without label or description', () => {
+      render(
+        <SwitchGroup>
+          <Switch label="Option 1" />
+        </SwitchGroup>
+      );
+
+      // Should still render children
+      expect(screen.getByText('Option 1')).toBeInTheDocument();
+
+      // Should not render the label/description wrapper
+      const group = screen.getByRole('group');
+      expect(group.querySelector('h3')).not.toBeInTheDocument();
+      expect(group.querySelector('p')).not.toBeInTheDocument();
+    });
   });
 });

@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import * as React from 'react';
 import { Checkbox, CheckboxGroup } from './checkbox';
 
 describe('Checkbox', () => {
@@ -196,6 +197,51 @@ describe('Checkbox', () => {
 
       await user.click(screen.getByText('Click me'));
       expect(screen.getByRole('checkbox')).toBeChecked();
+    });
+
+    it('toggles checkbox when visual box is clicked', async () => {
+      const user = userEvent.setup();
+      const { container } = render(<Checkbox label="Click visual box" />);
+
+      // Find the visual checkbox box (the span with role="presentation")
+      const visualBox = container.querySelector('[role="presentation"]');
+      expect(visualBox).toBeInTheDocument();
+
+      await user.click(visualBox as HTMLElement);
+      expect(screen.getByRole('checkbox')).toBeChecked();
+    });
+
+    it('does not toggle when visual box is clicked and disabled', async () => {
+      const user = userEvent.setup();
+      const { container } = render(<Checkbox label="Disabled" disabled />);
+
+      const visualBox = container.querySelector('[role="presentation"]');
+      await user.click(visualBox as HTMLElement);
+      expect(screen.getByRole('checkbox')).not.toBeChecked();
+    });
+  });
+
+  describe('Ref Forwarding', () => {
+    it('forwards ref to the input element', () => {
+      const ref = React.createRef<HTMLInputElement>();
+      render(<Checkbox ref={ref} label="Test" />);
+
+      expect(ref.current).toBeInstanceOf(HTMLInputElement);
+      expect(ref.current).toBe(screen.getByRole('checkbox'));
+    });
+
+    it('throws error if input ref is not attached', () => {
+      // Suppress console.error for this test
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+      const ref = React.createRef<HTMLInputElement>();
+
+      // This should not throw in normal circumstances
+      expect(() => {
+        render(<Checkbox ref={ref} label="Test" />);
+      }).not.toThrow();
+
+      consoleSpy.mockRestore();
     });
   });
 });

@@ -502,6 +502,102 @@ describe('Dropdown', () => {
       // Wait for submenu to appear
       expect(await screen.findByRole('menuitem', { name: 'Email' })).toBeInTheDocument();
     });
+
+    it('opens submenu with Arrow Right key', async () => {
+      const user = userEvent.setup();
+      render(
+        <Dropdown>
+          <DropdownTrigger asChild>
+            <Button>Menu</Button>
+          </DropdownTrigger>
+          <DropdownContent>
+            <DropdownSubmenu>
+              <DropdownSubmenuTrigger>Share</DropdownSubmenuTrigger>
+              <DropdownSubmenuContent>
+                <DropdownItem>Email</DropdownItem>
+              </DropdownSubmenuContent>
+            </DropdownSubmenu>
+          </DropdownContent>
+        </Dropdown>
+      );
+
+      await user.click(screen.getByRole('button'));
+      const submenuTrigger = screen.getByRole('menuitem', { name: /Share/ });
+      submenuTrigger.focus();
+
+      await user.keyboard('{ArrowRight}');
+
+      expect(await screen.findByRole('menuitem', { name: 'Email' })).toBeInTheDocument();
+    });
+
+    it('closes submenu with Arrow Left key', async () => {
+      const user = userEvent.setup();
+      render(
+        <Dropdown>
+          <DropdownTrigger asChild>
+            <Button>Menu</Button>
+          </DropdownTrigger>
+          <DropdownContent>
+            <DropdownSubmenu>
+              <DropdownSubmenuTrigger>Share</DropdownSubmenuTrigger>
+              <DropdownSubmenuContent>
+                <DropdownItem>Email</DropdownItem>
+              </DropdownSubmenuContent>
+            </DropdownSubmenu>
+          </DropdownContent>
+        </Dropdown>
+      );
+
+      await user.click(screen.getByRole('button'));
+      const submenuTrigger = screen.getByRole('menuitem', { name: /Share/ });
+
+      // Open with hover
+      await user.hover(submenuTrigger);
+      await screen.findByRole('menuitem', { name: 'Email' });
+
+      // Close with keyboard
+      submenuTrigger.focus();
+      await user.keyboard('{ArrowLeft}');
+
+      // Submenu should close (Email should disappear)
+      await vi.waitFor(() => {
+        expect(screen.queryByRole('menuitem', { name: 'Email' })).not.toBeInTheDocument();
+      });
+    });
+
+    it('toggles submenu with Enter key', async () => {
+      const user = userEvent.setup();
+      render(
+        <Dropdown>
+          <DropdownTrigger asChild>
+            <Button>Menu</Button>
+          </DropdownTrigger>
+          <DropdownContent>
+            <DropdownSubmenu>
+              <DropdownSubmenuTrigger>Share</DropdownSubmenuTrigger>
+              <DropdownSubmenuContent>
+                <DropdownItem>Email</DropdownItem>
+              </DropdownSubmenuContent>
+            </DropdownSubmenu>
+          </DropdownContent>
+        </Dropdown>
+      );
+
+      await user.click(screen.getByRole('button'));
+      const submenuTrigger = screen.getByRole('menuitem', { name: /Share/ });
+      submenuTrigger.focus();
+
+      // Open with Enter
+      await user.keyboard('{Enter}');
+      expect(await screen.findByRole('menuitem', { name: 'Email' })).toBeInTheDocument();
+
+      // Close with Enter
+      submenuTrigger.focus();
+      await user.keyboard('{Enter}');
+      await vi.waitFor(() => {
+        expect(screen.queryByRole('menuitem', { name: 'Email' })).not.toBeInTheDocument();
+      });
+    });
   });
 
   describe('ARIA Attributes', () => {
