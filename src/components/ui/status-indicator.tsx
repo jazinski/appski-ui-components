@@ -105,7 +105,7 @@ export const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicator
             className
           )}
           role="status"
-          aria-label={`Status: ${status}`}
+          aria-label={`Status: ${status || 'online'}`}
           {...props}
         />
       );
@@ -117,7 +117,7 @@ export const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicator
         ref={ref}
         className={cn('inline-flex items-center gap-2', className)}
         role="status"
-        aria-label={`Status: ${status}`}
+        aria-label={`Status: ${status || 'online'}`}
         {...props}
       >
         {labelPosition === 'left' && (

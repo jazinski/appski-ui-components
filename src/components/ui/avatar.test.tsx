@@ -16,7 +16,7 @@ describe('Avatar', () => {
 
     it('renders with image when src is provided', () => {
       render(<Avatar name="John Doe" src="/test.jpg" alt="Test Avatar" />);
-      const img = screen.getByAltText('Test Avatar') as HTMLImageElement;
+      const img = screen.getByAltText('Test Avatar');
       expect(img).toBeInTheDocument();
       expect(img.src).toContain('/test.jpg');
     });
@@ -178,9 +178,9 @@ describe('Avatar', () => {
   describe('Image Handling', () => {
     it('shows initials when image fails to load', async () => {
       // Mock image onerror
-      const { container } = render(<Avatar name="John Doe" src="/invalid.jpg" />);
+      render(<Avatar name="John Doe" src="/invalid.jpg" />);
 
-      const img = screen.getByRole('img') as HTMLImageElement;
+      const img = screen.getByRole('img');
 
       // Simulate image error
       img.onerror?.(new Event('error'));
@@ -194,7 +194,7 @@ describe('Avatar', () => {
       const { container } = render(<Avatar name="Test" src="/test.jpg" />);
 
       // Initially should have loading state
-      const img = screen.getByRole('img') as HTMLImageElement;
+      const img = screen.getByRole('img');
 
       // Simulate image load
       img.onload?.(new Event('load'));
@@ -208,13 +208,13 @@ describe('Avatar', () => {
     it('updates image when src changes', async () => {
       const { rerender } = render(<Avatar name="Test" src="/test1.jpg" />);
 
-      let img = screen.getByRole('img') as HTMLImageElement;
+      let img = screen.getByRole('img');
       expect(img.src).toContain('/test1.jpg');
 
       rerender(<Avatar name="Test" src="/test2.jpg" />);
 
       await waitFor(() => {
-        img = screen.getByRole('img') as HTMLImageElement;
+        img = screen.getByRole('img');
         expect(img.src).toContain('/test2.jpg');
       });
     });
@@ -298,7 +298,10 @@ describe('Avatar', () => {
 
   describe('Edge Cases', () => {
     it('handles undefined name gracefully', () => {
-      render(<Avatar name={undefined as any} />);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const undefinedName: any = undefined;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      render(<Avatar name={undefinedName} />);
       expect(screen.getByText('?')).toBeInTheDocument();
     });
 

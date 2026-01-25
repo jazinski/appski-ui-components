@@ -202,9 +202,12 @@ describe('StatusIndicator', () => {
     });
 
     it('accepts onClick handler', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const handleClick = vi.fn();
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       render(<StatusIndicator onClick={handleClick} />);
-      screen.getByRole('status').click();
+      const statusElement = screen.getByRole('status');
+      statusElement.click();
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
   });
