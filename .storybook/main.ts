@@ -7,7 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
-    '@storybook/addon-themes',
+    // REMOVED: @storybook/addon-themes - conflicts with our custom dark theme in manager.ts
   ],
   framework: {
     name: '@storybook/react-vite',
