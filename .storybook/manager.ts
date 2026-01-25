@@ -37,7 +37,7 @@ style.innerHTML = `
   
   /* Custom branding header */
   .sidebar-header {
-    padding: 16px !important;
+    padding: 20px 16px !important;
     background-color: #1e293b !important;
   }
   
@@ -45,64 +45,49 @@ style.innerHTML = `
   .sidebar-header a {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     gap: 12px !important;
     text-decoration: none !important;
   }
   
-  /* Logo styling - bigger logo */
+  /* Logo styling */
   .sidebar-header img {
     display: block !important;
-    width: 48px !important;
-    height: 48px !important;
+    width: 40px !important;
+    height: 40px !important;
     object-fit: contain !important;
     flex-shrink: 0 !important;
+    margin-top: 2px !important;
   }
   
-  /* Brand title container */
+  /* Hide the default title div - we'll recreate it */
   .sidebar-header a > div {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    align-items: flex-start !important;
+    display: none !important;
   }
   
-  /* Main title - Appski text */
-  .sidebar-header a > div > span:first-child {
-    font-size: 20px !important;
+  /* Create custom brand text container */
+  .sidebar-header a::after {
+    content: 'AppSki' !important;
+    display: block !important;
+    font-size: 24px !important;
     font-weight: 700 !important;
     color: #f1f5f9 !important;
     letter-spacing: -0.02em !important;
-    line-height: 1 !important;
-    margin: 0 !important;
+    line-height: 1.2 !important;
   }
   
-  /* Subtitle/version text (UI Components) */
-  .sidebar-header a > div > span:last-child {
-    font-size: 11px !important;
-    font-weight: 500 !important;
-    color: #64748b !important;
-    letter-spacing: 0.02em !important;
-    line-height: 1 !important;
-    text-transform: uppercase !important;
-  }
-  
-  /* Add commit hash below the brand */
+  /* Add commit hash below AppSki name */
   .sidebar-header::after {
     content: 'commit: ${COMMIT_HASH}' !important;
     display: block !important;
-    margin-top: 8px !important;
-    font-size: 10px !important;
+    margin-top: 6px !important;
+    margin-left: 52px !important;
+    font-size: 11px !important;
     font-weight: 500 !important;
     color: #64748b !important;
     font-family: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace !important;
-    opacity: 0.7 !important;
+    opacity: 0.8 !important;
     line-height: 1 !important;
-  }
-  
-  .sidebar-header {
-    position: relative !important;
-    padding-bottom: 12px !important;
   }
   
   /* Hide theme toggle if it exists */
@@ -114,26 +99,3 @@ style.innerHTML = `
   }
 `;
 document.head.appendChild(style);
-
-// Add subtitle "UI COMPONENTS" after the brand title
-setTimeout(() => {
-  const brandLink = document.querySelector('.sidebar-header a');
-  if (brandLink) {
-    const titleDiv = brandLink.querySelector('div');
-    if (titleDiv) {
-      const subtitle = document.createElement('span');
-      subtitle.textContent = 'UI COMPONENTS';
-      subtitle.style.cssText = `
-        font-size: 11px;
-        font-weight: 500;
-        color: #64748b;
-        letter-spacing: 0.02em;
-        line-height: 1;
-        text-transform: uppercase;
-        margin-top: 4px;
-        display: block;
-      `;
-      titleDiv.appendChild(subtitle);
-    }
-  }
-}, 100);
