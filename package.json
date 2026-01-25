@@ -1,0 +1,35 @@
+{
+  "name": "@jazinski/appski-ui-components",
+  "version": "0.1.0",
+  "description": "Reusable React UI component library for MCP dashboards - Dark mode, accessible, and TypeScript-first",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "echo 'Build script to be added'",
+    "test": "echo 'Test script to be added'",
+    "lint": "echo 'Lint script to be added'"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "mcp",
+    "dashboard",
+    "dark-mode",
+    "typescript",
+    "tailwind"
+  ],
+  "author": "Jazinski",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
