@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  storybook-nginx:
+    image: code-server.jazinski.com/appski-ui-components:${COMMIT_SHA:-latest}
+    container_name: appski-ui-storybook-nginx
+    ports:
+      - "3010:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - appski-network
+    labels:
+      - "com.appski.component=ui-storybook"
+      - "com.appski.server=nginx"
+    # Resource limits for lightweight deployment
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 32M
+
+networks:
+  appski-network:
+    driver: bridge

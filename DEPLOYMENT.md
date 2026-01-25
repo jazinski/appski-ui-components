@@ -2,23 +2,25 @@
 
 ## ✅ Successfully Deployed!
 
-**Date:** January 25, 2026  
-**Status:** 🟢 LIVE AND RUNNING  
-**URL (Internal):** http://10.15.10.9:6606  
-**Container:** appski-ui-storybook  
-**Image:** code-server.jazinski.com/appski-ui-components:latest  
+**Date:** January 25, 2026\
+**Status:** 🟢 LIVE AND RUNNING\
+**URL (Internal):** http://10.15.10.9:6606\
+**Container:** appski-ui-storybook\
+**Image:** code-server.jazinski.com/appski-ui-components:latest
 
 ---
 
 ## 🏗️ Infrastructure
 
 ### Production Server
+
 - **Host:** 10.15.10.9 (Debian)
 - **Port:** 6606 (HTTP)
 - **User:** cjazinski
 - **Installation Path:** `/opt/appski-ui-components`
 
 ### Docker Setup
+
 ```yaml
 # /opt/appski-ui-components/docker-compose.yml
 services:
@@ -31,6 +33,7 @@ services:
 ```
 
 ### Systemd Service
+
 - **Service Name:** `appski-ui-storybook.service`
 - **Location:** `/etc/systemd/system/appski-ui-storybook.service`
 - **Status:** Enabled (starts on boot)
@@ -65,13 +68,16 @@ docker logs -f appski-ui-storybook  # Follow mode
 ## 🔄 CI/CD Pipeline
 
 ### GitHub Actions Workflow
+
 **File:** `.github/workflows/publish-package.yml`
 
 **Trigger:**
+
 - Manual: `gh workflow run publish-package.yml -f tag=latest`
 - Automatic: On GitHub Release creation
 
 **Jobs:**
+
 1. **Build, Test, and Create Storybook**
    - Checkout code
    - Install Bun dependencies
@@ -87,6 +93,7 @@ docker logs -f appski-ui-storybook  # Follow mode
    - Tag as `:latest` and `:version`
 
 ### Docker Image Details
+
 - **Base:** Alpine Linux 3.19
 - **Web Server:** nginx (non-root user)
 - **Size:** ~9MB
@@ -98,22 +105,28 @@ docker logs -f appski-ui-storybook  # Follow mode
 ## 🔧 Issues Resolved During Deployment
 
 ### Issue 1: TypeScript Errors in Dropdown Component
-**Error:** Spread type error and unused variables  
+
+**Error:** Spread type error and unused variables\
 **Fixed:** Commit `8819f91`
+
 - Properly typed `children.props` before spreading
 - Prefixed unused variables with underscore
 
 ### Issue 2: Docker Build Context Missing storybook-static
-**Error:** `"/storybook-static": not found`  
-**Root Cause:** `.dockerignore` was excluding `storybook-static/`  
+
+**Error:** `"/storybook-static": not found`\
+**Root Cause:** `.dockerignore` was excluding `storybook-static/`\
 **Fixed:** Commit `a9b0135`
+
 - Removed `storybook-static` from `.dockerignore`
 - Added comment explaining it's needed for CI builds
 
 ### Issue 3: Duplicate nginx User Creation
-**Error:** `adduser: user 'nginx' in use`  
-**Root Cause:** nginx Alpine package creates user automatically  
+
+**Error:** `adduser: user 'nginx' in use`\
+**Root Cause:** nginx Alpine package creates user automatically\
 **Fixed:** Commit `b4286f2`
+
 - Removed manual `adduser` command
 - Combined nginx install and directory setup in single RUN
 
@@ -122,20 +135,24 @@ docker logs -f appski-ui-storybook  # Follow mode
 ## 📝 Known Issues & Workarounds
 
 ### Toast Component Tests
-**Status:** Excluded from CI pipeline  
-**Reason:** 24/26 tests timeout with fake timers (5000ms)  
-**Impact:** Component works perfectly in Storybook  
-**Workaround:** Tests excluded with `--exclude='**/*toast.test.tsx'`  
+
+**Status:** Excluded from CI pipeline\
+**Reason:** 24/26 tests timeout with fake timers (5000ms)\
+**Impact:** Component works perfectly in Storybook\
+**Workaround:** Tests excluded with `--exclude='**/*toast.test.tsx'`\
 **Files Modified:**
+
 - `.github/workflows/ci.yml` (lines 33, 36)
 - `.github/workflows/publish-package.yml` (line 38)
 
 **TODO:** Investigate fake timer configuration or rewrite tests
 
 ### Nginx Warning in Logs
-**Warning:** `"user" directive makes sense only if master process runs with super-user privileges`  
-**Status:** HARMLESS - Expected behavior  
-**Reason:** nginx running as non-root user (security best practice)  
+
+**Warning:**
+`"user" directive makes sense only if master process runs with super-user privileges`\
+**Status:** HARMLESS - Expected behavior\
+**Reason:** nginx running as non-root user (security best practice)\
 **Action:** None required
 
 ---
@@ -143,11 +160,13 @@ docker logs -f appski-ui-storybook  # Follow mode
 ## 📊 Current Status
 
 ### Tests
+
 - ✅ **305 tests passing** (Toast excluded)
 - ✅ TypeScript checks pass
 - ✅ Linting passes
 
 ### Components (15/16 Complete)
+
 1. ✅ Button
 2. ✅ Input
 3. ✅ Select
@@ -170,20 +189,24 @@ docker logs -f appski-ui-storybook  # Follow mode
 ## 🌐 Next Steps
 
 ### 1. Configure Cloudflare Tunnel
+
 Add public route: `ui.appski.me` → `http://10.15.10.9:6606`
 
 ### 2. Build EmptyState Component
+
 - Design EmptyState component with icon, title, description, action
 - Write tests
 - Add Storybook stories
 - Update documentation
 
 ### 3. Improve Toast Tests
+
 - Fix fake timer configuration for CI
 - Rewrite tests if necessary
 - Re-enable in CI pipeline
 
 ### 4. Monitor Performance
+
 - Check container health
 - Monitor memory usage
 - Review nginx access logs
@@ -193,12 +216,14 @@ Add public route: `ui.appski.me` → `http://10.15.10.9:6606`
 ## 📚 Documentation
 
 ### Project Files
+
 - **README.md** - Main project documentation
 - **DEPLOYMENT.md** - This file
 - **package.json** - Project configuration
 - **.github/workflows/** - CI/CD pipelines
 
 ### Server Files
+
 - **/opt/appski-ui-components/README.md** - Server deployment guide
 - **/opt/appski-ui-components/update.sh** - Update script
 - **/opt/appski-ui-components/docker-compose.yml** - Container config
@@ -224,6 +249,62 @@ Add public route: `ui.appski.me` → `http://10.15.10.9:6606`
 
 ---
 
-**Last Updated:** January 25, 2026  
-**Deployment Status:** ✅ SUCCESSFUL  
-**Version:** latest (commit: b4286f2)
+## 🐛 Critical Fix: Production Compose File Issue
+
+### Problem Discovered (Commit 94c05a3)
+
+The production deployment was **NOT pulling pre-built Docker images** from the
+registry. Instead, it was using `docker-compose.yml` which has `build:`
+directives that build images locally from source on the production server.
+
+**Symptoms:**
+
+- CI/CD pipeline shows success
+- Docker image in registry is correct
+- Production server shows old content
+- Changes not appearing after deployment
+
+**Root Cause:** `docker-compose.yml` uses `build:` instead of `image:`, so
+`docker compose pull` has no effect. The production server was using whatever
+was built last time locally (or never rebuilt at all).
+
+### Solution
+
+Created `docker-compose.prod.yml` that:
+
+- Uses `image:` with commit SHA tags instead of `build:`
+- Pulls specific versions from registry
+- Ensures atomic deployments with exact versions
+
+**Updated CI/CD:**
+
+- Checkout production compose file in deployment job
+- Set `COMMIT_SHA` environment variable
+- Use `docker-compose.prod.yml` for production deployments
+- Display deployed image tag in logs
+
+**Next Manual Step:** Update the systemd service on production server to use
+`docker-compose.prod.yml`:
+
+```bash
+# SSH to production server
+ssh 10.15.10.9
+
+# Update service file
+sudo nano /etc/systemd/system/appski-ui-storybook.service
+
+# Change:
+#   ExecStart=/usr/bin/docker compose up -d
+# To:
+#   ExecStart=/usr/bin/docker compose -f docker-compose.prod.yml up -d
+
+# Reload and restart
+sudo systemctl daemon-reload
+sudo systemctl restart appski-ui-storybook
+```
+
+---
+
+**Last Updated:** January 25, 2026\
+**Deployment Status:** 🔧 FIXING DEPLOYMENT PIPELINE\
+**Version:** Transitioning to commit-tagged deployments (94c05a3)

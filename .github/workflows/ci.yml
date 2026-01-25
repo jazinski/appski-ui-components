@@ -159,13 +159,29 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
+      - name: Checkout code for compose file
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docker-compose.prod.yml
+          sparse-checkout-cone-mode: false
+      
       - name: Pull latest Docker image and restart service
         run: |
           echo "🔄 Deploying Appski UI Components Storybook..."
           echo ""
-          echo "📦 Pulling latest Docker image..."
+          echo "📦 Pulling latest Docker image with commit SHA..."
           cd /opt/appski-ui-components
-          docker compose pull
+          
+          # Copy production compose file
+          cp ${{ github.workspace }}/docker-compose.prod.yml .
+          
+          # Set commit SHA for image tag
+          export COMMIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
+          echo "Using image tag: $COMMIT_SHA"
+          
+          # Pull the specific image
+          docker compose -f docker-compose.prod.yml pull
           
           echo ""
           echo "🔄 Restarting service..."
@@ -185,6 +201,7 @@ jobs:
           if [ "$HTTP_CODE" == "200" ]; then
               echo "✅ SUCCESS! Storybook is running on port 6606"
               echo "🌐 Access at: http://10.15.10.9:6606"
+              echo "🏷️  Image tag: $COMMIT_SHA"
           else
               echo "❌ ERROR: Got HTTP $HTTP_CODE"
               exit 1
@@ -195,4 +212,4 @@ jobs:
           sudo systemctl status appski-ui-storybook.service --no-pager -l || true
           
           echo ""
-          echo "🎉 Deployment completed for commit ${{ github.sha }}"
+          echo "🎉 Deployment completed for commit $COMMIT_SHA"
