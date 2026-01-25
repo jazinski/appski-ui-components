@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Option 1: Nginx (Alpine base - ~50MB)
+  storybook-nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: appski-ui-storybook-nginx
+    ports:
+      - "3010:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - appski-network
+    labels:
+      - "com.appski.component=ui-storybook"
+      - "com.appski.server=nginx"
+    # Resource limits for lightweight deployment
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 32M
+
+  # Option 2: Caddy (even smaller - ~40MB, with auto-HTTPS)
+  storybook-caddy:
+    build:
+      context: .
+      dockerfile: Dockerfile.caddy
+    container_name: appski-ui-storybook-caddy
+    ports:
+      - "3011:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - appski-network
+    labels:
+      - "com.appski.component=ui-storybook"
+      - "com.appski.server=caddy"
+    profiles:
+      - caddy
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 32M
+
+networks:
+  appski-network:
+    driver: bridge

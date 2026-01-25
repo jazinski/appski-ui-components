@@ -1,68 +1,95 @@
-# Appski UI Components
+# @appski/ui
 
-A reusable React component library for MCP dashboards, built with TypeScript, Tailwind CSS, and accessibility in mind.
+A React component library built with Shadcn/ui patterns, Tailwind CSS, and Zod
+validation.
 
-## 🎯 Project Mission
+## Tech Stack
 
-Create a production-ready, type-safe React component library that provides:
-- **Consistent UI patterns** across MCP dashboard applications
-- **Dark mode support** built-in from the ground up
-- **Accessibility-first** approach (WCAG 2.1 AA compliant)
-- **TypeScript-first** with full type definitions
-- **Tree-shakeable** for optimal bundle sizes
+- **React 18/19** - UI library
+- **TypeScript** - Strict mode for type safety
+- **Tailwind CSS** - Styling with native dark/light mode
+- **Shadcn/ui patterns** - Component architecture (CVA for variants)
+- **Zod** - Runtime prop validation
+- **Storybook** - Component documentation
+- **Vitest** - Testing
 
-## 📦 Components (Planned)
+## Installation
 
-### Core Components
-- **PageHeader** - Standardized page headers with breadcrumbs, actions, and stats
-- **Card** - Flexible container with header, body, and footer sections
-- **Button** - Primary, secondary, danger variants with loading states
-- **Badge** - Status indicators and labels
-- **Tabs** - Accessible tab navigation
-- **Modal** - Dialog and confirmation modals
-- **Form Controls** - Inputs, selects, checkboxes, radio buttons
-- **Table** - Data tables with sorting and filtering
-- **Toast/Notifications** - User feedback messages
+```bash
+bun add @appski/ui
+```
 
-### Specialized Components
-- **StatsCard** - Metric display cards
-- **ActionMenu** - Dropdown action menus
-- **SearchBar** - Search input with filters
-- **Pagination** - Table pagination controls
-- **LoadingState** - Loading indicators and skeletons
-- **EmptyState** - Empty data placeholders
+## Usage
 
-## 🚀 Getting Started
+```tsx
+import { Button } from "@appski/ui";
+import "@appski/ui/styles.css";
 
-> **Note**: This project is currently in development. Installation and usage instructions will be added soon.
+function App() {
+  return (
+    <Button variant="default" onClick={() => console.log("clicked")}>
+      Click me
+    </Button>
+  );
+}
+```
 
-## 🛠️ Development
+## Dark Mode
 
-This project uses:
-- **React 18+** for component development
-- **TypeScript** for type safety
-- **Tailwind CSS** for styling
-- **Lucide React** for icons
-- **Rollup/Vite** for bundling (to be configured)
-- **Storybook** for component documentation (to be added)
-- **Vitest** for testing (to be configured)
+This library uses Tailwind's `class` strategy for dark mode. Add the `dark`
+class to your root element:
 
-## 📚 Documentation
+```tsx
+<html className="dark">
+  {/* ... */}
+</html>;
+```
 
-Comprehensive documentation and examples will be available in Storybook once the project is set up.
+## Development
 
-## 🤝 Contributing
+```bash
+# Install dependencies
+bun install
 
-This is a private project for the Jazinski organization. Contribution guidelines will be added as the project matures.
+# Start Storybook
+bun run storybook
 
-## 📝 License
+# Run tests
+bun test
 
-MIT License - See LICENSE file for details
+# Build library
+bun run build
 
-## 🔗 Related Projects
+# Type check
+bun run typecheck
+```
 
-- [mcp-jazinski-dev](https://github.com/jazinski/mcp-jazinski-dev) - Primary MCP server using this component library
+## Components
 
----
+### Button
 
-**Status**: 🚧 In Development - Initial setup phase
+```tsx
+import { Button } from '@appski/ui';
+
+// Variants
+<Button variant="default">Default</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+
+// Sizes
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+<Button size="icon"><IconComponent /></Button>
+
+// Loading state
+<Button isLoading>Loading...</Button>
+<Button isLoading loadingText="Saving...">Save</Button>
+```
+
+## License
+
+MIT

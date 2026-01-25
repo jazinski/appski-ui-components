@@ -1,0 +1,31 @@
+{
+	auto_https off
+}
+
+:80 {
+	root * /usr/share/caddy
+	encode gzip
+	file_server
+	
+	# SPA routing
+	try_files {path} /index.html
+	
+	# Security headers
+	header {
+		X-Frame-Options "SAMEORIGIN"
+		X-Content-Type-Options "nosniff"
+		X-XSS-Protection "1; mode=block"
+		-Server
+	}
+	
+	# Cache static assets
+	@static {
+		path *.js *.css *.png *.jpg *.jpeg *.gif *.ico *.svg *.woff *.woff2 *.ttf *.eot
+	}
+	header @static Cache-Control "public, max-age=31536000, immutable"
+	
+	# Health check endpoint
+	handle /health {
+		respond "healthy" 200
+	}
+}
