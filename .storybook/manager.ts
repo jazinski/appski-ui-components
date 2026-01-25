@@ -41,7 +41,7 @@ style.innerHTML = `
     background-color: #1e293b !important;
   }
   
-  /* Style the brand link with logo */
+  /* Style the brand link - horizontal layout */
   .sidebar-header a {
     display: flex !important;
     flex-direction: row !important;
@@ -52,23 +52,27 @@ style.innerHTML = `
   
   /* Logo styling */
   .sidebar-header img {
-    display: block !important;
     width: 40px !important;
     height: 40px !important;
     object-fit: contain !important;
     flex-shrink: 0 !important;
-    margin-top: 2px !important;
   }
   
-  /* Hide the default title div - we'll recreate it */
+  /* Hide default brand title */
   .sidebar-header a > div {
     display: none !important;
   }
   
-  /* Create custom brand text container */
-  .sidebar-header a::after {
-    content: 'AppSki' !important;
-    display: block !important;
+  /* Custom brand text container */
+  .appski-brand-text {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    justify-content: center !important;
+    padding-top: 2px !important;
+  }
+  
+  .appski-brand-text .brand-name {
     font-size: 24px !important;
     font-weight: 700 !important;
     color: #f1f5f9 !important;
@@ -76,12 +80,7 @@ style.innerHTML = `
     line-height: 1.2 !important;
   }
   
-  /* Add commit hash below AppSki name */
-  .sidebar-header::after {
-    content: 'commit: ${COMMIT_HASH}' !important;
-    display: block !important;
-    margin-top: 6px !important;
-    margin-left: 52px !important;
+  .appski-brand-text .brand-commit {
     font-size: 11px !important;
     font-weight: 500 !important;
     color: #64748b !important;
@@ -99,3 +98,29 @@ style.innerHTML = `
   }
 `;
 document.head.appendChild(style);
+
+// Build the brand layout with JavaScript
+setTimeout(() => {
+  const brandLink = document.querySelector('.sidebar-header a');
+  if (brandLink) {
+    // Create text container
+    const textContainer = document.createElement('div');
+    textContainer.className = 'appski-brand-text';
+
+    // Add brand name
+    const brandName = document.createElement('div');
+    brandName.className = 'brand-name';
+    brandName.textContent = 'AppSki';
+
+    // Add commit hash
+    const commitHash = document.createElement('div');
+    commitHash.className = 'brand-commit';
+    commitHash.textContent = `commit: ${COMMIT_HASH}`;
+
+    textContainer.appendChild(brandName);
+    textContainer.appendChild(commitHash);
+
+    // Add to brand link after the logo
+    brandLink.appendChild(textContainer);
+  }
+}, 100);
