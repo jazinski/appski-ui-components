@@ -134,3 +134,4 @@ export {
 } from './status-indicator';
 export { Alert, AlertTitle, AlertDescription, type AlertProps } from './alert';
 export { CodeBlock, type CodeBlockProps } from './code-block';
+export { Table, tableVariants, type TableProps, type Column, type SortDirection } from './table';
