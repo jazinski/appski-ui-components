@@ -1,49 +1,146 @@
 <style>
-  /* Force dark mode for docs and preview */
+  /* FORCE DARK MODE - Target all possible Storybook elements */
+  
+  /* Root elements */
+  html, body, #storybook-root, #storybook-docs {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+  }
+  
+  /* Main containers */
   .sb-show-main,
+  .sb-main-padded,
+  .sb-wrapper,
+  .sb-preparing-docs,
+  .sb-preparing-story {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+  }
+  
+  /* Docs containers */
   .docs-story,
   .sbdocs,
   .sbdocs-wrapper,
-  .sbdocs-content {
+  .sbdocs-content,
+  .sbdocs-preview,
+  .docblock-preview,
+  [class*="docblock"] {
     background-color: #0f172a !important;
     color: #f1f5f9 !important;
   }
-
-  /* Dark docs containers */
-  .sbdocs-wrapper {
-    background: #0f172a !important;
-  }
-
-  /* Dark code blocks */
-  .sbdocs pre,
-  .sbdocs code {
-    background-color: #1e293b !important;
-    color: #e2e8f0 !important;
-  }
-
-  /* Dark tables */
-  .sbdocs table {
-    background-color: #1e293b !important;
-    color: #f1f5f9 !important;
-  }
-
-  .sbdocs th {
-    background-color: #334155 !important;
-    color: #f1f5f9 !important;
-  }
-
-  .sbdocs td {
-    border-color: #334155 !important;
-  }
-
-  /* Dark canvas background */
+  
+  /* Preview blocks */
+  .sb-previewBlock,
+  .sb-previewBlock_body,
   #storybook-preview-wrapper {
     background-color: #0f172a !important;
   }
-
-  /* Dark addon panels */
-  .addon-panel {
+  
+  /* Headings and text in docs */
+  .sbdocs h1,
+  .sbdocs h2,
+  .sbdocs h3,
+  .sbdocs h4,
+  .sbdocs h5,
+  .sbdocs h6,
+  .sbdocs p,
+  .sbdocs li,
+  .sbdocs span {
+    color: #f1f5f9 !important;
+  }
+  
+  /* Links */
+  .sbdocs a {
+    color: #60a5fa !important;
+  }
+  
+  .sbdocs a:hover {
+    color: #3b82f6 !important;
+  }
+  
+  /* Code blocks */
+  .sbdocs pre,
+  .sbdocs code,
+  .docblock-code,
+  [class*="syntaxhighlighter"] {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+  }
+  
+  /* Tables */
+  .sbdocs table,
+  .docblock-argstable {
     background-color: #1e293b !important;
     color: #f1f5f9 !important;
+    border-color: #334155 !important;
+  }
+  
+  .sbdocs th {
+    background-color: #334155 !important;
+    color: #f1f5f9 !important;
+    border-color: #475569 !important;
+  }
+  
+  .sbdocs td {
+    border-color: #334155 !important;
+    background-color: #1e293b !important;
+  }
+  
+  .sbdocs tr:hover td {
+    background-color: #334155 !important;
+  }
+  
+  /* Canvas/Story preview area */
+  #storybook-preview-wrapper,
+  [data-is-story-preview="true"] {
+    background-color: #0f172a !important;
+  }
+  
+  /* Addon panels */
+  .addon-panel,
+  [class*="panel-"] {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+  }
+  
+  /* Controls/Actions tables */
+  [class*="control-"],
+  [class*="docblock-arg"] {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+  }
+  
+  /* Input fields in docs */
+  .sbdocs input,
+  .sbdocs select,
+  .sbdocs textarea {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #475569 !important;
+  }
+  
+  /* Descriptions and metadata */
+  .sbdocs-description,
+  [class*="description"],
+  [class*="metadata"] {
+    color: #cbd5e1 !important;
+  }
+  
+  /* Dividers */
+  .sbdocs hr,
+  [class*="divider"] {
+    border-color: #334155 !important;
+  }
+  
+  /* Blockquotes */
+  .sbdocs blockquote {
+    background-color: #1e293b !important;
+    border-left-color: #3b82f6 !important;
+    color: #cbd5e1 !important;
+  }
+  
+  /* Story canvas background */
+  .sb-story {
+    background-color: #0f172a !important;
   }
 </style>

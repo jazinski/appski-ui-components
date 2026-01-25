@@ -1,50 +1,11 @@
 import { addons } from '@storybook/manager-api';
-import { create } from '@storybook/theming/create';
+import { appskiDarkTheme } from './theme';
 
 // Get commit hash - replaced at build time by build-storybook-with-hash.sh
 const COMMIT_HASH = '__COMMIT_HASH__';
 
-const darkTheme = create({
-  base: 'dark',
-  brandTitle: `Appski UI`,
-  brandUrl: 'https://github.com/jazinski/appski-ui-components',
-  brandImage: './logo-dark.png',
-  brandTarget: '_blank',
-
-  // UI colors - INDIGO THEME
-  colorPrimary: '#818cf8', // indigo-400
-  colorSecondary: '#818cf8',
-
-  // App background - DARK SLATE
-  appBg: '#0f172a', // slate-900
-  appContentBg: '#1e293b', // slate-800
-  appPreviewBg: '#0f172a', // DARK background for previews
-  appBorderColor: '#334155', // slate-700
-  appBorderRadius: 8,
-
-  // Text colors
-  textColor: '#f1f5f9', // slate-100
-  textInverseColor: '#0f172a',
-
-  // Toolbar colors - ALL DARK
-  barTextColor: '#cbd5e1', // slate-300
-  barSelectedColor: '#818cf8',
-  barHoverColor: '#818cf8',
-  barBg: '#1e293b', // DARK slate-800
-
-  // Form colors
-  inputBg: '#1e293b',
-  inputBorder: '#334155',
-  inputTextColor: '#f1f5f9',
-  inputBorderRadius: 6,
-
-  // Font
-  fontBase: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-  fontCode: 'ui-monospace, SFMono-Regular, Monaco, Consolas, monospace',
-});
-
 addons.setConfig({
-  theme: darkTheme,
+  theme: appskiDarkTheme,
   sidebar: {
     showRoots: true,
     collapsedRoots: [],
@@ -104,11 +65,11 @@ style.innerHTML = `
     gap: 2px !important;
   }
   
-  /* Main title - APPSKI UI in indigo */
+  /* Main title - APPSKI UI in blue */
   .sidebar-header a > div > span:first-child {
     font-size: 16px !important;
     font-weight: 700 !important;
-    color: #818cf8 !important;
+    color: #3b82f6 !important;
     letter-spacing: -0.02em !important;
     line-height: 1.2 !important;
   }
