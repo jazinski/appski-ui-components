@@ -149,5 +149,50 @@ jobs:
           echo "   - code-server.jazinski.com/appski-ui-components:latest"
           echo "   - code-server.jazinski.com/appski-ui-components:${{ steps.sha.outputs.short }}"
           echo ""
-          echo "🚀 To deploy on server (10.15.10.9):"
-          echo "   ssh user@10.15.10.9 'cd /opt/appski-ui-components && ./update.sh'"
+          echo "🚀 Deployment will be triggered automatically on self-hosted runner..."
+
+  deploy:
+    name: Deploy to Production Server
+    runs-on: [self-hosted, Linux, appski-deploy]
+    needs: docker-build
+    # Only deploy on pushes to main branch (not PRs or develop)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Pull latest Docker image and restart service
+        run: |
+          echo "🔄 Deploying Appski UI Components Storybook..."
+          echo ""
+          echo "📦 Pulling latest Docker image..."
+          cd /opt/appski-ui-components
+          docker compose pull
+          
+          echo ""
+          echo "🔄 Restarting service..."
+          sudo systemctl restart appski-ui-storybook.service
+          
+          echo ""
+          echo "⏳ Waiting for container to be healthy..."
+          sleep 5
+          
+          echo ""
+          echo "🔍 Checking status..."
+          docker ps | grep appski-ui || true
+          
+          echo ""
+          echo "✅ Testing endpoint..."
+          HTTP_CODE=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:6606 || echo "000")
+          if [ "$HTTP_CODE" == "200" ]; then
+              echo "✅ SUCCESS! Storybook is running on port 6606"
+              echo "🌐 Access at: http://10.15.10.9:6606"
+          else
+              echo "❌ ERROR: Got HTTP $HTTP_CODE"
+              exit 1
+          fi
+          
+          echo ""
+          echo "📋 Service status:"
+          sudo systemctl status appski-ui-storybook.service --no-pager -l || true
+          
+          echo ""
+          echo "🎉 Deployment completed for commit ${{ github.sha }}"
