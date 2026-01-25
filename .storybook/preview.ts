@@ -11,22 +11,33 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      disable: true,
+      default: 'dark',
+      values: [
+        {
+          name: 'dark',
+          value: '#0f172a', // slate-900
+        },
+      ],
     },
     docs: {
-      // Apply dark background to docs when in dark mode
-      theme: undefined, // Will be set by the theme decorator
+      theme: undefined, // Will use dark theme from manager
     },
   },
   decorators: [
     withThemeByClassName({
       themes: {
-        light: '',
         dark: 'dark',
+        light: '', // Keep light mode option but default to dark
       },
-      defaultTheme: 'light',
+      defaultTheme: 'dark', // DEFAULT TO DARK MODE
     }),
   ],
+  globalTypes: {
+    // Override the theme toolbar to default to dark
+    theme: {
+      defaultValue: 'dark',
+    },
+  },
 };
 
 export default preview;
