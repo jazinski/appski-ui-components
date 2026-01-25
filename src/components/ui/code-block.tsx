@@ -130,8 +130,8 @@ export const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
 
     return (
       <div ref={ref} className={cn(codeBlockVariants({ size }), className)} {...props}>
-        {/* Header */}
-        {(filename || collapsible || copyable) && (
+        {/* Header - only show if there's filename or collapsible */}
+        {(filename || collapsible) && (
           <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-4 py-2">
             <div className="flex items-center gap-2">
               {filename && <span className="font-mono text-xs text-slate-400">{filename}</span>}

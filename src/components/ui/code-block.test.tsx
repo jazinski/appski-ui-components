@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CodeBlock } from './code-block';
@@ -6,9 +6,27 @@ import { CodeBlock } from './code-block';
 describe('CodeBlock', () => {
   const sampleCode = 'const hello = "world";';
 
+  // Mock clipboard API before each test
+  let writeTextMock: ReturnType<typeof vi.fn>;
+
+  beforeEach(() => {
+    writeTextMock = vi.fn().mockResolvedValue(undefined);
+
+    Object.defineProperty(navigator, 'clipboard', {
+      value: {
+        writeText: writeTextMock,
+      },
+      writable: true,
+      configurable: true,
+    });
+  });
+
   it('renders code correctly', () => {
     render(<CodeBlock code={sampleCode} language="javascript" />);
-    expect(screen.getByText(/const hello/)).toBeInTheDocument();
+    // Check for the pre element which contains the code
+    const pre = document.querySelector('pre');
+    expect(pre).toBeInTheDocument();
+    expect(pre?.textContent).toBe(sampleCode);
   });
 
   it('applies correct language for syntax highlighting', () => {
@@ -42,31 +60,29 @@ describe('CodeBlock', () => {
   it('copies code to clipboard when copy button is clicked', async () => {
     const user = userEvent.setup();
 
-    // Mock clipboard API
-    Object.assign(navigator, {
-      clipboard: {
-        writeText: vi.fn().mockResolvedValue(undefined),
-      },
-    });
-
     render(<CodeBlock code={sampleCode} language="javascript" copyable />);
 
     const copyButton = screen.getByRole('button', { name: /copy code/i });
+
+    // Verify the button starts with Copy icon (not Check)
+    expect(copyButton.querySelector('.lucide-copy')).toBeInTheDocument();
+
     await user.click(copyButton);
 
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(sampleCode);
+    // After clicking, icon should change to Check (indicating copy attempted)
+    await waitFor(() => {
+      expect(copyButton.querySelector('.lucide-check')).toBeInTheDocument();
+    });
+
+    // Verify the mock was called
+    expect(writeTextMock).toHaveBeenCalledWith(sampleCode);
   });
 
   it('shows "Copied!" message after successful copy', async () => {
     const user = userEvent.setup();
 
-    Object.assign(navigator, {
-      clipboard: {
-        writeText: vi.fn().mockResolvedValue(undefined),
-      },
-    });
-
-    render(<CodeBlock code={sampleCode} language="javascript" copyable />);
+    // Use filename to get the copy button with text in the header
+    render(<CodeBlock code={sampleCode} language="javascript" copyable filename="test.js" />);
 
     const copyButton = screen.getByRole('button', { name: /copy code/i });
     await user.click(copyButton);
@@ -105,14 +121,14 @@ describe('CodeBlock', () => {
 
     render(<CodeBlock code={sampleCode} language="javascript" collapsible />);
 
-    // Code should be visible initially
-    expect(screen.getByText(/const hello/)).toBeInTheDocument();
+    // Code should be visible initially - check for the pre element
+    expect(document.querySelector('pre')).toBeInTheDocument();
 
     const collapseButton = screen.getByRole('button', { name: /collapse code/i });
     await user.click(collapseButton);
 
     // Code should be hidden
-    expect(screen.queryByText(/const hello/)).not.toBeInTheDocument();
+    expect(document.querySelector('pre')).not.toBeInTheDocument();
   });
 
   it('applies maxHeight style when provided', () => {
@@ -183,7 +199,7 @@ describe('CodeBlock', () => {
 
   it('has proper ARIA label for collapse button', () => {
     render(<CodeBlock code={sampleCode} language="javascript" collapsible />);
-    const collapseButton = screen.getByRole('button');
+    const collapseButton = screen.getByRole('button', { name: /collapse code/i });
     expect(collapseButton).toHaveAttribute('aria-label');
   });
 
@@ -191,26 +207,26 @@ describe('CodeBlock', () => {
     const codeWithWhitespace = '\n\n  const hello = "world";  \n\n';
     render(<CodeBlock code={codeWithWhitespace} language="javascript" />);
 
-    // Should still render the trimmed code
-    expect(screen.getByText(/const hello/)).toBeInTheDocument();
+    // Should still render the trimmed code - check pre element textContent
+    const pre = document.querySelector('pre');
+    expect(pre?.textContent).toBe(sampleCode);
   });
 
   it('handles copy error gracefully', async () => {
     const user = userEvent.setup();
     const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-    Object.assign(navigator, {
-      clipboard: {
-        writeText: vi.fn().mockRejectedValue(new Error('Copy failed')),
-      },
-    });
+    // Override the beforeEach clipboard mock to simulate failure
+    writeTextMock.mockRejectedValueOnce(new Error('Copy failed'));
 
     render(<CodeBlock code={sampleCode} language="javascript" copyable />);
 
     const copyButton = screen.getByRole('button', { name: /copy code/i });
     await user.click(copyButton);
 
-    expect(consoleError).toHaveBeenCalledWith('Failed to copy code:', expect.any(Error));
+    await waitFor(() => {
+      expect(consoleError).toHaveBeenCalledWith('Failed to copy code:', expect.any(Error));
+    });
 
     consoleError.mockRestore();
   });
