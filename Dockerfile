@@ -2,10 +2,8 @@
 FROM alpine:3.19
 
 # Install only nginx (no extras)
-RUN apk add --no-cache nginx
-
-# Create nginx user and directories
-RUN adduser -D -u 1000 -g 'nginx' nginx && \
+# Note: nginx package creates the nginx user automatically
+RUN apk add --no-cache nginx && \
     mkdir -p /var/log/nginx /var/lib/nginx/tmp && \
     chown -R nginx:nginx /var/log/nginx /var/lib/nginx
 
