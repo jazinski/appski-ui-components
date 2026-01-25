@@ -1,8 +1,8 @@
 // Styles
 import './styles.css';
 
-// Components
-export { Button, buttonVariants, type ButtonProps } from './components/ui';
+// Export all components from the UI barrel export
+export * from './components/ui';
 
 // Utilities
 export { cn } from './lib/utils';
