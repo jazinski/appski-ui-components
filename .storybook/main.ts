@@ -16,8 +16,17 @@ const config: StorybookConfig = {
   docs: {},
   staticDirs: ['../public'],
   viteFinal: async (config) => {
+    // Get commit hash for injection
+    const commitHash =
+      process.env.STORYBOOK_COMMIT_HASH ||
+      require('child_process').execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim();
+
     return {
       ...config,
+      define: {
+        ...config.define,
+        __STORYBOOK_COMMIT_HASH__: JSON.stringify(commitHash),
+      },
       resolve: {
         ...config.resolve,
         alias: {

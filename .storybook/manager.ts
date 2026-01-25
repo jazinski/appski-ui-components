@@ -1,8 +1,8 @@
 import { addons } from '@storybook/manager-api';
 import { create } from '@storybook/theming/create';
 
-// Get commit hash - will be injected at build time
-const COMMIT_HASH = 'a78e957'; // Will be replaced by build script
+// Get commit hash - replaced at build time by build-storybook-with-hash.sh
+const COMMIT_HASH = '__COMMIT_HASH__';
 
 const darkTheme = create({
   base: 'dark',
