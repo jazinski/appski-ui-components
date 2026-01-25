@@ -126,3 +126,4 @@ export {
   type BreadcrumbProps,
   type BreadcrumbItem as BreadcrumbItemType,
 } from './breadcrumb';
+export { Avatar, type AvatarProps } from './avatar';
