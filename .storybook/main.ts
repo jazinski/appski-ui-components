@@ -14,6 +14,7 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {},
+  staticDirs: ['../public'],
   viteFinal: async (config) => {
     return {
       ...config,

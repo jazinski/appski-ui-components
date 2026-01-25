@@ -13,6 +13,10 @@ const preview: Preview = {
     backgrounds: {
       disable: true,
     },
+    docs: {
+      // Apply dark background to docs when in dark mode
+      theme: undefined, // Will be set by the theme decorator
+    },
   },
   decorators: [
     withThemeByClassName({
