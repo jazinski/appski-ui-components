@@ -1,23 +1,25 @@
 <style>
-  /* FORCE DARK MODE - Target all possible Storybook elements */
+  /* DARK MODE for DOCS ONLY - Let Canvas/Story respect background toggle */
   
-  /* Root elements */
-  html, body, #storybook-root, #storybook-docs {
+  /* Root elements - ONLY in docs view */
+  html:has(.sbdocs), 
+  body:has(.sbdocs),
+  #storybook-root:has(.sbdocs),
+  #storybook-docs {
     background-color: #0f172a !important;
     color: #f1f5f9 !important;
   }
   
-  /* Main containers */
-  .sb-show-main,
-  .sb-main-padded,
-  .sb-wrapper,
-  .sb-preparing-docs,
-  .sb-preparing-story {
+  /* Main containers - ONLY when showing docs */
+  .sb-show-main:has(.sbdocs),
+  .sb-main-padded:has(.sbdocs),
+  .sb-wrapper:has(.sbdocs),
+  .sb-preparing-docs {
     background-color: #0f172a !important;
     color: #f1f5f9 !important;
   }
   
-  /* Docs containers */
+  /* Docs containers - Always dark */
   .docs-story,
   .sbdocs,
   .sbdocs-wrapper,
@@ -29,10 +31,9 @@
     color: #f1f5f9 !important;
   }
   
-  /* Preview blocks */
-  .sb-previewBlock,
-  .sb-previewBlock_body,
-  #storybook-preview-wrapper {
+  /* Preview blocks in docs */
+  .sbdocs .sb-previewBlock,
+  .sbdocs .sb-previewBlock_body {
     background-color: #0f172a !important;
   }
   
@@ -90,12 +91,6 @@
     background-color: #334155 !important;
   }
   
-  /* Canvas/Story preview area */
-  #storybook-preview-wrapper,
-  [data-is-story-preview="true"] {
-    background-color: #0f172a !important;
-  }
-  
   /* Addon panels */
   .addon-panel,
   [class*="panel-"] {
@@ -139,8 +134,5 @@
     color: #cbd5e1 !important;
   }
   
-  /* Story canvas background */
-  .sb-story {
-    background-color: #0f172a !important;
-  }
+  /* DO NOT force canvas/story background - let it respect the background toggle */
 </style>

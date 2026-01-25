@@ -17,6 +17,10 @@ const preview: Preview = {
           name: 'dark',
           value: '#0f172a', // slate-900
         },
+        {
+          name: 'light',
+          value: '#ffffff', // white
+        },
       ],
     },
     docs: {
