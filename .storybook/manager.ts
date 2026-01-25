@@ -42,10 +42,10 @@ style.innerHTML = `
   }
   
   /* Style the brand link - horizontal layout */
-  .sidebar-header a {
+  .sidebar-header a[href] {
     display: flex !important;
     flex-direction: row !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     gap: 12px !important;
     text-decoration: none !important;
   }
@@ -58,8 +58,8 @@ style.innerHTML = `
     flex-shrink: 0 !important;
   }
   
-  /* Hide default brand title */
-  .sidebar-header a > div {
+  /* Hide default brand title (but not our custom one) */
+  .sidebar-header a > div:not(.appski-brand-text) {
     display: none !important;
   }
   
@@ -100,27 +100,48 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 // Build the brand layout with JavaScript
-setTimeout(() => {
-  const brandLink = document.querySelector('.sidebar-header a');
-  if (brandLink) {
-    // Create text container
-    const textContainer = document.createElement('div');
-    textContainer.className = 'appski-brand-text';
-
-    // Add brand name
-    const brandName = document.createElement('div');
-    brandName.className = 'brand-name';
-    brandName.textContent = 'AppSki';
-
-    // Add commit hash
-    const commitHash = document.createElement('div');
-    commitHash.className = 'brand-commit';
-    commitHash.textContent = `commit: ${COMMIT_HASH}`;
-
-    textContainer.appendChild(brandName);
-    textContainer.appendChild(commitHash);
-
-    // Add to brand link after the logo
-    brandLink.appendChild(textContainer);
+const initBranding = () => {
+  // Target the logo link specifically (the one with an img inside)
+  const brandLink = document.querySelector('.sidebar-header a img')
+    ?.parentElement as HTMLAnchorElement;
+  if (!brandLink) {
+    console.log('Brand link not found, retrying...');
+    setTimeout(initBranding, 200);
+    return;
   }
-}, 100);
+
+  // Check if already initialized
+  if (brandLink.querySelector('.appski-brand-text')) {
+    console.log('Brand already initialized');
+    return;
+  }
+
+  console.log('Initializing AppSki branding...');
+
+  // Create text container
+  const textContainer = document.createElement('div');
+  textContainer.className = 'appski-brand-text';
+
+  // Add brand name
+  const brandName = document.createElement('div');
+  brandName.className = 'brand-name';
+  brandName.textContent = 'AppSki';
+
+  // Add commit hash
+  const commitHash = document.createElement('div');
+  commitHash.className = 'brand-commit';
+  commitHash.textContent = `commit: ${COMMIT_HASH}`;
+
+  textContainer.appendChild(brandName);
+  textContainer.appendChild(commitHash);
+
+  // Add to brand link after the logo
+  brandLink.appendChild(textContainer);
+
+  console.log('AppSki branding initialized!');
+};
+
+// Try multiple times to ensure it loads
+setTimeout(initBranding, 100);
+setTimeout(initBranding, 500);
+setTimeout(initBranding, 1000);
