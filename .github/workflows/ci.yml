@@ -208,3 +208,25 @@ jobs:
           
           echo ""
           echo "🎉 Deployment completed for commit ${{ github.sha }}"
+      
+      - name: Purge Cloudflare cache
+        run: |
+          echo "🔥 Purging Cloudflare cache for ui.appski.me..."
+          
+          RESPONSE=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}')
+          
+          SUCCESS=$(echo $RESPONSE | grep -o '"success":[^,]*' | grep -o '[^:]*$')
+          
+          if [ "$SUCCESS" == "true" ]; then
+            echo "✅ Cloudflare cache purged successfully!"
+            echo "🌐 Fresh content will be served at https://ui.appski.me"
+          else
+            echo "⚠️  Cache purge may have failed. Response:"
+            echo "$RESPONSE"
+            echo ""
+            echo "Note: Deployment was successful, but cache might not be cleared."
+            echo "You may need to manually purge cache in Cloudflare dashboard."
+          fi
