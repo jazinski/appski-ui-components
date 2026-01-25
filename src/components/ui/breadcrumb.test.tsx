@@ -227,7 +227,17 @@ describe('Breadcrumb', () => {
   describe('onClick Handler', () => {
     it('calls onClick handler when item is clicked', async () => {
       const user = userEvent.setup();
-      const handleClick = vi.fn((e) => e.preventDefault());
+      const handleClick = vi.fn((e: unknown) => {
+        if (
+          e &&
+          typeof e === 'object' &&
+          'preventDefault' in e &&
+          typeof e.preventDefault === 'function'
+        ) {
+          e.preventDefault();
+        }
+        return undefined;
+      });
 
       const itemsWithClick: BreadcrumbItem[] = [
         { label: 'Home', href: '/', onClick: handleClick },

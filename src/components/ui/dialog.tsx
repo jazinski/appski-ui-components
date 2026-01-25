@@ -164,7 +164,9 @@ function DialogPortal({ children, container }: DialogPortalProps) {
 
   React.useEffect(() => {
     setMounted(true);
-    return () => setMounted(false);
+    return () => {
+      setMounted(false);
+    };
   }, []);
 
   if (!mounted) return null;
@@ -184,7 +186,7 @@ function DialogPortal({ children, container }: DialogPortalProps) {
 // Dialog Overlay
 // ============================================================================
 
-export interface DialogOverlayProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DialogOverlayProps = React.HTMLAttributes<HTMLDivElement>;
 
 const DialogOverlay = React.forwardRef<HTMLDivElement, DialogOverlayProps>(
   ({ className, ...props }, ref) => {
@@ -240,7 +242,12 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
     const previouslyFocusedElement = React.useRef<HTMLElement | null>(null);
 
     // Combine refs
-    React.useImperativeHandle(ref, () => contentRef.current!);
+    React.useImperativeHandle(ref, () => {
+      if (!contentRef.current) {
+        throw new Error('Content ref is not attached');
+      }
+      return contentRef.current;
+    });
 
     const handleClose = React.useCallback(() => {
       onOpenChange(false);
@@ -259,7 +266,9 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       };
 
       document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+      };
     }, [open, closeOnEscape, handleClose]);
 
     // Focus trap and body scroll lock
@@ -317,7 +326,9 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       };
 
       document.addEventListener('keydown', handleTabKey);
-      return () => document.removeEventListener('keydown', handleTabKey);
+      return () => {
+        document.removeEventListener('keydown', handleTabKey);
+      };
     }, [open]);
 
     if (!open) return null;
@@ -331,7 +342,9 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
           aria-modal="true"
           data-state={open ? 'open' : 'closed'}
           className={cn(dialogContentVariants({ size }), className)}
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
           {...props}
         >
           {children}
@@ -356,7 +369,7 @@ DialogContent.displayName = 'DialogContent';
 // Dialog Header
 // ============================================================================
 
-export interface DialogHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
 const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
   ({ className, ...props }, ref) => (
@@ -373,7 +386,7 @@ DialogHeader.displayName = 'DialogHeader';
 // Dialog Footer
 // ============================================================================
 
-export interface DialogFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DialogFooterProps = React.HTMLAttributes<HTMLDivElement>;
 
 const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(
   ({ className, ...props }, ref) => (
@@ -390,7 +403,7 @@ DialogFooter.displayName = 'DialogFooter';
 // Dialog Title
 // ============================================================================
 
-export interface DialogTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
+export type DialogTitleProps = React.HTMLAttributes<HTMLHeadingElement>;
 
 const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
   ({ className, ...props }, ref) => (
@@ -407,7 +420,7 @@ DialogTitle.displayName = 'DialogTitle';
 // Dialog Description
 // ============================================================================
 
-export interface DialogDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+export type DialogDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
 
 const DialogDescription = React.forwardRef<HTMLParagraphElement, DialogDescriptionProps>(
   ({ className, ...props }, ref) => (

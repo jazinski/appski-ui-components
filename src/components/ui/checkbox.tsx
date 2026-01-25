@@ -94,9 +94,15 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   ) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
     const [internalChecked, setInternalChecked] = React.useState(defaultChecked ?? false);
+    const generatedId = React.useId();
 
     // Combine refs
-    React.useImperativeHandle(ref, () => inputRef.current!);
+    React.useImperativeHandle(ref, () => {
+      if (!inputRef.current) {
+        throw new Error('Input ref is not attached');
+      }
+      return inputRef.current;
+    });
 
     // Determine if controlled
     const isControlled = checked !== undefined;
@@ -109,11 +115,10 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [indeterminate]);
 
-    // Determine the visual state
-    const getState = () => {
+    // Determine checkbox state for styling
+    const getCheckboxState = () => {
       if (indeterminate) return 'indeterminate';
-      if (isChecked) return 'checked';
-      return 'unchecked';
+      return isChecked ? 'checked' : 'unchecked';
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,7 +131,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       onCheckedChange?.(newChecked);
     };
 
-    const checkboxId = id ?? React.useId();
+    const checkboxId = id ?? generatedId;
     const iconSize = checkboxIconSizes[size ?? 'default'];
 
     return (
@@ -146,7 +151,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             {...props}
           />
           <div
-            data-state={getState()}
+            data-state={getCheckboxState()}
             className={cn(
               checkboxVariants({ variant, size }),
               'flex cursor-pointer items-center justify-center',

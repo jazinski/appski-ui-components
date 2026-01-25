@@ -99,7 +99,7 @@ describe('Tabs', () => {
       const [value, setValue] = React.useState('tab1');
       return (
         <div>
-          <button onClick={() => setValue('tab2')}>Switch to Tab 2</button>
+          <button onClick={() => { setValue('tab2'); }}>Switch to Tab 2</button>
           <Tabs value={value} defaultValue="tab1" onValueChange={setValue}>
             <TabsList>
               <TabsTrigger value="tab1">Tab 1</TabsTrigger>

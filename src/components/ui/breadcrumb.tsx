@@ -143,7 +143,7 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
             const isEllipsis = item.label === '...';
 
             return (
-              <React.Fragment key={`${item.label}-${index}`}>
+              <React.Fragment key={`${item.label}-${String(index)}`}>
                 <li
                   className={cn(
                     breadcrumbItemVariants({

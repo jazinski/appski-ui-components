@@ -19,13 +19,13 @@ describe('Textarea', () => {
 
     it('renders with default value', () => {
       render(<Textarea defaultValue="Initial text" />);
-      const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+      const textarea = screen.getByRole('textbox');
       expect(textarea.value).toBe('Initial text');
     });
 
     it('renders with controlled value', () => {
       render(<Textarea value="Controlled text" onChange={() => {}} />);
-      const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+      const textarea = screen.getByRole('textbox');
       expect(textarea.value).toBe('Controlled text');
     });
   });
@@ -129,7 +129,7 @@ describe('Textarea', () => {
       const user = userEvent.setup();
       render(<Textarea defaultValue="Initial" />);
 
-      const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+      const textarea = screen.getByRole('textbox');
       await user.clear(textarea);
       await user.type(textarea, 'New text');
 
@@ -147,7 +147,7 @@ describe('Textarea', () => {
       const user = userEvent.setup();
       render(<Textarea disabled defaultValue="Initial" />);
 
-      const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+      const textarea = screen.getByRole('textbox');
       await user.type(textarea, 'Test');
 
       expect(textarea.value).toBe('Initial');
@@ -229,14 +229,14 @@ describe('Textarea', () => {
   describe('Auto Resize', () => {
     it('does not auto-resize by default', () => {
       render(<Textarea />);
-      const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+      const textarea = screen.getByRole('textbox');
       const initialHeight = textarea.style.height;
       expect(initialHeight).toBe('');
     });
 
     it('sets initial rows when autoResize is enabled', () => {
       render(<Textarea autoResize minRows={3} />);
-      const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+      const textarea = screen.getByRole('textbox');
       expect(textarea).toHaveAttribute('rows', '3');
     });
 
@@ -258,7 +258,7 @@ describe('Textarea', () => {
       const user = userEvent.setup();
       render(<Textarea maxLength={5} />);
 
-      const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+      const textarea = screen.getByRole('textbox');
       await user.type(textarea, 'Testing long text');
 
       expect(textarea.value.length).toBeLessThanOrEqual(5);

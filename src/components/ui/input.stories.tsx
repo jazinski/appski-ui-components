@@ -108,7 +108,7 @@ export const AllVariants: Story = {
 
 export const FormExample: Story = {
   render: () => (
-    <form className="flex w-80 flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+    <form className="flex w-80 flex-col gap-4" onSubmit={(e) => { e.preventDefault(); }}>
       <Input label="First Name" placeholder="John" required />
       <Input label="Last Name" placeholder="Doe" required />
       <Input label="Email" type="email" placeholder="john@example.com" required />

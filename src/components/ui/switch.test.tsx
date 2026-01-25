@@ -131,7 +131,7 @@ describe('Switch', () => {
 
   describe('Label Position', () => {
     it('renders label on right by default', () => {
-      const { container } = render(<Switch label="Right label" />);
+      render(<Switch label="Right label" />);
       const switchEl = screen.getByRole('switch');
       const label = screen.getByText('Right label');
 
@@ -140,7 +140,7 @@ describe('Switch', () => {
     });
 
     it('renders label on left when specified', () => {
-      const { container } = render(<Switch label="Left label" labelPosition="left" />);
+      render(<Switch label="Left label" labelPosition="left" />);
       const switchEl = screen.getByRole('switch');
       const label = screen.getByText('Left label');
 
@@ -152,7 +152,9 @@ describe('Switch', () => {
   describe('Form Integration', () => {
     it('includes hidden input with name attribute', () => {
       const { container } = render(<Switch label="Form switch" name="mySwitch" />);
-      const hiddenInput = container.querySelector('input[type="checkbox"][name="mySwitch"]');
+      const hiddenInput: Element | null = container.querySelector(
+        'input[type="checkbox"][name="mySwitch"]'
+      );
       expect(hiddenInput).toBeInTheDocument();
     });
 

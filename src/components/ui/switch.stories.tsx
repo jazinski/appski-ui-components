@@ -137,7 +137,7 @@ function ControlledSwitch() {
       <p className="text-sm text-muted-foreground">
         State: <strong>{checked ? 'On' : 'Off'}</strong>
       </p>
-      <button className="text-sm text-primary underline" onClick={() => setChecked(!checked)}>
+      <button className="text-sm text-primary underline" onClick={() => { setChecked(!checked); }}>
         Toggle from outside
       </button>
     </div>
@@ -309,7 +309,7 @@ function InteractiveDemo() {
           </div>
           <Switch
             checked={features.wifi}
-            onCheckedChange={() => toggleFeature('wifi')}
+            onCheckedChange={() => { toggleFeature('wifi'); }}
             aria-label="Wi-Fi"
             variant="success"
             size="sm"
@@ -323,7 +323,7 @@ function InteractiveDemo() {
           </div>
           <Switch
             checked={features.bluetooth}
-            onCheckedChange={() => toggleFeature('bluetooth')}
+            onCheckedChange={() => { toggleFeature('bluetooth'); }}
             aria-label="Bluetooth"
             size="sm"
           />
@@ -336,7 +336,7 @@ function InteractiveDemo() {
           </div>
           <Switch
             checked={features.airplane}
-            onCheckedChange={() => toggleFeature('airplane')}
+            onCheckedChange={() => { toggleFeature('airplane'); }}
             aria-label="Airplane Mode"
             variant="warning"
             size="sm"
@@ -350,7 +350,7 @@ function InteractiveDemo() {
           </div>
           <Switch
             checked={features.location}
-            onCheckedChange={() => toggleFeature('location')}
+            onCheckedChange={() => { toggleFeature('location'); }}
             aria-label="Location"
             size="sm"
           />

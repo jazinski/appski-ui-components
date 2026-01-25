@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FaHome, FaFolder, FaFile, FaChevronRight, FaAngleRight, FaSlash } from 'react-icons/fa';
+import { FaHome, FaFolder, FaFile, FaAngleRight, FaSlash } from 'react-icons/fa';
 import { Breadcrumb } from './breadcrumb';
 
 const meta = {

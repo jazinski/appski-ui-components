@@ -135,7 +135,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [open, setOpen]);
 
   // Close on Escape key
@@ -150,7 +152,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
     };
 
     document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
   }, [open, setOpen]);
 
   return (
@@ -188,8 +192,8 @@ export const DropdownTrigger: React.FC<DropdownTriggerProps> = ({ children, asCh
 
   if (asChild && React.isValidElement(children)) {
     // Extract child props safely and merge with our props
-    const childProps = (children.props || {}) as Record<string, any>;
-    return React.cloneElement(children as React.ReactElement<any>, {
+    const childProps = (children.props || {}) as Record<string, unknown>;
+    return React.cloneElement(children as React.ReactElement, {
       ...childProps,
       ref: triggerRef,
       onClick: handleClick,
@@ -284,9 +288,12 @@ export const DropdownContent: React.FC<DropdownContentProps> = ({
       }
     };
 
+    const currentContent = contentRef.current;
+
     contentRef.current?.addEventListener('keydown', handleKeyDown);
-    return () => contentRef.current?.removeEventListener('keydown', handleKeyDown);
-  }, [open, setOpen, contentRef, getFocusableItems]);
+    return () => currentContent?.removeEventListener('keydown', handleKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, setOpen, getFocusableItems]);
 
   // Focus first item when opened
   React.useEffect(() => {
@@ -442,8 +449,12 @@ export const DropdownSubmenuTrigger: React.FC<DropdownSubmenuTriggerProps> = ({
 }) => {
   const { open, setOpen } = useDropdownSubmenuContext();
 
-  const handleMouseEnter = () => setOpen(true);
-  const handleMouseLeave = () => setOpen(false);
+  const handleMouseEnter = () => {
+    setOpen(true);
+  };
+  const handleMouseLeave = () => {
+    setOpen(false);
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'ArrowRight') {

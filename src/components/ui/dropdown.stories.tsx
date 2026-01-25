@@ -324,13 +324,13 @@ export const Controlled: Story = {
             <DropdownItem
               icon={<FaTrash />}
               variant="destructive"
-              onSelect={() => console.log('Delete clicked')}
+              onSelect={() => { console.log('Delete clicked'); }}
             >
               Delete
             </DropdownItem>
           </DropdownContent>
         </Dropdown>
-        <Button onClick={() => setOpen(!open)} variant="outline" size="sm">
+        <Button onClick={() => { setOpen(!open); }} variant="outline" size="sm">
           Toggle Dropdown
         </Button>
       </div>
@@ -340,8 +340,8 @@ export const Controlled: Story = {
 
 export const WithCallbacks: Story = {
   render: () => {
-    const handleEdit = () => alert('Edit clicked');
-    const handleDuplicate = () => alert('Duplicate clicked');
+    const handleEdit = () => { alert('Edit clicked'); };
+    const handleDuplicate = () => { alert('Duplicate clicked'); };
     const handleDelete = () => {
       if (confirm('Are you sure you want to delete?')) {
         alert('Deleted!');

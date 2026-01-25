@@ -104,6 +104,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     ref
   ) => {
     const [internalChecked, setInternalChecked] = React.useState(defaultChecked);
+    const generatedId = React.useId();
 
     // Determine if controlled
     const isControlled = checked !== undefined;
@@ -129,7 +130,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       }
     };
 
-    const switchId = id ?? React.useId();
+    const switchId = id ?? generatedId;
     const state = isChecked ? 'checked' : 'unchecked';
 
     const switchElement = (

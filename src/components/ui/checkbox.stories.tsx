@@ -140,7 +140,7 @@ function ControlledCheckbox() {
     <div className="space-y-4">
       <Checkbox
         checked={checked}
-        onCheckedChange={(value) => setChecked(value === true)}
+        onCheckedChange={(value) => { setChecked(value === true); }}
         label="Controlled checkbox"
       />
       <p className="text-sm text-muted-foreground">
@@ -190,7 +190,7 @@ function SelectAllExample() {
           <Checkbox
             key={item}
             checked={selected.includes(item)}
-            onCheckedChange={() => handleSelectItem(item)}
+            onCheckedChange={() => { handleSelectItem(item); }}
             label={`Item ${item.slice(-1)}`}
           />
         ))}

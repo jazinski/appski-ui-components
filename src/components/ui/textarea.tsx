@@ -129,7 +129,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
       const newHeight = Math.min(Math.max(textarea.scrollHeight, minHeight), maxHeight);
 
-      textarea.style.height = `${newHeight}px`;
+      textarea.style.height = `${String(newHeight)}px`;
     }, [autoResize, minRows, maxRows]);
 
     // Auto-resize on mount and value change
@@ -205,7 +205,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             aria-invalid={hasError ? 'true' : undefined}
             aria-describedby={
               error || description || showCharacterCount
-                ? `${props.id}-description ${props.id}-error ${props.id}-count`
+                ? `${props.id ?? ''}-description ${props.id ?? ''}-error ${props.id ?? ''}-count`
                 : undefined
             }
             {...props}
@@ -216,7 +216,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <div className="flex-1">
             {description && !error && (
               <p
-                id={`${props.id}-description`}
+                id={`${props.id ?? ''}-description`}
                 className={cn('text-sm text-muted-foreground', disabled && 'opacity-50')}
               >
                 {description}
@@ -225,7 +225,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
             {error && (
               <p
-                id={`${props.id}-error`}
+                id={`${props.id ?? ''}-error`}
                 className="text-sm font-medium text-destructive"
                 role="alert"
               >
@@ -236,7 +236,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
           {showCharacterCount && (
             <p
-              id={`${props.id}-count`}
+              id={`${props.id ?? ''}-count`}
               className={cn(
                 'text-sm tabular-nums',
                 isOverMaxLength ? 'font-medium text-destructive' : 'text-muted-foreground',
@@ -245,7 +245,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               aria-live="polite"
             >
               {characterCount}
-              {maxLength !== undefined && ` / ${maxLength}`}
+              {maxLength !== undefined && ` / ${String(maxLength)}`}
             </p>
           )}
         </div>

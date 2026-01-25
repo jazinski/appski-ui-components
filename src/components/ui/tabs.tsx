@@ -102,7 +102,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
 );
 Tabs.displayName = 'Tabs';
 
-export interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type TabsListProps = React.HTMLAttributes<HTMLDivElement>;
 
 const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(({ className, ...props }, ref) => {
   const { variant } = useTabsContext();
@@ -140,7 +140,7 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
         data-state={isActive ? 'active' : 'inactive'}
         disabled={disabled}
         className={cn(tabsTriggerVariants({ variant, className }))}
-        onClick={() => setActiveTab(value)}
+        onClick={() => { setActiveTab(value); }}
         tabIndex={isActive ? 0 : -1}
         {...props}
       >

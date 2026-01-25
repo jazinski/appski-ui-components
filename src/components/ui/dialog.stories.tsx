@@ -282,8 +282,8 @@ function ControlledDialogExample() {
         Dialog is: <strong>{open ? 'Open' : 'Closed'}</strong>
       </p>
       <div className="flex gap-2">
-        <Button onClick={() => setOpen(true)}>Open Dialog</Button>
-        <Button variant="outline" onClick={() => setOpen(false)} disabled={!open}>
+        <Button onClick={() => { setOpen(true); }}>Open Dialog</Button>
+        <Button variant="outline" onClick={() => { setOpen(false); }} disabled={!open}>
           Close from Outside
         </Button>
       </div>
@@ -296,7 +296,7 @@ function ControlledDialogExample() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setOpen(false)}>
+            <Button variant="outline" onClick={() => { setOpen(false); }}>
               Close
             </Button>
           </DialogFooter>

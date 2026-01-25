@@ -164,7 +164,9 @@ const ToastContainer = React.forwardRef<HTMLDivElement, ToastContainerProps>(
             key={toast.id}
             toast={toast}
             variant={toast.variant}
-            onClose={() => removeToast(toast.id)}
+            onClose={() => {
+              removeToast(toast.id);
+            }}
           />
         ))}
       </div>
@@ -265,9 +267,12 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 
   // Cleanup on unmount
   React.useEffect(() => {
+    const currentTimeouts = timeoutsRef.current;
     return () => {
-      timeoutsRef.current.forEach((timeout) => clearTimeout(timeout));
-      timeoutsRef.current.clear();
+      currentTimeouts.forEach((timeout) => {
+        clearTimeout(timeout);
+      });
+      currentTimeouts.clear();
     };
   }, []);
 

@@ -140,7 +140,7 @@ export const AllVariants: Story = {
 
 export const FormExample: Story = {
   render: () => (
-    <form className="flex w-80 flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+    <form className="flex w-80 flex-col gap-4" onSubmit={(e) => { e.preventDefault(); }}>
       <Select label="Country" options={countryOptions} placeholder="Select your country" required />
       <Select
         label="Priority"
