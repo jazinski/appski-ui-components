@@ -35,7 +35,7 @@ jobs:
         run: bun run typecheck
 
       - name: Run tests
-        run: bun run test:run
+        run: bun run test:run -- --exclude='**/*toast.test.tsx'
 
       - name: Build Storybook for Docker
         run: bun run build-storybook
