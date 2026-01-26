@@ -17,7 +17,7 @@ permissions:
 jobs:
   build-and-test:
     name: Build, Test, and Create Storybook
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     
     steps:
       - name: Checkout code
@@ -50,7 +50,7 @@ jobs:
   build-docker:
     name: Build and Push Docker Image to Private Registry
     needs: build-and-test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     
     steps:

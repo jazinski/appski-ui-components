@@ -9,7 +9,7 @@ on:
 jobs:
   lint-and-test:
     name: Lint and Test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     
     steps:
       - name: Checkout code
@@ -47,7 +47,7 @@ jobs:
 
   build:
     name: Build Package
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: lint-and-test
     
     steps:
@@ -74,7 +74,7 @@ jobs:
 
   storybook:
     name: Build Storybook
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: lint-and-test
     
     steps:
@@ -101,7 +101,7 @@ jobs:
 
   docker-build:
     name: Build and Push Docker Image
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [lint-and-test, storybook]
     # Only build Docker image on pushes to main branch (not PRs or develop)
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -165,6 +165,11 @@ jobs:
           sparse-checkout: |
             docker-compose.prod.yml
           sparse-checkout-cone-mode: false
+      
+      - name: Log in to Private Docker Registry
+        run: |
+          echo "🔐 Logging in to Docker registry..."
+          echo "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" | docker login code-server.jazinski.com -u "${{ secrets.DOCKER_REGISTRY_USERNAME }}" --password-stdin
       
       - name: Pull latest Docker image and restart service
         run: |
