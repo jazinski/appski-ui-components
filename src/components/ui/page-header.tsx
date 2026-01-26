@@ -100,7 +100,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
     ref
   ) => {
     const separator = breadcrumbSeparator ?? (
-      <ChevronRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+      <ChevronRight className="h-4 w-4 text-slate-500 dark:text-slate-500" aria-hidden="true" />
     );
 
     return (
@@ -119,7 +119,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                     <li>
                       <a
                         href="/"
-                        className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+                        className="hover:text-foreground flex items-center text-slate-600 transition-colors dark:text-slate-400"
                       >
                         <Home className="h-4 w-4" aria-label="Home" />
                       </a>
@@ -137,7 +137,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                         {crumb.href && !isLast ? (
                           <a
                             href={crumb.href}
-                            className="flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
+                            className="hover:text-foreground flex items-center gap-1 text-slate-600 transition-colors dark:text-slate-400"
                           >
                             {CrumbIcon && <CrumbIcon className="h-4 w-4" />}
                             {crumb.label}
@@ -146,7 +146,9 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                           <span
                             className={cn(
                               'flex items-center gap-1',
-                              isLast ? 'font-medium text-foreground' : 'text-muted-foreground'
+                              isLast
+                                ? 'text-foreground font-medium'
+                                : 'text-slate-600 dark:text-slate-400'
                             )}
                             aria-current={isLast ? 'page' : undefined}
                           >
@@ -167,13 +169,13 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               {Icon && (
-                <div className="flex-shrink-0 rounded-lg bg-primary/10 p-2 text-primary">
+                <div className="bg-primary/10 text-primary flex-shrink-0 rounded-lg p-2">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
               )}
               <div>
-                <h1 className="text-2xl font-semibold text-foreground">{title}</h1>
-                {description && <p className="mt-1 text-sm text-muted-foreground">{description}</p>}
+                <h1 className="text-foreground text-2xl font-semibold">{title}</h1>
+                {description && <p className="text-muted-foreground mt-1 text-sm">{description}</p>}
               </div>
             </div>
 
@@ -183,19 +185,19 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
 
           {/* Stats */}
           {stats && stats.length > 0 && (
-            <div className="mt-4 border-t border-border pt-4">
+            <div className="border-border mt-4 border-t pt-4">
               <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {stats.map((stat, index) => {
                   const StatIcon = stat.icon;
                   return (
                     <div key={index} className="flex items-center gap-2">
                       {StatIcon && (
-                        <div className="flex-shrink-0 rounded-md bg-muted p-1.5">
-                          <StatIcon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                        <div className="bg-muted flex-shrink-0 rounded-md p-1.5">
+                          <StatIcon className="text-muted-foreground h-4 w-4" aria-hidden="true" />
                         </div>
                       )}
                       <div>
-                        <dt className="text-xs text-muted-foreground">{stat.label}</dt>
+                        <dt className="text-muted-foreground text-xs">{stat.label}</dt>
                         <dd
                           className={cn(
                             'text-lg font-semibold',
