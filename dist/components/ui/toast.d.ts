@@ -21,7 +21,7 @@ interface ToastContextValue {
     info: (description: string, options?: Partial<Omit<Toast, 'id' | 'variant'>>) => string;
 }
 declare const toastVariants: (props?: ({
-    variant?: "default" | "error" | "success" | "warning" | "info" | null | undefined;
+    variant?: "default" | "success" | "error" | "warning" | "info" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 interface ToastItemProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof toastVariants> {
     toast: Toast;

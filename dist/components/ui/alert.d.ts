@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 declare const alertVariants: (props?: ({
-    variant?: "default" | "error" | "success" | "warning" | "info" | null | undefined;
+    variant?: "default" | "success" | "error" | "warning" | "info" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof alertVariants> {
     /** Show icon for the alert variant */
