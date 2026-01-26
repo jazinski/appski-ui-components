@@ -3202,8 +3202,8 @@ const Xr = O(
   {
     variants: {
       variant: {
-        default: "text-muted-foreground hover:text-foreground hover:bg-accent/50 dark:text-muted-foreground dark:hover:text-foreground dark:hover:bg-slate-700/50",
-        ghost: "text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/30 dark:hover:bg-slate-700/40"
+        default: "text-muted-foreground hover:text-foreground hover:bg-accent",
+        ghost: "text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/70"
       }
     },
     defaultVariants: {
@@ -3212,7 +3212,7 @@ const Xr = O(
   }
 ), Jr = O(
   // Enhanced: Better visibility in dark mode
-  "flex items-center text-muted-foreground/40 dark:text-muted-foreground/60",
+  "flex items-center text-muted-foreground/50",
   {
     variants: {
       size: {
