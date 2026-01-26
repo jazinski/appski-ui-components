@@ -47,7 +47,7 @@ const ToastDemo = ({
   return (
     <div className="flex flex-col items-center gap-4">
       <Button onClick={showToast}>Show {variant} toast</Button>
-      <p className="text-sm text-muted-foreground">Toast will appear in the top-right corner</p>
+      <p className="text-muted-foreground text-sm">Toast will appear in the top-right corner</p>
     </div>
   );
 };
@@ -258,7 +258,7 @@ export const MaxToasts: Story = {
     <ToastProvider max={3}>
       <div className="flex flex-col gap-3">
         <MultiToastDemo />
-        <p className="text-sm text-muted-foreground">Maximum 3 toasts will be shown at once</p>
+        <p className="text-muted-foreground text-sm">Maximum 3 toasts will be shown at once</p>
       </div>
     </ToastProvider>
   ),

@@ -115,7 +115,7 @@ export const InlineLoading: Story = {
   render: () => (
     <div className="flex items-center gap-2">
       <Spinner size="sm" />
-      <span className="text-sm text-muted-foreground">Saving changes...</span>
+      <span className="text-muted-foreground text-sm">Saving changes...</span>
     </div>
   ),
 };
@@ -123,7 +123,7 @@ export const InlineLoading: Story = {
 export const ButtonLoading: Story = {
   render: () => (
     <button
-      className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
+      className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium"
       disabled
     >
       <Spinner size="sm" className="text-primary-foreground" />

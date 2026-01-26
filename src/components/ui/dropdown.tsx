@@ -193,7 +193,7 @@ export const DropdownTrigger: React.FC<DropdownTriggerProps> = ({ children, asCh
   if (asChild && React.isValidElement(children)) {
     // Extract child props safely and merge with our props
     const childProps = (children.props || {}) as Record<string, unknown>;
-     
+
     return React.cloneElement(children as React.ReactElement, {
       ...childProps,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -511,7 +511,7 @@ export const DropdownSubmenuContent: React.FC<DropdownSubmenuContentProps> = ({
       role="menu"
       aria-orientation="vertical"
       className={cn(
-        'animate-in fade-in-0 zoom-in-95 absolute left-full top-0 ml-1 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 shadow-lg dark:border-slate-700 dark:bg-slate-800',
+        'animate-in fade-in-0 zoom-in-95 absolute top-0 left-full ml-1 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 shadow-lg dark:border-slate-700 dark:bg-slate-800',
         className
       )}
     >

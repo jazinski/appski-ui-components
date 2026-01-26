@@ -134,10 +134,15 @@ function ControlledSwitch() {
   return (
     <div className="space-y-4">
       <Switch checked={checked} onCheckedChange={setChecked} label="Controlled switch" />
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         State: <strong>{checked ? 'On' : 'Off'}</strong>
       </p>
-      <button className="text-sm text-primary underline" onClick={() => { setChecked(!checked); }}>
+      <button
+        className="text-primary text-sm underline"
+        onClick={() => {
+          setChecked(!checked);
+        }}
+      >
         Toggle from outside
       </button>
     </div>
@@ -175,17 +180,17 @@ export const Group: Story = {
 
 export const SettingsPanel: Story = {
   render: () => (
-    <div className="w-80 space-y-6 rounded-lg border border-border p-6">
+    <div className="border-border w-80 space-y-6 rounded-lg border p-6">
       <div className="space-y-1">
         <h2 className="text-lg font-semibold">Settings</h2>
-        <p className="text-sm text-muted-foreground">Manage your preferences</p>
+        <p className="text-muted-foreground text-sm">Manage your preferences</p>
       </div>
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium">Dark Mode</p>
-            <p className="text-xs text-muted-foreground">Toggle dark theme</p>
+            <p className="text-muted-foreground text-xs">Toggle dark theme</p>
           </div>
           <Switch aria-label="Dark mode" defaultChecked />
         </div>
@@ -193,7 +198,7 @@ export const SettingsPanel: Story = {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium">Notifications</p>
-            <p className="text-xs text-muted-foreground">Enable push notifications</p>
+            <p className="text-muted-foreground text-xs">Enable push notifications</p>
           </div>
           <Switch aria-label="Notifications" />
         </div>
@@ -201,7 +206,7 @@ export const SettingsPanel: Story = {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium">Auto-save</p>
-            <p className="text-xs text-muted-foreground">Automatically save changes</p>
+            <p className="text-muted-foreground text-xs">Automatically save changes</p>
           </div>
           <Switch aria-label="Auto-save" defaultChecked />
         </div>
@@ -209,7 +214,7 @@ export const SettingsPanel: Story = {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium">Analytics</p>
-            <p className="text-xs text-muted-foreground">Share usage data</p>
+            <p className="text-muted-foreground text-xs">Share usage data</p>
           </div>
           <Switch aria-label="Analytics" variant="warning" />
         </div>
@@ -226,7 +231,7 @@ export const WithoutLabel: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Switch aria-label="Toggle feature" />
-      <span className="text-sm text-muted-foreground">
+      <span className="text-muted-foreground text-sm">
         Switch without visible label (has aria-label)
       </span>
     </div>
@@ -270,7 +275,7 @@ export const FormExample: Story = {
 
       <button
         type="submit"
-        className="w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+        className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-md px-4 py-2 text-sm font-medium"
       >
         Save Preferences
       </button>
@@ -298,59 +303,67 @@ function InteractiveDemo() {
   };
 
   return (
-    <div className="w-72 space-y-4 rounded-lg border border-border p-4">
+    <div className="border-border w-72 space-y-4 rounded-lg border p-4">
       <h3 className="font-medium">Quick Settings</h3>
 
       <div className="space-y-3">
-        <div className="flex items-center justify-between rounded-lg bg-muted/50 p-3">
+        <div className="bg-muted/50 flex items-center justify-between rounded-lg p-3">
           <div className="flex items-center gap-2">
-            <FaWifi className="h-4 w-4 text-muted-foreground" />
+            <FaWifi className="text-muted-foreground h-4 w-4" />
             <span className="text-sm">Wi-Fi</span>
           </div>
           <Switch
             checked={features.wifi}
-            onCheckedChange={() => { toggleFeature('wifi'); }}
+            onCheckedChange={() => {
+              toggleFeature('wifi');
+            }}
             aria-label="Wi-Fi"
             variant="success"
             size="sm"
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-lg bg-muted/50 p-3">
+        <div className="bg-muted/50 flex items-center justify-between rounded-lg p-3">
           <div className="flex items-center gap-2">
-            <FaBluetooth className="h-4 w-4 text-muted-foreground" />
+            <FaBluetooth className="text-muted-foreground h-4 w-4" />
             <span className="text-sm">Bluetooth</span>
           </div>
           <Switch
             checked={features.bluetooth}
-            onCheckedChange={() => { toggleFeature('bluetooth'); }}
+            onCheckedChange={() => {
+              toggleFeature('bluetooth');
+            }}
             aria-label="Bluetooth"
             size="sm"
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-lg bg-muted/50 p-3">
+        <div className="bg-muted/50 flex items-center justify-between rounded-lg p-3">
           <div className="flex items-center gap-2">
-            <FaPlane className="h-4 w-4 text-muted-foreground" />
+            <FaPlane className="text-muted-foreground h-4 w-4" />
             <span className="text-sm">Airplane Mode</span>
           </div>
           <Switch
             checked={features.airplane}
-            onCheckedChange={() => { toggleFeature('airplane'); }}
+            onCheckedChange={() => {
+              toggleFeature('airplane');
+            }}
             aria-label="Airplane Mode"
             variant="warning"
             size="sm"
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-lg bg-muted/50 p-3">
+        <div className="bg-muted/50 flex items-center justify-between rounded-lg p-3">
           <div className="flex items-center gap-2">
-            <FaMapMarkerAlt className="h-4 w-4 text-muted-foreground" />
+            <FaMapMarkerAlt className="text-muted-foreground h-4 w-4" />
             <span className="text-sm">Location</span>
           </div>
           <Switch
             checked={features.location}
-            onCheckedChange={() => { toggleFeature('location'); }}
+            onCheckedChange={() => {
+              toggleFeature('location');
+            }}
             aria-label="Location"
             size="sm"
           />

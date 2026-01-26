@@ -138,7 +138,7 @@ export const Sticky: Story = {
         <p className="text-muted-foreground">Scroll down to see the sticky header in action.</p>
         <div className="mt-8 space-y-4">
           {Array.from({ length: 20 }, (_, i) => (
-            <div key={i} className="rounded-lg border bg-card p-4">
+            <div key={i} className="bg-card rounded-lg border p-4">
               <p>Content block {i + 1}</p>
             </div>
           ))}

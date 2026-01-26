@@ -132,17 +132,17 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             ))}
           </select>
           <ChevronDown
-            className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+            className="text-muted-foreground pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2"
             aria-hidden="true"
           />
         </div>
         {hasError && (
-          <p id={errorId} className="text-sm text-destructive" role="alert">
+          <p id={errorId} className="text-destructive text-sm" role="alert">
             {error}
           </p>
         )}
         {!hasError && helperText && (
-          <p id={helperTextId} className="text-sm text-muted-foreground">
+          <p id={helperTextId} className="text-muted-foreground text-sm">
             {helperText}
           </p>
         )}

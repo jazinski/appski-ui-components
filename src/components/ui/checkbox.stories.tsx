@@ -140,10 +140,12 @@ function ControlledCheckbox() {
     <div className="space-y-4">
       <Checkbox
         checked={checked}
-        onCheckedChange={(value) => { setChecked(value === true); }}
+        onCheckedChange={(value) => {
+          setChecked(value === true);
+        }}
         label="Controlled checkbox"
       />
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         State: <strong>{checked ? 'Checked' : 'Unchecked'}</strong>
       </p>
     </div>
@@ -190,12 +192,14 @@ function SelectAllExample() {
           <Checkbox
             key={item}
             checked={selected.includes(item)}
-            onCheckedChange={() => { handleSelectItem(item); }}
+            onCheckedChange={() => {
+              handleSelectItem(item);
+            }}
             label={`Item ${item.slice(-1)}`}
           />
         ))}
       </div>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Selected: <strong>{selected.length}</strong> of {items.length}
       </p>
     </div>
@@ -278,7 +282,7 @@ export const FormExample: Story = {
         />
       </CheckboxGroup>
 
-      <div className="border-t border-border pt-4">
+      <div className="border-border border-t pt-4">
         <Checkbox label="I agree to the Terms of Service and Privacy Policy" required />
       </div>
     </form>
@@ -293,7 +297,7 @@ export const WithoutLabel: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Checkbox aria-label="Toggle selection" />
-      <span className="text-sm text-muted-foreground">
+      <span className="text-muted-foreground text-sm">
         Checkbox without visible label (has aria-label)
       </span>
     </div>

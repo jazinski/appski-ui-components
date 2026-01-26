@@ -182,18 +182,18 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
           <label
             htmlFor={switchId}
             className={cn(
-              'cursor-pointer text-sm font-medium leading-none',
+              'cursor-pointer text-sm leading-none font-medium',
               disabled && 'cursor-not-allowed opacity-70'
             )}
           >
             {label}
-            {required && <span className="ml-1 text-destructive">*</span>}
+            {required && <span className="text-destructive ml-1">*</span>}
           </label>
         )}
         {description && (
           <p
             id={`${switchId}-description`}
-            className={cn('text-sm text-muted-foreground', label && 'mt-1')}
+            className={cn('text-muted-foreground text-sm', label && 'mt-1')}
           >
             {description}
           </p>
@@ -244,8 +244,8 @@ const SwitchGroup = React.forwardRef<HTMLDivElement, SwitchGroupProps>(
       <div ref={ref} role="group" className={cn('space-y-4', className)} {...props}>
         {(label || description) && (
           <div className="space-y-1">
-            {label && <h3 className="text-sm font-medium leading-none">{label}</h3>}
-            {description && <p className="text-sm text-muted-foreground">{description}</p>}
+            {label && <h3 className="text-sm leading-none font-medium">{label}</h3>}
+            {description && <p className="text-muted-foreground text-sm">{description}</p>}
           </div>
         )}
         <div className="space-y-4">{children}</div>

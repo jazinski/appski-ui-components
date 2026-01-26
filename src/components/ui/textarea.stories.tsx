@@ -114,7 +114,9 @@ export const AutoResize: Story = {
           description="This textarea grows as you type"
           placeholder="Start typing to see it grow..."
           value={value}
-          onChange={(e) => { setValue(e.target.value); }}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
           autoResize
           minRows={2}
           maxRows={10}
@@ -134,7 +136,9 @@ export const AutoResizeWithMaxRows: Story = {
           label="Limited Auto-resize"
           description="This textarea grows up to 5 rows maximum"
           value={value}
-          onChange={(e) => { setValue(e.target.value); }}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
           autoResize
           minRows={2}
           maxRows={5}
@@ -152,12 +156,14 @@ export const Controlled: Story = {
         <Textarea
           label="Controlled Textarea"
           value={value}
-          onChange={(e) => { setValue(e.target.value); }}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
           showCharacterCount
           maxLength={200}
           rows={4}
         />
-        <div className="text-sm text-muted-foreground">
+        <div className="text-muted-foreground text-sm">
           <strong>Current value:</strong> {value}
         </div>
       </div>
@@ -253,7 +259,9 @@ export const FeedbackForm: Story = {
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
       setSubmitted(true);
-      setTimeout(() => { setSubmitted(false); }, 2000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 2000);
     };
 
     return (
@@ -263,7 +271,9 @@ export const FeedbackForm: Story = {
           description="Help us improve by sharing your thoughts"
           placeholder="What do you think about our product?"
           value={feedback}
-          onChange={(e) => { setFeedback(e.target.value); }}
+          onChange={(e) => {
+            setFeedback(e.target.value);
+          }}
           required
           autoResize
           minRows={4}
@@ -275,14 +285,16 @@ export const FeedbackForm: Story = {
           <button
             type="submit"
             disabled={!feedback.trim() || submitted}
-            className="rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {submitted ? 'Submitted!' : 'Submit Feedback'}
           </button>
           <button
             type="button"
-            onClick={() => { setFeedback(''); }}
-            className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
+            onClick={() => {
+              setFeedback('');
+            }}
+            className="text-muted-foreground hover:text-foreground px-4 py-2 text-sm"
           >
             Clear
           </button>

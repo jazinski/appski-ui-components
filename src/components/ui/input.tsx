@@ -90,12 +90,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {hasError && (
-          <p id={errorId} className="text-sm text-destructive" role="alert">
+          <p id={errorId} className="text-destructive text-sm" role="alert">
             {error}
           </p>
         )}
         {!hasError && helperText && (
-          <p id={helperTextId} className="text-sm text-muted-foreground">
+          <p id={helperTextId} className="text-muted-foreground text-sm">
             {helperText}
           </p>
         )}

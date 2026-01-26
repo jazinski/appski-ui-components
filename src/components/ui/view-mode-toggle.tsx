@@ -75,7 +75,9 @@ export function ViewModeToggle<T extends string>({
           key={option.value}
           variant={value === option.value ? 'default' : 'ghost'}
           size={size}
-          onClick={() => { onChange(option.value); }}
+          onClick={() => {
+            onChange(option.value);
+          }}
           title={option.label}
           aria-label={option.label}
           aria-pressed={value === option.value}

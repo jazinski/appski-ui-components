@@ -31,17 +31,17 @@ export const Default: Story = {
         <TabsTrigger value="settings">Settings</TabsTrigger>
       </TabsList>
       <TabsContent value="account">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Make changes to your account here. Click save when you&apos;re done.
         </p>
       </TabsContent>
       <TabsContent value="password">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Change your password here. After saving, you&apos;ll be logged out.
         </p>
       </TabsContent>
       <TabsContent value="settings">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Configure your application settings and preferences.
         </p>
       </TabsContent>
@@ -59,16 +59,16 @@ export const Underline: Story = {
         <TabsTrigger value="notifications">Notifications</TabsTrigger>
       </TabsList>
       <TabsContent value="overview">
-        <p className="pt-4 text-sm text-muted-foreground">Overview content goes here.</p>
+        <p className="text-muted-foreground pt-4 text-sm">Overview content goes here.</p>
       </TabsContent>
       <TabsContent value="analytics">
-        <p className="pt-4 text-sm text-muted-foreground">Analytics content goes here.</p>
+        <p className="text-muted-foreground pt-4 text-sm">Analytics content goes here.</p>
       </TabsContent>
       <TabsContent value="reports">
-        <p className="pt-4 text-sm text-muted-foreground">Reports content goes here.</p>
+        <p className="text-muted-foreground pt-4 text-sm">Reports content goes here.</p>
       </TabsContent>
       <TabsContent value="notifications">
-        <p className="pt-4 text-sm text-muted-foreground">Notifications content goes here.</p>
+        <p className="text-muted-foreground pt-4 text-sm">Notifications content goes here.</p>
       </TabsContent>
     </Tabs>
   ),
@@ -85,13 +85,13 @@ export const WithDisabledTab: Story = {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="tab1">
-        <p className="text-sm text-muted-foreground">This tab is active.</p>
+        <p className="text-muted-foreground text-sm">This tab is active.</p>
       </TabsContent>
       <TabsContent value="tab2">
-        <p className="text-sm text-muted-foreground">This is another tab.</p>
+        <p className="text-muted-foreground text-sm">This is another tab.</p>
       </TabsContent>
       <TabsContent value="tab3">
-        <p className="text-sm text-muted-foreground">This tab is disabled.</p>
+        <p className="text-muted-foreground text-sm">This tab is disabled.</p>
       </TabsContent>
     </Tabs>
   ),

@@ -180,12 +180,12 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               <label
                 htmlFor={checkboxId}
                 className={cn(
-                  'cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+                  'cursor-pointer text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
                   disabled && 'cursor-not-allowed opacity-70'
                 )}
               >
                 {label}
-                {required && <span className="ml-1 text-destructive">*</span>}
+                {required && <span className="text-destructive ml-1">*</span>}
               </label>
             )}
             {(description || error) && (
@@ -261,13 +261,13 @@ const CheckboxGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
         {...props}
       >
         {label && (
-          <legend className="text-sm font-medium leading-none">
+          <legend className="text-sm leading-none font-medium">
             {label}
-            {required && <span className="ml-1 text-destructive">*</span>}
+            {required && <span className="text-destructive ml-1">*</span>}
           </legend>
         )}
         {description && !error && (
-          <p id="checkbox-group-description" className="text-sm text-muted-foreground">
+          <p id="checkbox-group-description" className="text-muted-foreground text-sm">
             {description}
           </p>
         )}
@@ -280,7 +280,7 @@ const CheckboxGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
           {children}
         </div>
         {error && (
-          <p id="checkbox-group-description" className="text-sm text-destructive">
+          <p id="checkbox-group-description" className="text-destructive text-sm">
             {error}
           </p>
         )}

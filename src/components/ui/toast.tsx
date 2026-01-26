@@ -94,12 +94,12 @@ const ToastItem = React.forwardRef<HTMLDivElement, ToastItemProps>(
           </div>
         )}
         <div className="grid flex-1 gap-1">
-          {toast.title && <div className="text-sm font-semibold leading-none">{toast.title}</div>}
+          {toast.title && <div className="text-sm leading-none font-semibold">{toast.title}</div>}
           <div className="text-sm leading-snug opacity-90">{toast.description}</div>
           {toast.action && (
             <button
               onClick={toast.action.onClick}
-              className="mt-2 inline-flex h-8 items-center justify-center rounded-md border border-current px-3 text-xs font-medium transition-colors hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:hover:bg-white/10"
+              className="mt-2 inline-flex h-8 items-center justify-center rounded-md border border-current px-3 text-xs font-medium transition-colors hover:bg-black/5 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:hover:bg-white/10"
             >
               {toast.action.label}
             </button>
@@ -107,7 +107,7 @@ const ToastItem = React.forwardRef<HTMLDivElement, ToastItemProps>(
         </div>
         <button
           onClick={onClose}
-          className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-current opacity-60 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2"
+          className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-current opacity-60 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none"
           aria-label="Close"
         >
           <FaTimes className="h-4 w-4" />

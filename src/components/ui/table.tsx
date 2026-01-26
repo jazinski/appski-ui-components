@@ -209,7 +209,7 @@ export const Table = React.forwardRef<HTMLDivElement, TableProps>(
               placeholder="Filter..."
               value={filterValue}
               onChange={(e) => onFilterChange?.(e.target.value)}
-              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800"
+              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               aria-label="Filter table data"
             />
           </div>
@@ -346,7 +346,7 @@ export const Table = React.forwardRef<HTMLDivElement, TableProps>(
                         const value =
                           typeof column.accessor === 'function'
                             ? column.accessor(row)
-                            : (row[column.accessor]);
+                            : row[column.accessor];
 
                         const cellContent = column.cell
                           ? column.cell(value, row, startIndex + rowIndex)
@@ -388,7 +388,7 @@ export const Table = React.forwardRef<HTMLDivElement, TableProps>(
                   onChange={(e) => {
                     onPageSizeChange(Number(e.target.value));
                   }}
-                  className="rounded-md border border-slate-300 px-2 py-1 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800"
+                  className="rounded-md border border-slate-300 px-2 py-1 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   aria-label="Rows per page"
                 >
                   <option value={5}>5</option>

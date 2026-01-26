@@ -2646,7 +2646,9 @@ function Qn({
         {
           variant: e === s.value ? "default" : "ghost",
           size: n,
-          onClick: () => t(s.value),
+          onClick: () => {
+            t(s.value);
+          },
           title: s.label,
           "aria-label": s.label,
           "aria-pressed": e === s.value,
@@ -2706,8 +2708,8 @@ const gr = O(
           ...u
         }
       ),
-      i && /* @__PURE__ */ p("p", { id: w, className: "text-sm text-destructive", role: "alert", children: n }),
-      !i && s && /* @__PURE__ */ p("p", { id: k, className: "text-sm text-muted-foreground", children: s })
+      i && /* @__PURE__ */ p("p", { id: w, className: "text-destructive text-sm", role: "alert", children: n }),
+      !i && s && /* @__PURE__ */ p("p", { id: k, className: "text-muted-foreground text-sm", children: s })
     ] });
   }
 );
@@ -2783,13 +2785,13 @@ const mr = O(
         /* @__PURE__ */ p(
           Ae,
           {
-            className: "pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground",
+            className: "text-muted-foreground pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2",
             "aria-hidden": "true"
           }
         )
       ] }),
-      l && /* @__PURE__ */ p("p", { id: k, className: "text-sm text-destructive", role: "alert", children: o }),
-      !l && c && /* @__PURE__ */ p("p", { id: i, className: "text-sm text-muted-foreground", children: c })
+      l && /* @__PURE__ */ p("p", { id: k, className: "text-destructive text-sm", role: "alert", children: o }),
+      !l && c && /* @__PURE__ */ p("p", { id: i, className: "text-muted-foreground text-sm", children: c })
     ] });
   }
 );
@@ -2826,14 +2828,14 @@ const kr = h.forwardRef(
     t,
     {
       ref: a,
-      className: N("text-2xl font-semibold leading-none tracking-tight", e),
+      className: N("text-2xl leading-none font-semibold tracking-tight", e),
       ...r
     }
   )
 );
 kr.displayName = "CardTitle";
 const Nr = h.forwardRef(
-  ({ className: e, ...t }, r) => /* @__PURE__ */ p("p", { ref: r, className: N("text-sm text-muted-foreground", e), ...t })
+  ({ className: e, ...t }, r) => /* @__PURE__ */ p("p", { ref: r, className: N("text-muted-foreground text-sm", e), ...t })
 );
 Nr.displayName = "CardDescription";
 const Er = h.forwardRef(
@@ -2901,7 +2903,7 @@ const Tr = h.forwardRef(
       ...n,
       children: /* @__PURE__ */ S("div", { className: "flex flex-col items-center gap-2", children: [
         /* @__PURE__ */ p(rt, { size: t, label: r ?? "Loading..." }),
-        r && /* @__PURE__ */ p("p", { className: "text-sm text-muted-foreground", children: r })
+        r && /* @__PURE__ */ p("p", { className: "text-muted-foreground text-sm", children: r })
       ] })
     }
   )
@@ -3030,7 +3032,7 @@ const Br = h.forwardRef(
         hidden: !c,
         tabIndex: 0,
         className: N(
-          "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
           !c && "hidden",
           e
         ),
@@ -3330,7 +3332,7 @@ const Hr = h.forwardRef(
               {
                 type: "button",
                 onClick: i,
-                className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
+                className: "ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none",
                 "aria-label": "Close",
                 children: /* @__PURE__ */ p(Ye, { className: "h-4 w-4" })
               }
@@ -3369,14 +3371,14 @@ const qr = h.forwardRef(
     "h2",
     {
       ref: r,
-      className: N("text-lg font-semibold leading-none tracking-tight text-foreground", e),
+      className: N("text-foreground text-lg leading-none font-semibold tracking-tight", e),
       ...t
     }
   )
 );
 qr.displayName = "DialogTitle";
 const Kr = h.forwardRef(
-  ({ className: e, ...t }, r) => /* @__PURE__ */ p("p", { ref: r, className: N("text-sm text-muted-foreground", e), ...t })
+  ({ className: e, ...t }, r) => /* @__PURE__ */ p("p", { ref: r, className: N("text-muted-foreground text-sm", e), ...t })
 );
 Kr.displayName = "DialogDescription";
 const Yr = h.forwardRef(
@@ -3497,12 +3499,12 @@ const Xr = O(
           {
             htmlFor: T,
             className: N(
-              "cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+              "cursor-pointer text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
               b && "cursor-not-allowed opacity-70"
             ),
             children: [
               c,
-              f && /* @__PURE__ */ p("span", { className: "ml-1 text-destructive", children: "*" })
+              f && /* @__PURE__ */ p("span", { className: "text-destructive ml-1", children: "*" })
             ]
           }
         ),
@@ -3541,11 +3543,11 @@ const ea = h.forwardRef(
       "aria-describedby": t || r ? "checkbox-group-description" : void 0,
       ...c,
       children: [
-        e && /* @__PURE__ */ S("legend", { className: "text-sm font-medium leading-none", children: [
+        e && /* @__PURE__ */ S("legend", { className: "text-sm leading-none font-medium", children: [
           e,
-          a && /* @__PURE__ */ p("span", { className: "ml-1 text-destructive", children: "*" })
+          a && /* @__PURE__ */ p("span", { className: "text-destructive ml-1", children: "*" })
         ] }),
-        t && !r && /* @__PURE__ */ p("p", { id: "checkbox-group-description", className: "text-sm text-muted-foreground", children: t }),
+        t && !r && /* @__PURE__ */ p("p", { id: "checkbox-group-description", className: "text-muted-foreground text-sm", children: t }),
         /* @__PURE__ */ p(
           "div",
           {
@@ -3556,7 +3558,7 @@ const ea = h.forwardRef(
             children: n
           }
         ),
-        r && /* @__PURE__ */ p("p", { id: "checkbox-group-description", className: "text-sm text-destructive", children: r })
+        r && /* @__PURE__ */ p("p", { id: "checkbox-group-description", className: "text-destructive text-sm", children: r })
       ]
     }
   )
@@ -3664,12 +3666,12 @@ const ta = O(
         {
           htmlFor: T,
           className: N(
-            "cursor-pointer text-sm font-medium leading-none",
+            "cursor-pointer text-sm leading-none font-medium",
             d && "cursor-not-allowed opacity-70"
           ),
           children: [
             o,
-            f && /* @__PURE__ */ p("span", { className: "ml-1 text-destructive", children: "*" })
+            f && /* @__PURE__ */ p("span", { className: "text-destructive ml-1", children: "*" })
           ]
         }
       ),
@@ -3677,7 +3679,7 @@ const ta = O(
         "p",
         {
           id: `${T}-description`,
-          className: N("text-sm text-muted-foreground", o && "mt-1"),
+          className: N("text-muted-foreground text-sm", o && "mt-1"),
           children: c
         }
       )
@@ -3694,8 +3696,8 @@ aa.displayName = "Switch";
 const na = h.forwardRef(
   ({ label: e, description: t, children: r, className: a, ...n }, s) => /* @__PURE__ */ S("div", { ref: s, role: "group", className: N("space-y-4", a), ...n, children: [
     (e || t) && /* @__PURE__ */ S("div", { className: "space-y-1", children: [
-      e && /* @__PURE__ */ p("h3", { className: "text-sm font-medium leading-none", children: e }),
-      t && /* @__PURE__ */ p("p", { className: "text-sm text-muted-foreground", children: t })
+      e && /* @__PURE__ */ p("h3", { className: "text-sm leading-none font-medium", children: e }),
+      t && /* @__PURE__ */ p("p", { className: "text-muted-foreground text-sm", children: t })
     ] }),
     /* @__PURE__ */ p("div", { className: "space-y-4", children: r })
   ] })
@@ -3781,13 +3783,13 @@ const oa = O(
         {
           htmlFor: x.id,
           className: N(
-            "mb-2 block text-sm font-medium text-foreground",
+            "text-foreground mb-2 block text-sm font-medium",
             m && "cursor-not-allowed opacity-50",
             k
           ),
           children: [
             n,
-            x.required && /* @__PURE__ */ p("span", { className: "ml-1 text-destructive", children: "*" })
+            x.required && /* @__PURE__ */ p("span", { className: "text-destructive ml-1", children: "*" })
           ]
         }
       ),
@@ -3820,7 +3822,7 @@ const oa = O(
             "p",
             {
               id: `${x.id ?? ""}-description`,
-              className: N("text-sm text-muted-foreground", m && "opacity-50"),
+              className: N("text-muted-foreground text-sm", m && "opacity-50"),
               children: s
             }
           ),
@@ -3828,7 +3830,7 @@ const oa = O(
             "p",
             {
               id: `${x.id ?? ""}-error`,
-              className: "text-sm font-medium text-destructive",
+              className: "text-destructive text-sm font-medium",
               role: "alert",
               children: o
             }
@@ -3840,7 +3842,7 @@ const oa = O(
             id: `${x.id ?? ""}-count`,
             className: N(
               "text-sm tabular-nums",
-              U ? "font-medium text-destructive" : "text-muted-foreground",
+              U ? "text-destructive font-medium" : "text-muted-foreground",
               m && "opacity-50"
             ),
             "aria-live": "polite",
@@ -4025,13 +4027,13 @@ const ct = h.createContext(void 0), va = O(
         children: [
           o && /* @__PURE__ */ p("div", { className: "mt-0.5 flex-shrink-0", children: /* @__PURE__ */ p(o, { className: "h-5 w-5" }) }),
           /* @__PURE__ */ S("div", { className: "grid flex-1 gap-1", children: [
-            e.title && /* @__PURE__ */ p("div", { className: "text-sm font-semibold leading-none", children: e.title }),
+            e.title && /* @__PURE__ */ p("div", { className: "text-sm leading-none font-semibold", children: e.title }),
             /* @__PURE__ */ p("div", { className: "text-sm leading-snug opacity-90", children: e.description }),
             e.action && /* @__PURE__ */ p(
               "button",
               {
                 onClick: e.action.onClick,
-                className: "mt-2 inline-flex h-8 items-center justify-center rounded-md border border-current px-3 text-xs font-medium transition-colors hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:hover:bg-white/10",
+                className: "mt-2 inline-flex h-8 items-center justify-center rounded-md border border-current px-3 text-xs font-medium transition-colors hover:bg-black/5 focus:ring-2 focus:ring-offset-2 focus:outline-none dark:hover:bg-white/10",
                 children: e.action.label
               }
             )
@@ -4040,7 +4042,7 @@ const ct = h.createContext(void 0), va = O(
             "button",
             {
               onClick: t,
-              className: "inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-current opacity-60 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2",
+              className: "inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-current opacity-60 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none",
               "aria-label": "Close",
               children: /* @__PURE__ */ p(ha, { className: "h-4 w-4" })
             }
@@ -4241,6 +4243,7 @@ const eo = ({
     const c = e.props || {};
     return h.cloneElement(e, {
       ...c,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref: n,
       onClick: s,
       onKeyDown: o,
@@ -4405,7 +4408,7 @@ const eo = ({
       role: "menu",
       "aria-orientation": "vertical",
       className: N(
-        "animate-in fade-in-0 zoom-in-95 absolute left-full top-0 ml-1 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 shadow-lg dark:border-slate-700 dark:bg-slate-800",
+        "animate-in fade-in-0 zoom-in-95 absolute top-0 left-full ml-1 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 shadow-lg dark:border-slate-700 dark:bg-slate-800",
         t
       ),
       children: e
@@ -4811,7 +4814,7 @@ const Oa = O(
         "button",
         {
           onClick: f,
-          className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+          className: "ring-offset-background focus:ring-ring absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none",
           "aria-label": "Dismiss alert",
           children: /* @__PURE__ */ p(Ye, { className: "h-4 w-4" })
         }
@@ -4825,7 +4828,7 @@ const Ba = h.forwardRef(
     "h5",
     {
       ref: a,
-      className: N("mb-1 font-medium leading-none tracking-tight", e),
+      className: N("mb-1 leading-none font-medium tracking-tight", e),
       ...r,
       children: t
     }
@@ -7718,7 +7721,7 @@ const Un = O(
                   A && "bg-blue-500/10"
                 ),
                 children: [
-                  n && /* @__PURE__ */ p("span", { className: "table-cell w-8 select-none pr-4 text-right text-slate-500", children: $ }),
+                  n && /* @__PURE__ */ p("span", { className: "table-cell w-8 pr-4 text-right text-slate-500 select-none", children: $ }),
                   /* @__PURE__ */ p("span", { className: "table-cell", children: F.map((B, G) => /* @__PURE__ */ p("span", { ...R({ token: B }) }, G)) })
                 ]
               },
@@ -7731,7 +7734,7 @@ const Un = O(
         "button",
         {
           onClick: m,
-          className: "absolute right-2 top-2 rounded bg-slate-800/80 p-2 text-slate-400 backdrop-blur-sm transition-colors hover:bg-slate-700 hover:text-slate-200",
+          className: "absolute top-2 right-2 rounded bg-slate-800/80 p-2 text-slate-400 backdrop-blur-sm transition-colors hover:bg-slate-700 hover:text-slate-200",
           "aria-label": "Copy code to clipboard",
           children: k ? /* @__PURE__ */ p(Ee, { className: "h-4 w-4" }) : /* @__PURE__ */ p(Le, { className: "h-4 w-4" })
         }
@@ -7810,7 +7813,7 @@ const Zn = O("w-full caption-bottom text-sm", {
           placeholder: "Filter...",
           value: x,
           onChange: (C) => E == null ? void 0 : E(C.target.value),
-          className: "w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800",
+          className: "w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800",
           "aria-label": "Filter table data"
         }
       ) }),
@@ -7938,7 +7941,7 @@ const Zn = O("w-full caption-bottom text-sm", {
               onChange: (C) => {
                 m(Number(C.target.value));
               },
-              className: "rounded-md border border-slate-300 px-2 py-1 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800",
+              className: "rounded-md border border-slate-300 px-2 py-1 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800",
               "aria-label": "Rows per page",
               children: [
                 /* @__PURE__ */ p("option", { value: 5, children: "5" }),

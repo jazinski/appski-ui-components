@@ -43,7 +43,7 @@ export const Default: Story = {
             This is a dialog description. It provides additional context about the dialog content.
           </DialogDescription>
         </DialogHeader>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Dialog body content goes here. You can include any content you want.
         </p>
         <DialogFooter>
@@ -93,7 +93,7 @@ export const Large: Story = {
           <DialogTitle>Large Dialog</DialogTitle>
           <DialogDescription>This is a large dialog with max-width of 2xl.</DialogDescription>
         </DialogHeader>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Large dialogs are useful for displaying more complex content like forms, tables, or
           detailed information.
         </p>
@@ -122,13 +122,13 @@ export const ExtraLarge: Story = {
           </DialogDescription>
         </DialogHeader>
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-lg border border-border p-4">
+          <div className="border-border rounded-lg border p-4">
             <h3 className="font-medium">Column 1</h3>
-            <p className="text-sm text-muted-foreground">Content in the first column.</p>
+            <p className="text-muted-foreground text-sm">Content in the first column.</p>
           </div>
-          <div className="rounded-lg border border-border p-4">
+          <div className="border-border rounded-lg border p-4">
             <h3 className="font-medium">Column 2</h3>
-            <p className="text-sm text-muted-foreground">Content in the second column.</p>
+            <p className="text-muted-foreground text-sm">Content in the second column.</p>
           </div>
         </div>
         <DialogFooter>
@@ -193,7 +193,7 @@ export const Confirmation: Story = {
       </DialogTrigger>
       <DialogContent size="sm">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-destructive">
+          <DialogTitle className="text-destructive flex items-center gap-2">
             <AlertTriangle className="h-5 w-5" />
             Delete Item
           </DialogTitle>
@@ -278,12 +278,24 @@ function ControlledDialogExample() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Dialog is: <strong>{open ? 'Open' : 'Closed'}</strong>
       </p>
       <div className="flex gap-2">
-        <Button onClick={() => { setOpen(true); }}>Open Dialog</Button>
-        <Button variant="outline" onClick={() => { setOpen(false); }} disabled={!open}>
+        <Button
+          onClick={() => {
+            setOpen(true);
+          }}
+        >
+          Open Dialog
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => {
+            setOpen(false);
+          }}
+          disabled={!open}
+        >
           Close from Outside
         </Button>
       </div>
@@ -296,7 +308,12 @@ function ControlledDialogExample() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => { setOpen(false); }}>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
               Close
             </Button>
           </DialogFooter>
@@ -353,7 +370,7 @@ export const ScrollableContent: Story = {
           <DialogTitle>Terms of Service</DialogTitle>
           <DialogDescription>Please read our terms of service carefully.</DialogDescription>
         </DialogHeader>
-        <div className="space-y-4 text-sm text-muted-foreground">
+        <div className="text-muted-foreground space-y-4 text-sm">
           {Array.from({ length: 10 }, (_, i) => (
             <p key={i}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel

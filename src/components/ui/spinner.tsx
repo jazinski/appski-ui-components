@@ -80,7 +80,7 @@ const Loading = React.forwardRef<HTMLDivElement, LoadingProps>(
       >
         <div className="flex flex-col items-center gap-2">
           <Spinner size={size} label={message ?? 'Loading...'} />
-          {message && <p className="text-sm text-muted-foreground">{message}</p>}
+          {message && <p className="text-muted-foreground text-sm">{message}</p>}
         </div>
       </div>
     );

@@ -175,13 +175,13 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <label
             htmlFor={props.id}
             className={cn(
-              'mb-2 block text-sm font-medium text-foreground',
+              'text-foreground mb-2 block text-sm font-medium',
               disabled && 'cursor-not-allowed opacity-50',
               labelClassName
             )}
           >
             {label}
-            {props.required && <span className="ml-1 text-destructive">*</span>}
+            {props.required && <span className="text-destructive ml-1">*</span>}
           </label>
         )}
 
@@ -217,7 +217,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             {description && !error && (
               <p
                 id={`${props.id ?? ''}-description`}
-                className={cn('text-sm text-muted-foreground', disabled && 'opacity-50')}
+                className={cn('text-muted-foreground text-sm', disabled && 'opacity-50')}
               >
                 {description}
               </p>
@@ -226,7 +226,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             {error && (
               <p
                 id={`${props.id ?? ''}-error`}
-                className="text-sm font-medium text-destructive"
+                className="text-destructive text-sm font-medium"
                 role="alert"
               >
                 {error}
@@ -239,7 +239,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               id={`${props.id ?? ''}-count`}
               className={cn(
                 'text-sm tabular-nums',
-                isOverMaxLength ? 'font-medium text-destructive' : 'text-muted-foreground',
+                isOverMaxLength ? 'text-destructive font-medium' : 'text-muted-foreground',
                 disabled && 'opacity-50'
               )}
               aria-live="polite"

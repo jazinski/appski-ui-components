@@ -140,7 +140,9 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
         data-state={isActive ? 'active' : 'inactive'}
         disabled={disabled}
         className={cn(tabsTriggerVariants({ variant, className }))}
-        onClick={() => { setActiveTab(value); }}
+        onClick={() => {
+          setActiveTab(value);
+        }}
         tabIndex={isActive ? 0 : -1}
         {...props}
       >
@@ -178,7 +180,7 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
         hidden={!isActive}
         tabIndex={0}
         className={cn(
-          'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+          'ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
           !isActive && 'hidden',
           className
         )}

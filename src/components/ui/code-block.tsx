@@ -198,7 +198,7 @@ export const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
                         )}
                       >
                         {showLineNumbers && (
-                          <span className="table-cell w-8 select-none pr-4 text-right text-slate-500">
+                          <span className="table-cell w-8 pr-4 text-right text-slate-500 select-none">
                             {lineNumber}
                           </span>
                         )}
@@ -220,7 +220,7 @@ export const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
         {copyable && !filename && !collapsible && (
           <button
             onClick={handleCopy}
-            className="absolute right-2 top-2 rounded bg-slate-800/80 p-2 text-slate-400 backdrop-blur-sm transition-colors hover:bg-slate-700 hover:text-slate-200"
+            className="absolute top-2 right-2 rounded bg-slate-800/80 p-2 text-slate-400 backdrop-blur-sm transition-colors hover:bg-slate-700 hover:text-slate-200"
             aria-label="Copy code to clipboard"
           >
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
