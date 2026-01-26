@@ -109,7 +109,7 @@
     
     /* Muted - Slate backgrounds */
     --muted: 210 40% 96%;               /* slate-100 */
-    --muted-foreground: 215 20% 40%;    /* slate-600 - better contrast for light mode */
+    --muted-foreground: 215 20% 40%;    /* Updated 2026-01-25: Better contrast for light mode */
     
     /* Accent - Indigo accent */
     --accent: 226 100% 94%;             /* indigo-100 */

@@ -48,7 +48,7 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveClass('bg-destructive');
 
     rerender(<Button variant="outline">Outline</Button>);
-    expect(screen.getByRole('button')).toHaveClass('border');
+    expect(screen.getByRole('button')).toHaveClass('border-2');
   });
 
   it('applies size classes correctly', () => {
