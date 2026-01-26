@@ -33,7 +33,6 @@
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "bash scripts/build-storybook-with-hash.sh",
-    "prepare": "tsc && vite build",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
