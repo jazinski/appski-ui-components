@@ -193,9 +193,9 @@ export const DropdownTrigger: React.FC<DropdownTriggerProps> = ({ children, asCh
   if (asChild && React.isValidElement(children)) {
     // Extract child props safely and merge with our props
     const childProps = (children.props || {}) as Record<string, unknown>;
-    return React.cloneElement(children as React.ReactElement, {
+    return React.cloneElement(children as React.ReactElement<any>, {
       ...childProps,
-      ref: triggerRef,
+      ref: triggerRef as any,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
       'aria-expanded': open,
