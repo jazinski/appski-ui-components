@@ -12,6 +12,13 @@ jobs:
     runs-on: self-hosted
     
     steps:
+      - name: Clean workspace
+        run: |
+          echo "🧹 Cleaning workspace..."
+          cd $GITHUB_WORKSPACE || exit 1
+          git clean -ffdx
+          git reset --hard
+      
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -51,6 +58,13 @@ jobs:
     needs: lint-and-test
     
     steps:
+      - name: Clean workspace
+        run: |
+          echo "🧹 Cleaning workspace..."
+          cd $GITHUB_WORKSPACE || exit 1
+          git clean -ffdx
+          git reset --hard
+      
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -78,6 +92,13 @@ jobs:
     needs: lint-and-test
     
     steps:
+      - name: Clean workspace
+        run: |
+          echo "🧹 Cleaning workspace..."
+          cd $GITHUB_WORKSPACE || exit 1
+          git clean -ffdx
+          git reset --hard
+      
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -107,6 +128,13 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
+      - name: Clean workspace
+        run: |
+          echo "🧹 Cleaning workspace..."
+          cd $GITHUB_WORKSPACE || exit 1
+          git clean -ffdx
+          git reset --hard
+      
       - name: Checkout code
         uses: actions/checkout@v4
 
