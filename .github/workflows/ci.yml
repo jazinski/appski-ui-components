@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+          fetch-depth: 0
       
       - name: Disable sparse-checkout from previous jobs
         run: |
@@ -91,6 +92,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+      
+      - name: Disable sparse-checkout from previous jobs
+        run: |
+          git sparse-checkout disable || true
+          git checkout HEAD -- . || true
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
