@@ -17,15 +17,6 @@ jobs:
         with:
           clean: true
           fetch-depth: 0
-      
-      - name: Verify workspace
-        run: |
-          echo "📁 Current directory: $(pwd)"
-          echo "📁 GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-          echo "📄 Files in workspace:"
-          ls -la
-          echo "📦 Checking for package.json:"
-          test -f package.json && echo "✅ package.json found" || echo "❌ package.json NOT found"
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
