@@ -7,6 +7,55 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: `
+A versatile button component with multiple variants, sizes, and states.
+
+## Theming
+
+The Button component requires these theme variables to be defined in your Tailwind configuration:
+
+### Required Variables
+
+| Variable | Usage | Example Value |
+|----------|-------|---------------|
+| \`--color-primary\` | Default variant background | \`#6366f1\` |
+| \`--color-primary-foreground\` | Default variant text | \`#ffffff\` |
+| \`--color-secondary\` | Secondary variant background | \`#e0e8ff\` |
+| \`--color-secondary-foreground\` | Secondary variant text | \`#828df8\` |
+| \`--color-accent\` | Outline/ghost hover background | \`#e0e8ff\` |
+| \`--color-accent-foreground\` | Outline/ghost hover text | \`#6467f2\` |
+| \`--color-destructive\` | Destructive variant background | \`#ef4343\` |
+| \`--color-destructive-foreground\` | Destructive variant text | \`#ffffff\` |
+| \`--color-background\` | Outline variant background | \`#f9fafb\` |
+| \`--color-input\` | Outline variant border | \`#e1e7ef\` |
+| \`--color-ring\` | Focus ring color | \`#6467f2\` |
+
+### Tailwind v4 Setup
+
+Add to your \`src/index.css\`:
+
+\`\`\`css
+@theme {
+  --color-primary: #6366f1;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #e0e8ff;
+  --color-secondary-foreground: #828df8;
+  --color-accent: #e0e8ff;
+  --color-accent-foreground: #6467f2;
+  --color-destructive: #ef4343;
+  --color-destructive-foreground: #ffffff;
+  --color-background: #f9fafb;
+  --color-input: #e1e7ef;
+  --color-ring: #6467f2;
+}
+\`\`\`
+
+See the [Theming Guide](/docs/introduction-theming--docs) for complete setup instructions.
+        `,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
