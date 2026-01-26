@@ -100,7 +100,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
     ref
   ) => {
     const separator = breadcrumbSeparator ?? (
-      <ChevronRight className="h-4 w-4 text-slate-500 dark:text-slate-500" aria-hidden="true" />
+      <ChevronRight className="text-muted-foreground h-4 w-4" aria-hidden="true" />
     );
 
     return (
@@ -119,7 +119,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                     <li>
                       <a
                         href="/"
-                        className="hover:text-foreground flex items-center text-slate-600 transition-colors dark:text-slate-400"
+                        className="text-muted-foreground hover:text-foreground flex items-center transition-colors"
                       >
                         <Home className="h-4 w-4" aria-label="Home" />
                       </a>
@@ -137,7 +137,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                         {crumb.href && !isLast ? (
                           <a
                             href={crumb.href}
-                            className="hover:text-foreground flex items-center gap-1 text-slate-600 transition-colors dark:text-slate-400"
+                            className="text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
                           >
                             {CrumbIcon && <CrumbIcon className="h-4 w-4" />}
                             {crumb.label}
@@ -146,9 +146,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                           <span
                             className={cn(
                               'flex items-center gap-1',
-                              isLast
-                                ? 'text-foreground font-medium'
-                                : 'text-slate-600 dark:text-slate-400'
+                              isLast ? 'text-foreground font-medium' : 'text-muted-foreground'
                             )}
                             aria-current={isLast ? 'page' : undefined}
                           >
