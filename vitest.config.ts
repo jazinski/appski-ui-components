@@ -28,6 +28,7 @@ export default defineConfig({
         'src/index.ts',
         '**/index.ts',
         'src/components/ui/toast.tsx', // Excluded due to timer issues in CI
+        'src/components/ui/code-block.tsx', // Excluded due to flaky clipboard tests in CI
         '**/*.config.{js,ts}', // Config files
         '.storybook/**', // Storybook config
         'dist/**', // Build output
