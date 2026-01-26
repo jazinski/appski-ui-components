@@ -109,8 +109,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
   defaultOpen = false,
 }) => {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);
-  const triggerRef = React.useRef<HTMLElement>(null) as React.RefObject<HTMLElement>;
-  const contentRef = React.useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const triggerRef = React.useRef<HTMLElement>(null);
+  const contentRef = React.useRef<HTMLDivElement>(null);
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;
   const setOpen = React.useCallback(
@@ -193,8 +193,10 @@ export const DropdownTrigger: React.FC<DropdownTriggerProps> = ({ children, asCh
   if (asChild && React.isValidElement(children)) {
     // Extract child props safely and merge with our props
     const childProps = (children.props || {}) as Record<string, unknown>;
-    return React.cloneElement(children as React.ReactElement<any>, {
+     
+    return React.cloneElement(children as React.ReactElement, {
       ...childProps,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref: triggerRef as any,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
