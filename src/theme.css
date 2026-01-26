@@ -115,20 +115,20 @@
     --accent: 226 100% 94%; /* indigo-100 */
     --accent-foreground: 239 84% 67%; /* indigo-500 */
 
-    /* Destructive - Red for errors */
-    --destructive: 0 84% 60%; /* red-500 */
+    /* Destructive - Red for errors (vibrant) */
+    --destructive: 0 72% 51%; /* red-600: more saturated */
     --destructive-foreground: 0 0% 100%; /* white */
 
-    /* Success - Green for positive states */
-    --success: 142 71% 45%; /* green-600 */
+    /* Success - Green for positive states (vibrant) */
+    --success: 142 76% 36%; /* green-700: deeper for better contrast */
     --success-foreground: 0 0% 100%; /* white */
 
-    /* Warning - Amber for caution states */
-    --warning: 32 95% 44%; /* amber-600 */
-    --warning-foreground: 0 0% 100%; /* white */
+    /* Warning - Amber for caution states (vibrant) */
+    --warning: 25 95% 53%; /* amber-500: more vibrant */
+    --warning-foreground: 222 47% 11%; /* dark text for contrast */
 
-    /* Info - Blue for informational states */
-    --info: 217 91% 60%; /* blue-500 */
+    /* Info - Blue for informational states (vibrant) */
+    --info: 217 91% 60%; /* blue-500: already good */
     --info-foreground: 0 0% 100%; /* white */
 
     /* Borders and inputs - Slate */
@@ -171,21 +171,21 @@
     --accent: 217 33% 17%; /* slate-800 */
     --accent-foreground: 239 84% 67%; /* indigo-500 */
 
-    /* Destructive - Muted red for dark mode */
-    --destructive: 0 63% 31%; /* red-700 */
-    --destructive-foreground: 210 40% 98%; /* slate-50 */
+    /* Destructive - Vibrant red for dark mode */
+    --destructive: 0 84% 60%; /* red-500: brighter for dark mode */
+    --destructive-foreground: 0 0% 100%; /* white */
 
-    /* Success - Green for positive states (brighter in dark mode) */
-    --success: 142 76% 36%; /* green-700 */
-    --success-foreground: 210 40% 98%; /* slate-50 */
+    /* Success - Vibrant green for positive states in dark mode */
+    --success: 142 71% 45%; /* green-600: brighter green */
+    --success-foreground: 0 0% 100%; /* white */
 
-    /* Warning - Amber for caution states (brighter in dark mode) */
-    --warning: 32 98% 55%; /* amber-500 */
-    --warning-foreground: 222 47% 11%; /* slate-900 for contrast */
+    /* Warning - Vibrant amber for caution states in dark mode */
+    --warning: 38 92% 50%; /* amber-500: vivid yellow-orange */
+    --warning-foreground: 222 47% 11%; /* dark text for contrast */
 
-    /* Info - Blue for informational states (brighter in dark mode) */
-    --info: 217 91% 60%; /* blue-500 */
-    --info-foreground: 210 40% 98%; /* slate-50 */
+    /* Info - Vibrant blue for informational states in dark mode */
+    --info: 217 91% 60%; /* blue-500: bright blue */
+    --info-foreground: 0 0% 100%; /* white */
 
     /* Borders and inputs - Darker slate */
     --border: 217 33% 17%; /* slate-800 */

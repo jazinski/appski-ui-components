@@ -2853,7 +2853,7 @@ const Cr = O(
         success: "border-transparent bg-success text-success-foreground",
         warning: "border-transparent bg-warning text-warning-foreground",
         info: "border-transparent bg-info text-info-foreground",
-        outline: "text-foreground"
+        outline: "border-border bg-muted text-muted-foreground"
       }
     },
     defaultVariants: {
