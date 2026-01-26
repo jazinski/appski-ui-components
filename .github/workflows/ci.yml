@@ -162,8 +162,8 @@ jobs:
           tags: |
             code-server.jazinski.com/appski-ui-components:latest
             code-server.jazinski.com/appski-ui-components:${{ steps.sha.outputs.short }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=registry,ref=code-server.jazinski.com/appski-ui-components:buildcache
+          cache-to: type=registry,ref=code-server.jazinski.com/appski-ui-components:buildcache,mode=max
           platforms: linux/amd64,linux/arm64
 
       - name: Image build summary
