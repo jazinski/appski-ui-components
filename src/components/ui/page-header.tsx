@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { ChevronRight, Home } from 'lucide-react';
+import { Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Breadcrumb, type BreadcrumbItem as BreadcrumbItemType } from './breadcrumb';
 
 const pageHeaderVariants = cva('w-full', {
   variants: {
@@ -99,9 +100,36 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
     },
     ref
   ) => {
-    const separator = breadcrumbSeparator ?? (
-      <ChevronRight className="text-muted-foreground h-4 w-4" aria-hidden="true" />
-    );
+    // Convert BreadcrumbItem with ComponentType icons to BreadcrumbItemType with ReactNode icons
+    const breadcrumbItems: BreadcrumbItemType[] = React.useMemo(() => {
+      if (!breadcrumbs) return [];
+      
+      const items: BreadcrumbItemType[] = breadcrumbs.map(crumb => {
+        const BreadcrumbIcon = crumb.icon;
+        const item: BreadcrumbItemType = {
+          label: crumb.label,
+          icon: BreadcrumbIcon ? <BreadcrumbIcon className="h-4 w-4" /> : undefined,
+        };
+        if (crumb.href) {
+          item.href = crumb.href;
+        }
+        return item;
+      });
+
+      // Add home icon at the beginning if requested
+      if (showHomeInBreadcrumbs) {
+        return [
+          {
+            label: 'Home',
+            href: '/',
+            icon: <Home className="h-4 w-4" aria-label="Home" />,
+          },
+          ...items,
+        ];
+      }
+
+      return items;
+    }, [breadcrumbs, showHomeInBreadcrumbs]);
 
     return (
       <header
@@ -112,55 +140,13 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
         <div className="px-4 py-4 sm:px-6 sm:py-6">
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <nav aria-label="Breadcrumb" className="mb-3">
-              <ol className="flex items-center space-x-2 text-sm">
-                {showHomeInBreadcrumbs && (
-                  <>
-                    <li>
-                      <a
-                        href="/"
-                        className="text-muted-foreground hover:text-foreground flex items-center transition-colors"
-                      >
-                        <Home className="h-4 w-4" aria-label="Home" />
-                      </a>
-                    </li>
-                    <li aria-hidden="true">{separator}</li>
-                  </>
-                )}
-                {breadcrumbs.map((crumb, index) => {
-                  const isLast = index === breadcrumbs.length - 1;
-                  const CrumbIcon = crumb.icon;
-
-                  return (
-                    <React.Fragment key={index}>
-                      <li>
-                        {crumb.href && !isLast ? (
-                          <a
-                            href={crumb.href}
-                            className="text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
-                          >
-                            {CrumbIcon && <CrumbIcon className="h-4 w-4" />}
-                            {crumb.label}
-                          </a>
-                        ) : (
-                          <span
-                            className={cn(
-                              'flex items-center gap-1',
-                              isLast ? 'text-foreground font-medium' : 'text-muted-foreground'
-                            )}
-                            aria-current={isLast ? 'page' : undefined}
-                          >
-                            {CrumbIcon && <CrumbIcon className="h-4 w-4" />}
-                            {crumb.label}
-                          </span>
-                        )}
-                      </li>
-                      {!isLast && <li aria-hidden="true">{separator}</li>}
-                    </React.Fragment>
-                  );
-                })}
-              </ol>
-            </nav>
+            <div className="mb-3">
+              <Breadcrumb 
+                items={breadcrumbItems}
+                separator={breadcrumbSeparator}
+                className="text-muted-foreground"
+              />
+            </div>
           )}
 
           {/* Title Row */}
