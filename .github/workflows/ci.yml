@@ -12,15 +12,20 @@ jobs:
     runs-on: self-hosted
     
     steps:
-      - name: Clean workspace
-        run: |
-          echo "🧹 Cleaning workspace..."
-          cd $GITHUB_WORKSPACE || exit 1
-          git clean -ffdx
-          git reset --hard
-      
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          clean: true
+          fetch-depth: 0
+      
+      - name: Verify workspace
+        run: |
+          echo "📁 Current directory: $(pwd)"
+          echo "📁 GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          echo "📄 Files in workspace:"
+          ls -la
+          echo "📦 Checking for package.json:"
+          test -f package.json && echo "✅ package.json found" || echo "❌ package.json NOT found"
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
@@ -58,15 +63,10 @@ jobs:
     needs: lint-and-test
     
     steps:
-      - name: Clean workspace
-        run: |
-          echo "🧹 Cleaning workspace..."
-          cd $GITHUB_WORKSPACE || exit 1
-          git clean -ffdx
-          git reset --hard
-      
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          clean: true
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
@@ -92,15 +92,10 @@ jobs:
     needs: lint-and-test
     
     steps:
-      - name: Clean workspace
-        run: |
-          echo "🧹 Cleaning workspace..."
-          cd $GITHUB_WORKSPACE || exit 1
-          git clean -ffdx
-          git reset --hard
-      
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          clean: true
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
@@ -128,15 +123,10 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
-      - name: Clean workspace
-        run: |
-          echo "🧹 Cleaning workspace..."
-          cd $GITHUB_WORKSPACE || exit 1
-          git clean -ffdx
-          git reset --hard
-      
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          clean: true
 
       - name: Download Storybook artifact
         uses: actions/download-artifact@v4
