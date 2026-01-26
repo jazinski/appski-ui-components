@@ -177,7 +177,7 @@ jobs:
 
   deploy:
     name: Deploy to Production Server
-    runs-on: [self-hosted, Linux, appski-deploy]
+    runs-on: [self-hosted, Linux, deploy]
     needs: docker-build
     # Only deploy on pushes to main branch (not PRs or develop)
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
