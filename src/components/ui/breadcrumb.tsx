@@ -45,13 +45,13 @@ const breadcrumbItemVariants = cva('inline-flex items-center gap-1.5 transition-
 });
 
 const breadcrumbLinkVariants = cva(
-  // Enhanced: Add subtle background on hover, better touch targets, improved dark mode contrast
-  'rounded-md px-2 py-1 -mx-2 -my-1 transition-all duration-200 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+  // Link-style hover: underline on hover, no background (navigation links, not buttons)
+  'transition-colors duration-200 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
   {
     variants: {
       variant: {
-        default: 'text-muted-foreground hover:text-foreground hover:bg-accent',
-        ghost: 'text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/70',
+        default: 'text-muted-foreground hover:text-foreground',
+        ghost: 'text-muted-foreground/80 hover:text-foreground/90',
       },
     },
     defaultVariants: {
