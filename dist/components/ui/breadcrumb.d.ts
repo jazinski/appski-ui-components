@@ -22,6 +22,15 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLElement>, Vari
     separator?: React.ReactNode;
     maxItems?: number;
     variant?: 'default' | 'ghost';
+    /**
+     * Custom Link component for client-side routing (e.g., React Router's Link)
+     * If not provided, uses standard <a> tags
+     */
+    LinkComponent?: React.ComponentType<{
+        to: string;
+        className?: string;
+        children: React.ReactNode;
+    }>;
 }
 export declare const Breadcrumb: React.ForwardRefExoticComponent<BreadcrumbProps & React.RefAttributes<HTMLElement>>;
 export { breadcrumbVariants, breadcrumbItemVariants, breadcrumbSeparatorVariants };

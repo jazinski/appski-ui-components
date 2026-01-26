@@ -82,6 +82,11 @@ export interface BreadcrumbProps
   separator?: React.ReactNode;
   maxItems?: number;
   variant?: 'default' | 'ghost';
+  /**
+   * Custom Link component for client-side routing (e.g., React Router's Link)
+   * If not provided, uses standard <a> tags
+   */
+  LinkComponent?: React.ComponentType<{ to: string; className?: string; children: React.ReactNode }>;
 }
 
 // Breadcrumb Component
@@ -93,6 +98,7 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       maxItems,
       size,
       variant = 'default',
+      LinkComponent,
       className,
       ...props
     },
@@ -156,21 +162,38 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
                   {isEllipsis ? (
                     <span className="px-1">{item.label}</span>
                   ) : item.href && !isCurrent ? (
-                    <a
-                      href={item.href}
-                      onClick={item.onClick}
-                      className={cn(
-                        breadcrumbLinkVariants({ variant }),
-                        'inline-flex items-center gap-1.5'
-                      )}
-                    >
-                      {item.icon && (
-                        <span className="inline-flex items-center" aria-hidden="true">
-                          {item.icon}
-                        </span>
-                      )}
-                      <span>{item.label}</span>
-                    </a>
+                    LinkComponent ? (
+                      <LinkComponent
+                        to={item.href}
+                        className={cn(
+                          breadcrumbLinkVariants({ variant }),
+                          'inline-flex items-center gap-1.5'
+                        )}
+                      >
+                        {item.icon && (
+                          <span className="inline-flex items-center" aria-hidden="true">
+                            {item.icon}
+                          </span>
+                        )}
+                        <span>{item.label}</span>
+                      </LinkComponent>
+                    ) : (
+                      <a
+                        href={item.href}
+                        onClick={item.onClick}
+                        className={cn(
+                          breadcrumbLinkVariants({ variant }),
+                          'inline-flex items-center gap-1.5'
+                        )}
+                      >
+                        {item.icon && (
+                          <span className="inline-flex items-center" aria-hidden="true">
+                            {item.icon}
+                          </span>
+                        )}
+                        <span>{item.label}</span>
+                      </a>
+                    )
                   ) : (
                     <span
                       className="inline-flex items-center gap-1.5"
