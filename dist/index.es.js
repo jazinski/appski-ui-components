@@ -3202,8 +3202,8 @@ const Xr = O(
   {
     variants: {
       variant: {
-        default: "text-muted-foreground hover:text-foreground hover:bg-accent/50 dark:text-muted-foreground dark:hover:text-foreground dark:hover:bg-accent",
-        ghost: "text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/30 dark:hover:bg-accent/50"
+        default: "text-muted-foreground hover:text-foreground hover:bg-accent/50 dark:text-muted-foreground dark:hover:text-foreground dark:hover:bg-slate-700/50",
+        ghost: "text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/30 dark:hover:bg-slate-700/40"
       }
     },
     defaultVariants: {
@@ -3310,17 +3310,10 @@ const Xr = O(
                       /* @__PURE__ */ u("span", { children: w.label })
                     ]
                   }
-                ) : /* @__PURE__ */ S(
-                  "span",
-                  {
-                    className: "inline-flex items-center gap-1.5",
-                    "aria-current": g ? "page" : void 0,
-                    children: [
-                      w.icon && /* @__PURE__ */ u("span", { className: "inline-flex items-center", "aria-hidden": "true", children: w.icon }),
-                      /* @__PURE__ */ u("span", { children: w.label })
-                    ]
-                  }
-                )
+                ) : /* @__PURE__ */ S("span", { className: "inline-flex items-center gap-1.5", children: [
+                  w.icon && /* @__PURE__ */ u("span", { className: "inline-flex items-center", "aria-hidden": "true", children: w.icon }),
+                  /* @__PURE__ */ u("span", { "aria-current": g ? "page" : void 0, children: w.label })
+                ] })
               }
             ),
             !l && /* @__PURE__ */ u("li", { className: E(Jr({ size: a })), "aria-hidden": "true", children: t })

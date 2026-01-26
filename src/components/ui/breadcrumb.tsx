@@ -51,9 +51,9 @@ const breadcrumbLinkVariants = cva(
     variants: {
       variant: {
         default:
-          'text-muted-foreground hover:text-foreground hover:bg-accent/50 dark:text-muted-foreground dark:hover:text-foreground dark:hover:bg-accent',
+          'text-muted-foreground hover:text-foreground hover:bg-accent/50 dark:text-muted-foreground dark:hover:text-foreground dark:hover:bg-slate-700/50',
         ghost:
-          'text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/30 dark:hover:bg-accent/50',
+          'text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/30 dark:hover:bg-slate-700/40',
       },
     },
     defaultVariants: {
