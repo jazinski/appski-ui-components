@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 declare const statusIndicatorVariants: (props?: ({
-    status?: "online" | "offline" | "away" | "busy" | "idle" | null | undefined;
+    status?: "offline" | "online" | "away" | "busy" | "idle" | null | undefined;
     size?: "sm" | "lg" | "xl" | "md" | "xs" | null | undefined;
     variant?: "dot" | "pulsing" | "ring" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;

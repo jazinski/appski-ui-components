@@ -20,7 +20,7 @@ const breadcrumbVariants = cva(
   }
 );
 
-const breadcrumbItemVariants = cva('inline-flex items-center gap-1.5 transition-colors', {
+const breadcrumbItemVariants = cva('inline-flex items-center gap-1.5 transition-all duration-200', {
   variants: {
     variant: {
       default: 'hover:text-foreground',
@@ -32,7 +32,8 @@ const breadcrumbItemVariants = cva('inline-flex items-center gap-1.5 transition-
       lg: 'text-base gap-2',
     },
     current: {
-      true: 'font-medium text-foreground pointer-events-none',
+      // Enhanced: Better visual hierarchy for current page
+      true: 'font-semibold text-foreground pointer-events-none',
       false: '',
     },
   },
@@ -43,30 +44,40 @@ const breadcrumbItemVariants = cva('inline-flex items-center gap-1.5 transition-
   },
 });
 
-const breadcrumbLinkVariants = cva('hover:underline transition-colors', {
-  variants: {
-    variant: {
-      default: 'hover:text-foreground',
-      ghost: 'hover:text-foreground/80',
+const breadcrumbLinkVariants = cva(
+  // Enhanced: Add subtle background on hover, better touch targets, improved dark mode contrast
+  'rounded-md px-2 py-1 -mx-2 -my-1 transition-all duration-200 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default:
+          'text-muted-foreground hover:text-foreground hover:bg-accent/50 dark:text-muted-foreground dark:hover:text-foreground dark:hover:bg-accent',
+        ghost:
+          'text-muted-foreground/80 hover:text-foreground/90 hover:bg-accent/30 dark:hover:bg-accent/50',
+      },
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-  },
-});
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
 
-const breadcrumbSeparatorVariants = cva('flex items-center text-muted-foreground/50', {
-  variants: {
-    size: {
-      sm: 'text-[10px]',
-      md: 'text-xs',
-      lg: 'text-sm',
+const breadcrumbSeparatorVariants = cva(
+  // Enhanced: Better visibility in dark mode
+  'flex items-center text-muted-foreground/40 dark:text-muted-foreground/60',
+  {
+    variants: {
+      size: {
+        sm: 'text-[10px]',
+        md: 'text-xs',
+        lg: 'text-sm',
+      },
     },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+);
 
 // Types
 export interface BreadcrumbItem {
@@ -86,7 +97,16 @@ export interface BreadcrumbProps
    * Custom Link component for client-side routing (e.g., React Router's Link)
    * If not provided, uses standard <a> tags
    */
-  LinkComponent?: React.ComponentType<{ to: string; className?: string; children: React.ReactNode }>;
+  LinkComponent?: React.ComponentType<{
+    to: string;
+    className?: string;
+    children: React.ReactNode;
+  }>;
+  /**
+   * Auto-collapse breadcrumbs on mobile to show only last N items
+   * Set to 0 to disable mobile collapsing (default: 2)
+   */
+  mobileMaxItems?: number;
 }
 
 // Breadcrumb Component
@@ -99,29 +119,48 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       size,
       variant = 'default',
       LinkComponent,
+      mobileMaxItems = 2,
       className,
       ...props
     },
     ref
   ) => {
+    // Responsive: Track if we're on mobile
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+      const checkMobile = () => {
+        setIsMobile(window.innerWidth < 640); // sm breakpoint
+      };
+
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => {
+        window.removeEventListener('resize', checkMobile);
+      };
+    }, []);
+
     // Process items for truncation if maxItems is set
     const processedItems = React.useMemo(() => {
-      if (!maxItems || items.length <= maxItems) {
+      // Apply mobile-specific truncation
+      const effectiveMaxItems = isMobile && mobileMaxItems > 0 ? mobileMaxItems : maxItems;
+
+      if (!effectiveMaxItems || items.length <= effectiveMaxItems) {
         return items;
       }
 
       // Keep first item, last item, and show ellipsis in between
-      if (maxItems === 1) {
+      if (effectiveMaxItems === 1) {
         return [items[items.length - 1]]; // Just show current page
       }
 
-      if (maxItems === 2) {
+      if (effectiveMaxItems === 2) {
         return [items[0], items[items.length - 1]]; // First and last
       }
 
       // Show first item, ellipsis, and remaining items to fill maxItems
       const firstItem = items[0];
-      const remainingSlots = maxItems - 2; // -2 for first item and ellipsis placeholder
+      const remainingSlots = effectiveMaxItems - 2; // -2 for first item and ellipsis placeholder
       const lastItems = items.slice(-remainingSlots);
 
       const ellipsisItem: BreadcrumbItem = { label: '...' };
@@ -131,12 +170,12 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
         ellipsisItem, // Ellipsis placeholder
         ...lastItems,
       ];
-    }, [items, maxItems]);
+    }, [items, maxItems, mobileMaxItems, isMobile]);
 
     return (
       <nav
         ref={ref}
-        aria-label="breadcrumb"
+        aria-label="Breadcrumb"
         className={cn(breadcrumbVariants({ size }), className)}
         {...props}
       >

@@ -31,6 +31,11 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLElement>, Vari
         className?: string;
         children: React.ReactNode;
     }>;
+    /**
+     * Auto-collapse breadcrumbs on mobile to show only last N items
+     * Set to 0 to disable mobile collapsing (default: 2)
+     */
+    mobileMaxItems?: number;
 }
 export declare const Breadcrumb: React.ForwardRefExoticComponent<BreadcrumbProps & React.RefAttributes<HTMLElement>>;
 export { breadcrumbVariants, breadcrumbItemVariants, breadcrumbSeparatorVariants };
