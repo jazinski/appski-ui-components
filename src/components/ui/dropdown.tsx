@@ -109,8 +109,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
   defaultOpen = false,
 }) => {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);
-  const triggerRef = React.useRef<HTMLElement>(null);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const triggerRef = React.useRef<HTMLElement>(null) as React.RefObject<HTMLElement>;
+  const contentRef = React.useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;
   const setOpen = React.useCallback(
