@@ -55,8 +55,9 @@ describe('Badge', () => {
         Outline
       </Badge>
     );
-    expect(screen.getByTestId('badge')).toHaveClass('text-foreground');
-    expect(screen.getByTestId('badge')).not.toHaveClass('bg-primary');
+    expect(screen.getByTestId('badge')).toHaveClass('bg-muted');
+    expect(screen.getByTestId('badge')).toHaveClass('text-muted-foreground');
+    expect(screen.getByTestId('badge')).toHaveClass('border-border');
   });
 
   it('applies custom className', () => {
