@@ -83,9 +83,9 @@ style.innerHTML = `
   .appski-brand-text .brand-commit {
     font-size: 11px !important;
     font-weight: 500 !important;
-    color: #64748b !important;
+    color: #94a3b8 !important;
     font-family: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace !important;
-    opacity: 0.8 !important;
+    opacity: 1 !important;
     line-height: 1 !important;
   }
   
