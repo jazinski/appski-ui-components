@@ -175,7 +175,7 @@
 
     /* Muted - Dark slate */
     --muted: 217 33% 17%; /* slate-800 */
-    --muted-foreground: 215 20% 65%; /* slate-400 */
+    --muted-foreground: 215 20% 82%; /* Increased from 65% for better breadcrumb readability in dark mode (11.47:1 contrast ratio) */
 
     /* Accent - Indigo in dark mode */
     --accent: 217 33% 17%; /* slate-800 */
