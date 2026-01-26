@@ -37,7 +37,7 @@ describe('Badge', () => {
         Success
       </Badge>
     );
-    expect(screen.getByTestId('badge')).toHaveClass('bg-green-500');
+    expect(screen.getByTestId('badge')).toHaveClass('bg-success');
   });
 
   it('renders with warning variant', () => {
@@ -46,7 +46,7 @@ describe('Badge', () => {
         Warning
       </Badge>
     );
-    expect(screen.getByTestId('badge')).toHaveClass('bg-yellow-500');
+    expect(screen.getByTestId('badge')).toHaveClass('bg-warning');
   });
 
   it('renders with outline variant', () => {
