@@ -234,16 +234,13 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
                       </a>
                     )
                   ) : (
-                    <span
-                      className="inline-flex items-center gap-1.5"
-                      aria-current={isCurrent ? 'page' : undefined}
-                    >
+                    <span className="inline-flex items-center gap-1.5">
                       {item.icon && (
                         <span className="inline-flex items-center" aria-hidden="true">
                           {item.icon}
                         </span>
                       )}
-                      <span>{item.label}</span>
+                      <span aria-current={isCurrent ? 'page' : undefined}>{item.label}</span>
                     </span>
                   )}
                 </li>

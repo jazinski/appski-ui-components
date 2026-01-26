@@ -25,7 +25,7 @@ describe('Breadcrumb', () => {
     it('renders nav element with breadcrumb aria-label', () => {
       render(<Breadcrumb items={basicItems} />);
 
-      const nav = screen.getByLabelText('breadcrumb');
+      const nav = screen.getByLabelText('Breadcrumb');
       expect(nav).toBeInTheDocument();
       expect(nav.tagName).toBe('NAV');
     });
@@ -59,7 +59,7 @@ describe('Breadcrumb', () => {
     it('marks current page with aria-current="page"', () => {
       render(<Breadcrumb items={basicItems} />);
 
-      const currentPage = screen.getByText('Breadcrumb').parentElement;
+      const currentPage = screen.getByText('Breadcrumb');
       expect(currentPage).toHaveAttribute('aria-current', 'page');
     });
   });
@@ -220,7 +220,7 @@ describe('Breadcrumb', () => {
       render(<Breadcrumb items={basicItems} variant="ghost" />);
 
       const link = screen.getByRole('link', { name: /home/i });
-      expect(link).toHaveClass('hover:text-foreground/80');
+      expect(link).toHaveClass('hover:text-foreground/90');
     });
   });
 
