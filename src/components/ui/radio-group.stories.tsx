@@ -212,7 +212,8 @@ export const InForm: Story = {
       e.preventDefault();
       const formData = new FormData(e.currentTarget);
       const plan = formData.get('plan');
-      alert(`Selected plan: ${plan}`);
+      const planValue = typeof plan === 'string' ? plan : 'none';
+      alert(`Selected plan: ${planValue}`);
     };
 
     return (

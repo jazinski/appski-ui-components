@@ -45,7 +45,7 @@ jobs:
             ls -la
             exit 1
           fi
-          bun install --frozen-lockfile
+          bun install
 
       - name: Run linter
         run: bun run lint
@@ -98,7 +98,7 @@ jobs:
             ls -la
             exit 1
           fi
-          bun install --frozen-lockfile
+          bun install
 
       - name: Build package
         run: bun run build
@@ -139,7 +139,7 @@ jobs:
             ls -la
             exit 1
           fi
-          bun install --frozen-lockfile
+          bun install
 
       - name: Build Storybook
         run: bun run build-storybook
