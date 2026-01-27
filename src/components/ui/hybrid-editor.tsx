@@ -18,6 +18,7 @@ import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { ListItemNode, ListNode } from '@lexical/list';
+import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { LinkNode } from '@lexical/link';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
@@ -27,6 +28,10 @@ import {
   $convertFromMarkdownString 
 } from '@lexical/markdown';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+import { FORMAT_TEXT_COMMAND, $getSelection, $isRangeSelection } from 'lexical';
+import { $setBlocksType } from '@lexical/selection';
+import { $createHeadingNode, $createQuoteNode } from '@lexical/rich-text';
+import { INSERT_UNORDERED_LIST_COMMAND } from '@lexical/list';
 import Editor, { OnMount } from '@monaco-editor/react';
 import type * as Monaco from 'monaco-editor';
 import { 
@@ -111,23 +116,33 @@ function EditorToolbar({
   const [editor] = useLexicalComposerContext();
 
   const formatBold = () => {
-    editor.dispatchCommand({ type: 'FORMAT_TEXT_COMMAND', format: 'bold' } as any, undefined);
+    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
   };
 
   const formatItalic = () => {
-    editor.dispatchCommand({ type: 'FORMAT_TEXT_COMMAND', format: 'italic' } as any, undefined);
+    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
   };
 
   const insertHeading = (level: 1 | 2) => {
-    editor.dispatchCommand({ type: 'FORMAT_ELEMENT_COMMAND', format: `h${level}` } as any, undefined);
+    editor.update(() => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode(`h${level}`));
+      }
+    });
   };
 
   const insertList = () => {
-    editor.dispatchCommand({ type: 'INSERT_UNORDERED_LIST_COMMAND' } as any, undefined);
+    editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
   };
 
   const insertQuote = () => {
-    editor.dispatchCommand({ type: 'FORMAT_ELEMENT_COMMAND', format: 'quote' } as any, undefined);
+    editor.update(() => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createQuoteNode());
+      }
+    });
   };
 
   return (
@@ -138,7 +153,7 @@ function EditorToolbar({
           <Button
             variant={mode === 'rich' ? 'default' : 'ghost'}
             size="sm"
-            onClick={() => onModeChange('rich')}
+            onClick={() => { onModeChange('rich'); }}
             title="Rich Text Mode"
             className="h-8 px-2"
           >
@@ -147,7 +162,7 @@ function EditorToolbar({
           <Button
             variant={mode === 'code' ? 'default' : 'ghost'}
             size="sm"
-            onClick={() => onModeChange('code')}
+            onClick={() => { onModeChange('code'); }}
             title="Code Mode"
             className="h-8 px-2"
           >
@@ -180,7 +195,7 @@ function EditorToolbar({
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => insertHeading(1)}
+              onClick={() => { insertHeading(1); }}
               title="Heading 1"
               className="h-8 px-2"
             >
@@ -189,7 +204,7 @@ function EditorToolbar({
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => insertHeading(2)}
+              onClick={() => { insertHeading(2); }}
               title="Heading 2"
               className="h-8 px-2"
             >
@@ -299,11 +314,12 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     const [isInitialized, setIsInitialized] = React.useState(false);
     const monacoEditorRef = React.useRef<Monaco.editor.IStandaloneCodeEditor | null>(null);
 
-    // Update content when value prop changes
+    // Update content when value prop changes (external controlled updates)
     React.useEffect(() => {
       if (value !== content) {
         setContent(value);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
     const handleContentChange = React.useCallback((newContent: string) => {
@@ -396,6 +412,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                 ErrorBoundary={LexicalErrorBoundary}
               />
               <HistoryPlugin />
+              <ListPlugin />
               <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
               <MarkdownSyncPlugin 
                 value={content}
@@ -412,7 +429,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => handleModeChange('rich')}
+                  onClick={() => { handleModeChange('rich'); }}
                   title="Rich Text Mode"
                   className="h-8 px-2"
                 >
@@ -421,7 +438,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                 <Button
                   variant="default"
                   size="sm"
-                  onClick={() => handleModeChange('code')}
+                  onClick={() => { handleModeChange('code'); }}
                   title="Code Mode"
                   className="h-8 px-2"
                 >
@@ -446,7 +463,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
               height={maxHeight || minHeight}
               defaultLanguage="markdown"
               value={content}
-              onChange={(value) => handleContentChange(value || '')}
+              onChange={(value) => { handleContentChange(value || ''); }}
               onMount={handleMonacoMount}
               theme={monacoTheme}
               options={{
