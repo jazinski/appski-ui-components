@@ -137,7 +137,13 @@ export {
 } from './status-indicator';
 export { Alert, AlertTitle, AlertDescription, type AlertProps } from './alert';
 export { CodeBlock, type CodeBlockProps } from './code-block';
-export { Table, tableVariants, type TableProps, type Column, type SortDirection } from './table';
+export {
+  DataTable,
+  createSortableHeader,
+  createSelectionColumn,
+  type DataTableProps,
+} from './data-table';
+export type { ColumnDef, SortingState, ColumnFiltersState } from '@tanstack/react-table';
 export { EmptyState, type EmptyStateProps } from './empty-state';
 export { ErrorState, type ErrorStateProps } from './error-state';
 export { MetricCard, type MetricCardProps } from './metric-card';
