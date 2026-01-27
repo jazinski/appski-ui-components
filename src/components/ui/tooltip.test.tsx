@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Tooltip } from './tooltip';
 
 // Mock getBoundingClientRect
@@ -55,7 +55,7 @@ describe('Tooltip', () => {
     expect(await screen.findByRole('tooltip')).toBeDefined();
 
     fireEvent.mouseLeave(trigger);
-    
+
     // Check it disappears
     // Note: Since we use state update, it might need 'waitFor' in real scenario
     // but here we can check if it's gone or state changed
@@ -70,17 +70,16 @@ describe('Tooltip', () => {
       </Tooltip>
     );
 
-    const trigger = screen.getByText('Hover me');
     // When disabled, we don't wrap in the trigger div, we just return children
     // But wait, our implementation wraps children in trigger div anyway?
     // Let's check implementation: if (disabled) return children;
     // So it should NOT have the trigger wrapper
-    
-    // In our implementation: 
+
+    // In our implementation:
     // if (disabled) { return children; }
     // So we shouldn't find the testid if we search by it on the container?
     // Actually standard queries look into the document.
-    
+
     // Let's verify we can't find the trigger wrapper
     expect(screen.queryByTestId('tooltip-trigger')).toBeNull();
   });

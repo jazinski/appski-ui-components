@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Tooltip } from '../components/ui/tooltip';
 import { Button } from '../components/ui/button';
-import { InfoIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
+import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
 const meta = {
   title: 'UI/Tooltip',
@@ -59,7 +59,7 @@ export const WithIcon: Story = {
   args: {
     content: 'More information about this feature',
     children: (
-      <div className="flex items-center text-sm text-slate-500 cursor-help">
+      <div className="flex cursor-help items-center text-sm text-slate-500">
         <span>Help</span>
         <QuestionMarkCircleIcon className="ml-1 h-4 w-4" />
       </div>
@@ -73,8 +73,10 @@ export const Interactive: Story = {
     content: (
       <div className="flex flex-col gap-2 p-1">
         <span className="font-medium">Interactive Tooltip</span>
-        <span className="text-xs text-muted-foreground">You can click links here</span>
-        <a href="#" className="text-xs text-blue-500 hover:underline">Learn more</a>
+        <span className="text-muted-foreground text-xs">You can click links here</span>
+        <a href="#" className="text-xs text-blue-500 hover:underline">
+          Learn more
+        </a>
       </div>
     ),
     children: <Button>Interactive Content</Button>,
