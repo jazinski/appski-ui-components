@@ -53,7 +53,7 @@ export interface DataTableProps<TData, TValue> {
 
 /**
  * DataTable - A powerful, accessible data table built with TanStack Table
- * 
+ *
  * Features:
  * - Sorting (click column headers)
  * - Pagination with customizable page sizes
@@ -64,7 +64,7 @@ export interface DataTableProps<TData, TValue> {
  * - Fully accessible with ARIA attributes
  * - Dark mode support
  * - Responsive design
- * 
+ *
  * @example
  * ```tsx
  * const columns: ColumnDef<User>[] = [
@@ -83,7 +83,7 @@ export interface DataTableProps<TData, TValue> {
  *     ),
  *   },
  * ];
- * 
+ *
  * <DataTable
  *   columns={columns}
  *   data={users}
@@ -149,9 +149,7 @@ export function DataTable<TData, TValue>({
   // Notify parent of selection changes
   React.useEffect(() => {
     if (onRowSelectionChange) {
-      const selectedRows = table
-        .getFilteredSelectedRowModel()
-        .rows.map((row) => row.original);
+      const selectedRows = table.getFilteredSelectedRowModel().rows.map((row) => row.original);
       onRowSelectionChange(selectedRows);
     }
   }, [rowSelection, table, onRowSelectionChange]);
@@ -162,18 +160,20 @@ export function DataTable<TData, TValue>({
       {(searchable || enableColumnVisibility) && (
         <div className="flex items-center justify-between gap-4">
           {searchable && (
-            <div className="flex-1 max-w-sm">
+            <div className="max-w-sm flex-1">
               <Input
                 placeholder={searchPlaceholder}
                 value={globalFilter ?? ''}
-                onChange={(e) => setGlobalFilter(e.target.value)}
+                onChange={(e) => {
+                  setGlobalFilter(e.target.value);
+                }}
                 className="w-full"
               />
             </div>
           )}
           {enableColumnVisibility && (
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Columns:</span>
+              <span className="text-muted-foreground text-sm">Columns:</span>
               {table.getAllLeafColumns().map((column) => {
                 if (column.id === 'select') return null;
                 return (
@@ -181,7 +181,9 @@ export function DataTable<TData, TValue>({
                     <input
                       type="checkbox"
                       checked={column.getIsVisible()}
-                      onChange={(e) => column.toggleVisibility(e.target.checked)}
+                      onChange={(e) => {
+                        column.toggleVisibility(e.target.checked);
+                      }}
                       className="rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-slate-700"
                     />
                     <span className="capitalize">{column.id}</span>
@@ -194,12 +196,12 @@ export function DataTable<TData, TValue>({
       )}
 
       {/* Table */}
-      <div className="rounded-md border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="overflow-hidden rounded-md border border-slate-200 dark:border-slate-800">
         <div className={cn('overflow-auto', stickyHeader && 'max-h-[600px]')}>
           <table className="w-full caption-bottom text-sm">
             <thead
               className={cn(
-                'bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800',
+                'border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900',
                 stickyHeader && 'sticky top-0 z-10'
               )}
             >
@@ -240,10 +242,7 @@ export function DataTable<TData, TValue>({
             <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
               {loading ? (
                 <tr>
-                  <td
-                    colSpan={columns.length}
-                    className="h-24 text-center text-muted-foreground"
-                  >
+                  <td colSpan={columns.length} className="text-muted-foreground h-24 text-center">
                     Loading...
                   </td>
                 </tr>
@@ -253,7 +252,7 @@ export function DataTable<TData, TValue>({
                     key={row.id}
                     data-state={row.getIsSelected() && 'selected'}
                     className={cn(
-                      'bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors hover:bg-slate-50 dark:hover:bg-slate-900/50',
+                      'border-b border-slate-200 bg-white transition-colors hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900/50',
                       row.getIsSelected() && 'bg-slate-50 dark:bg-slate-900',
                       onRowClick && 'cursor-pointer',
                       getRowClassName?.(row.original)
@@ -269,10 +268,7 @@ export function DataTable<TData, TValue>({
                 ))
               ) : (
                 <tr>
-                  <td
-                    colSpan={columns.length}
-                    className="h-24 text-center text-muted-foreground"
-                  >
+                  <td colSpan={columns.length} className="text-muted-foreground h-24 text-center">
                     {emptyMessage}
                   </td>
                 </tr>
@@ -287,7 +283,7 @@ export function DataTable<TData, TValue>({
         <div className="flex items-center justify-between px-2">
           <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
             {enableRowSelection && (
-              <div className="flex-1 text-sm text-muted-foreground">
+              <div className="text-muted-foreground flex-1 text-sm">
                 {table.getFilteredSelectedRowModel().rows.length} of{' '}
                 {table.getFilteredRowModel().rows.length} row(s) selected.
               </div>
@@ -303,7 +299,7 @@ export function DataTable<TData, TValue>({
                 onChange={(e) => {
                   table.setPageSize(Number(e.target.value));
                 }}
-                className="h-8 w-[70px] rounded-md border border-slate-300 bg-white dark:bg-slate-950 dark:border-slate-700 text-sm"
+                className="h-8 w-[70px] rounded-md border border-slate-300 bg-white text-sm dark:border-slate-700 dark:bg-slate-950"
               >
                 {pageSizeOptions.map((size) => (
                   <option key={size} value={size}>
@@ -323,7 +319,9 @@ export function DataTable<TData, TValue>({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => table.previousPage()}
+                onClick={() => {
+                  table.previousPage();
+                }}
                 disabled={!table.getCanPreviousPage()}
               >
                 Previous
@@ -331,7 +329,9 @@ export function DataTable<TData, TValue>({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => table.nextPage()}
+                onClick={() => {
+                  table.nextPage();
+                }}
                 disabled={!table.getCanNextPage()}
               >
                 Next
@@ -347,14 +347,14 @@ export function DataTable<TData, TValue>({
 /**
  * Helper function to create a sortable column header
  */
-export function createSortableHeader<TData>(
-  label: string
-): ColumnDef<TData>['header'] {
+export function createSortableHeader<TData>(label: string): ColumnDef<TData>['header'] {
   return ({ column }) => {
     return (
       <Button
         variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => {
+          column.toggleSorting(column.getIsSorted() === 'asc');
+        }}
         className="-ml-4 h-8"
       >
         {label}
@@ -380,7 +380,9 @@ export function createSelectionColumn<TData>(): ColumnDef<TData> {
       <input
         type="checkbox"
         checked={table.getIsAllPageRowsSelected()}
-        onChange={(e) => table.toggleAllPageRowsSelected(e.target.checked)}
+        onChange={(e) => {
+          table.toggleAllPageRowsSelected(e.target.checked);
+        }}
         aria-label="Select all"
         className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-slate-700"
       />
@@ -389,7 +391,9 @@ export function createSelectionColumn<TData>(): ColumnDef<TData> {
       <input
         type="checkbox"
         checked={row.getIsSelected()}
-        onChange={(e) => row.toggleSelected(e.target.checked)}
+        onChange={(e) => {
+          row.toggleSelected(e.target.checked);
+        }}
         aria-label="Select row"
         className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-slate-700"
       />

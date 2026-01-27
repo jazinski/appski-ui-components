@@ -103,8 +103,8 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
     // Convert BreadcrumbItem with ComponentType icons to BreadcrumbItemType with ReactNode icons
     const breadcrumbItems: BreadcrumbItemType[] = React.useMemo(() => {
       if (!breadcrumbs) return [];
-      
-      const items: BreadcrumbItemType[] = breadcrumbs.map(crumb => {
+
+      const items: BreadcrumbItemType[] = breadcrumbs.map((crumb) => {
         const BreadcrumbIcon = crumb.icon;
         const item: BreadcrumbItemType = {
           label: crumb.label,
@@ -141,7 +141,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (
             <div className="mb-3">
-              <Breadcrumb 
+              <Breadcrumb
                 items={breadcrumbItems}
                 separator={breadcrumbSeparator}
                 className="text-muted-foreground"

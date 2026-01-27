@@ -74,14 +74,14 @@ const generateUsers = (count: number): User[] => {
   const roles: User['role'][] = ['admin', 'user', 'guest'];
   const statuses: User['status'][] = ['active', 'inactive'];
   const names = ['John', 'Jane', 'Bob', 'Alice', 'Charlie', 'David', 'Emma', 'Frank'];
-  
+
   return Array.from({ length: count }, (_, i) => ({
     id: String(i + 1),
-    name: `${names[i % names.length]} ${i + 1}`,
+    name: `${names[i % names.length] ?? 'User'} ${i + 1}`,
     email: `user${i + 1}@example.com`,
-    role: roles[i % roles.length],
-    status: statuses[i % statuses.length],
-    createdAt: new Date(2024, 0, (i % 28) + 1).toISOString().split('T')[0],
+    role: roles[i % roles.length] ?? 'user',
+    status: statuses[i % statuses.length] ?? 'active',
+    createdAt: new Date(2024, 0, (i % 28) + 1).toISOString().split('T')[0] ?? '',
   }));
 };
 
@@ -159,7 +159,7 @@ const columnsWithActions: ColumnDef<User>[] = [
   {
     id: 'actions',
     header: 'Actions',
-    cell: ({ row }) => (
+    cell: () => (
       <div className="flex items-center gap-2">
         <Button variant="ghost" size="sm">
           Edit
@@ -173,10 +173,7 @@ const columnsWithActions: ColumnDef<User>[] = [
 ];
 
 // Columns with selection
-const selectableColumns: ColumnDef<User>[] = [
-  createSelectionColumn<User>(),
-  ...sortableColumns,
-];
+const selectableColumns: ColumnDef<User>[] = [createSelectionColumn<User>(), ...sortableColumns];
 
 export const Basic: Story = {
   args: {

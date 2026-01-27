@@ -71,8 +71,7 @@ const labelVariants = cva('text-sm font-medium', {
 });
 
 export interface MetricCardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof metricCardVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof metricCardVariants> {
   /** The icon to display */
   icon?: React.ReactNode;
   /** The main numeric or text value */
@@ -102,13 +101,13 @@ export function MetricCard({
 }: MetricCardProps) {
   return (
     <Card className={cn(metricCardVariants({ variant, className }))} {...props}>
-      <div className="p-6 flex items-start justify-between space-x-4">
+      <div className="flex items-start justify-between space-x-4 p-6">
         <div className="space-y-1">
           <p className={cn(valueVariants({ variant }))}>{value}</p>
           <p className={cn(labelVariants({ variant }))}>{label}</p>
-          
+
           {trend && (
-            <div className="flex items-center text-xs mt-2 space-x-1">
+            <div className="mt-2 flex items-center space-x-1 text-xs">
               <span
                 className={cn(
                   'font-medium',
@@ -120,19 +119,15 @@ export function MetricCard({
                 {trend.value}
               </span>
               {trend.label && (
-                <span className="text-slate-500 dark:text-slate-400">
-                  {trend.label}
-                </span>
+                <span className="text-slate-500 dark:text-slate-400">{trend.label}</span>
               )}
             </div>
           )}
         </div>
-        
+
         {icon && (
           <div className={cn(iconVariants({ variant }))}>
-            <div className="h-6 w-6">
-              {icon}
-            </div>
+            <div className="h-6 w-6">{icon}</div>
           </div>
         )}
       </div>

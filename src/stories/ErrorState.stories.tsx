@@ -25,7 +25,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     error: 'Failed to load user data',
-    onRetry: () => { alert('Retrying...'); },
+    onRetry: () => {
+      alert('Retrying...');
+    },
   },
 };
 
@@ -34,7 +36,9 @@ export const NetworkError: Story = {
   args: {
     variant: 'network',
     error: 'Connection timed out after 3000ms',
-    onRetry: () => { alert('Retrying connection...'); },
+    onRetry: () => {
+      alert('Retrying connection...');
+    },
   },
 };
 
@@ -43,7 +47,9 @@ export const AuthError: Story = {
   args: {
     variant: 'auth',
     error: 'Session expired. Please log in again.',
-    onRetry: () => { alert('Redirecting to login...'); },
+    onRetry: () => {
+      alert('Redirecting to login...');
+    },
   },
 };
 
@@ -52,7 +58,9 @@ export const Compact: Story = {
   args: {
     compact: true,
     error: 'Failed to save changes',
-    onRetry: () => { alert('Retrying save...'); },
+    onRetry: () => {
+      alert('Retrying save...');
+    },
   },
 };
 
@@ -62,6 +70,8 @@ export const CompactNetwork: Story = {
     compact: true,
     variant: 'network',
     error: 'Offline mode',
-    onRetry: () => { alert('Reconnecting...'); },
+    onRetry: () => {
+      alert('Reconnecting...');
+    },
   },
 };

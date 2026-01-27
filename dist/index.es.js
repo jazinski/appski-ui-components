@@ -9740,24 +9740,28 @@ function ti({
     }
   }, [$, _, l]), /* @__PURE__ */ R("div", { className: k("w-full space-y-4", b), children: [
     (t || u) && /* @__PURE__ */ R("div", { className: "flex items-center justify-between gap-4", children: [
-      t && /* @__PURE__ */ f("div", { className: "flex-1 max-w-sm", children: /* @__PURE__ */ f(
+      t && /* @__PURE__ */ f("div", { className: "max-w-sm flex-1", children: /* @__PURE__ */ f(
         Ot,
         {
           placeholder: r,
           value: L ?? "",
-          onChange: (F) => P(F.target.value),
+          onChange: (F) => {
+            P(F.target.value);
+          },
           className: "w-full"
         }
       ) }),
       u && /* @__PURE__ */ R("div", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ f("span", { className: "text-sm text-muted-foreground", children: "Columns:" }),
+        /* @__PURE__ */ f("span", { className: "text-muted-foreground text-sm", children: "Columns:" }),
         _.getAllLeafColumns().map((F) => F.id === "select" ? null : /* @__PURE__ */ R("label", { className: "flex items-center gap-2 text-sm", children: [
           /* @__PURE__ */ f(
             "input",
             {
               type: "checkbox",
               checked: F.getIsVisible(),
-              onChange: (T) => F.toggleVisibility(T.target.checked),
+              onChange: (T) => {
+                F.toggleVisibility(T.target.checked);
+              },
               className: "rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-slate-700"
             }
           ),
@@ -9765,12 +9769,12 @@ function ti({
         ] }, F.id))
       ] })
     ] }),
-    /* @__PURE__ */ f("div", { className: "rounded-md border border-slate-200 dark:border-slate-800 overflow-hidden", children: /* @__PURE__ */ f("div", { className: k("overflow-auto", m && "max-h-[600px]"), children: /* @__PURE__ */ R("table", { className: "w-full caption-bottom text-sm", children: [
+    /* @__PURE__ */ f("div", { className: "overflow-hidden rounded-md border border-slate-200 dark:border-slate-800", children: /* @__PURE__ */ f("div", { className: k("overflow-auto", m && "max-h-[600px]"), children: /* @__PURE__ */ R("table", { className: "w-full caption-bottom text-sm", children: [
       /* @__PURE__ */ f(
         "thead",
         {
           className: k(
-            "bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800",
+            "border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900",
             m && "sticky top-0 z-10"
           ),
           children: _.getHeaderGroups().map((F) => /* @__PURE__ */ f("tr", { children: F.headers.map((T) => /* @__PURE__ */ f(
@@ -9796,19 +9800,12 @@ function ti({
           )) }, F.id))
         }
       ),
-      /* @__PURE__ */ f("tbody", { className: "divide-y divide-slate-200 dark:divide-slate-800", children: d ? /* @__PURE__ */ f("tr", { children: /* @__PURE__ */ f(
-        "td",
-        {
-          colSpan: e.length,
-          className: "h-24 text-center text-muted-foreground",
-          children: "Loading..."
-        }
-      ) }) : (W = _.getRowModel().rows) != null && W.length ? _.getRowModel().rows.map((F) => /* @__PURE__ */ f(
+      /* @__PURE__ */ f("tbody", { className: "divide-y divide-slate-200 dark:divide-slate-800", children: d ? /* @__PURE__ */ f("tr", { children: /* @__PURE__ */ f("td", { colSpan: e.length, className: "text-muted-foreground h-24 text-center", children: "Loading..." }) }) : (W = _.getRowModel().rows) != null && W.length ? _.getRowModel().rows.map((F) => /* @__PURE__ */ f(
         "tr",
         {
           "data-state": F.getIsSelected() && "selected",
           className: k(
-            "bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors hover:bg-slate-50 dark:hover:bg-slate-900/50",
+            "border-b border-slate-200 bg-white transition-colors hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900/50",
             F.getIsSelected() && "bg-slate-50 dark:bg-slate-900",
             c && "cursor-pointer",
             g == null ? void 0 : g(F.original)
@@ -9817,17 +9814,10 @@ function ti({
           children: F.getVisibleCells().map((T) => /* @__PURE__ */ f("td", { className: "px-4 py-3 align-middle", children: _t(T.column.columnDef.cell, T.getContext()) }, T.id))
         },
         F.id
-      )) : /* @__PURE__ */ f("tr", { children: /* @__PURE__ */ f(
-        "td",
-        {
-          colSpan: e.length,
-          className: "h-24 text-center text-muted-foreground",
-          children: p
-        }
-      ) }) })
+      )) : /* @__PURE__ */ f("tr", { children: /* @__PURE__ */ f("td", { colSpan: e.length, className: "text-muted-foreground h-24 text-center", children: p }) }) })
     ] }) }) }),
     o && /* @__PURE__ */ R("div", { className: "flex items-center justify-between px-2", children: [
-      /* @__PURE__ */ f("div", { className: "flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300", children: i && /* @__PURE__ */ R("div", { className: "flex-1 text-sm text-muted-foreground", children: [
+      /* @__PURE__ */ f("div", { className: "flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300", children: i && /* @__PURE__ */ R("div", { className: "text-muted-foreground flex-1 text-sm", children: [
         _.getFilteredSelectedRowModel().rows.length,
         " of",
         " ",
@@ -9844,7 +9834,7 @@ function ti({
               onChange: (F) => {
                 _.setPageSize(Number(F.target.value));
               },
-              className: "h-8 w-[70px] rounded-md border border-slate-300 bg-white dark:bg-slate-950 dark:border-slate-700 text-sm",
+              className: "h-8 w-[70px] rounded-md border border-slate-300 bg-white text-sm dark:border-slate-700 dark:bg-slate-950",
               children: s.map((F) => /* @__PURE__ */ f("option", { value: F, children: F }, F))
             }
           )
@@ -9861,7 +9851,9 @@ function ti({
             {
               variant: "outline",
               size: "sm",
-              onClick: () => _.previousPage(),
+              onClick: () => {
+                _.previousPage();
+              },
               disabled: !_.getCanPreviousPage(),
               children: "Previous"
             }
@@ -9871,7 +9863,9 @@ function ti({
             {
               variant: "outline",
               size: "sm",
-              onClick: () => _.nextPage(),
+              onClick: () => {
+                _.nextPage();
+              },
               disabled: !_.getCanNextPage(),
               children: "Next"
             }
@@ -9886,7 +9880,9 @@ function ni(e) {
     X,
     {
       variant: "ghost",
-      onClick: () => n.toggleSorting(n.getIsSorted() === "asc"),
+      onClick: () => {
+        n.toggleSorting(n.getIsSorted() === "asc");
+      },
       className: "-ml-4 h-8",
       children: [
         e,
@@ -9903,7 +9899,9 @@ function ri() {
       {
         type: "checkbox",
         checked: e.getIsAllPageRowsSelected(),
-        onChange: (n) => e.toggleAllPageRowsSelected(n.target.checked),
+        onChange: (n) => {
+          e.toggleAllPageRowsSelected(n.target.checked);
+        },
         "aria-label": "Select all",
         className: "h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-slate-700"
       }
@@ -9913,7 +9911,9 @@ function ri() {
       {
         type: "checkbox",
         checked: e.getIsSelected(),
-        onChange: (n) => e.toggleSelected(n.target.checked),
+        onChange: (n) => {
+          e.toggleSelected(n.target.checked);
+        },
         "aria-label": "Select row",
         className: "h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-slate-700"
       }
@@ -10175,11 +10175,11 @@ function si({
   trend: a,
   ...s
 }) {
-  return /* @__PURE__ */ f(zt, { className: k(Ls({ variant: n, className: e })), ...s, children: /* @__PURE__ */ R("div", { className: "p-6 flex items-start justify-between space-x-4", children: [
+  return /* @__PURE__ */ f(zt, { className: k(Ls({ variant: n, className: e })), ...s, children: /* @__PURE__ */ R("div", { className: "flex items-start justify-between space-x-4 p-6", children: [
     /* @__PURE__ */ R("div", { className: "space-y-1", children: [
       /* @__PURE__ */ f("p", { className: k(Ts({ variant: n })), children: r }),
       /* @__PURE__ */ f("p", { className: k(Vs({ variant: n })), children: o }),
-      a && /* @__PURE__ */ R("div", { className: "flex items-center text-xs mt-2 space-x-1", children: [
+      a && /* @__PURE__ */ R("div", { className: "mt-2 flex items-center space-x-1 text-xs", children: [
         /* @__PURE__ */ f(
           "span",
           {

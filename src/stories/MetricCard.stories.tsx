@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MetricCard } from '../components/ui/metric-card';
-import { 
-  UserIcon, 
-  CurrencyDollarIcon, 
+import {
+  UserIcon,
+  CurrencyDollarIcon,
   ShoppingCartIcon,
-  ChartBarIcon
+  ChartBarIcon,
 } from '@heroicons/react/24/outline';
 
 const meta = {
@@ -65,29 +65,29 @@ export const WithTrendDown: Story = {
 
 export const GridExample: Story = {
   render: () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl">
-      <MetricCard 
+    <div className="grid w-full max-w-6xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <MetricCard
         variant="emerald"
         value="12,345"
         label="Active Users"
         icon={<UserIcon />}
         trend={{ value: '+12%', direction: 'up', label: 'vs last week' }}
       />
-      <MetricCard 
+      <MetricCard
         variant="blue"
         value=",321"
         label="Revenue"
         icon={<CurrencyDollarIcon />}
         trend={{ value: '+8%', direction: 'up', label: 'vs last week' }}
       />
-      <MetricCard 
+      <MetricCard
         variant="purple"
         value="432"
         label="Orders"
         icon={<ShoppingCartIcon />}
         trend={{ value: '-2%', direction: 'down', label: 'vs last week' }}
       />
-      <MetricCard 
+      <MetricCard
         variant="amber"
         value="1,203"
         label="Pending"
