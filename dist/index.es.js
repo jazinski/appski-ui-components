@@ -22998,7 +22998,7 @@ const LS = E.forwardRef(
             {
               mode: f,
               onModeChange: x,
-              onAIClick: S,
+              onAIClick: o ? S : void 0,
               showAI: r
             }
           ),

@@ -110,8 +110,8 @@ function EditorToolbar({
 }: { 
   mode: EditorMode;
   onModeChange: (mode: EditorMode) => void;
-  onAIClick?: () => void;
-  showAI?: boolean;
+  onAIClick?: (() => void) | undefined;
+  showAI?: boolean | undefined;
 }) {
   const [editor] = useLexicalComposerContext();
 
@@ -393,7 +393,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
             <EditorToolbar 
               mode={mode} 
               onModeChange={handleModeChange}
-              onAIClick={handleAIClick}
+              onAIClick={onAIClick ? handleAIClick : undefined}
               showAI={showAI}
             />
             <div className="relative" style={editorHeight}>
