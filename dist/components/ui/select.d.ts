@@ -13,8 +13,8 @@ export interface SelectOption {
     disabled?: boolean;
 }
 export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'>, VariantProps<typeof selectVariants> {
-    /** Array of options for the select */
-    options: SelectOption[];
+    /** Array of options for the select (alternative to children) */
+    options?: SelectOption[];
     /** Label text displayed above the select */
     label?: string;
     /** Placeholder text when no option is selected */
@@ -23,11 +23,15 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
     error?: string;
     /** Helper text displayed below the select (when no error) */
     helperText?: string;
+    /** Custom option elements (alternative to options prop) */
+    children?: React.ReactNode;
 }
 /**
  * Select dropdown component with label and error support.
+ * Supports both controlled options prop or children pattern.
  *
  * @example
+ * // Using options prop
  * <Select
  *   label="Country"
  *   options={[
@@ -35,6 +39,13 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
  *     { value: 'uk', label: 'United Kingdom' },
  *   ]}
  * />
+ *
+ * @example
+ * // Using children
+ * <Select label="Country">
+ *   <option value="us">United States</option>
+ *   <option value="uk">United Kingdom</option>
+ * </Select>
  */
 declare const Select: React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLSelectElement>>;
 export { Select, selectVariants };

@@ -52,8 +52,8 @@ export interface SelectProps
   extends
     Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'>,
     VariantProps<typeof selectVariants> {
-  /** Array of options for the select */
-  options: SelectOption[];
+  /** Array of options for the select (alternative to children) */
+  options?: SelectOption[];
   /** Label text displayed above the select */
   label?: string;
   /** Placeholder text when no option is selected */
@@ -62,12 +62,16 @@ export interface SelectProps
   error?: string;
   /** Helper text displayed below the select (when no error) */
   helperText?: string;
+  /** Custom option elements (alternative to options prop) */
+  children?: React.ReactNode;
 }
 
 /**
  * Select dropdown component with label and error support.
+ * Supports both controlled options prop or children pattern.
  *
  * @example
+ * // Using options prop
  * <Select
  *   label="Country"
  *   options={[
@@ -75,6 +79,13 @@ export interface SelectProps
  *     { value: 'uk', label: 'United Kingdom' },
  *   ]}
  * />
+ *
+ * @example
+ * // Using children
+ * <Select label="Country">
+ *   <option value="us">United States</option>
+ *   <option value="uk">United Kingdom</option>
+ * </Select>
  */
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (
@@ -88,6 +99,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       error,
       helperText,
       id,
+      children,
       ...props
     },
     ref
@@ -99,6 +111,30 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
     const hasError = Boolean(error);
     const effectiveVariant = hasError ? 'error' : variant;
+
+    // Support both options prop and children pattern
+    const renderOptions = () => {
+      if (children) {
+        return children;
+      }
+      if (options) {
+        return (
+          <>
+            {placeholder && (
+              <option value="" disabled>
+                {placeholder}
+              </option>
+            )}
+            {options.map((option) => (
+              <option key={option.value} value={option.value} disabled={option.disabled}>
+                {option.label}
+              </option>
+            ))}
+          </>
+        );
+      }
+      return null;
+    };
 
     return (
       <div className="flex flex-col gap-1.5">
@@ -117,19 +153,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             ref={ref}
             aria-invalid={hasError}
             aria-describedby={hasError ? errorId : helperText ? helperTextId : undefined}
-            defaultValue=""
             {...props}
           >
-            {placeholder && (
-              <option value="" disabled>
-                {placeholder}
-              </option>
-            )}
-            {options.map((option) => (
-              <option key={option.value} value={option.value} disabled={option.disabled}>
-                {option.label}
-              </option>
-            ))}
+            {renderOptions()}
           </select>
           <ChevronDown
             className="text-muted-foreground pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2"
