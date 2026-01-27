@@ -151,3 +151,4 @@ export { MetricCard, type MetricCardProps } from './metric-card';
 export { ConnectionStatus, type ConnectionStatusProps } from './connection-status';
 export { Tooltip, type TooltipProps } from './tooltip';
 export { ConfirmDialog, type ConfirmDialogProps } from './confirm-dialog';
+export { HybridEditor, type HybridEditorProps, type EditorMode } from './hybrid-editor';
