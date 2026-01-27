@@ -2773,7 +2773,7 @@ const br = M(
   {
     variants: {
       variant: {
-        default: "text-foreground",
+        default: "text-slate-900 dark:text-slate-100",
         error: "text-destructive"
       }
     },
@@ -2808,7 +2808,9 @@ const br = M(
             id: g,
             className: k(
               br({ variant: y, selectSize: t, className: e }),
-              "cursor-pointer appearance-none pr-10"
+              "cursor-pointer appearance-none pr-10",
+              // Ensure dropdown options have proper background/text colors
+              "[&>option]:bg-background [&>option]:text-foreground"
             ),
             ref: b,
             "aria-invalid": m,
