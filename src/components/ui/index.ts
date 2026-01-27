@@ -88,6 +88,7 @@ export {
   type SwitchGroupProps,
 } from './switch';
 export { Textarea, textareaVariants, type TextareaProps } from './textarea';
+export { RadioGroup, RadioGroupItem } from './radio-group';
 export {
   ToastProvider,
   ToastItem,

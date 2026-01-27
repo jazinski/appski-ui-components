@@ -212,28 +212,9 @@ export function DataTable<TData, TValue>({
                       key={header.id}
                       className="h-12 px-4 text-left align-middle font-medium text-slate-700 dark:text-slate-300"
                     >
-                      {header.isPlaceholder ? null : (
-                        <div
-                          className={cn(
-                            'flex items-center gap-2',
-                            header.column.getCanSort() && 'cursor-pointer select-none'
-                          )}
-                          onClick={header.column.getToggleSortingHandler()}
-                        >
-                          {flexRender(header.column.columnDef.header, header.getContext())}
-                          {header.column.getCanSort() && (
-                            <div className="flex flex-col">
-                              {header.column.getIsSorted() === 'asc' ? (
-                                <ChevronUp className="h-4 w-4" />
-                              ) : header.column.getIsSorted() === 'desc' ? (
-                                <ChevronDown className="h-4 w-4" />
-                              ) : (
-                                <ArrowUpDown className="h-4 w-4 opacity-50" />
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      )}
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(header.column.columnDef.header, header.getContext())}
                     </th>
                   ))}
                 </tr>
