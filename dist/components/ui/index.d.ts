@@ -26,4 +26,5 @@ export { EmptyState, type EmptyStateProps } from './empty-state';
 export { ErrorState, type ErrorStateProps } from './error-state';
 export { MetricCard, type MetricCardProps } from './metric-card';
 export { ConnectionStatus, type ConnectionStatusProps } from './connection-status';
+export { Tooltip, type TooltipProps } from './tooltip';
 //# sourceMappingURL=index.d.ts.map
