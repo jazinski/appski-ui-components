@@ -27,4 +27,5 @@ export { ErrorState, type ErrorStateProps } from './error-state';
 export { MetricCard, type MetricCardProps } from './metric-card';
 export { ConnectionStatus, type ConnectionStatusProps } from './connection-status';
 export { Tooltip, type TooltipProps } from './tooltip';
+export { ConfirmDialog, type ConfirmDialogProps } from './confirm-dialog';
 //# sourceMappingURL=index.d.ts.map
