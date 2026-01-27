@@ -29,7 +29,7 @@ const labelVariants = cva(
   {
     variants: {
       variant: {
-        default: 'text-slate-900 dark:text-slate-100',
+        default: 'text-foreground',
         error: 'text-destructive',
       },
     },
