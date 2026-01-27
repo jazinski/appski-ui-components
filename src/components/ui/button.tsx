@@ -18,6 +18,8 @@ const buttonVariants = cva(
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80 dark:bg-secondary dark:text-secondary-foreground',
         ghost: 'text-foreground hover:bg-muted',
+        'icon-ghost': 'text-muted-foreground hover:text-foreground transition-colors bg-transparent hover:bg-transparent p-0',
+        toggle: 'text-muted-foreground hover:text-foreground hover:bg-muted/50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',
         link: 'text-primary underline-offset-4 hover:underline',
         // Gradient variants - use theme colors via CSS
         'gradient-purple': 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-md hover:shadow-lg transition-all',
