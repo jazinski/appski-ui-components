@@ -32,8 +32,11 @@ import { FORMAT_TEXT_COMMAND, $getSelection, $isRangeSelection } from 'lexical';
 import { $setBlocksType } from '@lexical/selection';
 import { $createHeadingNode, $createQuoteNode } from '@lexical/rich-text';
 import { INSERT_UNORDERED_LIST_COMMAND } from '@lexical/list';
-import Editor, { OnMount } from '@monaco-editor/react';
+import type { OnMount } from '@monaco-editor/react';
 import type * as Monaco from 'monaco-editor';
+
+// Lazy load Monaco Editor - it's ~1MB and not needed until code mode is activated
+const MonacoEditor = React.lazy(() => import('@monaco-editor/react'));
 import { 
   Code2, 
   Type, 
@@ -459,24 +462,36 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                 </Button>
               )}
             </div>
-            <Editor
-              height={maxHeight || minHeight}
-              defaultLanguage="markdown"
-              value={content}
-              onChange={(value) => { handleContentChange(value || ''); }}
-              onMount={handleMonacoMount}
-              theme={monacoTheme}
-              options={{
-                minimap: { enabled: false },
-                lineNumbers: 'on',
-                wordWrap: 'on',
-                fontSize: 14,
-                padding: { top: 12, bottom: 12 },
-                scrollBeyondLastLine: false,
-                automaticLayout: true,
-                readOnly: disabled,
-              }}
-            />
+            <React.Suspense fallback={
+              <div 
+                className="flex items-center justify-center bg-slate-900 text-slate-400"
+                style={{ height: maxHeight || minHeight }}
+              >
+                <div className="text-center">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-slate-600 border-t-purple-500 mb-2"></div>
+                  <p className="text-sm">Loading editor...</p>
+                </div>
+              </div>
+            }>
+              <MonacoEditor
+                height={maxHeight || minHeight}
+                defaultLanguage="markdown"
+                value={content}
+                onChange={(value: string | undefined) => { handleContentChange(value || ''); }}
+                onMount={handleMonacoMount}
+                theme={monacoTheme}
+                options={{
+                  minimap: { enabled: false },
+                  lineNumbers: 'on',
+                  wordWrap: 'on',
+                  fontSize: 14,
+                  padding: { top: 12, bottom: 12 },
+                  scrollBeyondLastLine: false,
+                  automaticLayout: true,
+                  readOnly: disabled,
+                }}
+              />
+            </React.Suspense>
           </>
         )}
       </div>
