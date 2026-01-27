@@ -148,7 +148,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             id={selectId}
             className={cn(
               selectVariants({ variant: effectiveVariant, selectSize, className }),
-              'cursor-pointer appearance-none pr-10'
+              'cursor-pointer appearance-none pr-10',
+              // Ensure dropdown options have proper background/text colors
+              '[&>option]:bg-background [&>option]:text-foreground'
             )}
             ref={ref}
             aria-invalid={hasError}

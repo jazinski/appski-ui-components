@@ -260,4 +260,18 @@
   .dark ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(100 116 139); /* slate-500 */
   }
+
+  /* Select dropdown options styling for dark mode */
+  select option {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  /* Firefox-specific option styling */
+  @-moz-document url-prefix() {
+    select option {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+  }
 }
