@@ -3,6 +3,7 @@ import * as React from 'react';
 declare const cardVariants: (props?: ({
     variant?: "default" | "outline" | "ghost" | "elevated" | null | undefined;
     padding?: "default" | "sm" | "lg" | "none" | null | undefined;
+    status?: "default" | "active" | "inactive" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
 }
@@ -10,6 +11,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, Variant
  * Card container component for grouping related content.
  *
  * @example
+ * // Basic card
  * <Card>
  *   <CardHeader>
  *     <CardTitle>Title</CardTitle>
@@ -18,6 +20,14 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, Variant
  *   <CardContent>Content goes here</CardContent>
  *   <CardFooter>Footer actions</CardFooter>
  * </Card>
+ *
+ * @example
+ * // Card with active status (pink left border accent)
+ * <Card status="active">...</Card>
+ *
+ * @example
+ * // Card with inactive status (gray left border accent)
+ * <Card status="inactive">...</Card>
  */
 declare const Card: React.ForwardRefExoticComponent<CardProps & React.RefAttributes<HTMLDivElement>>;
 export type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>;

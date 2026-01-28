@@ -16,10 +16,20 @@ const cardVariants = cva('rounded-lg border bg-card text-card-foreground', {
       sm: '',
       lg: '',
     },
+    /**
+     * Status variant for active/inactive card states.
+     * Uses left border accent for clear visual distinction.
+     */
+    status: {
+      default: '',
+      active: 'border-l-4 border-l-primary',
+      inactive: 'border-l-4 border-l-muted-foreground/30',
+    },
   },
   defaultVariants: {
     variant: 'default',
     padding: 'default',
+    status: 'default',
   },
 });
 
@@ -30,6 +40,7 @@ export interface CardProps
  * Card container component for grouping related content.
  *
  * @example
+ * // Basic card
  * <Card>
  *   <CardHeader>
  *     <CardTitle>Title</CardTitle>
@@ -38,10 +49,18 @@ export interface CardProps
  *   <CardContent>Content goes here</CardContent>
  *   <CardFooter>Footer actions</CardFooter>
  * </Card>
+ *
+ * @example
+ * // Card with active status (pink left border accent)
+ * <Card status="active">...</Card>
+ *
+ * @example
+ * // Card with inactive status (gray left border accent)
+ * <Card status="inactive">...</Card>
  */
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, ...props }, ref) => (
-    <div ref={ref} className={cn(cardVariants({ variant, className }))} {...props} />
+  ({ className, variant, status, ...props }, ref) => (
+    <div ref={ref} className={cn(cardVariants({ variant, status, className }))} {...props} />
   )
 );
 Card.displayName = 'Card';

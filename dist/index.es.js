@@ -2982,14 +2982,24 @@ const Np = Q("rounded-lg border bg-card text-card-foreground", {
       none: "",
       sm: "",
       lg: ""
+    },
+    /**
+     * Status variant for active/inactive card states.
+     * Uses left border accent for clear visual distinction.
+     */
+    status: {
+      default: "",
+      active: "border-l-4 border-l-primary",
+      inactive: "border-l-4 border-l-muted-foreground/30"
     }
   },
   defaultVariants: {
     variant: "default",
-    padding: "default"
+    padding: "default",
+    status: "default"
   }
 }), qu = C.forwardRef(
-  ({ className: e, variant: n, ...t }, r) => /* @__PURE__ */ x("div", { ref: r, className: P(Np({ variant: n, className: e })), ...t })
+  ({ className: e, variant: n, status: t, ...r }, o) => /* @__PURE__ */ x("div", { ref: o, className: P(Np({ variant: n, status: t, className: e })), ...r })
 );
 qu.displayName = "Card";
 const Rp = C.forwardRef(

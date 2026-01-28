@@ -14,6 +14,11 @@ const meta: Meta<typeof Card> = {
       control: 'select',
       options: ['default', 'outline', 'elevated', 'ghost'],
     },
+    status: {
+      control: 'select',
+      options: ['default', 'active', 'inactive'],
+      description: 'Status indicator with left border accent',
+    },
   },
 };
 
@@ -134,6 +139,77 @@ export const AllVariants: Story = {
         </CardHeader>
         <CardContent>Ghost variant</CardContent>
       </Card>
+    </div>
+  ),
+};
+
+export const ActiveStatus: Story = {
+  render: () => (
+    <Card status="active" className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Active Card</CardTitle>
+        <CardDescription>This card has an active status with a colored left border.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Use the status prop to indicate active/inactive states without changing the card's overall appearance.</p>
+      </CardContent>
+      <CardFooter>
+        <Button>Action</Button>
+      </CardFooter>
+    </Card>
+  ),
+};
+
+export const InactiveStatus: Story = {
+  render: () => (
+    <Card status="inactive" className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Inactive Card</CardTitle>
+        <CardDescription>This card has an inactive status with a muted left border.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>The inactive status provides a subtle visual distinction without making the card look washed out.</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="outline">Action</Button>
+      </CardFooter>
+    </Card>
+  ),
+};
+
+export const StatusComparison: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <h3 className="text-lg font-semibold text-foreground">Status Variants for Active/Inactive States</h3>
+      <div className="flex flex-wrap gap-4">
+        <Card status="active" className="w-[280px]">
+          <CardHeader>
+            <CardTitle className="text-base">Active Agent</CardTitle>
+            <CardDescription>Enabled and running</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">This agent is currently active and processing requests.</p>
+          </CardContent>
+        </Card>
+        <Card status="inactive" className="w-[280px]">
+          <CardHeader>
+            <CardTitle className="text-base">Inactive Agent</CardTitle>
+            <CardDescription>Disabled</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">This agent is currently disabled and not processing requests.</p>
+          </CardContent>
+        </Card>
+        <Card className="w-[280px]">
+          <CardHeader>
+            <CardTitle className="text-base">Default Card</CardTitle>
+            <CardDescription>No status</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">This card has no status indicator.</p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   ),
 };
