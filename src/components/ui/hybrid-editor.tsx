@@ -266,14 +266,24 @@ function MarkdownSyncPlugin({
   setIsInitialized: (value: boolean) => void;
 }) {
   const [editor] = useLexicalComposerContext();
+  // Track if we're currently initializing to prevent onChange during init
+  const isInitializingRef = React.useRef(false);
 
   // Initialize content from value prop
   React.useEffect(() => {
     if (!isInitialized && value) {
+      isInitializingRef.current = true;
       editor.update(() => {
         $convertFromMarkdownString(value, TRANSFORMERS);
+      }, {
+        // Use discrete update to batch this and prevent intermediate onChange
+        discrete: true,
       });
-      setIsInitialized(true);
+      // Small delay to ensure the update completes before allowing onChange
+      requestAnimationFrame(() => {
+        isInitializingRef.current = false;
+        setIsInitialized(true);
+      });
     }
   }, [editor, value, isInitialized, setIsInitialized]);
 
@@ -281,7 +291,12 @@ function MarkdownSyncPlugin({
   React.useEffect(() => {
     if (!onChange) return;
 
-    return editor.registerUpdateListener(({ editorState }) => {
+    return editor.registerUpdateListener(({ editorState, tags }) => {
+      // Skip onChange during initialization to prevent content loss
+      if (isInitializingRef.current) return;
+      // Skip if this is an initialization tag
+      if (tags.has('history-merge')) return;
+      
       editorState.read(() => {
         const markdown = $convertToMarkdownString(TRANSFORMERS);
         onChange(markdown);
@@ -315,6 +330,8 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     const [mode, setMode] = React.useState<EditorMode>(initialMode);
     const [content, setContent] = React.useState(value);
     const [isInitialized, setIsInitialized] = React.useState(false);
+    // Key counter to force LexicalComposer remount when switching to rich mode
+    const [lexicalKey, setLexicalKey] = React.useState(0);
     const monacoEditorRef = React.useRef<Monaco.editor.IStandaloneCodeEditor | null>(null);
 
     // Update content when value prop changes (external controlled updates)
@@ -331,10 +348,11 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     }, [onChange]);
 
     const handleModeChange = React.useCallback((newMode: EditorMode) => {
-      // When switching to rich mode, reset isInitialized so the Lexical editor
-      // re-initializes with the current content (fixes data loss on mode toggle)
+      // When switching to rich mode, reset isInitialized and increment key
+      // to force a complete remount of LexicalComposer with current content
       if (newMode === 'rich') {
         setIsInitialized(false);
+        setLexicalKey(k => k + 1);
       }
       setMode(newMode);
     }, []);
@@ -397,7 +415,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
         )}
       >
         {mode === 'rich' ? (
-          <LexicalComposer initialConfig={initialConfig}>
+          <LexicalComposer key={lexicalKey} initialConfig={initialConfig}>
             <EditorToolbar 
               mode={mode} 
               onModeChange={handleModeChange}
