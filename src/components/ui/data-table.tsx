@@ -274,13 +274,17 @@ export function DataTable<TData, TValue>({
           <div className="flex items-center gap-6">
             {/* Page Size Selector */}
             <div className="flex items-center gap-2">
-              <span className="text-sm text-slate-700 dark:text-slate-300">Rows per page</span>
+              <label htmlFor="rows-per-page" className="text-sm text-slate-700 dark:text-slate-300">
+                Rows per page
+              </label>
               <select
+                id="rows-per-page"
                 value={table.getState().pagination.pageSize.toString()}
                 onChange={(e) => {
                   table.setPageSize(Number(e.target.value));
                 }}
                 className="h-8 w-[70px] rounded-md border border-slate-300 bg-white text-sm dark:border-slate-700 dark:bg-slate-950"
+                aria-label="Rows per page"
               >
                 {pageSizeOptions.map((size) => (
                   <option key={size} value={size}>

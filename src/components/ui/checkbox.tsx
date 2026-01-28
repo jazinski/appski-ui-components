@@ -148,6 +148,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             className="sr-only"
             aria-invalid={error ? 'true' : undefined}
             aria-describedby={description || error ? `${checkboxId}-description` : undefined}
+            aria-label={!label && props['aria-label'] ? props['aria-label'] : undefined}
             {...props}
           />
           <div
