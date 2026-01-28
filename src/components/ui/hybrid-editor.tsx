@@ -331,6 +331,11 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     }, [onChange]);
 
     const handleModeChange = React.useCallback((newMode: EditorMode) => {
+      // When switching to rich mode, reset isInitialized so the Lexical editor
+      // re-initializes with the current content (fixes data loss on mode toggle)
+      if (newMode === 'rich') {
+        setIsInitialized(false);
+      }
       setMode(newMode);
     }, []);
 
