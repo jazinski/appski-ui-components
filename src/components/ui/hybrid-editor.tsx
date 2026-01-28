@@ -335,8 +335,8 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     const monacoEditorRef = React.useRef<Monaco.editor.IStandaloneCodeEditor | null>(null);
 
     // Define custom Monaco theme for better markdown visibility in dark mode
-    const handleMonacoBeforeMount: BeforeMount = (monaco) => {
-      monaco.editor.defineTheme('appski-dark', {
+    const handleMonacoBeforeMount: BeforeMount = (monacoInstance: typeof Monaco) => {
+      monacoInstance.editor.defineTheme('appski-dark', {
         base: 'vs-dark',
         inherit: true,
         rules: [
