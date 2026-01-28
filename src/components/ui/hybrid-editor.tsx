@@ -79,17 +79,17 @@ export interface HybridEditorProps {
   monacoTheme?: 'vs-dark' | 'vs-light';
 }
 
-// Lexical editor theme
+// Lexical editor theme - with explicit dark mode text colors for visibility
 const theme = {
-  paragraph: 'mb-2 last:mb-0',
+  paragraph: 'mb-2 last:mb-0 text-slate-900 dark:text-slate-100',
   heading: {
-    h1: 'text-3xl font-bold mb-4 mt-6 first:mt-0',
-    h2: 'text-2xl font-bold mb-3 mt-5 first:mt-0',
-    h3: 'text-xl font-bold mb-2 mt-4 first:mt-0',
+    h1: 'text-3xl font-bold mb-4 mt-6 first:mt-0 text-slate-900 dark:text-white',
+    h2: 'text-2xl font-bold mb-3 mt-5 first:mt-0 text-slate-900 dark:text-white',
+    h3: 'text-xl font-bold mb-2 mt-4 first:mt-0 text-slate-900 dark:text-slate-100',
   },
   list: {
-    ul: 'list-disc list-inside mb-2 ml-4',
-    ol: 'list-decimal list-inside mb-2 ml-4',
+    ul: 'list-disc list-inside mb-2 ml-4 text-slate-900 dark:text-slate-100',
+    ol: 'list-decimal list-inside mb-2 ml-4 text-slate-900 dark:text-slate-100',
     listitem: 'mb-1',
   },
   link: 'text-primary hover:underline cursor-pointer',
@@ -98,10 +98,10 @@ const theme = {
     italic: 'italic',
     underline: 'underline',
     strikethrough: 'line-through',
-    code: 'bg-muted px-1.5 py-0.5 rounded font-mono text-sm',
+    code: 'bg-muted text-slate-900 dark:text-slate-100 px-1.5 py-0.5 rounded font-mono text-sm',
   },
-  code: 'bg-muted p-4 rounded-lg font-mono text-sm block my-4',
-  quote: 'border-l-4 border-primary pl-4 italic my-4',
+  code: 'bg-muted text-slate-900 dark:text-slate-100 p-4 rounded-lg font-mono text-sm block my-4',
+  quote: 'border-l-4 border-primary pl-4 italic my-4 text-slate-700 dark:text-slate-300',
 };
 
 // Toolbar Component
@@ -467,7 +467,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
               <RichTextPlugin
                 contentEditable={
                   <ContentEditable 
-                    className="outline-none px-4 py-3 prose prose-sm max-w-none dark:prose-invert"
+                    className="outline-none px-4 py-3 prose prose-sm max-w-none dark:prose-invert text-slate-900 dark:text-slate-100"
                     style={{ minHeight }}
                   />
                 }
