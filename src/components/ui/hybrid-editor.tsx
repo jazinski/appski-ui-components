@@ -32,7 +32,7 @@ import { FORMAT_TEXT_COMMAND, $getSelection, $isRangeSelection } from 'lexical';
 import { $setBlocksType } from '@lexical/selection';
 import { $createHeadingNode, $createQuoteNode } from '@lexical/rich-text';
 import { INSERT_UNORDERED_LIST_COMMAND } from '@lexical/list';
-import type { OnMount } from '@monaco-editor/react';
+import type { OnMount, BeforeMount } from '@monaco-editor/react';
 import type * as Monaco from 'monaco-editor';
 
 // Lazy load Monaco Editor - it's ~1MB and not needed until code mode is activated
@@ -334,6 +334,34 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     const [lexicalKey, setLexicalKey] = React.useState(0);
     const monacoEditorRef = React.useRef<Monaco.editor.IStandaloneCodeEditor | null>(null);
 
+    // Define custom Monaco theme for better markdown visibility in dark mode
+    const handleMonacoBeforeMount: BeforeMount = (monaco) => {
+      monaco.editor.defineTheme('appski-dark', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [
+          // Markdown headings - make them bright and visible
+          { token: 'markup.heading', foreground: 'e5c07b', fontStyle: 'bold' },
+          { token: 'markup.heading.1', foreground: 'c678dd', fontStyle: 'bold' },
+          { token: 'markup.heading.2', foreground: 'c678dd', fontStyle: 'bold' },
+          { token: 'markup.heading.3', foreground: 'c678dd', fontStyle: 'bold' },
+          { token: 'entity.name.section', foreground: 'c678dd', fontStyle: 'bold' },
+          // Alternative token names Monaco might use
+          { token: 'keyword.md', foreground: 'c678dd' },
+          { token: 'string.link.md', foreground: '61afef' },
+          { token: 'variable.md', foreground: 'e06c75' },
+          { token: 'emphasis.md', foreground: 'd4d4d4', fontStyle: 'italic' },
+          { token: 'strong.md', foreground: 'd4d4d4', fontStyle: 'bold' },
+          // Generic text should be clearly visible
+          { token: '', foreground: 'd4d4d4' },
+        ],
+        colors: {
+          'editor.background': '#1e1e2e',
+          'editor.foreground': '#d4d4d4',
+        },
+      });
+    };
+
     // Update content when value prop changes (external controlled updates)
     React.useEffect(() => {
       if (value !== content) {
@@ -501,8 +529,9 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                 defaultLanguage="markdown"
                 value={content}
                 onChange={(value: string | undefined) => { handleContentChange(value || ''); }}
+                beforeMount={handleMonacoBeforeMount}
                 onMount={handleMonacoMount}
-                theme={monacoTheme}
+                theme={monacoTheme === 'vs-dark' ? 'appski-dark' : monacoTheme}
                 options={{
                   minimap: { enabled: false },
                   lineNumbers: 'on',

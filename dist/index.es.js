@@ -655,7 +655,7 @@ const de = (e) => {
   // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
   op.test(e) && !ip.test(e)
 ), Ku = () => !1, mp = (e) => sp.test(e), yp = (e) => ap.test(e), bp = () => {
-  const e = de("colors"), n = de("spacing"), t = de("blur"), r = de("brightness"), o = de("borderColor"), i = de("borderRadius"), s = de("borderSpacing"), a = de("borderWidth"), l = de("contrast"), u = de("grayscale"), c = de("hueRotate"), d = de("invert"), f = de("gap"), p = de("gradientColorStops"), g = de("gradientColorStopPositions"), h = de("inset"), m = de("margin"), v = de("opacity"), y = de("padding"), b = de("saturate"), _ = de("scale"), w = de("sepia"), S = de("skew"), k = de("space"), N = de("translate"), E = () => ["auto", "contain", "none"], T = () => ["auto", "hidden", "clip", "visible", "scroll"], F = () => ["auto", Y, n], I = () => [Y, n], j = () => ["", ht, Rt], D = () => ["auto", Tn, Y], V = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], Z = () => ["solid", "dashed", "dotted", "double", "none"], W = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], J = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], ne = () => ["", "0", Y], se = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], ce = () => [Tn, Y];
+  const e = de("colors"), n = de("spacing"), t = de("blur"), r = de("brightness"), o = de("borderColor"), i = de("borderRadius"), s = de("borderSpacing"), a = de("borderWidth"), l = de("contrast"), u = de("grayscale"), c = de("hueRotate"), d = de("invert"), f = de("gap"), p = de("gradientColorStops"), g = de("gradientColorStopPositions"), h = de("inset"), m = de("margin"), v = de("opacity"), y = de("padding"), b = de("saturate"), _ = de("scale"), w = de("sepia"), S = de("skew"), k = de("space"), N = de("translate"), E = () => ["auto", "contain", "none"], T = () => ["auto", "hidden", "clip", "visible", "scroll"], O = () => ["auto", Y, n], F = () => [Y, n], j = () => ["", ht, Rt], D = () => ["auto", Tn, Y], V = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], Z = () => ["solid", "dashed", "dotted", "double", "none"], W = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], J = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], ne = () => ["", "0", Y], se = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], ce = () => [Tn, Y];
   return {
     cacheSize: 500,
     separator: ":",
@@ -666,25 +666,25 @@ const de = (e) => {
       brightness: ce(),
       borderColor: [e],
       borderRadius: ["none", "", "full", At, Y],
-      borderSpacing: I(),
+      borderSpacing: F(),
       borderWidth: j(),
       contrast: ce(),
       grayscale: ne(),
       hueRotate: ce(),
       invert: ne(),
-      gap: I(),
+      gap: F(),
       gradientColorStops: [e],
       gradientColorStopPositions: [lp, Rt],
-      inset: F(),
-      margin: F(),
+      inset: O(),
+      margin: O(),
       opacity: ce(),
-      padding: I(),
+      padding: F(),
       saturate: ce(),
       scale: ce(),
       sepia: ne(),
       skew: ce(),
-      space: I(),
-      translate: I()
+      space: F(),
+      translate: F()
     },
     classGroups: {
       // Layout
@@ -908,7 +908,7 @@ const de = (e) => {
        * @see https://tailwindcss.com/docs/flex-basis
        */
       basis: [{
-        basis: F()
+        basis: O()
       }],
       /**
        * Flex Direction
@@ -1515,7 +1515,7 @@ const de = (e) => {
        * @see https://tailwindcss.com/docs/text-indent
        */
       indent: [{
-        indent: I()
+        indent: F()
       }],
       /**
        * Vertical Alignment
@@ -2406,126 +2406,126 @@ const de = (e) => {
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-m": [{
-        "scroll-m": I()
+        "scroll-m": F()
       }],
       /**
        * Scroll Margin X
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mx": [{
-        "scroll-mx": I()
+        "scroll-mx": F()
       }],
       /**
        * Scroll Margin Y
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-my": [{
-        "scroll-my": I()
+        "scroll-my": F()
       }],
       /**
        * Scroll Margin Start
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-ms": [{
-        "scroll-ms": I()
+        "scroll-ms": F()
       }],
       /**
        * Scroll Margin End
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-me": [{
-        "scroll-me": I()
+        "scroll-me": F()
       }],
       /**
        * Scroll Margin Top
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mt": [{
-        "scroll-mt": I()
+        "scroll-mt": F()
       }],
       /**
        * Scroll Margin Right
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mr": [{
-        "scroll-mr": I()
+        "scroll-mr": F()
       }],
       /**
        * Scroll Margin Bottom
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mb": [{
-        "scroll-mb": I()
+        "scroll-mb": F()
       }],
       /**
        * Scroll Margin Left
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-ml": [{
-        "scroll-ml": I()
+        "scroll-ml": F()
       }],
       /**
        * Scroll Padding
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-p": [{
-        "scroll-p": I()
+        "scroll-p": F()
       }],
       /**
        * Scroll Padding X
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-px": [{
-        "scroll-px": I()
+        "scroll-px": F()
       }],
       /**
        * Scroll Padding Y
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-py": [{
-        "scroll-py": I()
+        "scroll-py": F()
       }],
       /**
        * Scroll Padding Start
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-ps": [{
-        "scroll-ps": I()
+        "scroll-ps": F()
       }],
       /**
        * Scroll Padding End
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pe": [{
-        "scroll-pe": I()
+        "scroll-pe": F()
       }],
       /**
        * Scroll Padding Top
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pt": [{
-        "scroll-pt": I()
+        "scroll-pt": F()
       }],
       /**
        * Scroll Padding Right
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pr": [{
-        "scroll-pr": I()
+        "scroll-pr": F()
       }],
       /**
        * Scroll Padding Bottom
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pb": [{
-        "scroll-pb": I()
+        "scroll-pb": F()
       }],
       /**
        * Scroll Padding Left
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pl": [{
-        "scroll-pl": I()
+        "scroll-pl": F()
       }],
       /**
        * Scroll Snap Align
@@ -4065,10 +4065,10 @@ const bh = Q(
   }, h) => {
     const [m, v] = C.useState(o), y = C.useId(), b = r !== void 0, _ = b ? r : m, w = () => {
       if (u) return;
-      const I = !_;
-      b || v(I), i == null || i(I);
-    }, S = (I) => {
-      (I.key === " " || I.key === "Enter") && (I.preventDefault(), w());
+      const F = !_;
+      b || v(F), i == null || i(F);
+    }, S = (F) => {
+      (F.key === " " || F.key === "Enter") && (F.preventDefault(), w());
     }, k = p ?? y, N = _ ? "checked" : "unchecked", E = /* @__PURE__ */ x(
       "button",
       {
@@ -4106,7 +4106,7 @@ const bh = Q(
         T,
         E
       ] });
-    const F = /* @__PURE__ */ L("div", { className: "flex flex-col", children: [
+    const O = /* @__PURE__ */ L("div", { className: "flex flex-col", children: [
       s && /* @__PURE__ */ L(
         "label",
         {
@@ -4132,9 +4132,9 @@ const bh = Q(
     ] });
     return /* @__PURE__ */ L("div", { className: "flex items-center gap-3", children: [
       T,
-      l === "left" && F,
+      l === "left" && O,
       E,
-      l === "right" && F
+      l === "right" && O
     ] });
   }
 );
@@ -4205,7 +4205,7 @@ const wh = Q(
   }, _) => {
     const [w, S] = C.useState(
       g !== void 0 ? g : h || ""
-    ), k = C.useRef(null), N = g !== void 0, E = N ? g : w, T = String(E || "").length, F = C.useCallback(() => {
+    ), k = C.useRef(null), N = g !== void 0, E = N ? g : w, T = String(E || "").length, O = C.useCallback(() => {
       if (!u || !k.current) return;
       const W = k.current;
       W.style.height = "auto";
@@ -4213,15 +4213,15 @@ const wh = Q(
       W.style.height = `${String(je)}px`;
     }, [u, c, d]);
     C.useEffect(() => {
-      u && F();
-    }, [E, u, F]);
-    const I = C.useCallback(
+      u && O();
+    }, [E, u, O]);
+    const F = C.useCallback(
       (W) => {
         k.current = W, typeof _ == "function" ? _(W) : _ && (_.current = W);
       },
       [_]
     ), j = (W) => {
-      N || S(W.target.value), m == null || m(W), u && F();
+      N || S(W.target.value), m == null || m(W), u && O();
     }, D = !!s, V = D ? "destructive" : n, Z = l !== void 0 && T > l;
     return /* @__PURE__ */ L("div", { className: P("w-full", f), children: [
       o && /* @__PURE__ */ L(
@@ -4242,7 +4242,7 @@ const wh = Q(
       /* @__PURE__ */ x("div", { className: "relative", children: /* @__PURE__ */ x(
         "textarea",
         {
-          ref: I,
+          ref: F,
           className: P(
             wh({
               variant: V,
@@ -4630,7 +4630,7 @@ var Hh = C.forwardRef((e, n) => {
             if (N.target === N.currentTarget && E && !v) {
               const T = new CustomEvent(ri, Bh);
               if (N.currentTarget.dispatchEvent(T), !T.defaultPrevented) {
-                const F = _().filter((Z) => Z.focusable), I = F.find((Z) => Z.active), j = F.find((Z) => Z.id === h), V = [I, j, ...F].filter(
+                const O = _().filter((Z) => Z.focusable), F = O.find((Z) => Z.active), j = O.find((Z) => Z.id === h), V = [F, j, ...O].filter(
                   Boolean
                 ).map((Z) => Z.ref.current);
                 yc(V, c);
@@ -6240,10 +6240,10 @@ var Am = Object.create, Io = Object.defineProperty, Fm = Object.defineProperties
             for (var S = 0; S < w.length; ++S) {
               if (b && b.cause == _ + "," + S)
                 return;
-              var k = w[S], N = k.inside, E = !!k.lookbehind, T = !!k.greedy, F = k.alias;
+              var k = w[S], N = k.inside, E = !!k.lookbehind, T = !!k.greedy, O = k.alias;
               if (T && !k.pattern.global) {
-                var I = k.pattern.toString().match(/[imsuy]*$/)[0];
-                k.pattern = RegExp(k.pattern.source, I + "g");
+                var F = k.pattern.toString().match(/[imsuy]*$/)[0];
+                k.pattern = RegExp(k.pattern.source, F + "g");
               }
               for (var j = k.pattern || k, D = v.next, V = y; D !== h.tail && !(b && V >= b.reach); V += D.value.length, D = D.next) {
                 var Z = D.value;
@@ -6268,7 +6268,7 @@ var Am = Object.create, Io = Object.defineProperty, Fm = Object.defineProperties
                   b && Ce > b.reach && (b.reach = Ce);
                   var Le = D.prev;
                   Se && (Le = d(h, Le, Se), V += Se.length), f(h, Le, W);
-                  var Ze = new a(_, N ? s.tokenize(je, N) : je, F, je);
+                  var Ze = new a(_, N ? s.tokenize(je, N) : je, O, je);
                   if (D = d(h, Le, Ze), Pe && d(h, D, Pe), W > 1) {
                     var Je = {
                       cause: _ + "," + S,
@@ -6303,23 +6303,23 @@ var Am = Object.create, Io = Object.defineProperty, Fm = Object.defineProperties
     })();
     n.exports = t, t.default = t;
   }
-}), O = Dm(zm());
-O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy: !0 }, prolog: { pattern: /<\?[\s\S]+?\?>/, greedy: !0 }, doctype: { pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i, greedy: !0, inside: { "internal-subset": { pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/, lookbehind: !0, greedy: !0, inside: null }, string: { pattern: /"[^"]*"|'[^']*'/, greedy: !0 }, punctuation: /^<!|>$|[[\]]/, "doctype-tag": /^DOCTYPE/i, name: /[^\s<>'"]+/ } }, cdata: { pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i, greedy: !0 }, tag: { pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/, greedy: !0, inside: { tag: { pattern: /^<\/?[^\s>\/]+/, inside: { punctuation: /^<\/?/, namespace: /^[^\s>\/:]+:/ } }, "special-attr": [], "attr-value": { pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/, inside: { punctuation: [{ pattern: /^=/, alias: "attr-equals" }, { pattern: /^(\s*)["']|["']$/, lookbehind: !0 }] } }, punctuation: /\/?>/, "attr-name": { pattern: /[^\s>\/]+/, inside: { namespace: /^[^\s>\/:]+:/ } } } }, entity: [{ pattern: /&[\da-z]{1,8};/i, alias: "named-entity" }, /&#x?[\da-f]{1,8};/i] }, O.languages.markup.tag.inside["attr-value"].inside.entity = O.languages.markup.entity, O.languages.markup.doctype.inside["internal-subset"].inside = O.languages.markup, O.hooks.add("wrap", function(e) {
+}), I = Dm(zm());
+I.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy: !0 }, prolog: { pattern: /<\?[\s\S]+?\?>/, greedy: !0 }, doctype: { pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i, greedy: !0, inside: { "internal-subset": { pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/, lookbehind: !0, greedy: !0, inside: null }, string: { pattern: /"[^"]*"|'[^']*'/, greedy: !0 }, punctuation: /^<!|>$|[[\]]/, "doctype-tag": /^DOCTYPE/i, name: /[^\s<>'"]+/ } }, cdata: { pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i, greedy: !0 }, tag: { pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/, greedy: !0, inside: { tag: { pattern: /^<\/?[^\s>\/]+/, inside: { punctuation: /^<\/?/, namespace: /^[^\s>\/:]+:/ } }, "special-attr": [], "attr-value": { pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/, inside: { punctuation: [{ pattern: /^=/, alias: "attr-equals" }, { pattern: /^(\s*)["']|["']$/, lookbehind: !0 }] } }, punctuation: /\/?>/, "attr-name": { pattern: /[^\s>\/]+/, inside: { namespace: /^[^\s>\/:]+:/ } } } }, entity: [{ pattern: /&[\da-z]{1,8};/i, alias: "named-entity" }, /&#x?[\da-f]{1,8};/i] }, I.languages.markup.tag.inside["attr-value"].inside.entity = I.languages.markup.entity, I.languages.markup.doctype.inside["internal-subset"].inside = I.languages.markup, I.hooks.add("wrap", function(e) {
   e.type === "entity" && (e.attributes.title = e.content.replace(/&amp;/, "&"));
-}), Object.defineProperty(O.languages.markup.tag, "addInlined", { value: function(e, r) {
-  var t = {}, t = (t["language-" + r] = { pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i, lookbehind: !0, inside: O.languages[r] }, t.cdata = /^<!\[CDATA\[|\]\]>$/i, { "included-cdata": { pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i, inside: t } }), r = (t["language-" + r] = { pattern: /[\s\S]+/, inside: O.languages[r] }, {});
+}), Object.defineProperty(I.languages.markup.tag, "addInlined", { value: function(e, r) {
+  var t = {}, t = (t["language-" + r] = { pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i, lookbehind: !0, inside: I.languages[r] }, t.cdata = /^<!\[CDATA\[|\]\]>$/i, { "included-cdata": { pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i, inside: t } }), r = (t["language-" + r] = { pattern: /[\s\S]+/, inside: I.languages[r] }, {});
   r[e] = { pattern: RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function() {
     return e;
-  }), "i"), lookbehind: !0, greedy: !0, inside: t }, O.languages.insertBefore("markup", "cdata", r);
-} }), Object.defineProperty(O.languages.markup.tag, "addAttribute", { value: function(e, n) {
-  O.languages.markup.tag.inside["special-attr"].push({ pattern: RegExp(/(^|["'\s])/.source + "(?:" + e + ")" + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source, "i"), lookbehind: !0, inside: { "attr-name": /^[^\s=]+/, "attr-value": { pattern: /=[\s\S]+/, inside: { value: { pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/, lookbehind: !0, alias: [n, "language-" + n], inside: O.languages[n] }, punctuation: [{ pattern: /^=/, alias: "attr-equals" }, /"|'/] } } } });
-} }), O.languages.html = O.languages.markup, O.languages.mathml = O.languages.markup, O.languages.svg = O.languages.markup, O.languages.xml = O.languages.extend("markup", {}), O.languages.ssml = O.languages.xml, O.languages.atom = O.languages.xml, O.languages.rss = O.languages.xml, (function(e) {
+  }), "i"), lookbehind: !0, greedy: !0, inside: t }, I.languages.insertBefore("markup", "cdata", r);
+} }), Object.defineProperty(I.languages.markup.tag, "addAttribute", { value: function(e, n) {
+  I.languages.markup.tag.inside["special-attr"].push({ pattern: RegExp(/(^|["'\s])/.source + "(?:" + e + ")" + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source, "i"), lookbehind: !0, inside: { "attr-name": /^[^\s=]+/, "attr-value": { pattern: /=[\s\S]+/, inside: { value: { pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/, lookbehind: !0, alias: [n, "language-" + n], inside: I.languages[n] }, punctuation: [{ pattern: /^=/, alias: "attr-equals" }, /"|'/] } } } });
+} }), I.languages.html = I.languages.markup, I.languages.mathml = I.languages.markup, I.languages.svg = I.languages.markup, I.languages.xml = I.languages.extend("markup", {}), I.languages.ssml = I.languages.xml, I.languages.atom = I.languages.xml, I.languages.rss = I.languages.xml, (function(e) {
   var n = { pattern: /\\[\\(){}[\]^$+*?|.]/, alias: "escape" }, t = /\\(?:x[\da-fA-F]{2}|u[\da-fA-F]{4}|u\{[\da-fA-F]+\}|0[0-7]{0,2}|[123][0-7]{2}|c[a-zA-Z]|.)/, r = "(?:[^\\\\-]|" + t.source + ")", r = RegExp(r + "-" + r), o = { pattern: /(<|')[^<>']+(?=[>']$)/, lookbehind: !0, alias: "variable" };
   e.languages.regex = { "char-class": { pattern: /((?:^|[^\\])(?:\\\\)*)\[(?:[^\\\]]|\\[\s\S])*\]/, lookbehind: !0, inside: { "char-class-negation": { pattern: /(^\[)\^/, lookbehind: !0, alias: "operator" }, "char-class-punctuation": { pattern: /^\[|\]$/, alias: "punctuation" }, range: { pattern: r, inside: { escape: t, "range-punctuation": { pattern: /-/, alias: "operator" } } }, "special-escape": n, "char-set": { pattern: /\\[wsd]|\\p\{[^{}]+\}/i, alias: "class-name" }, escape: t } }, "special-escape": n, "char-set": { pattern: /\.|\\[wsd]|\\p\{[^{}]+\}/i, alias: "class-name" }, backreference: [{ pattern: /\\(?![123][0-7]{2})[1-9]/, alias: "keyword" }, { pattern: /\\k<[^<>']+>/, alias: "keyword", inside: { "group-name": o } }], anchor: { pattern: /[$^]|\\[ABbGZz]/, alias: "function" }, escape: t, group: [{ pattern: /\((?:\?(?:<[^<>']+>|'[^<>']+'|[>:]|<?[=!]|[idmnsuxU]+(?:-[idmnsuxU]+)?:?))?/, alias: "punctuation", inside: { "group-name": o } }, { pattern: /\)/, alias: "punctuation" }], quantifier: { pattern: /(?:[+*?]|\{\d+(?:,\d*)?\})[?+]?/, alias: "number" }, alternation: { pattern: /\|/, alias: "keyword" } };
-})(O), O.languages.clike = { comment: [{ pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, lookbehind: !0, greedy: !0 }, { pattern: /(^|[^\\:])\/\/.*/, lookbehind: !0, greedy: !0 }], string: { pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/, greedy: !0 }, "class-name": { pattern: /(\b(?:class|extends|implements|instanceof|interface|new|trait)\s+|\bcatch\s+\()[\w.\\]+/i, lookbehind: !0, inside: { punctuation: /[.\\]/ } }, keyword: /\b(?:break|catch|continue|do|else|finally|for|function|if|in|instanceof|new|null|return|throw|try|while)\b/, boolean: /\b(?:false|true)\b/, function: /\b\w+(?=\()/, number: /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i, operator: /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/, punctuation: /[{}[\];(),.:]/ }, O.languages.javascript = O.languages.extend("clike", { "class-name": [O.languages.clike["class-name"], { pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/, lookbehind: !0 }], keyword: [{ pattern: /((?:^|\})\s*)catch\b/, lookbehind: !0 }, { pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/, lookbehind: !0 }], function: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/, number: { pattern: RegExp(/(^|[^\w$])/.source + "(?:" + /NaN|Infinity/.source + "|" + /0[bB][01]+(?:_[01]+)*n?/.source + "|" + /0[oO][0-7]+(?:_[0-7]+)*n?/.source + "|" + /0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source + "|" + /\d+(?:_\d+)*n/.source + "|" + /(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source + ")" + /(?![\w$])/.source), lookbehind: !0 }, operator: /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/ }), O.languages.javascript["class-name"][0].pattern = /(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/, O.languages.insertBefore("javascript", "keyword", { regex: { pattern: RegExp(/((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source + /\//.source + "(?:" + /(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}/.source + "|" + /(?:\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.)*\])*\])*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}v[dgimyus]{0,7}/.source + ")" + /(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/.source), lookbehind: !0, greedy: !0, inside: { "regex-source": { pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/, lookbehind: !0, alias: "language-regex", inside: O.languages.regex }, "regex-delimiter": /^\/|\/$/, "regex-flags": /^[a-z]+$/ } }, "function-variable": { pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/, alias: "function" }, parameter: [{ pattern: /(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/, lookbehind: !0, inside: O.languages.javascript }, { pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i, lookbehind: !0, inside: O.languages.javascript }, { pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/, lookbehind: !0, inside: O.languages.javascript }, { pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/, lookbehind: !0, inside: O.languages.javascript }], constant: /\b[A-Z](?:[A-Z_]|\dx?)*\b/ }), O.languages.insertBefore("javascript", "string", { hashbang: { pattern: /^#!.*/, greedy: !0, alias: "comment" }, "template-string": { pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/, greedy: !0, inside: { "template-punctuation": { pattern: /^`|`$/, alias: "string" }, interpolation: { pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/, lookbehind: !0, inside: { "interpolation-punctuation": { pattern: /^\$\{|\}$/, alias: "punctuation" }, rest: O.languages.javascript } }, string: /[\s\S]+/ } }, "string-property": { pattern: /((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m, lookbehind: !0, greedy: !0, alias: "property" } }), O.languages.insertBefore("javascript", "operator", { "literal-property": { pattern: /((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m, lookbehind: !0, alias: "property" } }), O.languages.markup && (O.languages.markup.tag.addInlined("script", "javascript"), O.languages.markup.tag.addAttribute(/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source, "javascript")), O.languages.js = O.languages.javascript, O.languages.actionscript = O.languages.extend("javascript", { keyword: /\b(?:as|break|case|catch|class|const|default|delete|do|dynamic|each|else|extends|final|finally|for|function|get|if|implements|import|in|include|instanceof|interface|internal|is|namespace|native|new|null|override|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|use|var|void|while|with)\b/, operator: /\+\+|--|(?:[+\-*\/%^]|&&?|\|\|?|<<?|>>?>?|[!=]=?)=?|[~?@]/ }), O.languages.actionscript["class-name"].alias = "function", delete O.languages.actionscript.parameter, delete O.languages.actionscript["literal-property"], O.languages.markup && O.languages.insertBefore("actionscript", "string", { xml: { pattern: /(^|[^.])<\/?\w+(?:\s+[^\s>\/=]+=("|')(?:\\[\s\S]|(?!\2)[^\\])*\2)*\s*\/?>/, lookbehind: !0, inside: O.languages.markup } }), (function(e) {
+})(I), I.languages.clike = { comment: [{ pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, lookbehind: !0, greedy: !0 }, { pattern: /(^|[^\\:])\/\/.*/, lookbehind: !0, greedy: !0 }], string: { pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/, greedy: !0 }, "class-name": { pattern: /(\b(?:class|extends|implements|instanceof|interface|new|trait)\s+|\bcatch\s+\()[\w.\\]+/i, lookbehind: !0, inside: { punctuation: /[.\\]/ } }, keyword: /\b(?:break|catch|continue|do|else|finally|for|function|if|in|instanceof|new|null|return|throw|try|while)\b/, boolean: /\b(?:false|true)\b/, function: /\b\w+(?=\()/, number: /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i, operator: /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/, punctuation: /[{}[\];(),.:]/ }, I.languages.javascript = I.languages.extend("clike", { "class-name": [I.languages.clike["class-name"], { pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/, lookbehind: !0 }], keyword: [{ pattern: /((?:^|\})\s*)catch\b/, lookbehind: !0 }, { pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/, lookbehind: !0 }], function: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/, number: { pattern: RegExp(/(^|[^\w$])/.source + "(?:" + /NaN|Infinity/.source + "|" + /0[bB][01]+(?:_[01]+)*n?/.source + "|" + /0[oO][0-7]+(?:_[0-7]+)*n?/.source + "|" + /0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source + "|" + /\d+(?:_\d+)*n/.source + "|" + /(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source + ")" + /(?![\w$])/.source), lookbehind: !0 }, operator: /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/ }), I.languages.javascript["class-name"][0].pattern = /(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/, I.languages.insertBefore("javascript", "keyword", { regex: { pattern: RegExp(/((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source + /\//.source + "(?:" + /(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}/.source + "|" + /(?:\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.)*\])*\])*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}v[dgimyus]{0,7}/.source + ")" + /(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/.source), lookbehind: !0, greedy: !0, inside: { "regex-source": { pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/, lookbehind: !0, alias: "language-regex", inside: I.languages.regex }, "regex-delimiter": /^\/|\/$/, "regex-flags": /^[a-z]+$/ } }, "function-variable": { pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/, alias: "function" }, parameter: [{ pattern: /(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/, lookbehind: !0, inside: I.languages.javascript }, { pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i, lookbehind: !0, inside: I.languages.javascript }, { pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/, lookbehind: !0, inside: I.languages.javascript }, { pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/, lookbehind: !0, inside: I.languages.javascript }], constant: /\b[A-Z](?:[A-Z_]|\dx?)*\b/ }), I.languages.insertBefore("javascript", "string", { hashbang: { pattern: /^#!.*/, greedy: !0, alias: "comment" }, "template-string": { pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/, greedy: !0, inside: { "template-punctuation": { pattern: /^`|`$/, alias: "string" }, interpolation: { pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/, lookbehind: !0, inside: { "interpolation-punctuation": { pattern: /^\$\{|\}$/, alias: "punctuation" }, rest: I.languages.javascript } }, string: /[\s\S]+/ } }, "string-property": { pattern: /((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m, lookbehind: !0, greedy: !0, alias: "property" } }), I.languages.insertBefore("javascript", "operator", { "literal-property": { pattern: /((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m, lookbehind: !0, alias: "property" } }), I.languages.markup && (I.languages.markup.tag.addInlined("script", "javascript"), I.languages.markup.tag.addAttribute(/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source, "javascript")), I.languages.js = I.languages.javascript, I.languages.actionscript = I.languages.extend("javascript", { keyword: /\b(?:as|break|case|catch|class|const|default|delete|do|dynamic|each|else|extends|final|finally|for|function|get|if|implements|import|in|include|instanceof|interface|internal|is|namespace|native|new|null|override|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|use|var|void|while|with)\b/, operator: /\+\+|--|(?:[+\-*\/%^]|&&?|\|\|?|<<?|>>?>?|[!=]=?)=?|[~?@]/ }), I.languages.actionscript["class-name"].alias = "function", delete I.languages.actionscript.parameter, delete I.languages.actionscript["literal-property"], I.languages.markup && I.languages.insertBefore("actionscript", "string", { xml: { pattern: /(^|[^.])<\/?\w+(?:\s+[^\s>\/=]+=("|')(?:\\[\s\S]|(?!\2)[^\\])*\2)*\s*\/?>/, lookbehind: !0, inside: I.languages.markup } }), (function(e) {
   var n = /#(?!\{).+/, t = { pattern: /#\{[^}]+\}/, alias: "variable" };
   e.languages.coffeescript = e.languages.extend("javascript", { comment: n, string: [{ pattern: /'(?:\\[\s\S]|[^\\'])*'/, greedy: !0 }, { pattern: /"(?:\\[\s\S]|[^\\"])*"/, greedy: !0, inside: { interpolation: t } }], keyword: /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/, "class-member": { pattern: /@(?!\d)\w+/, alias: "variable" } }), e.languages.insertBefore("coffeescript", "comment", { "multiline-comment": { pattern: /###[\s\S]+?###/, alias: "comment" }, "block-regex": { pattern: /\/{3}[\s\S]*?\/{3}/, alias: "regex", inside: { comment: n, interpolation: t } } }), e.languages.insertBefore("coffeescript", "string", { "inline-javascript": { pattern: /`(?:\\[\s\S]|[^\\`])*`/, inside: { delimiter: { pattern: /^`|`$/, alias: "punctuation" }, script: { pattern: /[\s\S]+/, alias: "language-javascript", inside: e.languages.javascript } } }, "multiline-string": [{ pattern: /'''[\s\S]*?'''/, greedy: !0, alias: "string" }, { pattern: /"""[\s\S]*?"""/, greedy: !0, alias: "string", inside: { interpolation: t } }] }), e.languages.insertBefore("coffeescript", "keyword", { property: /(?!\d)\w+(?=\s*:(?!:))/ }), delete e.languages.coffeescript["template-string"], e.languages.coffee = e.languages.coffeescript;
-})(O), (function(e) {
+})(I), (function(e) {
   var n = e.languages.javadoclike = { parameter: { pattern: /(^[\t ]*(?:\/{3}|\*|\/\*\*)\s*@(?:arg|arguments|param)\s+)\w+/m, lookbehind: !0 }, keyword: { pattern: /(^[\t ]*(?:\/{3}|\*|\/\*\*)\s*|\{)@[a-z][a-zA-Z-]+\b/m, lookbehind: !0 }, punctuation: /[{}]/ };
   Object.defineProperty(n, "addSupport", { value: function(t, r) {
     (t = typeof t == "string" ? [t] : t).forEach(function(o) {
@@ -6336,13 +6336,13 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
       }
     });
   } }), n.addSupport(["java", "javascript", "php"], n);
-})(O), (function(e) {
+})(I), (function(e) {
   var n = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/, n = (e.languages.css = { comment: /\/\*[\s\S]*?\*\//, atrule: { pattern: RegExp("@[\\w-](?:" + /[^;{\s"']|\s+(?!\s)/.source + "|" + n.source + ")*?" + /(?:;|(?=\s*\{))/.source), inside: { rule: /^@[\w-]+/, "selector-function-argument": { pattern: /(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/, lookbehind: !0, alias: "selector" }, keyword: { pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/, lookbehind: !0 } } }, url: { pattern: RegExp("\\burl\\((?:" + n.source + "|" + /(?:[^\\\r\n()"']|\\[\s\S])*/.source + ")\\)", "i"), greedy: !0, inside: { function: /^url/i, punctuation: /^\(|\)$/, string: { pattern: RegExp("^" + n.source + "$"), alias: "url" } } }, selector: { pattern: RegExp(`(^|[{}\\s])[^{}\\s](?:[^{};"'\\s]|\\s+(?![\\s{])|` + n.source + ")*(?=\\s*\\{)"), lookbehind: !0 }, string: { pattern: n, greedy: !0 }, property: { pattern: /(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i, lookbehind: !0 }, important: /!important\b/i, function: { pattern: /(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i, lookbehind: !0 }, punctuation: /[(){};:,]/ }, e.languages.css.atrule.inside.rest = e.languages.css, e.languages.markup);
   n && (n.tag.addInlined("style", "css"), n.tag.addAttribute("style", "css"));
-})(O), (function(e) {
+})(I), (function(e) {
   var n = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/, n = (e.languages.css.selector = { pattern: e.languages.css.selector.pattern, lookbehind: !0, inside: n = { "pseudo-element": /:(?:after|before|first-letter|first-line|selection)|::[-\w]+/, "pseudo-class": /:[-\w]+/, class: /\.[-\w]+/, id: /#[-\w]+/, attribute: { pattern: RegExp(`\\[(?:[^[\\]"']|` + n.source + ")*\\]"), greedy: !0, inside: { punctuation: /^\[|\]$/, "case-sensitivity": { pattern: /(\s)[si]$/i, lookbehind: !0, alias: "keyword" }, namespace: { pattern: /^(\s*)(?:(?!\s)[-*\w\xA0-\uFFFF])*\|(?!=)/, lookbehind: !0, inside: { punctuation: /\|$/ } }, "attr-name": { pattern: /^(\s*)(?:(?!\s)[-\w\xA0-\uFFFF])+/, lookbehind: !0 }, "attr-value": [n, { pattern: /(=\s*)(?:(?!\s)[-\w\xA0-\uFFFF])+(?=\s*$)/, lookbehind: !0 }], operator: /[|~*^$]?=/ } }, "n-th": [{ pattern: /(\(\s*)[+-]?\d*[\dn](?:\s*[+-]\s*\d+)?(?=\s*\))/, lookbehind: !0, inside: { number: /[\dn]+/, operator: /[+-]/ } }, { pattern: /(\(\s*)(?:even|odd)(?=\s*\))/i, lookbehind: !0 }], combinator: />|\+|~|\|\|/, punctuation: /[(),]/ } }, e.languages.css.atrule.inside["selector-function-argument"].inside = n, e.languages.insertBefore("css", "property", { variable: { pattern: /(^|[^-\w\xA0-\uFFFF])--(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*/i, lookbehind: !0 } }), { pattern: /(\b\d+)(?:%|[a-z]+(?![\w-]))/, lookbehind: !0 }), t = { pattern: /(^|[^\w.-])-?(?:\d+(?:\.\d+)?|\.\d+)/, lookbehind: !0 };
   e.languages.insertBefore("css", "function", { operator: { pattern: /(\s)[+\-*\/](?=\s)/, lookbehind: !0 }, hexcode: { pattern: /\B#[\da-f]{3,8}\b/i, alias: "color" }, color: [{ pattern: /(^|[^\w-])(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|RebeccaPurple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)(?![\w-])/i, lookbehind: !0 }, { pattern: /\b(?:hsl|rgb)\(\s*\d{1,3}\s*,\s*\d{1,3}%?\s*,\s*\d{1,3}%?\s*\)\B|\b(?:hsl|rgb)a\(\s*\d{1,3}\s*,\s*\d{1,3}%?\s*,\s*\d{1,3}%?\s*,\s*(?:0|0?\.\d+|1)\s*\)\B/i, inside: { unit: n, number: t, function: /[\w-]+(?=\()/, punctuation: /[(),]/ } }], entity: /\\[\da-f]{1,8}/i, unit: n, number: t });
-})(O), (function(e) {
+})(I), (function(e) {
   var n = /[*&][^\s[\]{},]+/, t = /!(?:<[\w\-%#;/?:@&=+$,.!~*'()[\]]+>|(?:[a-zA-Z\d-]*!)?[\w\-%#;/?:@&=+$.~*'()]+)?/, r = "(?:" + t.source + "(?:[ 	]+" + n.source + ")?|" + n.source + "(?:[ 	]+" + t.source + ")?)", o = /(?:[^\s\x00-\x08\x0e-\x1f!"#%&'*,\-:>?@[\]`{|}\x7f-\x84\x86-\x9f\ud800-\udfff\ufffe\uffff]|[?:-]<PLAIN>)(?:[ \t]*(?:(?![#:])<PLAIN>|:<PLAIN>))*/.source.replace(/<PLAIN>/g, function() {
     return /[^\s\x00-\x08\x0e-\x1f,[\]{}\x7f-\x84\x86-\x9f\ud800-\udfff\ufffe\uffff]/.source;
   }), i = /"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\\\r\n]|\\.)*'/.source;
@@ -6362,7 +6362,7 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
   }).replace(/<<key>>/g, function() {
     return "(?:" + o + "|" + i + ")";
   })), lookbehind: !0, greedy: !0, alias: "atrule" }, directive: { pattern: /(^[ \t]*)%.+/m, lookbehind: !0, alias: "important" }, datetime: { pattern: s(/\d{4}-\d\d?-\d\d?(?:[tT]|[ \t]+)\d\d?:\d{2}:\d{2}(?:\.\d*)?(?:[ \t]*(?:Z|[-+]\d\d?(?::\d{2})?))?|\d{4}-\d{2}-\d{2}|\d\d?:\d{2}(?::\d{2}(?:\.\d*)?)?/.source), lookbehind: !0, alias: "number" }, boolean: { pattern: s(/false|true/.source, "i"), lookbehind: !0, alias: "important" }, null: { pattern: s(/null|~/.source, "i"), lookbehind: !0, alias: "important" }, string: { pattern: s(i), lookbehind: !0, greedy: !0 }, number: { pattern: s(/[+-]?(?:0x[\da-f]+|0o[0-7]+|(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|\.inf|\.nan)/.source, "i"), lookbehind: !0 }, tag: t, important: n, punctuation: /---|[:[\]{}\-,|>?]|\.\.\./ }, e.languages.yml = e.languages.yaml;
-})(O), (function(e) {
+})(I), (function(e) {
   var n = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?![\r\n]))/.source;
   function t(u) {
     return u = u.replace(/<inner>/g, function() {
@@ -6405,7 +6405,7 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
     }
   }), RegExp(e.languages.markup.tag.pattern.source, "gi")), a = { amp: "&", lt: "<", gt: ">", quot: '"' }, l = String.fromCodePoint || String.fromCharCode;
   e.languages.md = e.languages.markdown;
-})(O), O.languages.graphql = { comment: /#.*/, description: { pattern: /(?:"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*")(?=\s*[a-z_])/i, greedy: !0, alias: "string", inside: { "language-markdown": { pattern: /(^"(?:"")?)(?!\1)[\s\S]+(?=\1$)/, lookbehind: !0, inside: O.languages.markdown } } }, string: { pattern: /"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*"/, greedy: !0 }, number: /(?:\B-|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i, boolean: /\b(?:false|true)\b/, variable: /\$[a-z_]\w*/i, directive: { pattern: /@[a-z_]\w*/i, alias: "function" }, "attr-name": { pattern: /\b[a-z_]\w*(?=\s*(?:\((?:[^()"]|"(?:\\.|[^\\"\r\n])*")*\))?:)/i, greedy: !0 }, "atom-input": { pattern: /\b[A-Z]\w*Input\b/, alias: "class-name" }, scalar: /\b(?:Boolean|Float|ID|Int|String)\b/, constant: /\b[A-Z][A-Z_\d]*\b/, "class-name": { pattern: /(\b(?:enum|implements|interface|on|scalar|type|union)\s+|&\s*|:\s*|\[)[A-Z_]\w*/, lookbehind: !0 }, fragment: { pattern: /(\bfragment\s+|\.{3}\s*(?!on\b))[a-zA-Z_]\w*/, lookbehind: !0, alias: "function" }, "definition-mutation": { pattern: /(\bmutation\s+)[a-zA-Z_]\w*/, lookbehind: !0, alias: "function" }, "definition-query": { pattern: /(\bquery\s+)[a-zA-Z_]\w*/, lookbehind: !0, alias: "function" }, keyword: /\b(?:directive|enum|extend|fragment|implements|input|interface|mutation|on|query|repeatable|scalar|schema|subscription|type|union)\b/, operator: /[!=|&]|\.{3}/, "property-query": /\w+(?=\s*\()/, object: /\w+(?=\s*\{)/, punctuation: /[!(){}\[\]:=,]/, property: /\w+/ }, O.hooks.add("after-tokenize", function(e) {
+})(I), I.languages.graphql = { comment: /#.*/, description: { pattern: /(?:"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*")(?=\s*[a-z_])/i, greedy: !0, alias: "string", inside: { "language-markdown": { pattern: /(^"(?:"")?)(?!\1)[\s\S]+(?=\1$)/, lookbehind: !0, inside: I.languages.markdown } } }, string: { pattern: /"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*"/, greedy: !0 }, number: /(?:\B-|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i, boolean: /\b(?:false|true)\b/, variable: /\$[a-z_]\w*/i, directive: { pattern: /@[a-z_]\w*/i, alias: "function" }, "attr-name": { pattern: /\b[a-z_]\w*(?=\s*(?:\((?:[^()"]|"(?:\\.|[^\\"\r\n])*")*\))?:)/i, greedy: !0 }, "atom-input": { pattern: /\b[A-Z]\w*Input\b/, alias: "class-name" }, scalar: /\b(?:Boolean|Float|ID|Int|String)\b/, constant: /\b[A-Z][A-Z_\d]*\b/, "class-name": { pattern: /(\b(?:enum|implements|interface|on|scalar|type|union)\s+|&\s*|:\s*|\[)[A-Z_]\w*/, lookbehind: !0 }, fragment: { pattern: /(\bfragment\s+|\.{3}\s*(?!on\b))[a-zA-Z_]\w*/, lookbehind: !0, alias: "function" }, "definition-mutation": { pattern: /(\bmutation\s+)[a-zA-Z_]\w*/, lookbehind: !0, alias: "function" }, "definition-query": { pattern: /(\bquery\s+)[a-zA-Z_]\w*/, lookbehind: !0, alias: "function" }, keyword: /\b(?:directive|enum|extend|fragment|implements|input|interface|mutation|on|query|repeatable|scalar|schema|subscription|type|union)\b/, operator: /[!=|&]|\.{3}/, "property-query": /\w+(?=\s*\()/, object: /\w+(?=\s*\{)/, punctuation: /[!(){}\[\]:=,]/, property: /\w+/ }, I.hooks.add("after-tokenize", function(e) {
   if (e.language === "graphql")
     for (var n = e.tokens.filter(function(g) {
       return typeof g != "string" && g.type !== "comment" && g.type !== "scalar";
@@ -6462,7 +6462,7 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
     var m = g.alias;
     m ? Array.isArray(m) || (g.alias = m = [m]) : g.alias = m = [], m.push(h);
   }
-}), O.languages.sql = { comment: { pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:--|\/\/|#).*)/, lookbehind: !0 }, variable: [{ pattern: /@(["'`])(?:\\[\s\S]|(?!\1)[^\\])+\1/, greedy: !0 }, /@[\w.$]+/], string: { pattern: /(^|[^@\\])("|')(?:\\[\s\S]|(?!\2)[^\\]|\2\2)*\2/, greedy: !0, lookbehind: !0 }, identifier: { pattern: /(^|[^@\\])`(?:\\[\s\S]|[^`\\]|``)*`/, greedy: !0, lookbehind: !0, inside: { punctuation: /^`|`$/ } }, function: /\b(?:AVG|COUNT|FIRST|FORMAT|LAST|LCASE|LEN|MAX|MID|MIN|MOD|NOW|ROUND|SUM|UCASE)(?=\s*\()/i, keyword: /\b(?:ACTION|ADD|AFTER|ALGORITHM|ALL|ALTER|ANALYZE|ANY|APPLY|AS|ASC|AUTHORIZATION|AUTO_INCREMENT|BACKUP|BDB|BEGIN|BERKELEYDB|BIGINT|BINARY|BIT|BLOB|BOOL|BOOLEAN|BREAK|BROWSE|BTREE|BULK|BY|CALL|CASCADED?|CASE|CHAIN|CHAR(?:ACTER|SET)?|CHECK(?:POINT)?|CLOSE|CLUSTERED|COALESCE|COLLATE|COLUMNS?|COMMENT|COMMIT(?:TED)?|COMPUTE|CONNECT|CONSISTENT|CONSTRAINT|CONTAINS(?:TABLE)?|CONTINUE|CONVERT|CREATE|CROSS|CURRENT(?:_DATE|_TIME|_TIMESTAMP|_USER)?|CURSOR|CYCLE|DATA(?:BASES?)?|DATE(?:TIME)?|DAY|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFINER|DELAYED|DELETE|DELIMITERS?|DENY|DESC|DESCRIBE|DETERMINISTIC|DISABLE|DISCARD|DISK|DISTINCT|DISTINCTROW|DISTRIBUTED|DO|DOUBLE|DROP|DUMMY|DUMP(?:FILE)?|DUPLICATE|ELSE(?:IF)?|ENABLE|ENCLOSED|END|ENGINE|ENUM|ERRLVL|ERRORS|ESCAPED?|EXCEPT|EXEC(?:UTE)?|EXISTS|EXIT|EXPLAIN|EXTENDED|FETCH|FIELDS|FILE|FILLFACTOR|FIRST|FIXED|FLOAT|FOLLOWING|FOR(?: EACH ROW)?|FORCE|FOREIGN|FREETEXT(?:TABLE)?|FROM|FULL|FUNCTION|GEOMETRY(?:COLLECTION)?|GLOBAL|GOTO|GRANT|GROUP|HANDLER|HASH|HAVING|HOLDLOCK|HOUR|IDENTITY(?:COL|_INSERT)?|IF|IGNORE|IMPORT|INDEX|INFILE|INNER|INNODB|INOUT|INSERT|INT|INTEGER|INTERSECT|INTERVAL|INTO|INVOKER|ISOLATION|ITERATE|JOIN|KEYS?|KILL|LANGUAGE|LAST|LEAVE|LEFT|LEVEL|LIMIT|LINENO|LINES|LINESTRING|LOAD|LOCAL|LOCK|LONG(?:BLOB|TEXT)|LOOP|MATCH(?:ED)?|MEDIUM(?:BLOB|INT|TEXT)|MERGE|MIDDLEINT|MINUTE|MODE|MODIFIES|MODIFY|MONTH|MULTI(?:LINESTRING|POINT|POLYGON)|NATIONAL|NATURAL|NCHAR|NEXT|NO|NONCLUSTERED|NULLIF|NUMERIC|OFF?|OFFSETS?|ON|OPEN(?:DATASOURCE|QUERY|ROWSET)?|OPTIMIZE|OPTION(?:ALLY)?|ORDER|OUT(?:ER|FILE)?|OVER|PARTIAL|PARTITION|PERCENT|PIVOT|PLAN|POINT|POLYGON|PRECEDING|PRECISION|PREPARE|PREV|PRIMARY|PRINT|PRIVILEGES|PROC(?:EDURE)?|PUBLIC|PURGE|QUICK|RAISERROR|READS?|REAL|RECONFIGURE|REFERENCES|RELEASE|RENAME|REPEAT(?:ABLE)?|REPLACE|REPLICATION|REQUIRE|RESIGNAL|RESTORE|RESTRICT|RETURN(?:ING|S)?|REVOKE|RIGHT|ROLLBACK|ROUTINE|ROW(?:COUNT|GUIDCOL|S)?|RTREE|RULE|SAVE(?:POINT)?|SCHEMA|SECOND|SELECT|SERIAL(?:IZABLE)?|SESSION(?:_USER)?|SET(?:USER)?|SHARE|SHOW|SHUTDOWN|SIMPLE|SMALLINT|SNAPSHOT|SOME|SONAME|SQL|START(?:ING)?|STATISTICS|STATUS|STRIPED|SYSTEM_USER|TABLES?|TABLESPACE|TEMP(?:ORARY|TABLE)?|TERMINATED|TEXT(?:SIZE)?|THEN|TIME(?:STAMP)?|TINY(?:BLOB|INT|TEXT)|TOP?|TRAN(?:SACTIONS?)?|TRIGGER|TRUNCATE|TSEQUAL|TYPES?|UNBOUNDED|UNCOMMITTED|UNDEFINED|UNION|UNIQUE|UNLOCK|UNPIVOT|UNSIGNED|UPDATE(?:TEXT)?|USAGE|USE|USER|USING|VALUES?|VAR(?:BINARY|CHAR|CHARACTER|YING)|VIEW|WAITFOR|WARNINGS|WHEN|WHERE|WHILE|WITH(?: ROLLUP|IN)?|WORK|WRITE(?:TEXT)?|YEAR)\b/i, boolean: /\b(?:FALSE|NULL|TRUE)\b/i, number: /\b0x[\da-f]+\b|\b\d+(?:\.\d*)?|\B\.\d+\b/i, operator: /[-+*\/=%^~]|&&?|\|\|?|!=?|<(?:=>?|<|>)?|>[>=]?|\b(?:AND|BETWEEN|DIV|ILIKE|IN|IS|LIKE|NOT|OR|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b/i, punctuation: /[;[\]()`,.]/ }, (function(e) {
+}), I.languages.sql = { comment: { pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:--|\/\/|#).*)/, lookbehind: !0 }, variable: [{ pattern: /@(["'`])(?:\\[\s\S]|(?!\1)[^\\])+\1/, greedy: !0 }, /@[\w.$]+/], string: { pattern: /(^|[^@\\])("|')(?:\\[\s\S]|(?!\2)[^\\]|\2\2)*\2/, greedy: !0, lookbehind: !0 }, identifier: { pattern: /(^|[^@\\])`(?:\\[\s\S]|[^`\\]|``)*`/, greedy: !0, lookbehind: !0, inside: { punctuation: /^`|`$/ } }, function: /\b(?:AVG|COUNT|FIRST|FORMAT|LAST|LCASE|LEN|MAX|MID|MIN|MOD|NOW|ROUND|SUM|UCASE)(?=\s*\()/i, keyword: /\b(?:ACTION|ADD|AFTER|ALGORITHM|ALL|ALTER|ANALYZE|ANY|APPLY|AS|ASC|AUTHORIZATION|AUTO_INCREMENT|BACKUP|BDB|BEGIN|BERKELEYDB|BIGINT|BINARY|BIT|BLOB|BOOL|BOOLEAN|BREAK|BROWSE|BTREE|BULK|BY|CALL|CASCADED?|CASE|CHAIN|CHAR(?:ACTER|SET)?|CHECK(?:POINT)?|CLOSE|CLUSTERED|COALESCE|COLLATE|COLUMNS?|COMMENT|COMMIT(?:TED)?|COMPUTE|CONNECT|CONSISTENT|CONSTRAINT|CONTAINS(?:TABLE)?|CONTINUE|CONVERT|CREATE|CROSS|CURRENT(?:_DATE|_TIME|_TIMESTAMP|_USER)?|CURSOR|CYCLE|DATA(?:BASES?)?|DATE(?:TIME)?|DAY|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFINER|DELAYED|DELETE|DELIMITERS?|DENY|DESC|DESCRIBE|DETERMINISTIC|DISABLE|DISCARD|DISK|DISTINCT|DISTINCTROW|DISTRIBUTED|DO|DOUBLE|DROP|DUMMY|DUMP(?:FILE)?|DUPLICATE|ELSE(?:IF)?|ENABLE|ENCLOSED|END|ENGINE|ENUM|ERRLVL|ERRORS|ESCAPED?|EXCEPT|EXEC(?:UTE)?|EXISTS|EXIT|EXPLAIN|EXTENDED|FETCH|FIELDS|FILE|FILLFACTOR|FIRST|FIXED|FLOAT|FOLLOWING|FOR(?: EACH ROW)?|FORCE|FOREIGN|FREETEXT(?:TABLE)?|FROM|FULL|FUNCTION|GEOMETRY(?:COLLECTION)?|GLOBAL|GOTO|GRANT|GROUP|HANDLER|HASH|HAVING|HOLDLOCK|HOUR|IDENTITY(?:COL|_INSERT)?|IF|IGNORE|IMPORT|INDEX|INFILE|INNER|INNODB|INOUT|INSERT|INT|INTEGER|INTERSECT|INTERVAL|INTO|INVOKER|ISOLATION|ITERATE|JOIN|KEYS?|KILL|LANGUAGE|LAST|LEAVE|LEFT|LEVEL|LIMIT|LINENO|LINES|LINESTRING|LOAD|LOCAL|LOCK|LONG(?:BLOB|TEXT)|LOOP|MATCH(?:ED)?|MEDIUM(?:BLOB|INT|TEXT)|MERGE|MIDDLEINT|MINUTE|MODE|MODIFIES|MODIFY|MONTH|MULTI(?:LINESTRING|POINT|POLYGON)|NATIONAL|NATURAL|NCHAR|NEXT|NO|NONCLUSTERED|NULLIF|NUMERIC|OFF?|OFFSETS?|ON|OPEN(?:DATASOURCE|QUERY|ROWSET)?|OPTIMIZE|OPTION(?:ALLY)?|ORDER|OUT(?:ER|FILE)?|OVER|PARTIAL|PARTITION|PERCENT|PIVOT|PLAN|POINT|POLYGON|PRECEDING|PRECISION|PREPARE|PREV|PRIMARY|PRINT|PRIVILEGES|PROC(?:EDURE)?|PUBLIC|PURGE|QUICK|RAISERROR|READS?|REAL|RECONFIGURE|REFERENCES|RELEASE|RENAME|REPEAT(?:ABLE)?|REPLACE|REPLICATION|REQUIRE|RESIGNAL|RESTORE|RESTRICT|RETURN(?:ING|S)?|REVOKE|RIGHT|ROLLBACK|ROUTINE|ROW(?:COUNT|GUIDCOL|S)?|RTREE|RULE|SAVE(?:POINT)?|SCHEMA|SECOND|SELECT|SERIAL(?:IZABLE)?|SESSION(?:_USER)?|SET(?:USER)?|SHARE|SHOW|SHUTDOWN|SIMPLE|SMALLINT|SNAPSHOT|SOME|SONAME|SQL|START(?:ING)?|STATISTICS|STATUS|STRIPED|SYSTEM_USER|TABLES?|TABLESPACE|TEMP(?:ORARY|TABLE)?|TERMINATED|TEXT(?:SIZE)?|THEN|TIME(?:STAMP)?|TINY(?:BLOB|INT|TEXT)|TOP?|TRAN(?:SACTIONS?)?|TRIGGER|TRUNCATE|TSEQUAL|TYPES?|UNBOUNDED|UNCOMMITTED|UNDEFINED|UNION|UNIQUE|UNLOCK|UNPIVOT|UNSIGNED|UPDATE(?:TEXT)?|USAGE|USE|USER|USING|VALUES?|VAR(?:BINARY|CHAR|CHARACTER|YING)|VIEW|WAITFOR|WARNINGS|WHEN|WHERE|WHILE|WITH(?: ROLLUP|IN)?|WORK|WRITE(?:TEXT)?|YEAR)\b/i, boolean: /\b(?:FALSE|NULL|TRUE)\b/i, number: /\b0x[\da-f]+\b|\b\d+(?:\.\d*)?|\B\.\d+\b/i, operator: /[-+*\/=%^~]|&&?|\|\|?|!=?|<(?:=>?|<|>)?|>[>=]?|\b(?:AND|BETWEEN|DIV|ILIKE|IN|IS|LIKE|NOT|OR|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b/i, punctuation: /[;[\]()`,.]/ }, (function(e) {
   var n = e.languages.javascript["template-string"], t = n.pattern.source, r = n.inside.interpolation, o = r.inside["interpolation-punctuation"], i = r.pattern.source;
   function s(d, f) {
     if (e.languages[d])
@@ -6483,8 +6483,8 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
       for (var _ = 0; _ < b.length; _++) {
         if (g >= v.length)
           return;
-        var w, S, k, N, E, T, F, I = b[_];
-        typeof I == "string" || typeof I.content == "string" ? (w = v[g], (F = (T = typeof I == "string" ? I : I.content).indexOf(w)) !== -1 && (++g, S = T.substring(0, F), E = h[w], k = void 0, (N = {})["interpolation-punctuation"] = o, (N = e.tokenize(E, N)).length === 3 && ((k = [1, 1]).push.apply(k, a(N[1], e.languages.javascript, "javascript")), N.splice.apply(N, k)), k = new e.Token("interpolation", N, r.alias, E), N = T.substring(F + w.length), E = [], S && E.push(S), E.push(k), N && (y(T = [N]), E.push.apply(E, T)), typeof I == "string" ? (b.splice.apply(b, [_, 1].concat(E)), _ += E.length - 1) : I.content = E)) : (F = I.content, Array.isArray(F) ? y(F) : y([F]));
+        var w, S, k, N, E, T, O, F = b[_];
+        typeof F == "string" || typeof F.content == "string" ? (w = v[g], (O = (T = typeof F == "string" ? F : F.content).indexOf(w)) !== -1 && (++g, S = T.substring(0, O), E = h[w], k = void 0, (N = {})["interpolation-punctuation"] = o, (N = e.tokenize(E, N)).length === 3 && ((k = [1, 1]).push.apply(k, a(N[1], e.languages.javascript, "javascript")), N.splice.apply(N, k)), k = new e.Token("interpolation", N, r.alias, E), N = T.substring(O + w.length), E = [], S && E.push(S), E.push(k), N && (y(T = [N]), E.push.apply(E, T)), typeof F == "string" ? (b.splice.apply(b, [_, 1].concat(E)), _ += E.length - 1) : F.content = E)) : (O = F.content, Array.isArray(O) ? y(O) : y([O]));
       }
     })(m), new e.Token(p, m, "language-" + p, d);
   }
@@ -6501,18 +6501,18 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
       }
     })(d.tokens);
   });
-})(O), (function(e) {
+})(I), (function(e) {
   e.languages.typescript = e.languages.extend("javascript", { "class-name": { pattern: /(\b(?:class|extends|implements|instanceof|interface|new|type)\s+)(?!keyof\b)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?:\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>)?/, lookbehind: !0, greedy: !0, inside: null }, builtin: /\b(?:Array|Function|Promise|any|boolean|console|never|number|string|symbol|unknown)\b/ }), e.languages.typescript.keyword.push(/\b(?:abstract|declare|is|keyof|readonly|require)\b/, /\b(?:asserts|infer|interface|module|namespace|type)\b(?=\s*(?:[{_$a-zA-Z\xA0-\uFFFF]|$))/, /\btype\b(?=\s*(?:[\{*]|$))/), delete e.languages.typescript.parameter, delete e.languages.typescript["literal-property"];
   var n = e.languages.extend("typescript", {});
   delete n["class-name"], e.languages.typescript["class-name"].inside = n, e.languages.insertBefore("typescript", "function", { decorator: { pattern: /@[$\w\xA0-\uFFFF]+/, inside: { at: { pattern: /^@/, alias: "operator" }, function: /^[\s\S]+/ } }, "generic-function": { pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>(?=\s*\()/, greedy: !0, inside: { function: /^#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*/, generic: { pattern: /<[\s\S]+/, alias: "class-name", inside: n } } } }), e.languages.ts = e.languages.typescript;
-})(O), (function(e) {
+})(I), (function(e) {
   var n = e.languages.javascript, t = /\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})+\}/.source, r = "(@(?:arg|argument|param|property)\\s+(?:" + t + "\\s+)?)";
   e.languages.jsdoc = e.languages.extend("javadoclike", { parameter: { pattern: RegExp(r + /(?:(?!\s)[$\w\xA0-\uFFFF.])+(?=\s|$)/.source), lookbehind: !0, inside: { punctuation: /\./ } } }), e.languages.insertBefore("jsdoc", "keyword", { "optional-parameter": { pattern: RegExp(r + /\[(?:(?!\s)[$\w\xA0-\uFFFF.])+(?:=[^[\]]+)?\](?=\s|$)/.source), lookbehind: !0, inside: { parameter: { pattern: /(^\[)[$\w\xA0-\uFFFF\.]+/, lookbehind: !0, inside: { punctuation: /\./ } }, code: { pattern: /(=)[\s\S]*(?=\]$)/, lookbehind: !0, inside: n, alias: "language-javascript" }, punctuation: /[=[\]]/ } }, "class-name": [{ pattern: RegExp(/(@(?:augments|class|extends|interface|memberof!?|template|this|typedef)\s+(?:<TYPE>\s+)?)[A-Z]\w*(?:\.[A-Z]\w*)*/.source.replace(/<TYPE>/g, function() {
     return t;
   })), lookbehind: !0, inside: { punctuation: /\./ } }, { pattern: RegExp("(@[a-z]+\\s+)" + t), lookbehind: !0, inside: { string: n.string, number: n.number, boolean: n.boolean, keyword: e.languages.typescript.keyword, operator: /=>|\.\.\.|[&|?:*]/, punctuation: /[.,;=<>{}()[\]]/ } }], example: { pattern: /(@example\s+(?!\s))(?:[^@\s]|\s+(?!\s))+?(?=\s*(?:\*\s*)?(?:@\w|\*\/))/, lookbehind: !0, inside: { code: { pattern: /^([\t ]*(?:\*\s*)?)\S.*$/m, lookbehind: !0, inside: n, alias: "language-javascript" } } } }), e.languages.javadoclike.addSupport("javascript", e.languages.jsdoc);
-})(O), (function(e) {
+})(I), (function(e) {
   e.languages.flow = e.languages.extend("javascript", {}), e.languages.insertBefore("flow", "keyword", { type: [{ pattern: /\b(?:[Bb]oolean|Function|[Nn]umber|[Ss]tring|[Ss]ymbol|any|mixed|null|void)\b/, alias: "class-name" }] }), e.languages.flow["function-variable"].pattern = /(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=\s*(?:function\b|(?:\([^()]*\)(?:\s*:\s*\w+)?|(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/i, delete e.languages.flow.parameter, e.languages.insertBefore("flow", "operator", { "flow-punctuation": { pattern: /\{\||\|\}/, alias: "punctuation" } }), Array.isArray(e.languages.flow.keyword) || (e.languages.flow.keyword = [e.languages.flow.keyword]), e.languages.flow.keyword.unshift({ pattern: /(^|[^$]\b)(?:Class|declare|opaque|type)\b(?!\$)/, lookbehind: !0 }, { pattern: /(^|[^$]\B)\$(?:Diff|Enum|Exact|Keys|ObjMap|PropertyType|Record|Shape|Subtype|Supertype|await)\b(?!\$)/, lookbehind: !0 });
-})(O), O.languages.n4js = O.languages.extend("javascript", { keyword: /\b(?:Array|any|boolean|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|false|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|module|new|null|number|package|private|protected|public|return|set|static|string|super|switch|this|throw|true|try|typeof|var|void|while|with|yield)\b/ }), O.languages.insertBefore("n4js", "constant", { annotation: { pattern: /@+\w+/, alias: "operator" } }), O.languages.n4jsd = O.languages.n4js, (function(e) {
+})(I), I.languages.n4js = I.languages.extend("javascript", { keyword: /\b(?:Array|any|boolean|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|false|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|module|new|null|number|package|private|protected|public|return|set|static|string|super|switch|this|throw|true|try|typeof|var|void|while|with|yield)\b/ }), I.languages.insertBefore("n4js", "constant", { annotation: { pattern: /@+\w+/, alias: "operator" } }), I.languages.n4jsd = I.languages.n4js, (function(e) {
   function n(s, a) {
     return RegExp(s.replace(/<ID>/g, function() {
       return /(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*/.source;
@@ -6523,7 +6523,7 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
     var i = t[r], o = e.languages.javascript[i], i = (o = e.util.type(o) === "RegExp" ? e.languages.javascript[i] = { pattern: o } : o).inside || {};
     (o.inside = i)["maybe-class-name"] = /^[A-Z][\s\S]*/;
   }
-})(O), (function(e) {
+})(I), (function(e) {
   var n = e.util.clone(e.languages.javascript), t = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source, r = /(?:\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])*\})/.source, o = /(?:\{<S>*\.{3}(?:[^{}]|<BRACES>)*\})/.source;
   function i(l, u) {
     return l = l.replace(/<S>/g, function() {
@@ -6547,16 +6547,16 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
   e.hooks.add("after-tokenize", function(l) {
     l.language !== "jsx" && l.language !== "tsx" || s(l.tokens);
   });
-})(O), (function(e) {
+})(I), (function(e) {
   var n = e.util.clone(e.languages.typescript), n = (e.languages.tsx = e.languages.extend("jsx", n), delete e.languages.tsx.parameter, delete e.languages.tsx["literal-property"], e.languages.tsx.tag);
   n.pattern = RegExp(/(^|[^\w$]|(?=<\/))/.source + "(?:" + n.pattern.source + ")", n.pattern.flags), n.lookbehind = !0;
-})(O), O.languages.swift = { comment: { pattern: /(^|[^\\:])(?:\/\/.*|\/\*(?:[^/*]|\/(?!\*)|\*(?!\/)|\/\*(?:[^*]|\*(?!\/))*\*\/)*\*\/)/, lookbehind: !0, greedy: !0 }, "string-literal": [{ pattern: RegExp(/(^|[^"#])/.source + "(?:" + /"(?:\\(?:\((?:[^()]|\([^()]*\))*\)|\r\n|[^(])|[^\\\r\n"])*"/.source + "|" + /"""(?:\\(?:\((?:[^()]|\([^()]*\))*\)|[^(])|[^\\"]|"(?!""))*"""/.source + ")" + /(?!["#])/.source), lookbehind: !0, greedy: !0, inside: { interpolation: { pattern: /(\\\()(?:[^()]|\([^()]*\))*(?=\))/, lookbehind: !0, inside: null }, "interpolation-punctuation": { pattern: /^\)|\\\($/, alias: "punctuation" }, punctuation: /\\(?=[\r\n])/, string: /[\s\S]+/ } }, { pattern: RegExp(/(^|[^"#])(#+)/.source + "(?:" + /"(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|\r\n|[^#])|[^\\\r\n])*?"/.source + "|" + /"""(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|[^#])|[^\\])*?"""/.source + ")\\2"), lookbehind: !0, greedy: !0, inside: { interpolation: { pattern: /(\\#+\()(?:[^()]|\([^()]*\))*(?=\))/, lookbehind: !0, inside: null }, "interpolation-punctuation": { pattern: /^\)|\\#+\($/, alias: "punctuation" }, string: /[\s\S]+/ } }], directive: { pattern: RegExp(/#/.source + "(?:" + /(?:elseif|if)\b/.source + "(?:[ 	]*" + /(?:![ \t]*)?(?:\b\w+\b(?:[ \t]*\((?:[^()]|\([^()]*\))*\))?|\((?:[^()]|\([^()]*\))*\))(?:[ \t]*(?:&&|\|\|))?/.source + ")+|" + /(?:else|endif)\b/.source + ")"), alias: "property", inside: { "directive-name": /^#\w+/, boolean: /\b(?:false|true)\b/, number: /\b\d+(?:\.\d+)*\b/, operator: /!|&&|\|\||[<>]=?/, punctuation: /[(),]/ } }, literal: { pattern: /#(?:colorLiteral|column|dsohandle|file(?:ID|Literal|Path)?|function|imageLiteral|line)\b/, alias: "constant" }, "other-directive": { pattern: /#\w+\b/, alias: "property" }, attribute: { pattern: /@\w+/, alias: "atrule" }, "function-definition": { pattern: /(\bfunc\s+)\w+/, lookbehind: !0, alias: "function" }, label: { pattern: /\b(break|continue)\s+\w+|\b[a-zA-Z_]\w*(?=\s*:\s*(?:for|repeat|while)\b)/, lookbehind: !0, alias: "important" }, keyword: /\b(?:Any|Protocol|Self|Type|actor|as|assignment|associatedtype|associativity|async|await|break|case|catch|class|continue|convenience|default|defer|deinit|didSet|do|dynamic|else|enum|extension|fallthrough|fileprivate|final|for|func|get|guard|higherThan|if|import|in|indirect|infix|init|inout|internal|is|isolated|lazy|left|let|lowerThan|mutating|none|nonisolated|nonmutating|open|operator|optional|override|postfix|precedencegroup|prefix|private|protocol|public|repeat|required|rethrows|return|right|safe|self|set|some|static|struct|subscript|super|switch|throw|throws|try|typealias|unowned|unsafe|var|weak|where|while|willSet)\b/, boolean: /\b(?:false|true)\b/, nil: { pattern: /\bnil\b/, alias: "constant" }, "short-argument": /\$\d+\b/, omit: { pattern: /\b_\b/, alias: "keyword" }, number: /\b(?:[\d_]+(?:\.[\de_]+)?|0x[a-f0-9_]+(?:\.[a-f0-9p_]+)?|0b[01_]+|0o[0-7_]+)\b/i, "class-name": /\b[A-Z](?:[A-Z_\d]*[a-z]\w*)?\b/, function: /\b[a-z_]\w*(?=\s*\()/i, constant: /\b(?:[A-Z_]{2,}|k[A-Z][A-Za-z_]+)\b/, operator: /[-+*/%=!<>&|^~?]+|\.[.\-+*/%=!<>&|^~?]+/, punctuation: /[{}[\]();,.:\\]/ }, O.languages.swift["string-literal"].forEach(function(e) {
-  e.inside.interpolation.inside = O.languages.swift;
+})(I), I.languages.swift = { comment: { pattern: /(^|[^\\:])(?:\/\/.*|\/\*(?:[^/*]|\/(?!\*)|\*(?!\/)|\/\*(?:[^*]|\*(?!\/))*\*\/)*\*\/)/, lookbehind: !0, greedy: !0 }, "string-literal": [{ pattern: RegExp(/(^|[^"#])/.source + "(?:" + /"(?:\\(?:\((?:[^()]|\([^()]*\))*\)|\r\n|[^(])|[^\\\r\n"])*"/.source + "|" + /"""(?:\\(?:\((?:[^()]|\([^()]*\))*\)|[^(])|[^\\"]|"(?!""))*"""/.source + ")" + /(?!["#])/.source), lookbehind: !0, greedy: !0, inside: { interpolation: { pattern: /(\\\()(?:[^()]|\([^()]*\))*(?=\))/, lookbehind: !0, inside: null }, "interpolation-punctuation": { pattern: /^\)|\\\($/, alias: "punctuation" }, punctuation: /\\(?=[\r\n])/, string: /[\s\S]+/ } }, { pattern: RegExp(/(^|[^"#])(#+)/.source + "(?:" + /"(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|\r\n|[^#])|[^\\\r\n])*?"/.source + "|" + /"""(?:\\(?:#+\((?:[^()]|\([^()]*\))*\)|[^#])|[^\\])*?"""/.source + ")\\2"), lookbehind: !0, greedy: !0, inside: { interpolation: { pattern: /(\\#+\()(?:[^()]|\([^()]*\))*(?=\))/, lookbehind: !0, inside: null }, "interpolation-punctuation": { pattern: /^\)|\\#+\($/, alias: "punctuation" }, string: /[\s\S]+/ } }], directive: { pattern: RegExp(/#/.source + "(?:" + /(?:elseif|if)\b/.source + "(?:[ 	]*" + /(?:![ \t]*)?(?:\b\w+\b(?:[ \t]*\((?:[^()]|\([^()]*\))*\))?|\((?:[^()]|\([^()]*\))*\))(?:[ \t]*(?:&&|\|\|))?/.source + ")+|" + /(?:else|endif)\b/.source + ")"), alias: "property", inside: { "directive-name": /^#\w+/, boolean: /\b(?:false|true)\b/, number: /\b\d+(?:\.\d+)*\b/, operator: /!|&&|\|\||[<>]=?/, punctuation: /[(),]/ } }, literal: { pattern: /#(?:colorLiteral|column|dsohandle|file(?:ID|Literal|Path)?|function|imageLiteral|line)\b/, alias: "constant" }, "other-directive": { pattern: /#\w+\b/, alias: "property" }, attribute: { pattern: /@\w+/, alias: "atrule" }, "function-definition": { pattern: /(\bfunc\s+)\w+/, lookbehind: !0, alias: "function" }, label: { pattern: /\b(break|continue)\s+\w+|\b[a-zA-Z_]\w*(?=\s*:\s*(?:for|repeat|while)\b)/, lookbehind: !0, alias: "important" }, keyword: /\b(?:Any|Protocol|Self|Type|actor|as|assignment|associatedtype|associativity|async|await|break|case|catch|class|continue|convenience|default|defer|deinit|didSet|do|dynamic|else|enum|extension|fallthrough|fileprivate|final|for|func|get|guard|higherThan|if|import|in|indirect|infix|init|inout|internal|is|isolated|lazy|left|let|lowerThan|mutating|none|nonisolated|nonmutating|open|operator|optional|override|postfix|precedencegroup|prefix|private|protocol|public|repeat|required|rethrows|return|right|safe|self|set|some|static|struct|subscript|super|switch|throw|throws|try|typealias|unowned|unsafe|var|weak|where|while|willSet)\b/, boolean: /\b(?:false|true)\b/, nil: { pattern: /\bnil\b/, alias: "constant" }, "short-argument": /\$\d+\b/, omit: { pattern: /\b_\b/, alias: "keyword" }, number: /\b(?:[\d_]+(?:\.[\de_]+)?|0x[a-f0-9_]+(?:\.[a-f0-9p_]+)?|0b[01_]+|0o[0-7_]+)\b/i, "class-name": /\b[A-Z](?:[A-Z_\d]*[a-z]\w*)?\b/, function: /\b[a-z_]\w*(?=\s*\()/i, constant: /\b(?:[A-Z_]{2,}|k[A-Z][A-Za-z_]+)\b/, operator: /[-+*/%=!<>&|^~?]+|\.[.\-+*/%=!<>&|^~?]+/, punctuation: /[{}[\]();,.:\\]/ }, I.languages.swift["string-literal"].forEach(function(e) {
+  e.inside.interpolation.inside = I.languages.swift;
 }), (function(e) {
   e.languages.kotlin = e.languages.extend("clike", { keyword: { pattern: /(^|[^.])\b(?:abstract|actual|annotation|as|break|by|catch|class|companion|const|constructor|continue|crossinline|data|do|dynamic|else|enum|expect|external|final|finally|for|fun|get|if|import|in|infix|init|inline|inner|interface|internal|is|lateinit|noinline|null|object|open|operator|out|override|package|private|protected|public|reified|return|sealed|set|super|suspend|tailrec|this|throw|to|try|typealias|val|var|vararg|when|where|while)\b/, lookbehind: !0 }, function: [{ pattern: /(?:`[^\r\n`]+`|\b\w+)(?=\s*\()/, greedy: !0 }, { pattern: /(\.)(?:`[^\r\n`]+`|\w+)(?=\s*\{)/, lookbehind: !0, greedy: !0 }], number: /\b(?:0[xX][\da-fA-F]+(?:_[\da-fA-F]+)*|0[bB][01]+(?:_[01]+)*|\d+(?:_\d+)*(?:\.\d+(?:_\d+)*)?(?:[eE][+-]?\d+(?:_\d+)*)?[fFL]?)\b/, operator: /\+[+=]?|-[-=>]?|==?=?|!(?:!|==?)?|[\/*%<>]=?|[?:]:?|\.\.|&&|\|\||\b(?:and|inv|or|shl|shr|ushr|xor)\b/ }), delete e.languages.kotlin["class-name"];
   var n = { "interpolation-punctuation": { pattern: /^\$\{?|\}$/, alias: "punctuation" }, expression: { pattern: /[\s\S]+/, inside: e.languages.kotlin } };
   e.languages.insertBefore("kotlin", "string", { "string-literal": [{ pattern: /"""(?:[^$]|\$(?:(?!\{)|\{[^{}]*\}))*?"""/, alias: "multiline", inside: { interpolation: { pattern: /\$(?:[a-z_]\w*|\{[^{}]*\})/i, inside: n }, string: /[\s\S]+/ } }, { pattern: /"(?:[^"\\\r\n$]|\\.|\$(?:(?!\{)|\{[^{}]*\}))*"/, alias: "singleline", inside: { interpolation: { pattern: /((?:^|[^\\])(?:\\{2})*)\$(?:[a-z_]\w*|\{[^{}]*\})/i, lookbehind: !0, inside: n }, string: /[\s\S]+/ } }], char: { pattern: /'(?:[^'\\\r\n]|\\(?:.|u[a-fA-F0-9]{0,4}))'/, greedy: !0 } }), delete e.languages.kotlin.string, e.languages.insertBefore("kotlin", "keyword", { annotation: { pattern: /\B@(?:\w+:)?(?:[A-Z]\w*|\[[^\]]+\])/, alias: "builtin" } }), e.languages.insertBefore("kotlin", "function", { label: { pattern: /\b\w+@|@\w+\b/, alias: "symbol" } }), e.languages.kt = e.languages.kotlin, e.languages.kts = e.languages.kotlin;
-})(O), O.languages.c = O.languages.extend("clike", { comment: { pattern: /\/\/(?:[^\r\n\\]|\\(?:\r\n?|\n|(?![\r\n])))*|\/\*[\s\S]*?(?:\*\/|$)/, greedy: !0 }, string: { pattern: /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/, greedy: !0 }, "class-name": { pattern: /(\b(?:enum|struct)\s+(?:__attribute__\s*\(\([\s\S]*?\)\)\s*)?)\w+|\b[a-z]\w*_t\b/, lookbehind: !0 }, keyword: /\b(?:_Alignas|_Alignof|_Atomic|_Bool|_Complex|_Generic|_Imaginary|_Noreturn|_Static_assert|_Thread_local|__attribute__|asm|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|inline|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|typeof|union|unsigned|void|volatile|while)\b/, function: /\b[a-z_]\w*(?=\s*\()/i, number: /(?:\b0x(?:[\da-f]+(?:\.[\da-f]*)?|\.[\da-f]+)(?:p[+-]?\d+)?|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?)[ful]{0,4}/i, operator: />>=?|<<=?|->|([-+&|:])\1|[?:~]|[-+*/%&|^!=<>]=?/ }), O.languages.insertBefore("c", "string", { char: { pattern: /'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n]){0,32}'/, greedy: !0 } }), O.languages.insertBefore("c", "string", { macro: { pattern: /(^[\t ]*)#\s*[a-z](?:[^\r\n\\/]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|\\(?:\r\n|[\s\S]))*/im, lookbehind: !0, greedy: !0, alias: "property", inside: { string: [{ pattern: /^(#\s*include\s*)<[^>]+>/, lookbehind: !0 }, O.languages.c.string], char: O.languages.c.char, comment: O.languages.c.comment, "macro-name": [{ pattern: /(^#\s*define\s+)\w+\b(?!\()/i, lookbehind: !0 }, { pattern: /(^#\s*define\s+)\w+\b(?=\()/i, lookbehind: !0, alias: "function" }], directive: { pattern: /^(#\s*)[a-z]+/, lookbehind: !0, alias: "keyword" }, "directive-hash": /^#/, punctuation: /##|\\(?=[\r\n])/, expression: { pattern: /\S[\s\S]*/, inside: O.languages.c } } } }), O.languages.insertBefore("c", "function", { constant: /\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\b/ }), delete O.languages.c.boolean, O.languages.objectivec = O.languages.extend("c", { string: { pattern: /@?"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/, greedy: !0 }, keyword: /\b(?:asm|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|in|inline|int|long|register|return|self|short|signed|sizeof|static|struct|super|switch|typedef|typeof|union|unsigned|void|volatile|while)\b|(?:@interface|@end|@implementation|@protocol|@class|@public|@protected|@private|@property|@try|@catch|@finally|@throw|@synthesize|@dynamic|@selector)\b/, operator: /-[->]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|\|?|[~^%?*\/@]/ }), delete O.languages.objectivec["class-name"], O.languages.objc = O.languages.objectivec, O.languages.reason = O.languages.extend("clike", { string: { pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/, greedy: !0 }, "class-name": /\b[A-Z]\w*/, keyword: /\b(?:and|as|assert|begin|class|constraint|do|done|downto|else|end|exception|external|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|method|module|mutable|new|nonrec|object|of|open|or|private|rec|sig|struct|switch|then|to|try|type|val|virtual|when|while|with)\b/, operator: /\.{3}|:[:=]|\|>|->|=(?:==?|>)?|<=?|>=?|[|^?'#!~`]|[+\-*\/]\.?|\b(?:asr|land|lor|lsl|lsr|lxor|mod)\b/ }), O.languages.insertBefore("reason", "class-name", { char: { pattern: /'(?:\\x[\da-f]{2}|\\o[0-3][0-7][0-7]|\\\d{3}|\\.|[^'\\\r\n])'/, greedy: !0 }, constructor: /\b[A-Z]\w*\b(?!\s*\.)/, label: { pattern: /\b[a-z]\w*(?=::)/, alias: "symbol" } }), delete O.languages.reason.function, (function(e) {
+})(I), I.languages.c = I.languages.extend("clike", { comment: { pattern: /\/\/(?:[^\r\n\\]|\\(?:\r\n?|\n|(?![\r\n])))*|\/\*[\s\S]*?(?:\*\/|$)/, greedy: !0 }, string: { pattern: /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/, greedy: !0 }, "class-name": { pattern: /(\b(?:enum|struct)\s+(?:__attribute__\s*\(\([\s\S]*?\)\)\s*)?)\w+|\b[a-z]\w*_t\b/, lookbehind: !0 }, keyword: /\b(?:_Alignas|_Alignof|_Atomic|_Bool|_Complex|_Generic|_Imaginary|_Noreturn|_Static_assert|_Thread_local|__attribute__|asm|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|inline|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|typeof|union|unsigned|void|volatile|while)\b/, function: /\b[a-z_]\w*(?=\s*\()/i, number: /(?:\b0x(?:[\da-f]+(?:\.[\da-f]*)?|\.[\da-f]+)(?:p[+-]?\d+)?|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?)[ful]{0,4}/i, operator: />>=?|<<=?|->|([-+&|:])\1|[?:~]|[-+*/%&|^!=<>]=?/ }), I.languages.insertBefore("c", "string", { char: { pattern: /'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n]){0,32}'/, greedy: !0 } }), I.languages.insertBefore("c", "string", { macro: { pattern: /(^[\t ]*)#\s*[a-z](?:[^\r\n\\/]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|\\(?:\r\n|[\s\S]))*/im, lookbehind: !0, greedy: !0, alias: "property", inside: { string: [{ pattern: /^(#\s*include\s*)<[^>]+>/, lookbehind: !0 }, I.languages.c.string], char: I.languages.c.char, comment: I.languages.c.comment, "macro-name": [{ pattern: /(^#\s*define\s+)\w+\b(?!\()/i, lookbehind: !0 }, { pattern: /(^#\s*define\s+)\w+\b(?=\()/i, lookbehind: !0, alias: "function" }], directive: { pattern: /^(#\s*)[a-z]+/, lookbehind: !0, alias: "keyword" }, "directive-hash": /^#/, punctuation: /##|\\(?=[\r\n])/, expression: { pattern: /\S[\s\S]*/, inside: I.languages.c } } } }), I.languages.insertBefore("c", "function", { constant: /\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\b/ }), delete I.languages.c.boolean, I.languages.objectivec = I.languages.extend("c", { string: { pattern: /@?"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/, greedy: !0 }, keyword: /\b(?:asm|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|in|inline|int|long|register|return|self|short|signed|sizeof|static|struct|super|switch|typedef|typeof|union|unsigned|void|volatile|while)\b|(?:@interface|@end|@implementation|@protocol|@class|@public|@protected|@private|@property|@try|@catch|@finally|@throw|@synthesize|@dynamic|@selector)\b/, operator: /-[->]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|\|?|[~^%?*\/@]/ }), delete I.languages.objectivec["class-name"], I.languages.objc = I.languages.objectivec, I.languages.reason = I.languages.extend("clike", { string: { pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/, greedy: !0 }, "class-name": /\b[A-Z]\w*/, keyword: /\b(?:and|as|assert|begin|class|constraint|do|done|downto|else|end|exception|external|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|method|module|mutable|new|nonrec|object|of|open|or|private|rec|sig|struct|switch|then|to|try|type|val|virtual|when|while|with)\b/, operator: /\.{3}|:[:=]|\|>|->|=(?:==?|>)?|<=?|>=?|[|^?'#!~`]|[+\-*\/]\.?|\b(?:asr|land|lor|lsl|lsr|lxor|mod)\b/ }), I.languages.insertBefore("reason", "class-name", { char: { pattern: /'(?:\\x[\da-f]{2}|\\o[0-3][0-7][0-7]|\\\d{3}|\\.|[^'\\\r\n])'/, greedy: !0 }, constructor: /\b[A-Z]\w*\b(?!\s*\.)/, label: { pattern: /\b[a-z]\w*(?=::)/, alias: "symbol" } }), delete I.languages.reason.function, (function(e) {
   for (var n = /\/\*(?:[^*/]|\*(?!\/)|\/(?!\*)|<self>)*\*\//.source, t = 0; t < 2; t++)
     n = n.replace(/<self>/g, function() {
       return n;
@@ -6564,7 +6564,7 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
   n = n.replace(/<self>/g, function() {
     return /[^\s\S]/.source;
   }), e.languages.rust = { comment: [{ pattern: RegExp(/(^|[^\\])/.source + n), lookbehind: !0, greedy: !0 }, { pattern: /(^|[^\\:])\/\/.*/, lookbehind: !0, greedy: !0 }], string: { pattern: /b?"(?:\\[\s\S]|[^\\"])*"|b?r(#*)"(?:[^"]|"(?!\1))*"\1/, greedy: !0 }, char: { pattern: /b?'(?:\\(?:x[0-7][\da-fA-F]|u\{(?:[\da-fA-F]_*){1,6}\}|.)|[^\\\r\n\t'])'/, greedy: !0 }, attribute: { pattern: /#!?\[(?:[^\[\]"]|"(?:\\[\s\S]|[^\\"])*")*\]/, greedy: !0, alias: "attr-name", inside: { string: null } }, "closure-params": { pattern: /([=(,:]\s*|\bmove\s*)\|[^|]*\||\|[^|]*\|(?=\s*(?:\{|->))/, lookbehind: !0, greedy: !0, inside: { "closure-punctuation": { pattern: /^\||\|$/, alias: "punctuation" }, rest: null } }, "lifetime-annotation": { pattern: /'\w+/, alias: "symbol" }, "fragment-specifier": { pattern: /(\$\w+:)[a-z]+/, lookbehind: !0, alias: "punctuation" }, variable: /\$\w+/, "function-definition": { pattern: /(\bfn\s+)\w+/, lookbehind: !0, alias: "function" }, "type-definition": { pattern: /(\b(?:enum|struct|trait|type|union)\s+)\w+/, lookbehind: !0, alias: "class-name" }, "module-declaration": [{ pattern: /(\b(?:crate|mod)\s+)[a-z][a-z_\d]*/, lookbehind: !0, alias: "namespace" }, { pattern: /(\b(?:crate|self|super)\s*)::\s*[a-z][a-z_\d]*\b(?:\s*::(?:\s*[a-z][a-z_\d]*\s*::)*)?/, lookbehind: !0, alias: "namespace", inside: { punctuation: /::/ } }], keyword: [/\b(?:Self|abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/, /\b(?:bool|char|f(?:32|64)|[ui](?:8|16|32|64|128|size)|str)\b/], function: /\b[a-z_]\w*(?=\s*(?:::\s*<|\())/, macro: { pattern: /\b\w+!/, alias: "property" }, constant: /\b[A-Z_][A-Z_\d]+\b/, "class-name": /\b[A-Z]\w*\b/, namespace: { pattern: /(?:\b[a-z][a-z_\d]*\s*::\s*)*\b[a-z][a-z_\d]*\s*::(?!\s*<)/, inside: { punctuation: /::/ } }, number: /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:f32|f64|[iu](?:8|16|32|64|size)?))?\b/, boolean: /\b(?:false|true)\b/, punctuation: /->|\.\.=|\.{1,3}|::|[{}[\];(),:]/, operator: /[-+*\/%!^]=?|=[=>]?|&[&=]?|\|[|=]?|<<?=?|>>?=?|[@?]/ }, e.languages.rust["closure-params"].inside.rest = e.languages.rust, e.languages.rust.attribute.inside.string = e.languages.rust.string;
-})(O), O.languages.go = O.languages.extend("clike", { string: { pattern: /(^|[^\\])"(?:\\.|[^"\\\r\n])*"|`[^`]*`/, lookbehind: !0, greedy: !0 }, keyword: /\b(?:break|case|chan|const|continue|default|defer|else|fallthrough|for|func|go(?:to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/, boolean: /\b(?:_|false|iota|nil|true)\b/, number: [/\b0(?:b[01_]+|o[0-7_]+)i?\b/i, /\b0x(?:[a-f\d_]+(?:\.[a-f\d_]*)?|\.[a-f\d_]+)(?:p[+-]?\d+(?:_\d+)*)?i?(?!\w)/i, /(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?[\d_]+)?i?(?!\w)/i], operator: /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./, builtin: /\b(?:append|bool|byte|cap|close|complex|complex(?:64|128)|copy|delete|error|float(?:32|64)|u?int(?:8|16|32|64)?|imag|len|make|new|panic|print(?:ln)?|real|recover|rune|string|uintptr)\b/ }), O.languages.insertBefore("go", "string", { char: { pattern: /'(?:\\.|[^'\\\r\n]){0,10}'/, greedy: !0 } }), delete O.languages.go["class-name"], (function(e) {
+})(I), I.languages.go = I.languages.extend("clike", { string: { pattern: /(^|[^\\])"(?:\\.|[^"\\\r\n])*"|`[^`]*`/, lookbehind: !0, greedy: !0 }, keyword: /\b(?:break|case|chan|const|continue|default|defer|else|fallthrough|for|func|go(?:to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/, boolean: /\b(?:_|false|iota|nil|true)\b/, number: [/\b0(?:b[01_]+|o[0-7_]+)i?\b/i, /\b0x(?:[a-f\d_]+(?:\.[a-f\d_]*)?|\.[a-f\d_]+)(?:p[+-]?\d+(?:_\d+)*)?i?(?!\w)/i, /(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?[\d_]+)?i?(?!\w)/i], operator: /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./, builtin: /\b(?:append|bool|byte|cap|close|complex|complex(?:64|128)|copy|delete|error|float(?:32|64)|u?int(?:8|16|32|64)?|imag|len|make|new|panic|print(?:ln)?|real|recover|rune|string|uintptr)\b/ }), I.languages.insertBefore("go", "string", { char: { pattern: /'(?:\\.|[^'\\\r\n]){0,10}'/, greedy: !0 } }), delete I.languages.go["class-name"], (function(e) {
   var n = /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/, t = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(/<keyword>/g, function() {
     return n.source;
   });
@@ -6573,7 +6573,7 @@ O.languages.markup = { comment: { pattern: /<!--(?:(?!<!--)[\s\S])*?-->/, greedy
   })), lookbehind: !0 }, /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/], keyword: n, number: { pattern: /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i, greedy: !0 }, operator: />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/, boolean: /\b(?:false|true)\b/ }), e.languages.insertBefore("cpp", "string", { module: { pattern: RegExp(/(\b(?:import|module)\s+)/.source + "(?:" + /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source + "|" + /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(/<mod-name>/g, function() {
     return t;
   }) + ")"), lookbehind: !0, greedy: !0, inside: { string: /^[<"][\s\S]+/, operator: /:/, punctuation: /\./ } }, "raw-string": { pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/, alias: "string", greedy: !0 } }), e.languages.insertBefore("cpp", "keyword", { "generic-function": { pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i, inside: { function: /^\w+/, generic: { pattern: /<[\s\S]+/, alias: "class-name", inside: e.languages.cpp } } } }), e.languages.insertBefore("cpp", "operator", { "double-colon": { pattern: /::/, alias: "punctuation" } }), e.languages.insertBefore("cpp", "class-name", { "base-clause": { pattern: /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/, lookbehind: !0, greedy: !0, inside: e.languages.extend("cpp", {}) } }), e.languages.insertBefore("inside", "double-colon", { "class-name": /\b[a-z_]\w*\b(?!\s*::)/i }, e.languages.cpp["base-clause"]);
-})(O), O.languages.python = { comment: { pattern: /(^|[^\\])#.*/, lookbehind: !0, greedy: !0 }, "string-interpolation": { pattern: /(?:f|fr|rf)(?:("""|''')[\s\S]*?\1|("|')(?:\\.|(?!\2)[^\\\r\n])*\2)/i, greedy: !0, inside: { interpolation: { pattern: /((?:^|[^{])(?:\{\{)*)\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}])+\})+\})+\}/, lookbehind: !0, inside: { "format-spec": { pattern: /(:)[^:(){}]+(?=\}$)/, lookbehind: !0 }, "conversion-option": { pattern: /![sra](?=[:}]$)/, alias: "punctuation" }, rest: null } }, string: /[\s\S]+/ } }, "triple-quoted-string": { pattern: /(?:[rub]|br|rb)?("""|''')[\s\S]*?\1/i, greedy: !0, alias: "string" }, string: { pattern: /(?:[rub]|br|rb)?("|')(?:\\.|(?!\1)[^\\\r\n])*\1/i, greedy: !0 }, function: { pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g, lookbehind: !0 }, "class-name": { pattern: /(\bclass\s+)\w+/i, lookbehind: !0 }, decorator: { pattern: /(^[\t ]*)@\w+(?:\.\w+)*/m, lookbehind: !0, alias: ["annotation", "punctuation"], inside: { punctuation: /\./ } }, keyword: /\b(?:_(?=\s*:)|and|as|assert|async|await|break|case|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|match|nonlocal|not|or|pass|print|raise|return|try|while|with|yield)\b/, builtin: /\b(?:__import__|abs|all|any|apply|ascii|basestring|bin|bool|buffer|bytearray|bytes|callable|chr|classmethod|cmp|coerce|compile|complex|delattr|dict|dir|divmod|enumerate|eval|execfile|file|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|intern|isinstance|issubclass|iter|len|list|locals|long|map|max|memoryview|min|next|object|oct|open|ord|pow|property|range|raw_input|reduce|reload|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|unichr|unicode|vars|xrange|zip)\b/, boolean: /\b(?:False|None|True)\b/, number: /\b0(?:b(?:_?[01])+|o(?:_?[0-7])+|x(?:_?[a-f0-9])+)\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+(?:_\d+)*)(?:e[+-]?\d+(?:_\d+)*)?j?(?!\w)/i, operator: /[-+%=]=?|!=|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/, punctuation: /[{}[\];(),.:]/ }, O.languages.python["string-interpolation"].inside.interpolation.inside.rest = O.languages.python, O.languages.py = O.languages.python, O.languages.json = { property: { pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?=\s*:)/, lookbehind: !0, greedy: !0 }, string: { pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?!\s*:)/, lookbehind: !0, greedy: !0 }, comment: { pattern: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/, greedy: !0 }, number: /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i, punctuation: /[{}[\],]/, operator: /:/, boolean: /\b(?:false|true)\b/, null: { pattern: /\bnull\b/, alias: "keyword" } }, O.languages.webmanifest = O.languages.json;
+})(I), I.languages.python = { comment: { pattern: /(^|[^\\])#.*/, lookbehind: !0, greedy: !0 }, "string-interpolation": { pattern: /(?:f|fr|rf)(?:("""|''')[\s\S]*?\1|("|')(?:\\.|(?!\2)[^\\\r\n])*\2)/i, greedy: !0, inside: { interpolation: { pattern: /((?:^|[^{])(?:\{\{)*)\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}])+\})+\})+\}/, lookbehind: !0, inside: { "format-spec": { pattern: /(:)[^:(){}]+(?=\}$)/, lookbehind: !0 }, "conversion-option": { pattern: /![sra](?=[:}]$)/, alias: "punctuation" }, rest: null } }, string: /[\s\S]+/ } }, "triple-quoted-string": { pattern: /(?:[rub]|br|rb)?("""|''')[\s\S]*?\1/i, greedy: !0, alias: "string" }, string: { pattern: /(?:[rub]|br|rb)?("|')(?:\\.|(?!\1)[^\\\r\n])*\1/i, greedy: !0 }, function: { pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g, lookbehind: !0 }, "class-name": { pattern: /(\bclass\s+)\w+/i, lookbehind: !0 }, decorator: { pattern: /(^[\t ]*)@\w+(?:\.\w+)*/m, lookbehind: !0, alias: ["annotation", "punctuation"], inside: { punctuation: /\./ } }, keyword: /\b(?:_(?=\s*:)|and|as|assert|async|await|break|case|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|match|nonlocal|not|or|pass|print|raise|return|try|while|with|yield)\b/, builtin: /\b(?:__import__|abs|all|any|apply|ascii|basestring|bin|bool|buffer|bytearray|bytes|callable|chr|classmethod|cmp|coerce|compile|complex|delattr|dict|dir|divmod|enumerate|eval|execfile|file|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|intern|isinstance|issubclass|iter|len|list|locals|long|map|max|memoryview|min|next|object|oct|open|ord|pow|property|range|raw_input|reduce|reload|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|unichr|unicode|vars|xrange|zip)\b/, boolean: /\b(?:False|None|True)\b/, number: /\b0(?:b(?:_?[01])+|o(?:_?[0-7])+|x(?:_?[a-f0-9])+)\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+(?:_\d+)*)(?:e[+-]?\d+(?:_\d+)*)?j?(?!\w)/i, operator: /[-+%=]=?|!=|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/, punctuation: /[{}[\];(),.:]/ }, I.languages.python["string-interpolation"].inside.interpolation.inside.rest = I.languages.python, I.languages.py = I.languages.python, I.languages.json = { property: { pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?=\s*:)/, lookbehind: !0, greedy: !0 }, string: { pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?!\s*:)/, lookbehind: !0, greedy: !0 }, comment: { pattern: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/, greedy: !0 }, number: /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i, punctuation: /[{}[\],]/, operator: /:/, boolean: /\b(?:false|true)\b/, null: { pattern: /\bnull\b/, alias: "keyword" } }, I.languages.webmanifest = I.languages.json;
 var jc = {};
 Pm(jc, {
   dracula: () => Vm,
@@ -8534,7 +8534,7 @@ var Bm = {
     getTokenProps: l
   });
 }, Oy = (e) => $n(Iy, Oo(dt({}, e), {
-  prism: e.prism || O,
+  prism: e.prism || I,
   theme: e.theme || Gc,
   code: e.code,
   language: e.language
@@ -8595,10 +8595,10 @@ const $y = Q(
       return _.split(",").forEach((k) => {
         const N = k.trim();
         if (N.includes("-")) {
-          const E = N.split("-"), T = Number(E[0]), F = Number(E[1]);
-          if (!isNaN(T) && !isNaN(F))
-            for (let I = T; I <= F; I++)
-              w.add(I);
+          const E = N.split("-"), T = Number(E[0]), O = Number(E[1]);
+          if (!isNaN(T) && !isNaN(O))
+            for (let F = T; F <= O; F++)
+              w.add(F);
         } else {
           const E = Number(N);
           isNaN(E) || w.add(E);
@@ -8643,7 +8643,7 @@ const $y = Q(
           className: "overflow-auto",
           style: u ? { maxHeight: `${u}px` } : void 0,
           children: /* @__PURE__ */ x(Oy, { theme: jc.nightOwl, code: t.trim(), language: r, children: ({ className: _, style: w, tokens: S, getLineProps: k, getTokenProps: N }) => /* @__PURE__ */ x("pre", { className: P("p-4 font-mono", _), style: w, children: S.map((E, T) => {
-            const F = T + 1, I = b.has(F), j = k({ line: E });
+            const O = T + 1, F = b.has(O), j = k({ line: E });
             return /* @__PURE__ */ L(
               "div",
               {
@@ -8651,10 +8651,10 @@ const $y = Q(
                 className: P(
                   j.className,
                   "table-row",
-                  I && "bg-blue-500/10"
+                  F && "bg-blue-500/10"
                 ),
                 children: [
-                  o && /* @__PURE__ */ x("span", { className: "table-cell w-8 pr-4 text-right text-slate-500 select-none", children: F }),
+                  o && /* @__PURE__ */ x("span", { className: "table-cell w-8 pr-4 text-right text-slate-500 select-none", children: O }),
                   /* @__PURE__ */ x("span", { className: "table-cell", children: E.map((D, V) => /* @__PURE__ */ x("span", { ...N({ token: D }) }, V)) })
                 ]
               },
@@ -9430,8 +9430,8 @@ const Pr = {
             var _, w;
             const S = n.options.columnResizeDirection === "rtl" ? -1 : 1, k = (y - ((_ = b == null ? void 0 : b.startOffset) != null ? _ : 0)) * S, N = Math.max(k / ((w = b == null ? void 0 : b.startSize) != null ? w : 0), -0.999999);
             return b.columnSizingStart.forEach((E) => {
-              let [T, F] = E;
-              u[T] = Math.round(Math.max(F + F * N, 0) * 100) / 100;
+              let [T, O] = E;
+              u[T] = Math.round(Math.max(O + O * N, 0) * 100) / 100;
             }), {
               ...b,
               deltaOffset: k,
@@ -10595,10 +10595,10 @@ function yw({
   loading: h = !1
 }) {
   var j;
-  const [m, v] = C.useState([]), [y, b] = C.useState([]), [_, w] = C.useState({}), [S, k] = C.useState({}), [N, E] = C.useState(""), [T, F] = C.useState({
+  const [m, v] = C.useState([]), [y, b] = C.useState([]), [_, w] = C.useState({}), [S, k] = C.useState({}), [N, E] = C.useState(""), [T, O] = C.useState({
     pageIndex: 0,
     pageSize: i
-  }), I = Ib({
+  }), F = Ib({
     data: n,
     columns: e,
     getCoreRowModel: _b(),
@@ -10610,7 +10610,7 @@ function yw({
     onColumnVisibilityChange: w,
     onRowSelectionChange: k,
     onGlobalFilterChange: E,
-    onPaginationChange: F,
+    onPaginationChange: O,
     enableRowSelection: a,
     state: {
       sorting: m,
@@ -10623,10 +10623,10 @@ function yw({
   });
   return C.useEffect(() => {
     if (l) {
-      const D = I.getFilteredSelectedRowModel().rows.map((V) => V.original);
+      const D = F.getFilteredSelectedRowModel().rows.map((V) => V.original);
       l(D);
     }
-  }, [S, I, l]), /* @__PURE__ */ L("div", { className: P("w-full space-y-4", d), children: [
+  }, [S, F, l]), /* @__PURE__ */ L("div", { className: P("w-full space-y-4", d), children: [
     (t || u) && /* @__PURE__ */ L("div", { className: "flex items-center justify-between gap-4", children: [
       t && /* @__PURE__ */ x("div", { className: "max-w-sm flex-1", children: /* @__PURE__ */ x(
         Wu,
@@ -10641,7 +10641,7 @@ function yw({
       ) }),
       u && /* @__PURE__ */ L("div", { className: "flex items-center gap-2", children: [
         /* @__PURE__ */ x("span", { className: "text-muted-foreground text-sm", children: "Columns:" }),
-        I.getAllLeafColumns().map((D) => D.id === "select" ? null : /* @__PURE__ */ L("label", { className: "flex items-center gap-2 text-sm", children: [
+        F.getAllLeafColumns().map((D) => D.id === "select" ? null : /* @__PURE__ */ L("label", { className: "flex items-center gap-2 text-sm", children: [
           /* @__PURE__ */ x(
             "input",
             {
@@ -10665,7 +10665,7 @@ function yw({
             "border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900",
             f && "sticky top-0 z-10"
           ),
-          children: I.getHeaderGroups().map((D) => /* @__PURE__ */ x("tr", { children: D.headers.map((V) => /* @__PURE__ */ x(
+          children: F.getHeaderGroups().map((D) => /* @__PURE__ */ x("tr", { children: D.headers.map((V) => /* @__PURE__ */ x(
             "th",
             {
               className: "h-12 px-4 text-left align-middle font-medium text-slate-700 dark:text-slate-300",
@@ -10675,7 +10675,7 @@ function yw({
           )) }, D.id))
         }
       ),
-      /* @__PURE__ */ x("tbody", { className: "divide-y divide-slate-200 dark:divide-slate-800", children: h ? /* @__PURE__ */ x("tr", { children: /* @__PURE__ */ x("td", { colSpan: e.length, className: "text-muted-foreground h-24 text-center", children: "Loading..." }) }) : (j = I.getRowModel().rows) != null && j.length ? I.getRowModel().rows.map((D) => /* @__PURE__ */ x(
+      /* @__PURE__ */ x("tbody", { className: "divide-y divide-slate-200 dark:divide-slate-800", children: h ? /* @__PURE__ */ x("tr", { children: /* @__PURE__ */ x("td", { colSpan: e.length, className: "text-muted-foreground h-24 text-center", children: "Loading..." }) }) : (j = F.getRowModel().rows) != null && j.length ? F.getRowModel().rows.map((D) => /* @__PURE__ */ x(
         "tr",
         {
           "data-state": D.getIsSelected() && "selected",
@@ -10693,10 +10693,10 @@ function yw({
     ] }) }) }),
     o && /* @__PURE__ */ L("div", { className: "flex items-center justify-between px-2", children: [
       /* @__PURE__ */ x("div", { className: "flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300", children: a && /* @__PURE__ */ L("div", { className: "text-muted-foreground flex-1 text-sm", children: [
-        I.getFilteredSelectedRowModel().rows.length,
+        F.getFilteredSelectedRowModel().rows.length,
         " of",
         " ",
-        I.getFilteredRowModel().rows.length,
+        F.getFilteredRowModel().rows.length,
         " row(s) selected."
       ] }) }),
       /* @__PURE__ */ L("div", { className: "flex items-center gap-6", children: [
@@ -10705,9 +10705,9 @@ function yw({
           /* @__PURE__ */ x(
             "select",
             {
-              value: I.getState().pagination.pageSize.toString(),
+              value: F.getState().pagination.pageSize.toString(),
               onChange: (D) => {
-                I.setPageSize(Number(D.target.value));
+                F.setPageSize(Number(D.target.value));
               },
               className: "h-8 w-[70px] rounded-md border border-slate-300 bg-white text-sm dark:border-slate-700 dark:bg-slate-950",
               children: s.map((D) => /* @__PURE__ */ x("option", { value: D, children: D }, D))
@@ -10716,9 +10716,9 @@ function yw({
         ] }),
         /* @__PURE__ */ L("div", { className: "flex items-center gap-1 text-sm font-medium text-slate-700 dark:text-slate-300", children: [
           "Page ",
-          I.getState().pagination.pageIndex + 1,
+          F.getState().pagination.pageIndex + 1,
           " of ",
-          I.getPageCount()
+          F.getPageCount()
         ] }),
         /* @__PURE__ */ L("div", { className: "flex items-center gap-2", children: [
           /* @__PURE__ */ x(
@@ -10727,9 +10727,9 @@ function yw({
               variant: "outline",
               size: "sm",
               onClick: () => {
-                I.previousPage();
+                F.previousPage();
               },
-              disabled: !I.getCanPreviousPage(),
+              disabled: !F.getCanPreviousPage(),
               children: "Previous"
             }
           ),
@@ -10739,9 +10739,9 @@ function yw({
               variant: "outline",
               size: "sm",
               onClick: () => {
-                I.nextPage();
+                F.nextPage();
               },
-              disabled: !I.getCanNextPage(),
+              disabled: !F.getCanNextPage(),
               children: "Next"
             }
           )
@@ -11755,25 +11755,25 @@ function c0(e, n, t) {
         const b = m - 1, _ = v - 1;
         let w, S, k = y.getFirstChild(), N = 0, E = 0;
         for (; N <= b && E <= _; ) {
-          const I = g[N], j = h[E];
-          if (I === j) k = gi(ir(j, y.element)), N++, E++;
+          const F = g[N], j = h[E];
+          if (F === j) k = gi(ir(j, y.element)), N++, E++;
           else {
             w === void 0 && (w = new Set(g)), S === void 0 && (S = new Set(h));
-            const V = S.has(I), Z = w.has(j);
+            const V = S.has(F), Z = w.has(j);
             if (V) if (Z) {
               const W = an(Ae, j);
               W === k ? k = gi(ir(j, y.element)) : (y.withBefore(k).insertChild(W), ir(j, y.element)), N++, E++;
             } else uo(j, y.withBefore(k)), E++;
-            else k = gi(Zi(I)), lo(I, y.element), N++;
+            else k = gi(Zi(F)), lo(F, y.element), N++;
           }
           const D = Qe.get(j);
           D !== null && z(D) && lt === null && (lt = D.getFormat(), Gt = D.getStyle());
         }
-        const T = N > b, F = E > _;
-        if (T && !F) {
-          const I = h[_ + 1], j = I === void 0 ? null : Ae.getElementByKey(I);
+        const T = N > b, O = E > _;
+        if (T && !O) {
+          const F = h[_ + 1], j = F === void 0 ? null : Ae.getElementByKey(F);
           qi(h, p, E, _, y.withBefore(j));
-        } else F && !T && Ki(g, N, b, y.element);
+        } else O && !T && Ki(g, N, b, y.element);
       })(i, d, f, l, u, s);
     }
     Go(i) && (ve += zt), c.__lexicalTextContent = ve, ve = a + ve;
@@ -12883,8 +12883,8 @@ class Nt extends et {
     t.sort((E, T) => E - T), t.push(a);
     const l = [], u = t.length;
     for (let E = 0, T = 0; E < a && T <= u; T++) {
-      const F = t[T];
-      F > E && (l.push(o.slice(E, F)), E = F);
+      const O = t[T];
+      O > E && (l.push(o.slice(E, O)), E = O);
     }
     const c = l.length;
     if (c === 1) return [r];
@@ -12902,8 +12902,8 @@ class Nt extends et {
     for (let E = 1; E < c; E++) {
       const T = he(l[E]);
       T.__format = g, T.__style = h, T.__detail = m, T.__state = Ga(r, T);
-      const F = T.__key;
-      s === i && ke(F), w.push(T);
+      const O = T.__key;
+      s === i && ke(O), w.push(T);
     }
     const S = y ? y.offset : null, k = b ? b.offset : null;
     let N = 0;
@@ -12917,9 +12917,9 @@ class Nt extends et {
       N = T;
     }
     if (f !== null) {
-      (function(F) {
-        const I = F.getPreviousSibling(), j = F.getNextSibling();
-        I !== null && xo(I), j !== null && xo(j);
+      (function(O) {
+        const F = O.getPreviousSibling(), j = O.getNextSibling();
+        F !== null && xo(F), j !== null && xo(j);
       })(this);
       const E = f.getWritable(), T = this.getIndexWithinParent();
       v ? (E.splice(T, 0, w), this.remove()) : E.splice(T, 1, w), $(_) && yo(_, f, T, c - 1);
@@ -13403,8 +13403,8 @@ class pn {
       if (!S) {
         let N = y, E = null;
         for (; N !== null; ) {
-          const T = N.getChildren(), F = T.length;
-          (F === 0 || T[F - 1].is(E)) && (m.delete(N.__key), E = N), N = N.getParent();
+          const T = N.getChildren(), O = T.length;
+          (O === 0 || T[O - 1].is(E)) && (m.delete(N.__key), E = N), N = N.getParent();
         }
       }
       if (Yt(f)) if (l === p) f.select();
@@ -13910,8 +13910,8 @@ function j0(e, n, t, r, o, i, s) {
     const V = f.getNode();
     E = V.getFormat() !== _ || V.getStyle() !== w;
   } else $(e) && e.anchor.type === "text" && (E = !0);
-  var T, F, I, j, D;
-  if (p.type === "text" && (N = Pn(v)), k !== null && N !== null && (S && (e === null || E || $(e) && (e.format !== _ || e.style !== w)) && (T = _, F = w, I = y, j = g, D = performance.now(), Ld = [T, F, I, j, D]), u !== y || c !== b || a !== k || l !== N || r.type === "Range" && S || (d !== null && i.contains(d) || o.has($0) || i.focus({ preventScroll: !0 }), f.type === "element"))) {
+  var T, O, F, j, D;
+  if (p.type === "text" && (N = Pn(v)), k !== null && N !== null && (S && (e === null || E || $(e) && (e.format !== _ || e.style !== w)) && (T = _, O = w, F = y, j = g, D = performance.now(), Ld = [T, O, F, j, D]), u !== y || c !== b || a !== k || l !== N || r.type === "Range" && S || (d !== null && i.contains(d) || o.has($0) || i.focus({ preventScroll: !0 }), f.type === "element"))) {
     if (Jd(r, k, y, N, b), !o.has(I0) && n.isCollapsed() && i !== null && i === document.activeElement) {
       const V = $(n) && n.anchor.type === "element" ? k.childNodes[y] || null : r.rangeCount > 0 ? r.getRangeAt(0) : null;
       if (V !== null) {
@@ -14112,8 +14112,8 @@ function wt(e, n) {
     const N = S._decorators;
     let E = S._pendingDecorators || N;
     const T = k._nodeMap;
-    let F;
-    for (F in E) T.has(F) || (E === N && (E = df(S)), delete E[F]);
+    let O;
+    for (O in E) T.has(O) || (E === N && (E = df(S)), delete E[O]);
   })(e, t);
   const _ = o ? null : at(We(e));
   if (e._editable && _ !== null && (l || a === null || a.dirty || !a.is(s)) && r !== null && !y.has(O0)) {
@@ -14126,19 +14126,19 @@ function wt(e, n) {
       (function(S, k, N) {
         let E = S._blockCursorElement;
         if ($(N) && N.isCollapsed() && N.anchor.type === "element" && k.contains(document.activeElement)) {
-          const T = N.anchor, F = T.getNode(), I = T.offset;
+          const T = N.anchor, O = T.getNode(), F = T.offset;
           let j = !1, D = null;
-          if (I === F.getChildrenSize())
-            xi(F.getChildAtIndex(I - 1)) && (j = !0);
+          if (F === O.getChildrenSize())
+            xi(O.getChildAtIndex(F - 1)) && (j = !0);
           else {
-            const V = F.getChildAtIndex(I);
+            const V = O.getChildAtIndex(F);
             if (V !== null && xi(V)) {
               const Z = V.getPreviousSibling();
               (Z === null || xi(Z)) && (j = !0, D = S.getElementByKey(V.__key));
             }
           }
           if (j) {
-            const V = S.getElementByKey(F.__key);
+            const V = S.getElementByKey(O.__key);
             return E === null && (S._blockCursorElement = E = (function(Z) {
               const W = Z.theme, J = document.createElement("div");
               J.contentEditable = "false", J.setAttribute("data-lexical-cursor", "true");
@@ -14161,9 +14161,9 @@ function wt(e, n) {
     }
   }
   g !== null && (function(S, k, N, E, T) {
-    const F = Array.from(S._listeners.mutation), I = F.length;
-    for (let j = 0; j < I; j++) {
-      const [D, V] = F[j];
+    const O = Array.from(S._listeners.mutation), F = O.length;
+    for (let j = 0; j < F; j++) {
+      const [D, V] = O[j];
       for (const Z of V) {
         const W = k.get(Z);
         W !== void 0 && D(W, { dirtyLeaves: E, prevEditorState: T, updateTags: N });
@@ -14253,8 +14253,8 @@ function Vo(e, n, t) {
       }
     })(l, e) : (function(y, b) {
       const _ = b._dirtyLeaves, w = b._dirtyElements, S = y._nodeMap, k = It(), N = /* @__PURE__ */ new Map();
-      let E = _, T = E.size, F = w, I = F.size;
-      for (; T > 0 || I > 0; ) {
+      let E = _, T = E.size, O = w, F = O.size;
+      for (; T > 0 || F > 0; ) {
         if (T > 0) {
           b._dirtyLeaves = /* @__PURE__ */ new Set();
           for (const j of E) {
@@ -14266,14 +14266,14 @@ function Vo(e, n, t) {
             continue;
           }
         }
-        b._dirtyLeaves = /* @__PURE__ */ new Set(), b._dirtyElements = /* @__PURE__ */ new Map(), F.delete("root") && F.set("root", !0);
-        for (const j of F) {
+        b._dirtyLeaves = /* @__PURE__ */ new Set(), b._dirtyElements = /* @__PURE__ */ new Map(), O.delete("root") && O.set("root", !0);
+        for (const j of O) {
           const D = j[0], V = j[1];
           if (w.set(D, V), !V) continue;
           const Z = S.get(D);
           Z !== void 0 && hl(Z, k) && pl(b, Z, N);
         }
-        E = b._dirtyLeaves, T = E.size, F = b._dirtyElements, I = F.size, Yr++;
+        E = b._dirtyLeaves, T = E.size, O = b._dirtyElements, F = O.size, Yr++;
       }
       b._dirtyLeaves = _, b._dirtyElements = w;
     })(l, e), yl(e), (function(y, b, _, w) {
@@ -16223,14 +16223,14 @@ function xv(e, n = "removeEmptySlices") {
     const w = Math.min(b.length, _.length);
     let S;
     for (S = 0; S < w && b[S] === _[S]; S++) ;
-    const k = (T, F) => {
-      let I;
+    const k = (T, O) => {
+      let F;
       for (let j = S; j < T.length; j++) {
         const D = T[j];
         if (Fe(D)) return;
-        !I && F(D) && (I = D);
+        !F && O(D) && (F = D);
       }
-      return I;
+      return F;
     }, N = k(b, Ge), E = N && k(_, (T) => m.has(T.getKey()) && Ge(T));
     return N && E ? [N, E] : null;
   })(c, d, l);
@@ -17816,15 +17816,15 @@ function kx({ content: e }) {
 }
 const Xf = typeof window < "u" && window.document !== void 0 && window.document.createElement !== void 0 ? Sr : ze;
 function Ex({ editor: e, ariaActiveDescendant: n, ariaAutoComplete: t, ariaControls: r, ariaDescribedBy: o, ariaErrorMessage: i, ariaExpanded: s, ariaInvalid: a, ariaLabel: l, ariaLabelledBy: u, ariaMultiline: c, ariaOwns: d, ariaRequired: f, autoCapitalize: p, className: g, id: h, role: m = "textbox", spellCheck: v = !0, style: y, tabIndex: b, "data-testid": _, ...w }, S) {
-  const [k, N] = Qt(e.isEditable()), E = Mn((F) => {
-    F && F.ownerDocument && F.ownerDocument.defaultView ? e.setRootElement(F) : e.setRootElement(null);
-  }, [e]), T = Bn(() => /* @__PURE__ */ (function(...F) {
-    return (I) => {
-      for (const j of F) typeof j == "function" ? j(I) : j != null && (j.current = I);
+  const [k, N] = Qt(e.isEditable()), E = Mn((O) => {
+    O && O.ownerDocument && O.ownerDocument.defaultView ? e.setRootElement(O) : e.setRootElement(null);
+  }, [e]), T = Bn(() => /* @__PURE__ */ (function(...O) {
+    return (F) => {
+      for (const j of O) typeof j == "function" ? j(F) : j != null && (j.current = F);
     };
   })(S, E), [E, S]);
-  return Xf(() => (N(e.isEditable()), e.registerEditableListener((F) => {
-    N(F);
+  return Xf(() => (N(e.isEditable()), e.registerEditableListener((O) => {
+    N(O);
   })), [e]), x("div", { "aria-activedescendant": k ? n : void 0, "aria-autocomplete": k ? t : "none", "aria-controls": k ? r : void 0, "aria-describedby": o, ...i != null ? { "aria-errormessage": i } : {}, "aria-expanded": k && m === "combobox" ? !!s : void 0, ...a != null ? { "aria-invalid": a } : {}, "aria-label": l, "aria-labelledby": u, "aria-multiline": c, "aria-owns": k ? d : void 0, "aria-readonly": !k || void 0, "aria-required": f, autoCapitalize: p, className: g, contentEditable: k, "data-testid": _, id: h, ref: T, role: m, spellCheck: v, style: y, tabIndex: b, ...w });
 }
 const Nx = No(Ex);
@@ -19001,8 +19001,8 @@ function Yx() {
                 _.hasOwnProperty(N) || (k[N] = S[N]);
               }
             var T = w[y];
-            return w[y] = k, a.languages.DFS(a.languages, function(F, I) {
-              I === T && F != y && (this[F] = k);
+            return w[y] = k, a.languages.DFS(a.languages, function(O, F) {
+              F === T && O != y && (this[O] = k);
             }), k;
           },
           // Traverse a language definition with Depth First Search
@@ -19097,8 +19097,8 @@ function Yx() {
             grammar: S,
             code: N
           };
-          function T(I) {
-            E.highlightedCode = I, a.hooks.run("before-insert", E), E.element.innerHTML = E.highlightedCode, a.hooks.run("after-highlight", E), a.hooks.run("complete", E), _ && _.call(E.element);
+          function T(F) {
+            E.highlightedCode = F, a.hooks.run("before-insert", E), E.element.innerHTML = E.highlightedCode, a.hooks.run("after-highlight", E), a.hooks.run("complete", E), _ && _.call(E.element);
           }
           if (a.hooks.run("before-sanity-check", E), k = E.element.parentElement, k && k.nodeName.toLowerCase() === "pre" && !k.hasAttribute("tabindex") && k.setAttribute("tabindex", "0"), !E.code) {
             a.hooks.run("complete", E), _ && _.call(E.element);
@@ -19109,10 +19109,10 @@ function Yx() {
             return;
           }
           if (b && r.Worker) {
-            var F = new Worker(a.filename);
-            F.onmessage = function(I) {
-              T(I.data);
-            }, F.postMessage(JSON.stringify({
+            var O = new Worker(a.filename);
+            O.onmessage = function(F) {
+              T(F.data);
+            }, O.postMessage(JSON.stringify({
               language: E.language,
               code: E.code,
               immediateClose: !0
@@ -19269,12 +19269,12 @@ function Yx() {
             for (var T = 0; T < E.length; ++T) {
               if (k && k.cause == N + "," + T)
                 return;
-              var F = E[T], I = F.inside, j = !!F.lookbehind, D = !!F.greedy, V = F.alias;
-              if (D && !F.pattern.global) {
-                var Z = F.pattern.toString().match(/[imsuy]*$/)[0];
-                F.pattern = RegExp(F.pattern.source, Z + "g");
+              var O = E[T], F = O.inside, j = !!O.lookbehind, D = !!O.greedy, V = O.alias;
+              if (D && !O.pattern.global) {
+                var Z = O.pattern.toString().match(/[imsuy]*$/)[0];
+                O.pattern = RegExp(O.pattern.source, Z + "g");
               }
-              for (var W = F.pattern || F, J = w.next, ne = S; J !== b.tail && !(k && ne >= k.reach); ne += J.value.length, J = J.next) {
+              for (var W = O.pattern || O, J = w.next, ne = S; J !== b.tail && !(k && ne >= k.reach); ne += J.value.length, J = J.next) {
                 var se = J.value;
                 if (b.length > y.length)
                   return;
@@ -19297,7 +19297,7 @@ function Yx() {
                   k && bn > k.reach && (k.reach = bn);
                   var Or = J.prev;
                   Ze && (Or = f(b, Or, Ze), ne += Ze.length), p(b, Or, ce);
-                  var yg = new l(N, I ? a.tokenize(Le, I) : Le, V, Le);
+                  var yg = new l(N, F ? a.tokenize(Le, F) : Le, V, Le);
                   if (J = f(b, Or, yg), Je && f(b, J, Je), ce > 1) {
                     var ti = {
                       cause: N + "," + T,
@@ -22057,9 +22057,9 @@ function U_(e, n = gn) {
         if (k > 0 && E[k - 1] === g) continue;
         const T = E[k - 1];
         if (m.intraword === !1 && T && !ko.test(T)) continue;
-        const F = w.getTextContent(), I = F.slice(0, b) + F.slice(p + 1);
-        w.setTextContent(I);
-        const j = S === w ? I : E;
+        const O = w.getTextContent(), F = O.slice(0, b) + O.slice(p + 1);
+        w.setTextContent(F);
+        const j = S === w ? F : E;
         S.setTextContent(j.slice(0, k) + j.slice(k + y));
         const D = B(), V = Bo();
         Ne(V);
@@ -22390,31 +22390,56 @@ const ew = C.forwardRef(
     className: u,
     monacoTheme: c = "vs-dark"
   }, d) => {
-    const [f, p] = C.useState(t), [g, h] = C.useState(e), [m, v] = C.useState(!1), [y, b] = C.useState(0), _ = C.useRef(null);
+    const [f, p] = C.useState(t), [g, h] = C.useState(e), [m, v] = C.useState(!1), [y, b] = C.useState(0), _ = C.useRef(null), w = (F) => {
+      F.editor.defineTheme("appski-dark", {
+        base: "vs-dark",
+        inherit: !0,
+        rules: [
+          // Markdown headings - make them bright and visible
+          { token: "markup.heading", foreground: "e5c07b", fontStyle: "bold" },
+          { token: "markup.heading.1", foreground: "c678dd", fontStyle: "bold" },
+          { token: "markup.heading.2", foreground: "c678dd", fontStyle: "bold" },
+          { token: "markup.heading.3", foreground: "c678dd", fontStyle: "bold" },
+          { token: "entity.name.section", foreground: "c678dd", fontStyle: "bold" },
+          // Alternative token names Monaco might use
+          { token: "keyword.md", foreground: "c678dd" },
+          { token: "string.link.md", foreground: "61afef" },
+          { token: "variable.md", foreground: "e06c75" },
+          { token: "emphasis.md", foreground: "d4d4d4", fontStyle: "italic" },
+          { token: "strong.md", foreground: "d4d4d4", fontStyle: "bold" },
+          // Generic text should be clearly visible
+          { token: "", foreground: "d4d4d4" }
+        ],
+        colors: {
+          "editor.background": "#1e1e2e",
+          "editor.foreground": "#d4d4d4"
+        }
+      });
+    };
     C.useEffect(() => {
       e !== g && h(e);
     }, [e]);
-    const w = C.useCallback((F) => {
+    const S = C.useCallback((F) => {
       h(F), n == null || n(F);
-    }, [n]), S = C.useCallback((F) => {
-      F === "rich" && (v(!1), b((I) => I + 1)), p(F);
-    }, []), k = (F) => {
+    }, [n]), k = C.useCallback((F) => {
+      F === "rich" && (v(!1), b((j) => j + 1)), p(F);
+    }, []), N = (F) => {
       _.current = F;
-    }, N = C.useCallback(() => {
-      var I, j;
+    }, E = C.useCallback(() => {
+      var j, D;
       if (!o) return;
       let F = "";
       if (f === "rich")
-        F = ((I = window.getSelection()) == null ? void 0 : I.toString()) || "";
+        F = ((j = window.getSelection()) == null ? void 0 : j.toString()) || "";
       else {
-        const D = _.current;
-        if (D) {
-          const V = D.getSelection();
-          V && (F = ((j = D.getModel()) == null ? void 0 : j.getValueInRange(V)) || "");
+        const V = _.current;
+        if (V) {
+          const Z = V.getSelection();
+          Z && (F = ((D = V.getModel()) == null ? void 0 : D.getValueInRange(Z)) || "");
         }
       }
       o(F, g);
-    }, [f, g, o]), E = {
+    }, [f, g, o]), T = {
       namespace: "HybridEditor",
       theme: Y_,
       onError: (F) => {
@@ -22430,7 +22455,7 @@ const ew = C.forwardRef(
         yn
       ],
       editable: !l
-    }, T = a ? { minHeight: s, maxHeight: a, overflowY: "auto" } : { minHeight: s };
+    }, O = a ? { minHeight: s, maxHeight: a, overflowY: "auto" } : { minHeight: s };
     return /* @__PURE__ */ x(
       "div",
       {
@@ -22440,17 +22465,17 @@ const ew = C.forwardRef(
           l && "opacity-60 pointer-events-none",
           u
         ),
-        children: f === "rich" ? /* @__PURE__ */ L(kv, { initialConfig: E, children: [
+        children: f === "rich" ? /* @__PURE__ */ L(kv, { initialConfig: T, children: [
           /* @__PURE__ */ x(
             X_,
             {
               mode: f,
-              onModeChange: S,
-              onAIClick: o ? N : void 0,
+              onModeChange: k,
+              onAIClick: o ? E : void 0,
               showAI: r
             }
           ),
-          /* @__PURE__ */ L("div", { className: "relative", style: T, children: [
+          /* @__PURE__ */ L("div", { className: "relative", style: O, children: [
             /* @__PURE__ */ x(
               Cx,
               {
@@ -22472,7 +22497,7 @@ const ew = C.forwardRef(
               Q_,
               {
                 value: g,
-                onChange: w,
+                onChange: S,
                 isInitialized: m,
                 setIsInitialized: v
               }
@@ -22487,7 +22512,7 @@ const ew = C.forwardRef(
                   variant: "ghost",
                   size: "sm",
                   onClick: () => {
-                    S("rich");
+                    k("rich");
                   },
                   title: "Rich Text Mode",
                   className: "h-8 px-2",
@@ -22500,7 +22525,7 @@ const ew = C.forwardRef(
                   variant: "default",
                   size: "sm",
                   onClick: () => {
-                    S("code");
+                    k("code");
                   },
                   title: "Code Mode",
                   className: "h-8 px-2",
@@ -22513,7 +22538,7 @@ const ew = C.forwardRef(
               {
                 variant: "gradient-purple",
                 size: "sm",
-                onClick: N,
+                onClick: E,
                 className: "h-8 px-3 gap-1.5",
                 title: "Ask AI for help",
                 children: [
@@ -22540,10 +22565,11 @@ const ew = C.forwardRef(
               defaultLanguage: "markdown",
               value: g,
               onChange: (F) => {
-                w(F || "");
+                S(F || "");
               },
-              onMount: k,
-              theme: c,
+              beforeMount: w,
+              onMount: N,
+              theme: c === "vs-dark" ? "appski-dark" : c,
               options: {
                 minimap: { enabled: !1 },
                 lineNumbers: "on",
