@@ -330,9 +330,11 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     const [mode, setMode] = React.useState<EditorMode>(initialMode);
     const [content, setContent] = React.useState(value);
     const [isInitialized, setIsInitialized] = React.useState(false);
-    // Key counter to force LexicalComposer remount when switching to rich mode
+    // Key counter to force LexicalComposer remount when switching files or modes
     const [lexicalKey, setLexicalKey] = React.useState(0);
     const monacoEditorRef = React.useRef<Monaco.editor.IStandaloneCodeEditor | null>(null);
+    // Track the last value that was used to initialize the editor
+    const lastInitializedValueRef = React.useRef<string>(value);
 
     // Define custom Monaco theme for better markdown visibility in dark mode
     const handleMonacoBeforeMount: BeforeMount = (monacoInstance: typeof Monaco) => {
@@ -363,9 +365,20 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     };
 
     // Update content when value prop changes (external controlled updates)
+    // This handles file switching - when the external value changes significantly,
+    // we need to force the Lexical editor to reinitialize with the new content
     React.useEffect(() => {
       if (value !== content) {
         setContent(value);
+        
+        // If we're in rich mode and the value changed externally (not from user editing),
+        // we need to force the Lexical editor to remount with the new content
+        // This happens when switching between files
+        if (mode === 'rich' && value !== lastInitializedValueRef.current) {
+          lastInitializedValueRef.current = value;
+          setIsInitialized(false);
+          setLexicalKey(k => k + 1);
+        }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);

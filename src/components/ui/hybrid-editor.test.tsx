@@ -439,4 +439,57 @@ describe('HybridEditor', () => {
       expect(HybridEditor.displayName).toBe('HybridEditor');
     });
   });
+
+  describe('Value Prop Changes (File Switching)', () => {
+    it('updates content when value prop changes in code mode', async () => {
+      const { rerender } = render(<HybridEditor initialMode="code" value="# File 1" />);
+      
+      await waitFor(() => {
+        expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
+      });
+      
+      // Simulate switching to a different file
+      rerender(<HybridEditor initialMode="code" value="# File 2 - Different Content" />);
+      
+      await waitFor(() => {
+        expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
+      });
+    });
+
+    it('updates content when value prop changes in rich mode', async () => {
+      const onChange = vi.fn();
+      const { rerender } = render(<HybridEditor value="Initial content" onChange={onChange} />);
+      
+      // Wait for initial render
+      await waitFor(() => {
+        expect(screen.getByTitle('Rich Text Mode')).toBeInTheDocument();
+      });
+      
+      // Simulate switching to a different file (external value change)
+      rerender(<HybridEditor value="Completely different file content" onChange={onChange} />);
+      
+      // Wait for the editor to reinitialize with new content
+      await waitFor(() => {
+        expect(screen.getByTitle('Rich Text Mode')).toBeInTheDocument();
+      }, { timeout: 2000 });
+    });
+
+    it('handles rapid file switching', async () => {
+      const onChange = vi.fn();
+      const { rerender } = render(<HybridEditor initialMode="code" value="# File A" onChange={onChange} />);
+      
+      await waitFor(() => {
+        expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
+      });
+      
+      // Rapid file switching
+      rerender(<HybridEditor initialMode="code" value="# File B" onChange={onChange} />);
+      rerender(<HybridEditor initialMode="code" value="# File C" onChange={onChange} />);
+      rerender(<HybridEditor initialMode="code" value="# File D" onChange={onChange} />);
+      
+      await waitFor(() => {
+        expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
+      });
+    });
+  });
 });
