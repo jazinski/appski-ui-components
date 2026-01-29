@@ -223,3 +223,4 @@ export {
 } from './main-nav';
 export { UserMenu, userMenuVariants, type UserMenuProps } from './user-menu';
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
+export { AppShell, type AppShellProps } from './app-shell';

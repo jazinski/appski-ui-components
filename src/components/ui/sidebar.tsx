@@ -144,7 +144,9 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
 
       checkMobile();
       window.addEventListener('resize', checkMobile);
-      return () => { window.removeEventListener('resize', checkMobile); };
+      return () => {
+        window.removeEventListener('resize', checkMobile);
+      };
     }, []);
 
     // Handle ESC key to close
@@ -158,7 +160,9 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
       };
 
       document.addEventListener('keydown', handleEscape);
-      return () => { document.removeEventListener('keydown', handleEscape); };
+      return () => {
+        document.removeEventListener('keydown', handleEscape);
+      };
     }, [open, isMobile, onOpenChange]);
 
     // Prevent body scroll when mobile sidebar is open
@@ -205,6 +209,7 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
           )}
           style={{ width }}
           aria-label="Sidebar navigation"
+          data-testid="sidebar"
           {...props}
         >
           {/* Close button (mobile only) */}
