@@ -331,7 +331,7 @@ describe('DataTable', () => {
       const checkboxes = screen.getAllByRole('checkbox');
       const firstRowCheckbox = checkboxes[1]; // Skip header checkbox
 
-      await user.click(firstRowCheckbox!);
+      await user.click(firstRowCheckbox);
 
       await waitFor(() => {
         expect(handleSelectionChange).toHaveBeenCalled();
@@ -355,7 +355,7 @@ describe('DataTable', () => {
       const checkboxes = screen.getAllByRole('checkbox');
       const selectAllCheckbox = checkboxes[0]; // Header checkbox
 
-      await user.click(selectAllCheckbox!);
+      await user.click(selectAllCheckbox);
 
       await waitFor(() => {
         expect(handleSelectionChange).toHaveBeenCalled();
@@ -373,7 +373,7 @@ describe('DataTable', () => {
       );
 
       const checkboxes = screen.getAllByRole('checkbox');
-      await user.click(checkboxes[1]!);
+      await user.click(checkboxes[1]);
 
       await waitFor(() => {
         expect(screen.getByText(/1 of 3 row\(s\) selected/)).toBeInTheDocument();
@@ -391,7 +391,7 @@ describe('DataTable', () => {
       const rows = screen.getAllByRole('row');
       const firstDataRow = rows[1]; // Skip header row
 
-      await user.click(firstDataRow!);
+      await user.click(firstDataRow);
 
       expect(handleRowClick).toHaveBeenCalledWith(sampleData[0]);
     });
