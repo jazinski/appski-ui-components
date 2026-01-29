@@ -29,7 +29,7 @@ export { ErrorState, type ErrorStateProps } from './error-state';
 export { MetricCard, type MetricCardProps } from './metric-card';
 export { ConnectionStatus, type ConnectionStatusProps } from './connection-status';
 export { Tooltip, type TooltipProps } from './tooltip';
-export { ConfirmDialog, type ConfirmDialogProps } from './confirm-dialog';
+export { ConfirmDialog, useConfirmDialog, type ConfirmDialogProps, type UseConfirmDialogOptions, type UseConfirmDialogReturn, } from './confirm-dialog';
 export { HybridEditor, type HybridEditorProps, type EditorMode } from './hybrid-editor';
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, accordionItemVariants, accordionTriggerVariants, accordionContentVariants, type AccordionProps, type AccordionItemProps, type AccordionTriggerProps, type AccordionContentProps, } from './accordion';
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverClose, popoverContentVariants, type PopoverProps, type PopoverTriggerProps, type PopoverContentProps, type PopoverAnchorProps, type PopoverCloseProps, } from './popover';
@@ -39,4 +39,9 @@ export { Separator, separatorVariants, type SeparatorProps } from './separator';
 export { Combobox, comboboxVariants, type ComboboxProps, type ComboboxOption } from './combobox';
 export { Pagination, paginationVariants, paginationItemVariants, type PaginationProps, } from './pagination';
 export { Form, FormField, FormMessage, useFormContext, type FormProps, type FormFieldProps, type FormMessageProps, type FormContextValue, } from './form';
+export { SearchBar, type SearchBarProps } from './search-bar';
+export { MainNav, mainNavVariants, mainNavItemVariants, mainNavSectionVariants, type MainNavProps, type NavItem, type NavSection, } from './main-nav';
+export { UserMenu, userMenuVariants, type UserMenuProps } from './user-menu';
+export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
+export { AppShell, type AppShellProps } from './app-shell';
 //# sourceMappingURL=index.d.ts.map

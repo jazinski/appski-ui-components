@@ -151,7 +151,13 @@ export { ErrorState, type ErrorStateProps } from './error-state';
 export { MetricCard, type MetricCardProps } from './metric-card';
 export { ConnectionStatus, type ConnectionStatusProps } from './connection-status';
 export { Tooltip, type TooltipProps } from './tooltip';
-export { ConfirmDialog, type ConfirmDialogProps } from './confirm-dialog';
+export {
+  ConfirmDialog,
+  useConfirmDialog,
+  type ConfirmDialogProps,
+  type UseConfirmDialogOptions,
+  type UseConfirmDialogReturn,
+} from './confirm-dialog';
 export { HybridEditor, type HybridEditorProps, type EditorMode } from './hybrid-editor';
 export {
   Accordion,

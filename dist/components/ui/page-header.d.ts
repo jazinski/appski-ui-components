@@ -26,11 +26,11 @@ export interface StatItem {
     /** Optional color for the value */
     color?: 'default' | 'success' | 'warning' | 'destructive';
 }
-export interface PageHeaderProps extends React.HTMLAttributes<HTMLElement>, VariantProps<typeof pageHeaderVariants> {
+export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'>, VariantProps<typeof pageHeaderVariants> {
     /** Page title */
-    title: string;
+    title: string | React.ReactNode;
     /** Optional description below the title */
-    description?: string;
+    description?: string | React.ReactNode;
     /** Icon to display next to the title */
     icon?: React.ComponentType<{
         className?: string;
@@ -45,9 +45,28 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLElement>, Vari
     showHomeInBreadcrumbs?: boolean;
     /** Custom breadcrumb separator */
     breadcrumbSeparator?: React.ReactNode;
+    /** Link component to use for navigation (e.g., react-router Link) */
+    LinkComponent?: React.ComponentType<any>;
+    /** Live indicator for auto-refresh pages */
+    isLive?: boolean;
+    /** Callback when live toggle is clicked */
+    onToggleLive?: () => void;
+    /** Custom label for live indicator (default: "Live" / "Paused") */
+    liveLabel?: string;
+    /** Server uptime display */
+    uptime?: string;
+    /** Help text to display in tooltip */
+    helpText?: string;
+    /** Link for help text */
+    helpLink?: string;
+    /** Position of action buttons: "inline" (next to title) or "below" (on second row, right-aligned) */
+    actionsPosition?: 'inline' | 'below';
+    /** Additional controls (below title, e.g., filters, time range) */
+    controls?: React.ReactNode;
 }
 /**
  * PageHeader component for consistent page layouts with title, breadcrumbs, actions, and stats.
+ * Supports live indicators, help tooltips, and flexible action positioning.
  *
  * @example
  * <PageHeader
@@ -57,6 +76,8 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLElement>, Vari
  *   breadcrumbs={[{ label: 'Admin' }, { label: 'Users' }]}
  *   actions={<Button>Add User</Button>}
  *   stats={[{ label: 'Total', value: 142 }]}
+ *   isLive={isLive}
+ *   onToggleLive={() => setIsLive(!isLive)}
  * />
  */
 declare const PageHeader: React.ForwardRefExoticComponent<PageHeaderProps & React.RefAttributes<HTMLElement>>;

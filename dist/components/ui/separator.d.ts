@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 declare const separatorVariants: (props?: ({
     orientation?: "horizontal" | "vertical" | null | undefined;
-    variant?: "default" | "muted" | "primary" | null | undefined;
+    variant?: "default" | "muted" | "primary" | "dashed" | "dotted" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export interface SeparatorProps extends Omit<React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>, 'className' | 'orientation'>, VariantProps<typeof separatorVariants> {
     className?: string;
