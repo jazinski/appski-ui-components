@@ -211,3 +211,4 @@ export {
   type FormMessageProps,
   type FormContextValue,
 } from './form';
+export { SearchBar, type SearchBarProps } from './search-bar';
