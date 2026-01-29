@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { Slider } from './slider';
 
 describe('Slider', () => {
@@ -23,7 +22,7 @@ describe('Slider', () => {
     expect(container.textContent).not.toContain('50');
   });
 
-  it('handles value changes', async () => {
+  it('handles value changes', () => {
     const handleChange = vi.fn();
     const { container } = render(
       <Slider defaultValue={[50]} max={100} onValueChange={handleChange} />

@@ -38,7 +38,7 @@ export const Default: Story = {
   args: {
     currentPage: 1,
     totalPages: 10,
-    onPageChange: (page) => console.log('Page:', page),
+    onPageChange: (page) => { console.log('Page:', page); },
   },
 };
 
@@ -46,7 +46,7 @@ export const MiddlePage: Story = {
   args: {
     currentPage: 5,
     totalPages: 10,
-    onPageChange: (page) => console.log('Page:', page),
+    onPageChange: (page) => { console.log('Page:', page); },
   },
 };
 
@@ -54,7 +54,7 @@ export const LastPage: Story = {
   args: {
     currentPage: 10,
     totalPages: 10,
-    onPageChange: (page) => console.log('Page:', page),
+    onPageChange: (page) => { console.log('Page:', page); },
   },
 };
 
@@ -62,7 +62,7 @@ export const FewPages: Story = {
   args: {
     currentPage: 2,
     totalPages: 5,
-    onPageChange: (page) => console.log('Page:', page),
+    onPageChange: (page) => { console.log('Page:', page); },
   },
 };
 
@@ -70,7 +70,7 @@ export const ManyPages: Story = {
   args: {
     currentPage: 10,
     totalPages: 50,
-    onPageChange: (page) => console.log('Page:', page),
+    onPageChange: (page) => { console.log('Page:', page); },
   },
 };
 
@@ -78,7 +78,7 @@ export const SinglePage: Story = {
   args: {
     currentPage: 1,
     totalPages: 1,
-    onPageChange: (page) => console.log('Page:', page),
+    onPageChange: (page) => { console.log('Page:', page); },
   },
 };
 
@@ -87,7 +87,7 @@ export const WithMoreSiblings: Story = {
     currentPage: 10,
     totalPages: 20,
     siblingCount: 2,
-    onPageChange: (page) => console.log('Page:', page),
+    onPageChange: (page) => { console.log('Page:', page); },
   },
 };
 

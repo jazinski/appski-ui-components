@@ -6,9 +6,9 @@ export interface FormContextValue {
     errors: FormErrors;
     touched: FormTouched;
     isSubmitting: boolean;
-    setFieldValue: (name: string, value: any) => void;
+    setFieldValue: (name: string, value: unknown) => void;
     setFieldTouched: (name: string, touched: boolean) => void;
-    validateField: (name: string, value: any) => Promise<string | undefined>;
+    validateField: (name: string, value: unknown) => Promise<string | undefined>;
 }
 export declare const useFormContext: () => FormContextValue;
 export interface FormProps<T extends z.ZodType> extends Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit' | 'children'> {

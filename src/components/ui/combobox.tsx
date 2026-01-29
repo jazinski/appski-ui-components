@@ -123,7 +123,7 @@ export const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
                   type="text"
                   placeholder={searchPlaceholder}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => { setSearchQuery(e.target.value); }}
                   className="border-border bg-background focus:ring-ring w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-offset-2"
                 />
               </div>
@@ -136,7 +136,11 @@ export const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
                   {filteredOptions.map((option) => (
                     <button
                       key={option.value}
-                      onClick={() => !option.disabled && handleSelect(option.value)}
+                      onClick={() => {
+                        if (!option.disabled) {
+                          handleSelect(option.value);
+                        }
+                      }}
                       disabled={option.disabled}
                       className={cn(
                         'relative flex w-full cursor-pointer items-center rounded-sm px-2 py-1.5 text-sm transition-colors outline-none select-none',

@@ -26687,14 +26687,18 @@ const XA = Y("w-full justify-between", {
             type: "text",
             placeholder: s,
             value: p,
-            onChange: (v) => h(v.target.value),
+            onChange: (v) => {
+              h(v.target.value);
+            },
             className: "border-border bg-background focus:ring-ring w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-offset-2"
           }
         ) }),
         /* @__PURE__ */ w("div", { className: "max-h-[300px] overflow-y-auto", children: b.length === 0 ? /* @__PURE__ */ w("div", { className: "text-muted-foreground py-6 text-center text-sm", children: o }) : /* @__PURE__ */ w("div", { className: "p-1", children: b.map((v) => /* @__PURE__ */ M(
           "button",
           {
-            onClick: () => !v.disabled && y(v.value),
+            onClick: () => {
+              v.disabled || y(v.value);
+            },
             disabled: v.disabled,
             className: I(
               "relative flex w-full cursor-pointer items-center rounded-sm px-2 py-1.5 text-sm transition-colors outline-none select-none",
@@ -26794,7 +26798,9 @@ const eT = Y("flex items-center justify-center gap-1", {
           r && /* @__PURE__ */ w(
             "button",
             {
-              onClick: () => f(1),
+              onClick: () => {
+                f(1);
+              },
               disabled: e === 1 || s,
               "aria-label": "Go to first page",
               className: I(Zn({ size: l })),
@@ -26804,7 +26810,9 @@ const eT = Y("flex items-center justify-center gap-1", {
           o && /* @__PURE__ */ w(
             "button",
             {
-              onClick: () => f(e - 1),
+              onClick: () => {
+                f(e - 1);
+              },
               disabled: e === 1 || s,
               "aria-label": "Go to previous page",
               className: I(Zn({ size: l })),
@@ -26821,7 +26829,9 @@ const eT = Y("flex items-center justify-center gap-1", {
           ) : /* @__PURE__ */ w(
             "button",
             {
-              onClick: () => f(g),
+              onClick: () => {
+                f(g);
+              },
               disabled: s,
               "aria-label": `Go to page ${g}`,
               "aria-current": e === g ? "page" : void 0,
@@ -26838,7 +26848,9 @@ const eT = Y("flex items-center justify-center gap-1", {
           o && /* @__PURE__ */ w(
             "button",
             {
-              onClick: () => f(e + 1),
+              onClick: () => {
+                f(e + 1);
+              },
               disabled: e === n || s,
               "aria-label": "Go to next page",
               className: I(Zn({ size: l })),
@@ -26848,7 +26860,9 @@ const eT = Y("flex items-center justify-center gap-1", {
           r && /* @__PURE__ */ w(
             "button",
             {
-              onClick: () => f(n),
+              onClick: () => {
+                f(n);
+              },
               disabled: e === n || s,
               "aria-label": "Go to last page",
               className: I(Zn({ size: l })),
@@ -27028,30 +27042,28 @@ function $T({
 }) {
   const [l, c] = x.useState(n), [u, d] = x.useState({}), [f, g] = x.useState({}), [p, h] = x.useState(!1), m = x.useCallback(
     async (S, C) => {
-      var E;
+      var E, N;
       try {
-        const N = e.shape[S];
-        N && await N.parseAsync(C);
+        const k = (E = e.shape) == null ? void 0 : E[S];
+        k && await k.parseAsync(C);
         return;
-      } catch (N) {
-        return N instanceof br ? (E = N.errors[0]) == null ? void 0 : E.message : "Validation error";
+      } catch (k) {
+        return k instanceof br ? (N = k.errors[0]) == null ? void 0 : N.message : "Validation error";
       }
     },
     [e]
   ), b = x.useCallback(
-    async (S, C) => {
-      if (c((E) => ({ ...E, [S]: C })), o) {
-        const E = await m(S, C);
+    (S, C) => {
+      c((E) => ({ ...E, [S]: C })), o && m(S, C).then((E) => {
         d((N) => ({ ...N, [S]: E }));
-      }
+      });
     },
     [m, o]
   ), y = x.useCallback(
-    async (S, C) => {
-      if (g((E) => ({ ...E, [S]: C })), C && r) {
-        const E = await m(S, l[S]);
+    (S, C) => {
+      g((E) => ({ ...E, [S]: C })), C && r && m(S, l[S]).then((E) => {
         d((N) => ({ ...N, [S]: E }));
-      }
+      });
     },
     [m, r, l]
   ), v = async (S) => {

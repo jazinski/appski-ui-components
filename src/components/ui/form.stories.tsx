@@ -69,7 +69,7 @@ export const Default: Story = {
           onSubmit={(values) => {
             console.log('Form submitted:', values);
             setSubmitted(true);
-            setTimeout(() => setSubmitted(false), 2000);
+            setTimeout(() => { setSubmitted(false); }, 2000);
           }}
         >
           {({ isSubmitting }) => (
@@ -109,7 +109,7 @@ export const WithValidationOnChange: Story = {
         <Form
           schema={schema}
           initialValues={{ username: '', email: '' }}
-          onSubmit={(values) => console.log('Submitted:', values)}
+          onSubmit={(values) => { console.log('Submitted:', values); }}
           validateOnChange={true}
         >
           <FormField name="username" label="Username" required>
@@ -139,7 +139,7 @@ export const WithDescriptions: Story = {
         <Form
           schema={schema}
           initialValues={{ displayName: '', bio: '' }}
-          onSubmit={(values) => console.log('Submitted:', values)}
+          onSubmit={(values) => { console.log('Submitted:', values); }}
         >
           <FormField
             name="displayName"
@@ -182,7 +182,7 @@ export const ComplexValidation: Story = {
         <Form
           schema={schema}
           initialValues={{ password: '', confirmPassword: '' }}
-          onSubmit={(values) => console.log('Submitted:', values)}
+          onSubmit={(values) => { console.log('Submitted:', values); }}
         >
           <FormField name="password" label="Password" required>
             <Input type="password" placeholder="Enter password" />
@@ -216,7 +216,7 @@ export const WithInitialValues: Story = {
             lastName: 'Doe',
             email: 'john.doe@example.com',
           }}
-          onSubmit={(values) => console.log('Submitted:', values)}
+          onSubmit={(values) => { console.log('Submitted:', values); }}
         >
           <FormField name="firstName" label="First Name" required>
             <Input />
@@ -258,7 +258,7 @@ export const ContactForm: Story = {
             // Simulate API call
             await new Promise((resolve) => setTimeout(resolve, 1000));
             setStatus('success');
-            setTimeout(() => setStatus('idle'), 3000);
+            setTimeout(() => { setStatus('idle'); }, 3000);
           }}
         >
           {({ isSubmitting }) => (
@@ -316,7 +316,7 @@ export const NoValidationOnBlur: Story = {
         <Form
           schema={schema}
           initialValues={{ username: '', email: '' }}
-          onSubmit={(values) => console.log('Submitted:', values)}
+          onSubmit={(values) => { console.log('Submitted:', values); }}
           validateOnBlur={false}
         >
           <FormField name="username" label="Username" required>

@@ -142,7 +142,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
       >
         {showFirstLast && (
           <button
-            onClick={() => handlePageChange(1)}
+            onClick={() => { handlePageChange(1); }}
             disabled={currentPage === 1 || disabled}
             aria-label="Go to first page"
             className={cn(paginationItemVariants({ size }))}
@@ -153,7 +153,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
 
         {showPrevNext && (
           <button
-            onClick={() => handlePageChange(currentPage - 1)}
+            onClick={() => { handlePageChange(currentPage - 1); }}
             disabled={currentPage === 1 || disabled}
             aria-label="Go to previous page"
             className={cn(paginationItemVariants({ size }))}
@@ -177,7 +177,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
           return (
             <button
               key={page}
-              onClick={() => handlePageChange(page as number)}
+              onClick={() => { handlePageChange(page as number); }}
               disabled={disabled}
               aria-label={`Go to page ${page}`}
               aria-current={currentPage === page ? 'page' : undefined}
@@ -195,7 +195,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
 
         {showPrevNext && (
           <button
-            onClick={() => handlePageChange(currentPage + 1)}
+            onClick={() => { handlePageChange(currentPage + 1); }}
             disabled={currentPage === totalPages || disabled}
             aria-label="Go to next page"
             className={cn(paginationItemVariants({ size }))}
@@ -206,7 +206,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
 
         {showFirstLast && (
           <button
-            onClick={() => handlePageChange(totalPages)}
+            onClick={() => { handlePageChange(totalPages); }}
             disabled={currentPage === totalPages || disabled}
             aria-label="Go to last page"
             className={cn(paginationItemVariants({ size }))}
