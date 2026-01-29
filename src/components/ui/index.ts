@@ -212,3 +212,12 @@ export {
   type FormContextValue,
 } from './form';
 export { SearchBar, type SearchBarProps } from './search-bar';
+export {
+  MainNav,
+  mainNavVariants,
+  mainNavItemVariants,
+  mainNavSectionVariants,
+  type MainNavProps,
+  type NavItem,
+  type NavSection,
+} from './main-nav';
