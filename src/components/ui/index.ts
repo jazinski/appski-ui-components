@@ -221,3 +221,4 @@ export {
   type NavItem,
   type NavSection,
 } from './main-nav';
+export { UserMenu, userMenuVariants, type UserMenuProps } from './user-menu';
