@@ -138,7 +138,7 @@ export function ConfirmDialog({
 
         {/* Actions */}
         <DialogFooter className="border-border bg-muted/50 border-t px-6 py-4">
-          <Button variant="outline" onClick={() => onOpenChange(false)} disabled={loading}>
+          <Button variant="outline" onClick={() => { onOpenChange(false); }} disabled={loading}>
             {cancelText}
           </Button>
           <Button
