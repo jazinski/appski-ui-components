@@ -137,7 +137,13 @@ function InteractiveDialog(props: Partial<React.ComponentProps<typeof ConfirmDia
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Dialog</Button>
+      <Button
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        Open Dialog
+      </Button>
       <ConfirmDialog
         open={open}
         onOpenChange={setOpen}
@@ -224,7 +230,13 @@ export const Loading: Story = {
 
     return (
       <>
-        <Button onClick={() => setOpen(true)}>Open Dialog</Button>
+        <Button
+          onClick={() => {
+            setOpen(true);
+          }}
+        >
+          Open Dialog
+        </Button>
         <ConfirmDialog
           open={open}
           onOpenChange={setOpen}
@@ -312,7 +324,7 @@ export const WithHook: Story = {
 
       return (
         <>
-          <Button onClick={handleDelete} variant="destructive">
+          <Button onClick={() => void handleDelete()} variant="destructive">
             Delete File (with Hook)
           </Button>
           <ConfirmDialogComponent />
@@ -353,21 +365,44 @@ export const AllVariants: Story = {
 
     return (
       <div className="flex flex-wrap gap-4">
-        <Button onClick={() => setDangerOpen(true)} variant="destructive">
+        <Button
+          onClick={() => {
+            setDangerOpen(true);
+          }}
+          variant="destructive"
+        >
           Danger
         </Button>
-        <Button onClick={() => setWarningOpen(true)} className="bg-amber-600 hover:bg-amber-700">
+        <Button
+          onClick={() => {
+            setWarningOpen(true);
+          }}
+          className="bg-amber-600 hover:bg-amber-700"
+        >
           Warning
         </Button>
-        <Button onClick={() => setInfoOpen(true)} className="bg-blue-600 hover:bg-blue-700">
+        <Button
+          onClick={() => {
+            setInfoOpen(true);
+          }}
+          className="bg-blue-600 hover:bg-blue-700"
+        >
           Info
         </Button>
-        <Button onClick={() => setDefaultOpen(true)}>Default</Button>
+        <Button
+          onClick={() => {
+            setDefaultOpen(true);
+          }}
+        >
+          Default
+        </Button>
 
         <ConfirmDialog
           open={dangerOpen}
           onOpenChange={setDangerOpen}
-          onConfirm={() => setDangerOpen(false)}
+          onConfirm={() => {
+            setDangerOpen(false);
+          }}
           variant="danger"
           title="Danger"
           message="This is a danger variant with destructive styling."
@@ -375,7 +410,9 @@ export const AllVariants: Story = {
         <ConfirmDialog
           open={warningOpen}
           onOpenChange={setWarningOpen}
-          onConfirm={() => setWarningOpen(false)}
+          onConfirm={() => {
+            setWarningOpen(false);
+          }}
           variant="warning"
           title="Warning"
           message="This is a warning variant with cautionary styling."
@@ -383,7 +420,9 @@ export const AllVariants: Story = {
         <ConfirmDialog
           open={infoOpen}
           onOpenChange={setInfoOpen}
-          onConfirm={() => setInfoOpen(false)}
+          onConfirm={() => {
+            setInfoOpen(false);
+          }}
           variant="info"
           title="Info"
           message="This is an info variant with informational styling."
@@ -391,7 +430,9 @@ export const AllVariants: Story = {
         <ConfirmDialog
           open={defaultOpen}
           onOpenChange={setDefaultOpen}
-          onConfirm={() => setDefaultOpen(false)}
+          onConfirm={() => {
+            setDefaultOpen(false);
+          }}
           variant="default"
           title="Default"
           message="This is the default variant with balanced styling."

@@ -278,7 +278,9 @@ export const FormSubmit: Story = {
             onSubmit={(e) => {
               e.preventDefault();
               setSubmitted(true);
-              setTimeout(() => setSubmitted(false), 2000);
+              setTimeout(() => {
+                setSubmitted(false);
+              }, 2000);
             }}
           >
             <div className="p-6">
@@ -332,12 +334,14 @@ export const FormSubmit: Story = {
  */
 export const DeleteConfirmation: Story = {
   decorators: [
-    (Story) => {
+    () => {
       const [isDeleting, setIsDeleting] = useState(false);
 
       const handleDelete = () => {
         setIsDeleting(true);
-        setTimeout(() => setIsDeleting(false), 2000);
+        setTimeout(() => {
+          setIsDeleting(false);
+        }, 2000);
       };
 
       return (
@@ -361,7 +365,9 @@ export const DeleteConfirmation: Story = {
             confirmVariant="destructive"
             confirmLoading={isDeleting}
             confirmLoadingText="Deleting..."
-            onCancel={() => alert('Cancelled')}
+            onCancel={() => {
+              alert('Cancelled');
+            }}
             onConfirm={handleDelete}
           />
         </div>
@@ -375,12 +381,14 @@ export const DeleteConfirmation: Story = {
  */
 export const SaveChanges: Story = {
   decorators: [
-    (Story) => {
+    () => {
       const [isSaving, setIsSaving] = useState(false);
 
       const handleSave = () => {
         setIsSaving(true);
-        setTimeout(() => setIsSaving(false), 2000);
+        setTimeout(() => {
+          setIsSaving(false);
+        }, 2000);
       };
 
       return (
@@ -428,7 +436,9 @@ export const SaveChanges: Story = {
             confirmText="Save Changes"
             confirmLoading={isSaving}
             confirmLoadingText="Saving..."
-            onCancel={() => alert('Changes discarded')}
+            onCancel={() => {
+              alert('Changes discarded');
+            }}
             onConfirm={handleSave}
           >
             <span className="text-sm text-slate-600 dark:text-slate-400">

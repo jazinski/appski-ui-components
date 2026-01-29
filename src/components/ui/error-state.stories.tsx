@@ -77,7 +77,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     error: 'An unexpected error occurred',
-    onRetry: () => alert('Retrying...'),
+    onRetry: () => { alert('Retrying...'); },
   },
 };
 
@@ -89,7 +89,7 @@ export const Network: Story = {
   args: {
     error: 'Failed to fetch data from server',
     variant: 'network',
-    onRetry: () => alert('Retrying connection...'),
+    onRetry: () => { alert('Retrying connection...'); },
   },
 };
 
@@ -101,7 +101,7 @@ export const Auth: Story = {
   args: {
     error: 'Invalid credentials',
     variant: 'auth',
-    onRetry: () => alert('Redirecting to login...'),
+    onRetry: () => { alert('Redirecting to login...'); },
   },
 };
 
@@ -134,7 +134,7 @@ export const WithoutRetry: Story = {
 export const WithErrorObject: Story = {
   args: {
     error: new Error('TypeError: Cannot read property "id" of undefined'),
-    onRetry: () => alert('Retrying...'),
+    onRetry: () => { alert('Retrying...'); },
   },
 };
 
@@ -147,7 +147,7 @@ export const Compact: Story = {
     error: 'Failed to load user data',
     variant: 'default',
     compact: true,
-    onRetry: () => alert('Retrying...'),
+    onRetry: () => { alert('Retrying...'); },
   },
   parameters: {
     layout: 'padded',
@@ -163,7 +163,7 @@ export const CompactNetwork: Story = {
     error: 'Connection timeout',
     variant: 'network',
     compact: true,
-    onRetry: () => alert('Retrying connection...'),
+    onRetry: () => { alert('Retrying connection...'); },
   },
   parameters: {
     layout: 'padded',
@@ -179,7 +179,7 @@ export const CompactAuth: Story = {
     error: 'Session expired',
     variant: 'auth',
     compact: true,
-    onRetry: () => alert('Redirecting to login...'),
+    onRetry: () => { alert('Redirecting to login...'); },
   },
   parameters: {
     layout: 'padded',
@@ -209,7 +209,7 @@ export const APIFetchFailure: Story = {
   args: {
     error: 'Failed to fetch: 500 Internal Server Error',
     variant: 'network',
-    onRetry: () => alert('Refetching data...'),
+    onRetry: () => { alert('Refetching data...'); },
   },
 };
 
@@ -249,17 +249,17 @@ export const AllVariants: Story = {
       <ErrorState
         error="Generic error occurred"
         variant="default"
-        onRetry={() => alert('Retry default')}
+        onRetry={() => { alert('Retry default'); }}
       />
       <ErrorState
         error="Connection failed"
         variant="network"
-        onRetry={() => alert('Retry network')}
+        onRetry={() => { alert('Retry network'); }}
       />
       <ErrorState
         error="Authentication failed"
         variant="auth"
-        onRetry={() => alert('Retry auth')}
+        onRetry={() => { alert('Retry auth'); }}
       />
       <ErrorState error="Resource not found" variant="notfound" />
     </div>
@@ -280,19 +280,19 @@ export const AllCompactVariants: Story = {
         error="Generic error occurred"
         variant="default"
         compact
-        onRetry={() => alert('Retry')}
+        onRetry={() => { alert('Retry'); }}
       />
       <ErrorState
         error="Connection failed"
         variant="network"
         compact
-        onRetry={() => alert('Retry')}
+        onRetry={() => { alert('Retry'); }}
       />
       <ErrorState
         error="Authentication failed"
         variant="auth"
         compact
-        onRetry={() => alert('Retry')}
+        onRetry={() => { alert('Retry'); }}
       />
       <ErrorState error="Resource not found" variant="notfound" compact />
     </div>

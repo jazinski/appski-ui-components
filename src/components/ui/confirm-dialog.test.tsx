@@ -366,7 +366,7 @@ describe('ConfirmDialog', () => {
           <>
             <button
               onClick={() => {
-                confirm();
+                void confirm();
               }}
             >
               Open
@@ -403,7 +403,7 @@ describe('ConfirmDialog', () => {
 
         return (
           <>
-            <button onClick={handleClick}>Open</button>
+            <button onClick={() => void handleClick()}>Open</button>
             {result !== null && <div>Result: {result.toString()}</div>}
             <ConfirmDialogComponent />
           </>
@@ -441,7 +441,7 @@ describe('ConfirmDialog', () => {
 
         return (
           <>
-            <button onClick={handleClick}>Open</button>
+            <button onClick={() => void handleClick()}>Open</button>
             {result !== null && <div>Result: {result.toString()}</div>}
             <ConfirmDialogComponent />
           </>
@@ -478,7 +478,7 @@ describe('ConfirmDialog', () => {
           <>
             <button
               onClick={() => {
-                confirm();
+                void confirm();
               }}
             >
               Open
@@ -491,9 +491,9 @@ describe('ConfirmDialog', () => {
       const user = userEvent.setup();
       render(<TestComponent />);
 
-      user.click(screen.getByText('Open'));
+      void user.click(screen.getByText('Open'));
 
-      waitFor(() => {
+      void waitFor(() => {
         expect(screen.getByText('Delete Account')).toBeInTheDocument();
         expect(screen.getByText('This action is permanent')).toBeInTheDocument();
         expect(screen.getByRole('button', { name: 'Delete Forever' })).toBeInTheDocument();
