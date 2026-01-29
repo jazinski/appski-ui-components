@@ -29,6 +29,16 @@ export interface AppShellProps {
   onSidebarOpenChange?: (open: boolean) => void;
 
   /**
+   * Controlled sidebar collapsed state (optional, desktop only)
+   */
+  sidebarCollapsed?: boolean;
+
+  /**
+   * Callback when sidebar collapsed state changes
+   */
+  onSidebarCollapsedChange?: (collapsed: boolean) => void;
+
+  /**
    * Optional header content (shown above main content area)
    * Useful for mobile hamburger menu, page title, actions, etc.
    */
@@ -78,6 +88,8 @@ export const AppShell = React.forwardRef<HTMLDivElement, AppShellProps>(
       sidebarFooter,
       sidebarOpen,
       onSidebarOpenChange,
+      sidebarCollapsed,
+      onSidebarCollapsedChange,
       header,
       children,
       className,
@@ -96,6 +108,10 @@ export const AppShell = React.forwardRef<HTMLDivElement, AppShellProps>(
           {...(sidebarFooter !== undefined && { footer: sidebarFooter })}
           {...(sidebarOpen !== undefined && { open: sidebarOpen })}
           {...(onSidebarOpenChange !== undefined && { onOpenChange: onSidebarOpenChange })}
+          {...(sidebarCollapsed !== undefined && { collapsed: sidebarCollapsed })}
+          {...(onSidebarCollapsedChange !== undefined && {
+            onCollapsedChange: onSidebarCollapsedChange,
+          })}
         >
           {sidebar}
         </Sidebar>

@@ -319,3 +319,60 @@ export const MobileView: Story = {
     </AppShell>
   ),
 };
+
+/**
+ * AppShell with collapsed sidebar (desktop only).
+ */
+export const WithCollapsedSidebar: Story = {
+  args: {},
+  render: () => (
+    <AppShell
+      sidebar={<MainNav items={navItems} />}
+      sidebarLogo={
+        <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600" />
+      }
+      sidebarFooter={<UserMenu {...userMenuProps} avatarStatus="online" />}
+      sidebarCollapsed={true}
+    >
+      <SampleContent />
+    </AppShell>
+  ),
+};
+
+/**
+ * AppShell with interactive collapse control.
+ */
+export const WithCollapsedInteractive: Story = {
+  args: {},
+  render: () => {
+    const [collapsed, setCollapsed] = React.useState(false);
+
+    return (
+      <AppShell
+        sidebar={<MainNav items={navItems} />}
+        sidebarLogo={
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600" />
+            {!collapsed && <span className="font-semibold text-white">Appski</span>}
+          </div>
+        }
+        sidebarFooter={<UserMenu {...userMenuProps} avatarStatus="online" />}
+        sidebarCollapsed={collapsed}
+        onSidebarCollapsedChange={setCollapsed}
+        header={
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-white">Interactive Collapse</h1>
+              <p className="mt-1 text-sm text-slate-400">Toggle sidebar with the hamburger button</p>
+            </div>
+            <div className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-slate-300">
+              Collapsed: {collapsed ? 'Yes' : 'No'}
+            </div>
+          </div>
+        }
+      >
+        <SampleContent />
+      </AppShell>
+    );
+  },
+};

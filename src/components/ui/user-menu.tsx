@@ -84,6 +84,10 @@ export interface UserMenuProps extends VariantProps<typeof userMenuVariants> {
    * Callback when open state changes
    */
   onOpenChange?: (open: boolean) => void;
+  /**
+   * Whether the menu is in collapsed mode (shows avatar only)
+   */
+  collapsed?: boolean;
 }
 
 /**
@@ -137,6 +141,7 @@ export const UserMenu = React.forwardRef<HTMLButtonElement, UserMenuProps>(
       disabled = false,
       open,
       onOpenChange,
+      collapsed = false,
     },
     ref
   ) => {
@@ -150,6 +155,7 @@ export const UserMenu = React.forwardRef<HTMLButtonElement, UserMenuProps>(
             className={cn(
               userMenuVariants({ variant }),
               disabled && 'cursor-not-allowed opacity-50',
+              collapsed && 'justify-center px-2',
               className
             )}
             aria-label="User menu"
@@ -161,14 +167,18 @@ export const UserMenu = React.forwardRef<HTMLButtonElement, UserMenuProps>(
               {...(avatarStatus && { status: avatarStatus })}
               size={avatarSize}
             />
-            <div className="flex flex-1 flex-col overflow-hidden">
-              <span className="truncate text-sm font-medium text-white">{name}</span>
-              <span className="truncate text-xs text-slate-400">{email}</span>
-            </div>
-            <FaChevronDown
-              className="h-4 w-4 text-slate-400 transition-transform duration-200"
-              aria-hidden="true"
-            />
+            {!collapsed && (
+              <>
+                <div className="flex flex-1 flex-col overflow-hidden">
+                  <span className="truncate text-sm font-medium text-white">{name}</span>
+                  <span className="truncate text-xs text-slate-400">{email}</span>
+                </div>
+                <FaChevronDown
+                  className="h-4 w-4 text-slate-400 transition-transform duration-200"
+                  aria-hidden="true"
+                />
+              </>
+            )}
           </button>
         </DropdownTrigger>
 

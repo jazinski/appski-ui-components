@@ -2,6 +2,7 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { FaTimes } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 
 /**
  * Sidebar Variants
@@ -9,7 +10,7 @@ import { FaTimes } from 'react-icons/fa';
  * Defines the visual styles for the sidebar component.
  */
 const sidebarVariants = cva(
-  'flex h-full flex-col bg-slate-900 border-r border-slate-800 transition-transform duration-300 ease-in-out',
+  'flex h-full flex-col bg-slate-900 border-r border-slate-800 transition-all duration-300 ease-in-out',
   {
     variants: {
       position: {
@@ -20,10 +21,15 @@ const sidebarVariants = cva(
         open: 'translate-x-0',
         closed: '-translate-x-full',
       },
+      collapsed: {
+        true: 'w-[60px]',
+        false: '',
+      },
     },
     defaultVariants: {
       position: 'fixed',
       state: 'closed',
+      collapsed: false,
     },
   }
 );
@@ -68,7 +74,15 @@ export interface SidebarProps extends VariantProps<typeof sidebarVariants> {
    */
   onOpenChange?: (open: boolean) => void;
   /**
-   * Width of the sidebar
+   * Whether the sidebar is collapsed (desktop only)
+   */
+  collapsed?: boolean;
+  /**
+   * Callback when sidebar collapsed state changes
+   */
+  onCollapsedChange?: (collapsed: boolean) => void;
+  /**
+   * Width of the sidebar when expanded
    */
   width?: string;
   /**
@@ -83,6 +97,10 @@ export interface SidebarProps extends VariantProps<typeof sidebarVariants> {
    * Show close button on mobile
    */
   showCloseButton?: boolean;
+  /**
+   * Show collapse toggle button (desktop only)
+   */
+  showCollapseButton?: boolean;
 }
 
 /**
@@ -125,16 +143,29 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
       footer,
       open = false,
       onOpenChange,
+      collapsed: controlledCollapsed,
+      onCollapsedChange,
       width = '240px',
       className,
       position = 'fixed',
       showOverlay = true,
       showCloseButton = true,
+      showCollapseButton = true,
       ...props
     },
     ref
   ) => {
     const [isMobile, setIsMobile] = React.useState(false);
+    const [internalCollapsed, setInternalCollapsed] = React.useState(false);
+
+    // Use controlled collapsed state if provided, otherwise use internal state
+    const isCollapsed = controlledCollapsed ?? internalCollapsed;
+    const setCollapsed = (value: boolean) => {
+      if (controlledCollapsed === undefined) {
+        setInternalCollapsed(value);
+      }
+      onCollapsedChange?.(value);
+    };
 
     // Detect mobile viewport
     React.useEffect(() => {
@@ -186,8 +217,14 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
       onOpenChange?.(false);
     };
 
+    const handleCollapseToggle = () => {
+      setCollapsed(!isCollapsed);
+    };
+
     const sidebarState = isMobile ? (open ? 'open' : 'closed') : 'open';
     const showOverlayElement = isMobile && showOverlay && open;
+    const effectiveCollapsed = !isMobile && isCollapsed;
+    const effectiveWidth = effectiveCollapsed ? '60px' : width;
 
     return (
       <>
@@ -204,12 +241,17 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
         <aside
           ref={ref}
           className={cn(
-            sidebarVariants({ position: isMobile ? position : 'static', state: sidebarState }),
+            sidebarVariants({
+              position: isMobile ? position : 'static',
+              state: sidebarState,
+              collapsed: effectiveCollapsed,
+            }),
             className
           )}
-          style={{ width }}
+          style={{ width: effectiveWidth }}
           aria-label="Sidebar navigation"
           data-testid="sidebar"
+          data-collapsed={effectiveCollapsed}
           {...props}
         >
           {/* Close button (mobile only) */}
@@ -224,18 +266,41 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
             </button>
           )}
 
+          {/* Collapse toggle button (desktop only) */}
+          {!isMobile && showCollapseButton && (
+            <button
+              type="button"
+              onClick={handleCollapseToggle}
+              className="absolute top-4 right-4 z-50 rounded-md p-2 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+              aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              data-testid="collapse-toggle"
+            >
+              <FaBars className="h-5 w-5" />
+            </button>
+          )}
+
           {/* Logo Section */}
-          {logo && (
+          {logo && !effectiveCollapsed && (
             <div className="flex h-16 items-center justify-center border-b border-slate-800 px-4">
               {logo}
             </div>
           )}
 
           {/* Main Content (Navigation) */}
-          <div className="flex-1 overflow-x-hidden overflow-y-auto px-3 py-4">{children}</div>
+          <div className="flex-1 overflow-x-hidden overflow-y-auto px-3 py-4">
+            {React.isValidElement(children)
+              ? React.cloneElement(children, { collapsed: effectiveCollapsed } as Partial<unknown>)
+              : children}
+          </div>
 
           {/* Footer Section */}
-          {footer && <div className="border-t border-slate-800 p-3">{footer}</div>}
+          {footer && (
+            <div className="border-t border-slate-800 p-3">
+              {React.isValidElement(footer)
+                ? React.cloneElement(footer, { collapsed: effectiveCollapsed } as Partial<unknown>)
+                : footer}
+            </div>
+          )}
         </aside>
       </>
     );

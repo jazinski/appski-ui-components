@@ -2,6 +2,7 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { Badge } from './badge';
+import { Tooltip } from './tooltip';
 
 const mainNavVariants = cva('flex flex-col gap-1 py-2', {
   variants: {
@@ -74,6 +75,8 @@ export interface MainNavProps
   items: NavItem[] | NavSection[];
   /** Callback when a nav item is clicked */
   onItemClick?: (item: NavItem) => void;
+  /** Whether the sidebar is collapsed (shows icons only) */
+  collapsed?: boolean;
 }
 
 /**
@@ -99,7 +102,7 @@ export interface MainNavProps
  * ```
  */
 export const MainNav = React.forwardRef<HTMLElement, MainNavProps>(
-  ({ items, onItemClick, size, className, ...props }, ref) => {
+  ({ items, onItemClick, size, collapsed = false, className, ...props }, ref) => {
     // Check if items is an array of sections or simple items
     const isSections = items.length > 0 && items[0] && 'items' in items[0];
     const sections: NavSection[] = isSections
@@ -141,7 +144,7 @@ export const MainNav = React.forwardRef<HTMLElement, MainNavProps>(
       >
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex}>
-            {section.title && (
+            {section.title && !collapsed && (
               <div
                 className={cn(
                   mainNavSectionVariants({ spacing: sectionIndex === 0 ? 'none' : 'default' })
@@ -154,26 +157,49 @@ export const MainNav = React.forwardRef<HTMLElement, MainNavProps>(
               const Icon = item.icon;
               const variant = item.active ? 'active' : 'default';
 
-              return (
+              const linkContent = (
                 <a
                   key={`${sectionIndex}-${itemIndex}`}
                   href={item.href}
-                  onClick={(e) => { handleItemClick(e, item); }}
-                  onKeyDown={(e) => { handleKeyDown(e, item); }}
-                  className={cn(mainNavItemVariants({ variant }))}
+                  onClick={(e) => {
+                    handleItemClick(e, item);
+                  }}
+                  onKeyDown={(e) => {
+                    handleKeyDown(e, item);
+                  }}
+                  className={cn(
+                    mainNavItemVariants({ variant }),
+                    collapsed && 'justify-center px-0'
+                  )}
                   aria-current={item.active ? 'page' : undefined}
                   aria-disabled={item.disabled}
+                  aria-label={collapsed ? item.label : undefined}
                   tabIndex={item.disabled ? -1 : 0}
                 >
                   <Icon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
-                  <span className="flex-1">{item.label}</span>
-                  {item.badge !== undefined && (
-                    <Badge variant="secondary" className="ml-auto">
-                      {item.badge}
-                    </Badge>
+                  {!collapsed && (
+                    <>
+                      <span className="flex-1">{item.label}</span>
+                      {item.badge !== undefined && (
+                        <Badge variant="secondary" className="ml-auto">
+                          {item.badge}
+                        </Badge>
+                      )}
+                    </>
                   )}
                 </a>
               );
+
+              // Wrap in tooltip when collapsed
+              if (collapsed) {
+                return (
+                  <Tooltip key={`${sectionIndex}-${itemIndex}`} content={item.label}>
+                    {linkContent}
+                  </Tooltip>
+                );
+              }
+
+              return linkContent;
             })}
           </div>
         ))}

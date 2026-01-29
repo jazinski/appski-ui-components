@@ -418,3 +418,88 @@ export const FullExample: Story = {
     );
   },
 };
+
+/**
+ * Collapsed sidebar on desktop (icons only).
+ */
+export const Collapsed: Story = {
+  args: {},
+  render: () => (
+    <div className="h-screen bg-slate-100">
+      <Sidebar
+        collapsed
+        logo={<div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600" />}
+        footer={
+          <UserMenu
+            name="Sarah Johnson"
+            email="sarah.j@company.com"
+            avatarSrc="https://i.pravatar.cc/150?img=5"
+            avatarStatus="online"
+          />
+        }
+      >
+        <MainNav
+          items={navItems.map((i) =>
+            i.label === 'Dashboard' ? { ...i, active: true } : { ...i, active: false }
+          )}
+        />
+      </Sidebar>
+      <div className="ml-0 p-8 md:ml-[60px]">
+        <h1 className="text-2xl font-bold text-slate-900">Collapsed Sidebar</h1>
+        <p className="mt-4 text-slate-600">
+          On desktop, the sidebar shows only icons with tooltips. Hover over an icon to see its label.
+        </p>
+      </div>
+    </div>
+  ),
+};
+
+/**
+ * Controlled collapsed state with toggle button.
+ */
+export const CollapsedInteractive: Story = {
+  args: {},
+  render: () => {
+    const [collapsed, setCollapsed] = React.useState(false);
+
+    return (
+      <div className="h-screen bg-slate-100">
+        <Sidebar
+          collapsed={collapsed}
+          onCollapsedChange={setCollapsed}
+          logo={
+            <div className="flex items-center gap-3">
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600" />
+              {!collapsed && <span className="font-semibold text-white">Appski</span>}
+            </div>
+          }
+          footer={
+            <UserMenu
+              name="Interactive User"
+              email="user@example.com"
+              avatarSrc="https://i.pravatar.cc/150?img=12"
+              avatarStatus="online"
+            />
+          }
+        >
+          <MainNav
+            items={navItems.map((i) =>
+              i.label === 'Projects' ? { ...i, active: true } : { ...i, active: false }
+            )}
+          />
+        </Sidebar>
+        <div className={`transition-all duration-300 p-8 ${collapsed ? 'ml-0 md:ml-[60px]' : 'ml-0 md:ml-[240px]'}`}>
+          <h1 className="text-2xl font-bold text-slate-900">Interactive Collapse</h1>
+          <p className="mt-4 text-slate-600">
+            Click the hamburger button in the sidebar to toggle between collapsed and expanded states.
+          </p>
+          <div className="mt-4 rounded-lg bg-white p-4 shadow">
+            <p className="text-sm text-slate-700">
+              <strong>Collapsed:</strong> {collapsed ? 'Yes' : 'No'}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  },
+};
