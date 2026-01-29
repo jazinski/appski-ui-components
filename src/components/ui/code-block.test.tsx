@@ -2,23 +2,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CodeBlock } from './code-block';
+import { writeTextMock } from '../../test/setup';
 
 describe('CodeBlock', () => {
   const sampleCode = 'const hello = "world";';
 
-  // Mock clipboard API before each test
-  let writeTextMock: ReturnType<typeof vi.fn>;
-
   beforeEach(() => {
-    writeTextMock = vi.fn().mockResolvedValue(undefined);
-
-    Object.defineProperty(navigator, 'clipboard', {
-      value: {
-        writeText: writeTextMock,
-      },
-      writable: true,
-      configurable: true,
-    });
+    // Clear mock calls before each test
+    vi.clearAllMocks();
   });
 
   it('renders code correctly', () => {
@@ -216,7 +207,7 @@ describe('CodeBlock', () => {
     const user = userEvent.setup();
     const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-    // Override the beforeEach clipboard mock to simulate failure
+    // Override the global clipboard mock to simulate failure
     writeTextMock.mockRejectedValueOnce(new Error('Copy failed'));
 
     render(<CodeBlock code={sampleCode} language="javascript" copyable />);

@@ -4,6 +4,7 @@ export { ModalFooter, type ModalFooterProps } from './modal-footer';
 export { ViewModeToggle, type ViewModeToggleProps, type ViewModeOption } from './view-mode-toggle';
 export { Input, inputVariants, type InputProps } from './input';
 export { Select, selectVariants, type SelectProps, type SelectOption } from './select';
+export { Label, labelVariants, type LabelProps } from './label';
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, cardVariants, type CardProps, type CardHeaderProps, type CardTitleProps, type CardDescriptionProps, type CardContentProps, type CardFooterProps, } from './card';
 export { Badge, badgeVariants, type BadgeProps } from './badge';
 export { Spinner, spinnerVariants, Loading, Skeleton, skeletonVariants, type SpinnerProps, type LoadingProps, type SkeletonProps, } from './spinner';
@@ -30,4 +31,12 @@ export { ConnectionStatus, type ConnectionStatusProps } from './connection-statu
 export { Tooltip, type TooltipProps } from './tooltip';
 export { ConfirmDialog, type ConfirmDialogProps } from './confirm-dialog';
 export { HybridEditor, type HybridEditorProps, type EditorMode } from './hybrid-editor';
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, accordionItemVariants, accordionTriggerVariants, accordionContentVariants, type AccordionProps, type AccordionItemProps, type AccordionTriggerProps, type AccordionContentProps, } from './accordion';
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverClose, popoverContentVariants, type PopoverProps, type PopoverTriggerProps, type PopoverContentProps, type PopoverAnchorProps, type PopoverCloseProps, } from './popover';
+export { Progress, progressVariants, progressIndicatorVariants, type ProgressProps, } from './progress';
+export { Slider, sliderVariants, sliderTrackVariants, sliderRangeVariants, sliderThumbVariants, type SliderProps, } from './slider';
+export { Separator, separatorVariants, type SeparatorProps } from './separator';
+export { Combobox, comboboxVariants, type ComboboxProps, type ComboboxOption } from './combobox';
+export { Pagination, paginationVariants, paginationItemVariants, type PaginationProps, } from './pagination';
+export { Form, FormField, FormMessage, useFormContext, type FormProps, type FormFieldProps, type FormMessageProps, type FormContextValue, } from './form';
 //# sourceMappingURL=index.d.ts.map

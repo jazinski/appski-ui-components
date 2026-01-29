@@ -19,10 +19,11 @@ const cardVariants = cva('rounded-lg border bg-card text-card-foreground', {
     /**
      * Status variant for active/inactive card states.
      * Uses left border accent for clear visual distinction.
+     * Active uses pink accent, inactive uses muted gray.
      */
     status: {
       default: '',
-      active: 'border-l-4 border-l-primary',
+      active: 'border-l-4 border-l-pink-500',
       inactive: 'border-l-4 border-l-muted-foreground/30',
     },
   },
