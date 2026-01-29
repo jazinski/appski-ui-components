@@ -9,7 +9,7 @@ const pageHeaderVariants = cva('w-full', {
   variants: {
     variant: {
       default: 'bg-background border-b border-border',
-      transparent: 'bg-transparent',
+      transparent: 'bg-transparent border-0',
       elevated: 'bg-background shadow-sm',
     },
     sticky: {
