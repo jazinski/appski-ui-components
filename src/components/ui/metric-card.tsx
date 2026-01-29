@@ -71,7 +71,9 @@ const labelVariants = cva('text-sm font-medium', {
 });
 
 export interface MetricCardProps
-  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof metricCardVariants> {
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'loading'>,
+    VariantProps<typeof metricCardVariants> {
   /** The icon to display */
   icon?: React.ReactNode;
   /** The main numeric or text value */
@@ -84,11 +86,13 @@ export interface MetricCardProps
     direction: 'up' | 'down' | 'neutral';
     label?: string;
   };
+  /** Show loading skeleton state */
+  loading?: boolean;
 }
 
 /**
  * MetricCard component for displaying statistics and key performance indicators.
- * Supports various color themes and layouts.
+ * Supports various color themes, trend indicators, and loading states.
  */
 export function MetricCard({
   className,
@@ -97,8 +101,32 @@ export function MetricCard({
   value,
   label,
   trend,
+  loading = false,
   ...props
 }: MetricCardProps) {
+  if (loading) {
+    return (
+      <Card className={cn(metricCardVariants({ variant, className }))} {...props}>
+        <div className="flex items-start justify-between space-x-4 p-6">
+          <div className="w-full space-y-2">
+            {/* Value skeleton */}
+            <div className="h-8 w-24 animate-pulse rounded-md bg-slate-200 dark:bg-slate-700" />
+            {/* Label skeleton */}
+            <div className="h-4 w-32 animate-pulse rounded-md bg-slate-200 dark:bg-slate-700" />
+            {/* Trend skeleton */}
+            <div className="mt-2 h-3 w-20 animate-pulse rounded-md bg-slate-200 dark:bg-slate-700" />
+          </div>
+
+          {icon && (
+            <div className={cn(iconVariants({ variant }))}>
+              <div className="h-6 w-6 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+            </div>
+          )}
+        </div>
+      </Card>
+    );
+  }
+
   return (
     <Card className={cn(metricCardVariants({ variant, className }))} {...props}>
       <div className="flex items-start justify-between space-x-4 p-6">
