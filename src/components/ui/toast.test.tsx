@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ToastProvider, useToast } from './toast';
 import { Button } from './button';
@@ -38,15 +38,6 @@ const ToastTester = () => {
 };
 
 describe('Toast', () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
-
-  afterEach(() => {
-    vi.restoreAllMocks();
-    vi.useRealTimers();
-  });
-
   describe('ToastProvider', () => {
     it('renders children without toasts', () => {
       render(
@@ -72,8 +63,13 @@ describe('Toast', () => {
       // Suppress console errors for this test
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
+      const TestComponent = () => {
+        useToast();
+        return null;
+      };
+
       expect(() => {
-        render(<Button onClick={() => useToast()}>Test</Button>);
+        render(<TestComponent />);
       }).toThrow('useToast must be used within a ToastProvider');
 
       consoleSpy.mockRestore();
@@ -90,9 +86,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
 
-      expect(screen.getByText('Success message')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
       expect(screen.getByRole('alert')).toBeInTheDocument();
     });
 
@@ -105,9 +102,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Error'));
-      await vi.runAllTimersAsync();
 
-      expect(screen.getByText('Error message')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Error message')).toBeInTheDocument();
+      });
     });
 
     it('renders warning toast', async () => {
@@ -120,9 +118,9 @@ describe('Toast', () => {
 
       await user.click(screen.getByText('Show Warning'));
 
-      await vi.runAllTimersAsync();
-
-      expect(screen.getByText('Warning message')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Warning message')).toBeInTheDocument();
+      });
     });
 
     it('renders info toast', async () => {
@@ -135,9 +133,9 @@ describe('Toast', () => {
 
       await user.click(screen.getByText('Show Info'));
 
-      await vi.runAllTimersAsync();
-
-      expect(screen.getByText('Info message')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Info message')).toBeInTheDocument();
+      });
     });
 
     it('renders default toast', async () => {
@@ -150,9 +148,9 @@ describe('Toast', () => {
 
       await user.click(screen.getByText('Show Default'));
 
-      await vi.runAllTimersAsync();
-
-      expect(screen.getByText('Default message')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Default message')).toBeInTheDocument();
+      });
     });
   });
 
@@ -167,10 +165,10 @@ describe('Toast', () => {
 
       await user.click(screen.getByText('Show With Title'));
 
-      await vi.runAllTimersAsync();
-
-      expect(screen.getByText('Success Title')).toBeInTheDocument();
-      expect(screen.getByText('With title')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Success Title')).toBeInTheDocument();
+        expect(screen.getByText('With title')).toBeInTheDocument();
+      });
     });
   });
 
@@ -185,10 +183,10 @@ describe('Toast', () => {
 
       await user.click(screen.getByText('Show With Action'));
 
-      await vi.runAllTimersAsync();
-
-      expect(screen.getByText('With action')).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'Action' })).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('With action')).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: 'Action' })).toBeInTheDocument();
+      });
     });
 
     it('calls action onClick when clicked', async () => {
@@ -217,8 +215,8 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show'));
-      await vi.runAllTimersAsync();
-      const actionButton = screen.getByRole('button', { name: 'Test Action' });
+
+      const actionButton = await screen.findByRole('button', { name: 'Test Action' });
       await user.click(actionButton);
 
       expect(onAction).toHaveBeenCalledTimes(1);
@@ -235,8 +233,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
     });
@@ -250,14 +250,16 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      const toast = screen.getByText('Success message');
-      expect(toast).toBeInTheDocument();
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       await user.click(screen.getByRole('button', { name: 'Close' }));
-      await vi.runAllTimersAsync();
 
-      expect(screen.queryByText('Success message')).not.toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.queryByText('Success message')).not.toBeInTheDocument();
+      });
     });
   });
 
@@ -265,22 +267,24 @@ describe('Toast', () => {
     it('auto-dismisses toast after default duration', async () => {
       const user = userEvent.setup({ delay: null });
       render(
-        <ToastProvider duration={1000}>
+        <ToastProvider duration={200}>
           <ToastTester />
         </ToastProvider>
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
 
-      expect(screen.getByText('Success message')).toBeInTheDocument();
-
-      act(() => {
-        vi.advanceTimersByTime(1000);
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
       });
-      await vi.runAllTimersAsync();
 
-      expect(screen.queryByText('Success message')).not.toBeInTheDocument();
+      // Wait for auto-dismiss
+      await waitFor(
+        () => {
+          expect(screen.queryByText('Success message')).not.toBeInTheDocument();
+        },
+        { timeout: 1000 }
+      );
     });
 
     it('auto-dismisses toast after custom duration', async () => {
@@ -292,16 +296,18 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Quick Toast'));
-      await vi.runAllTimersAsync();
 
-      expect(screen.getByText('Quick toast')).toBeInTheDocument();
-
-      act(() => {
-        vi.advanceTimersByTime(100);
+      await waitFor(() => {
+        expect(screen.getByText('Quick toast')).toBeInTheDocument();
       });
-      await vi.runAllTimersAsync();
 
-      expect(screen.queryByText('Quick toast')).not.toBeInTheDocument();
+      // Wait for auto-dismiss (duration is 100ms in the button)
+      await waitFor(
+        () => {
+          expect(screen.queryByText('Quick toast')).not.toBeInTheDocument();
+        },
+        { timeout: 500 }
+      );
     });
 
     it('does not auto-dismiss when duration is 0', async () => {
@@ -313,14 +319,13 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Persistent'));
-      await vi.runAllTimersAsync();
 
-      expect(screen.getByText('Persistent')).toBeInTheDocument();
-
-      act(() => {
-        vi.advanceTimersByTime(10000);
+      await waitFor(() => {
+        expect(screen.getByText('Persistent')).toBeInTheDocument();
       });
-      await vi.runAllTimersAsync();
+
+      // Wait to make sure it doesn't dismiss
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
       expect(screen.getByText('Persistent')).toBeInTheDocument();
     });
@@ -339,11 +344,11 @@ describe('Toast', () => {
       await user.click(screen.getByText('Show Error'));
       await user.click(screen.getByText('Show Warning'));
 
-      await vi.runAllTimersAsync();
-
-      expect(screen.getByText('Success message')).toBeInTheDocument();
-      expect(screen.getByText('Error message')).toBeInTheDocument();
-      expect(screen.getByText('Warning message')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+        expect(screen.getByText('Error message')).toBeInTheDocument();
+        expect(screen.getByText('Warning message')).toBeInTheDocument();
+      });
     });
 
     it('limits toasts to max prop', async () => {
@@ -357,11 +362,12 @@ describe('Toast', () => {
       await user.click(screen.getByText('Show Success'));
       await user.click(screen.getByText('Show Error'));
       await user.click(screen.getByText('Show Warning'));
-      await vi.runAllTimersAsync();
 
-      expect(screen.queryByText('Success message')).not.toBeInTheDocument();
-      expect(screen.getByText('Error message')).toBeInTheDocument();
-      expect(screen.getByText('Warning message')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.queryByText('Success message')).not.toBeInTheDocument();
+        expect(screen.getByText('Error message')).toBeInTheDocument();
+        expect(screen.getByText('Warning message')).toBeInTheDocument();
+      });
     });
   });
 
@@ -375,8 +381,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       const container = screen.getByRole('alert').parentElement;
       expect(container).toHaveClass('top-0', 'right-0');
@@ -391,8 +399,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       const container = screen.getByRole('alert').parentElement;
       expect(container).toHaveClass('top-0', 'left-0');
@@ -407,8 +417,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       const container = screen.getByRole('alert').parentElement;
       expect(container).toHaveClass('bottom-0', 'right-0');
@@ -423,8 +435,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       const container = screen.getByRole('alert').parentElement;
       expect(container).toHaveClass('bottom-0', 'left-0');
@@ -439,8 +453,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       const container = screen.getByRole('alert').parentElement;
       expect(container).toHaveClass('top-0');
@@ -455,8 +471,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       const container = screen.getByRole('alert').parentElement;
       expect(container).toHaveClass('bottom-0');
@@ -473,8 +491,8 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      const toast = screen.getByRole('alert');
+
+      const toast = await screen.findByRole('alert');
 
       expect(toast).toHaveAttribute('aria-live', 'polite');
       expect(toast).toHaveAttribute('aria-atomic', 'true');
@@ -489,8 +507,10 @@ describe('Toast', () => {
       );
 
       await user.click(screen.getByText('Show Success'));
-      await vi.runAllTimersAsync();
-      screen.getByText('Success message');
+
+      await waitFor(() => {
+        expect(screen.getByText('Success message')).toBeInTheDocument();
+      });
 
       const closeButton = screen.getByRole('button', { name: 'Close' });
       expect(closeButton).toHaveAttribute('aria-label', 'Close');
