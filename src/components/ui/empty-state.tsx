@@ -1,8 +1,39 @@
 import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { Button, type ButtonProps } from './button';
 
-export interface EmptyStateProps {
+const emptyStateVariants = cva('flex items-center justify-center', {
+  variants: {
+    variant: {
+      'no-data': '',
+      'no-results': '',
+      error: '',
+      'no-permission': '',
+      default: '',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+const iconColorVariants = cva('flex items-center justify-center', {
+  variants: {
+    variant: {
+      'no-data': 'text-slate-300 dark:text-slate-600',
+      'no-results': 'text-blue-300 dark:text-blue-800',
+      error: 'text-red-300 dark:text-red-800',
+      'no-permission': 'text-amber-300 dark:text-amber-800',
+      default: 'text-slate-300 dark:text-slate-600',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+export interface EmptyStateProps extends VariantProps<typeof emptyStateVariants> {
   /** Icon component or element to display */
   icon?: React.ReactNode;
   /** Main heading text */
@@ -40,6 +71,7 @@ export interface EmptyStateProps {
  *   icon={<DatabaseIcon className="w-16 h-16" />}
  *   title="No memories found"
  *   description="Create your first memory to get started"
+ *   variant="no-data"
  * />
  *
  * @example
@@ -48,6 +80,7 @@ export interface EmptyStateProps {
  *   icon={<FolderIcon className="w-16 h-16" />}
  *   title="No projects yet"
  *   description="Get started by creating your first project"
+ *   variant="no-data"
  *   action={{
  *     label: "Create Project",
  *     onClick: handleCreate,
@@ -61,12 +94,35 @@ export interface EmptyStateProps {
  *   icon={<MagnifyingGlassIcon className="w-12 h-12" />}
  *   title="No results found"
  *   description="Try adjusting your search or filters"
+ *   variant="no-results"
  *   size="sm"
  *   action={{
  *     label: "Clear Filters",
  *     onClick: handleClearFilters,
  *     variant: "ghost"
  *   }}
+ * />
+ *
+ * @example
+ * // Error state
+ * <EmptyState
+ *   icon={<ExclamationTriangleIcon className="w-16 h-16" />}
+ *   title="Something went wrong"
+ *   description="We encountered an error loading your data"
+ *   variant="error"
+ *   action={{
+ *     label: "Try Again",
+ *     onClick: handleRetry
+ *   }}
+ * />
+ *
+ * @example
+ * // No permission state
+ * <EmptyState
+ *   icon={<LockClosedIcon className="w-16 h-16" />}
+ *   title="Access denied"
+ *   description="You don't have permission to view this content"
+ *   variant="no-permission"
  * />
  *
  * @example
@@ -94,6 +150,7 @@ export function EmptyState({
   secondaryAction,
   className,
   size = 'md',
+  variant,
   children,
 }: EmptyStateProps) {
   const sizeClasses = {
@@ -125,7 +182,8 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        'flex items-center justify-center text-slate-500 dark:text-slate-400',
+        emptyStateVariants({ variant }),
+        'text-slate-500 dark:text-slate-400',
         sizes.container,
         className
       )}
@@ -134,13 +192,7 @@ export function EmptyState({
     >
       <div className="max-w-md text-center">
         {icon && (
-          <div
-            className={cn(
-              'flex items-center justify-center text-slate-300 dark:text-slate-600',
-              sizes.icon
-            )}
-            aria-hidden="true"
-          >
+          <div className={cn(iconColorVariants({ variant }), sizes.icon)} aria-hidden="true">
             {icon}
           </div>
         )}

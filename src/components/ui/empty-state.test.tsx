@@ -213,4 +213,61 @@ describe('EmptyState', () => {
     const button = screen.getByRole('button', { name: 'Import' });
     expect(button.className).toContain('border');
   });
+
+  describe('Variants', () => {
+    it('renders no-data variant', () => {
+      render(<EmptyState title="No data" variant="no-data" />);
+      expect(screen.getByText('No data')).toBeDefined();
+    });
+
+    it('renders no-results variant with blue icon color', () => {
+      render(
+        <EmptyState
+          title="No results"
+          variant="no-results"
+          icon={<TestIcon className="h-16 w-16" />}
+        />
+      );
+
+      const icon = screen.getByTestId('test-icon');
+      const iconWrapper = icon.parentElement;
+      expect(iconWrapper?.className).toContain('blue');
+    });
+
+    it('renders error variant with red icon color', () => {
+      render(
+        <EmptyState
+          title="Error occurred"
+          variant="error"
+          icon={<TestIcon className="h-16 w-16" />}
+        />
+      );
+
+      const icon = screen.getByTestId('test-icon');
+      const iconWrapper = icon.parentElement;
+      expect(iconWrapper?.className).toContain('red');
+    });
+
+    it('renders no-permission variant with amber icon color', () => {
+      render(
+        <EmptyState
+          title="Access denied"
+          variant="no-permission"
+          icon={<TestIcon className="h-16 w-16" />}
+        />
+      );
+
+      const icon = screen.getByTestId('test-icon');
+      const iconWrapper = icon.parentElement;
+      expect(iconWrapper?.className).toContain('amber');
+    });
+
+    it('renders default variant when no variant specified', () => {
+      render(<EmptyState title="No items" icon={<TestIcon className="h-16 w-16" />} />);
+
+      const icon = screen.getByTestId('test-icon');
+      const iconWrapper = icon.parentElement;
+      expect(iconWrapper?.className).toContain('slate');
+    });
+  });
 });
