@@ -13,6 +13,13 @@ Object.defineProperty(navigator, 'clipboard', {
   configurable: true,
 });
 
+// Mock ResizeObserver for tests (required by Radix UI components like Slider)
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
+
 // Clear mock calls before each test
 beforeEach(() => {
   writeTextMock.mockClear();

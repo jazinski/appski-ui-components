@@ -13,6 +13,8 @@ const separatorVariants = cva('shrink-0 bg-border', {
       default: 'bg-border',
       muted: 'bg-muted',
       primary: 'bg-primary/20',
+      dashed: 'border-dashed border-t border-border bg-transparent',
+      dotted: 'border-dotted border-t border-border bg-transparent',
     },
   },
   defaultVariants: {

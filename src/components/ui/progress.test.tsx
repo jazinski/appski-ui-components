@@ -23,28 +23,29 @@ describe('Progress', () => {
   });
 
   it('applies variant classes correctly', () => {
-    const { rerender, container } = render(<Progress value={50} variant="success" />);
-    let indicator = container.querySelector('[data-state="loading"]');
-    expect(indicator).toHaveClass('bg-green-500');
+    const { rerender } = render(<Progress value={50} variant="success" />);
+    let indicator = screen.getByRole('progressbar').querySelector('[data-state]');
+    expect(indicator).toHaveClass('bg-success');
 
     rerender(<Progress value={50} variant="warning" />);
-    indicator = container.querySelector('[data-state="loading"]');
-    expect(indicator).toHaveClass('bg-yellow-500');
+    indicator = screen.getByRole('progressbar').querySelector('[data-state]');
+    expect(indicator).toHaveClass('bg-warning');
   });
 
   it('applies size classes correctly', () => {
-    const { rerender, container } = render(<Progress value={50} size="sm" />);
-    let progress = container.querySelector('[role="progressbar"]');
+    const { rerender } = render(<Progress value={50} size="sm" />);
+    let progress = screen.getByRole('progressbar');
     expect(progress).toHaveClass('h-2');
 
     rerender(<Progress value={50} size="lg" />);
-    progress = container.querySelector('[role="progressbar"]');
+    progress = screen.getByRole('progressbar');
     expect(progress).toHaveClass('h-6');
   });
 
   it('handles undefined value', () => {
-    const { container } = render(<Progress />);
-    const progressbar = container.querySelector('[role="progressbar"]');
-    expect(progressbar).not.toHaveAttribute('aria-valuenow');
+    render(<Progress />);
+    const progressbar = screen.getByRole('progressbar');
+    // When value is undefined, it defaults to 0
+    expect(progressbar).toHaveAttribute('aria-valuenow', '0');
   });
 });

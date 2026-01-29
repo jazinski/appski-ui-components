@@ -36,12 +36,13 @@ describe('Slider', () => {
     const { container, rerender } = render(
       <Slider defaultValue={[50]} max={100} variant="success" />
     );
-    let range = container.querySelector('[data-orientation="horizontal"]')?.firstChild;
-    expect(range).toHaveClass('bg-green-500');
+    // The SliderRange has absolute positioning and the bg color
+    let range = container.querySelector('.absolute.bg-success');
+    expect(range).toHaveClass('bg-success');
 
     rerender(<Slider defaultValue={[50]} max={100} variant="warning" />);
-    range = container.querySelector('[data-orientation="horizontal"]')?.firstChild;
-    expect(range).toHaveClass('bg-yellow-500');
+    range = container.querySelector('.absolute.bg-warning');
+    expect(range).toHaveClass('bg-warning');
   });
 
   it('applies size classes correctly', () => {

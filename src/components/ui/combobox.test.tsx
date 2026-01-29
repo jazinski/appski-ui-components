@@ -78,7 +78,7 @@ describe('Combobox', () => {
         onValueChange={vi.fn()}
         options={options}
         placeholder="Select..."
-        emptyMessage="No results"
+        emptyText="No results"
       />
     );
 
