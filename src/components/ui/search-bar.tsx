@@ -54,7 +54,7 @@ export const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(
   ) => {
     const [internalValue, setInternalValue] = React.useState(value);
     const inputRef = React.useRef<HTMLInputElement>(null);
-    const timeoutRef = React.useRef<NodeJS.Timeout>();
+    const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
 
     // Sync internal value when external value changes
     React.useEffect(() => {

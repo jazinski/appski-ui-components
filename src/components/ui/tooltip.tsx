@@ -32,7 +32,7 @@ export function Tooltip({
   const [position, setPosition] = React.useState({ top: 0, left: 0 });
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
-  const hideTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const hideTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const showTooltip = () => {
     if (hideTimeoutRef.current) {
