@@ -1,10 +1,8 @@
 import '@testing-library/jest-dom';
-import { vi, beforeEach } from 'vitest';
-
-// Create a mock function for clipboard writeText
-const writeTextMock = vi.fn().mockResolvedValue(undefined);
 
 // Mock clipboard API globally for tests
+const writeTextMock = vi.fn().mockResolvedValue(undefined);
+
 Object.defineProperty(navigator, 'clipboard', {
   value: {
     writeText: writeTextMock,
@@ -14,7 +12,7 @@ Object.defineProperty(navigator, 'clipboard', {
 });
 
 // Mock ResizeObserver for tests (required by Radix UI components like Slider)
-global.ResizeObserver = class ResizeObserver {
+globalThis.ResizeObserver = class ResizeObserver {
   observe() {}
   unobserve() {}
   disconnect() {}

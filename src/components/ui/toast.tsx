@@ -190,7 +190,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   max = 5,
 }) => {
   const [toasts, setToasts] = React.useState<Toast[]>([]);
-  const timeoutsRef = React.useRef<Map<string, NodeJS.Timeout>>(new Map());
+  const timeoutsRef = React.useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
 
   const removeToast = React.useCallback((id: string) => {
     const timeout = timeoutsRef.current.get(id);
