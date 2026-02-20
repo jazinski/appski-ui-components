@@ -8,23 +8,47 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- **Major Dependency Upgrades** (2025-01-20):
+  - Upgraded React from ^18.3.1 to ^19.0.0 (dev dependencies)
+  - Upgraded React DOM from ^18.3.1 to ^19.0.0 (dev dependencies)
+  - Upgraded @types/react from ^18.3.17 to ^19.0.0
+  - Upgraded @types/react-dom from ^18.3.5 to ^19.0.0
+  - Upgraded Zod from ^3.24.1 to ^4.0.0 (production dependency)
+  - Updated peerDependencies to support React 19 (`^18.0.0 || ^19.0.0`)
+- **Build Tools** (2025-01-18):
+  - Upgraded Vite from ^6.0.6 to ^6.4.1 (security patch, performance improvements)
+  - Upgraded @vitejs/plugin-react from ^4.3.4 to ^4.7.0 (React 19 compatibility, faster HMR)
+  - Upgraded Vitest from ^2.1.8 to ^2.1.9 (bug fixes, coverage improvements)
+  - Added @vitest/ui ^2.1.9 for visual test debugging
+  - Fixed @vitest/coverage-v8 version to use caret (^2.1.9) for consistency
+- Updated test scripts to use `npx vitest` for better package manager compatibility
+
 ### Added
 
 - Enhanced README.md with complete component list (46 components) organized by
   category
 - Added comprehensive usage examples for common patterns
 - Created CONTRIBUTING.md with detailed contribution guidelines
-- Created CHANGELOG.md to track version history
+- Created DEPENDENCY-UPDATE-LOG.md to track dependency version history
 - Added installation instructions for GitHub-based distribution
-
-### Changed
-
-- Updated documentation to clarify package is distributed via GitHub, not npm
-- Improved project stats and browser support information
+- React 19 compatibility support for consuming applications
 
 ### Fixed
 
 - Applied code formatting fixes from linter for consistency
+- Resolved 9 ESLint errors in confirm-dialog files (promise handling)
+- Added void operator for async onClick handlers
+- Fixed unused Story parameters in decorator functions
+- Removed border from transparent variant in PageHeader
+- Prevented loading prop from being passed to DOM element
+
+### Breaking Changes
+
+**None for consumers** - The library maintains backward compatibility with both React 18 and React 19 through flexible peerDependencies. Projects can continue using React 18 or upgrade to React 19 without changes to this library.
+
+**Development environment** now requires React 19+ tooling for contributors.
 
 ## [0.1.6] - 2026-01-29
 
@@ -201,6 +225,7 @@ and this project adheres to
 - **Code Quality**: 0 lint errors, 0 type errors
 - **Coverage**: 100% component test coverage
 - **Documentation**: Complete Storybook documentation
+- **React Support**: v18 and v19 (dual compatibility)
 
 ### Distribution
 
