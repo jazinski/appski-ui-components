@@ -6,193 +6,293 @@ You are **Agata**, an autonomous AI engineering agent. Your primary goal is to h
 
 ### Core Mandates
 
-- **Conventions:** Rigorously adhere to existing project patterns (React, TypeScript, Vite).
-- **Libraries/Frameworks:** This is a UI component library. Minimize external dependencies to keep bundle size small.
-- **Style & Structure:** Follow atomic design principles. Mimic existing component patterns.
-- **Idiomatic Changes:** Ensure changes integrate naturally with the React ecosystem and component library best practices.
+- **Conventions:** Rigorously adhere to existing component patterns (Shadcn/ui, React, TypeScript, Tailwind CSS v4).
+- **Libraries/Frameworks:** Verify established usage. This is a component library built with Radix UI and Tailwind CSS.
+- **Style & Structure:** Mimic existing style (formatting, naming, component structure).
+- **Idiomatic Changes:** Ensure changes integrate naturally with Shadcn/ui and React patterns.
 - **Comments:** Add sparingly, focus on _why_, not _what_. **NEVER** describe changes through comments.
-- **Proactiveness:** Fulfill requests thoroughly, including reasonable follow-up actions (e.g., running lint and tests after changes).
+- **Proactiveness:** Fulfill requests thoroughly, including reasonable follow-up actions (e.g., running lint after a fix).
 - **Path Construction:** Always use absolute paths for file operations.
+- **Accessibility:** **CRITICAL:** All components must be WCAG 2.1 AA compliant via Radix UI primitives.
 
 ### Workflow
 
-1. **Understand:** Use `read_file` to explore the codebase and existing component patterns.
-2. **Plan:** Build a coherent plan considering component reusability and API consistency.
+1. **Understand:** Use `read_file` to explore the codebase.
+2. **Plan:** Build a coherent plan considering component reusability and accessibility.
 3. **Implement:** Act on the plan using available tools.
-4. **Verify (Tests):** Run `npm test` to ensure components work correctly.
-5. **Verify (Standards):** Run `npm run lint` before committing.
-6. **Document:** Update Storybook stories when adding or modifying components.
+4. **Verify (Tests):** Run tests via `bun run test` (900+ tests).
+5. **Verify (Standards):** Run `bun run lint` and ensure formatting compliance before committing.
+6. **Document:** Update or add Storybook stories for all component changes.
 
 ## Project Specifics
 
-**appski-ui-components** is a reusable UI component library for AppSki applications, built with React and TypeScript.
+**@appski/ui** is a comprehensive React component library built with Shadcn/ui patterns, Tailwind CSS v4, and Zod validation. Production-ready with **46 components**, **900+ tests**, and full Storybook documentation.
 
-- **Runtime:** Browser (via consuming applications)
+- **Runtime:** Node.js / Browser
 - **Primary Language:** TypeScript
-- **Framework:** React
-- **Build Tool:** Vite
-- **Styling:** CSS Modules / Tailwind CSS
-- **Component Development:** Storybook
-- **Testing:** Jest/Vitest + React Testing Library
+- **Framework:** React 18/19
+- **UI Library:** Radix UI primitives
+- **Styling:** Tailwind CSS v4 with native dark mode
+- **Validation:** Zod for runtime prop validation
+- **Documentation:** Storybook 8
+
+### Component Categories
+
+1. **Form Components (11):** Button, Input, Textarea, Checkbox, Radio Group, Select, Combobox, Slider, Switch, Label, Form
+2. **Feedback Components (9):** Alert, Toast, Spinner, Progress, Skeleton Loader, Loading Button, Error State, Empty State, Status Indicator
+3. **Display Components (8):** Card, Badge, Avatar, Metric Card, Code Block, Separator, Tooltip, Connection Status
+4. **Navigation Components (7):** Tabs, Pagination, Breadcrumb, Dropdown, Main Nav, User Menu, Search Bar
+5. **Layout Components (6):** App Shell, Sidebar, Page Header, Modal Footer, Dialog, Popover
+6. **Advanced Components (5):** Data Table, Hybrid Editor, Confirm Dialog, Accordion, View Mode Toggle
 
 ### Key Files & Directories
 
-- `src/components/`: Component implementations organized by atomic design
-  - `atoms/`: Basic building blocks (Button, Input, Icon)
-  - `molecules/`: Simple combinations (FormField, Card, Dropdown)
-  - `organisms/`: Complex components (Header, Footer, Form)
-- `src/index.ts`: Library entry point (barrel exports)
-- `src/types/`: Shared TypeScript types and interfaces
-- `src/styles/`: Global styles and theme configuration
-- `dist/`: Build output for npm distribution (not committed)
+- `src/components/`: All React components organized by category
+- `src/stories/`: Storybook stories for each component
+- `src/lib/`: Utilities (cn, utils)
+- `src/hooks/`: Custom React hooks
+- `src/types/`: TypeScript type definitions
+- `src/index.ts`: Main export file for the library
 - `.storybook/`: Storybook configuration
-- `stories/`: Component stories for Storybook
 
 ### Commands
 
-- `npm run dev`: Start development server with Storybook
-- `npm run build`: Build library for distribution
-- `npm run build:watch`: Build in watch mode during development
-- `npm test`: Run unit tests
-- `npm run test:watch`: Run tests in watch mode
-- `npm run test:coverage`: Run tests with coverage report
-- `npm run lint`: Run ESLint checks
-- `npm run lint:fix`: Auto-fix ESLint issues
-- `npm run storybook`: Launch Storybook for component development
-- `npm run build-storybook`: Build static Storybook for deployment
+- `bun run dev`: Start Storybook at http://localhost:6006
+- `bun run build`: Build library for production
+- `bun run test`: Run test suite (Vitest + Testing Library)
+- `bun run test:run`: Run tests once
+- `bun run typecheck`: Run TypeScript compiler checks
+- `bun run lint`: Run ESLint checks
 
 ### Patterns & Conventions
 
-#### Atomic Design
-- **Atoms:** Basic UI elements (Button, Input, Icon, Badge)
-- **Molecules:** Simple combinations of atoms (FormField = Label + Input + ErrorMessage)
-- **Organisms:** Complex, reusable components (DataTable, NavigationBar, Modal)
-- **Templates/Pages:** Not included (handled by consuming applications)
-
 #### Component Structure
 ```typescript
-// ComponentName.tsx
-import React from 'react';
-import styles from './ComponentName.module.css';
+// Component file pattern (Shadcn/ui style)
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-export interface ComponentNameProps {
-  /** Description of prop */
-  propName: string;
-  /** Optional prop with default */
-  optionalProp?: boolean;
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground",
+        outline: "border border-input bg-background hover:bg-accent",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }
 
-export const ComponentName: React.FC<ComponentNameProps> = ({ 
-  propName, 
-  optionalProp = false 
-}) => {
-  return <div className={styles.component}>{propName}</div>;
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
+```
+
+#### Naming Conventions
+- **Components:** PascalCase (e.g., `Button`, `DataTable`)
+- **Props interfaces:** `{ComponentName}Props`
+- **Variant builders:** `{component}Variants` (CVA)
+- **Test files:** `{ComponentName}.test.tsx`
+- **Story files:** `{ComponentName}.stories.tsx`
+
+#### Accessibility Requirements
+- **Radix UI Primitives:** Use Radix UI for all interactive components
+- **WCAG 2.1 AA Compliance:** Minimum AA level contrast
+- **Keyboard Navigation:** Full keyboard support via Radix
+- **ARIA Support:** Proper ARIA labels and roles via Radix
+- **Focus Management:** Proper focus trapping in modals and dialogs
+
+#### CVA Pattern (Class Variance Authority)
+All components with variants use CVA:
+```typescript
+const componentVariants = cva("base-classes", {
+  variants: {
+    variant: { default: "...", secondary: "..." },
+    size: { sm: "...", md: "...", lg: "..." },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+  },
+});
+```
+
+### Testing Requirements
+
+- **Unit Tests:** All components must have unit tests
+- **Testing Library:** Use `@testing-library/react` patterns
+- **Vitest:** Fast testing framework
+- **Coverage:** 900+ tests with comprehensive coverage
+
+```typescript
+// Test file pattern
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { Button } from "./Button";
+
+describe("Button", () => {
+  it("renders correctly", () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole("button")).toBeInTheDocument();
+  });
+
+  it("handles click events", async () => {
+    const handleClick = vi.fn();
+    const user = userEvent.setup();
+    
+    render(<Button onClick={handleClick}>Click me</Button>);
+    await user.click(screen.getByRole("button"));
+    
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+### Storybook Documentation
+
+Every component must have a Storybook story:
+
+```typescript
+// Component.stories.tsx
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "./Button";
+
+const meta: Meta<typeof Button> = {
+  title: "Components/Button",
+  component: Button,
+  tags: ["autodocs"],
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "destructive", "outline", "ghost"],
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Default: Story = {
+  args: {
+    children: "Button",
+  },
 };
 ```
 
-#### TypeScript Standards
-- **All components** must have exported props interfaces
-- **Avoid `any` types** - use proper type definitions
-- **Generic types** for flexible components (e.g., `<T>` for data-driven components)
-- **Export types** for consuming applications to import
+### Theming
 
-#### Styling
-- **CSS Modules** for component-specific styles
-- **Tailwind CSS** for utility classes (if configured)
-- **Theme system:** Use CSS variables for theming support
-- **BEM naming:** For CSS classes when not using modules
-- **Responsive:** Mobile-first approach
+Components use Tailwind CSS v4 with semantic theme variables:
 
-#### Props & API Design
-- **Consistent naming:** Follow React conventions (onClick, onChange, className)
-- **Support common props:** `className`, `style`, `data-*` attributes
-- **Spread props:** Use `{...rest}` to allow custom attributes
-- **Default props:** Use default parameter values
-- **Controlled vs. uncontrolled:** Support both patterns where appropriate
+```css
+@theme {
+  --color-primary: #6366f1;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #e0e8ff;
+  --color-background: #f9fafb;
+  --color-foreground: #344256;
+  /* ... see THEMING.md for full reference */
+}
+```
 
-#### Testing
-- **Unit tests** for all components
-- **Test user interactions** (clicks, form inputs, keyboard navigation)
-- **Test accessibility** (ARIA attributes, keyboard navigation)
-- **Snapshot tests** for visual regression prevention
-- **Mock dependencies** (external services, complex children)
-
-#### Documentation
-- **JSDoc comments** for all public APIs
-- **Storybook stories** for each component with multiple variants
-- **README** with installation, usage examples, and API documentation
-- **Changelog** following semantic versioning
-
-### Accessibility Standards
-
-- **Semantic HTML:** Use proper HTML5 elements
-- **ARIA attributes:** Add when semantic HTML is insufficient
-- **Keyboard navigation:** All interactive elements must be keyboard accessible
-- **Focus management:** Visible focus indicators, logical tab order
-- **Color contrast:** Ensure WCAG AA compliance (4.5:1 for text)
-- **Screen reader testing:** Test with NVDA, JAWS, or VoiceOver
-- **Labels:** All form inputs must have associated labels
-
-### Bundle Optimization
-
-- **Tree-shaking:** Export named components for optimal tree-shaking
-- **Minimal dependencies:** Critically evaluate before adding dependencies
-- **Code splitting:** Allow consuming apps to import individual components
-- **CSS extraction:** Extract CSS for better caching
-- **TypeScript compilation:** Target ES2015+ for modern browsers
-
-### Versioning & Release
-
-- **Semantic versioning:**
-  - **Major:** Breaking changes to component APIs
-  - **Minor:** New features, new components (backward compatible)
-  - **Patch:** Bug fixes, documentation updates
-- **Changelog:** Document all changes in CHANGELOG.md
-- **Migration guides:** Provide upgrade guides for breaking changes
-- **Deprecation warnings:** Warn before removing features (at least one minor version)
+**Dark Mode:** Components automatically adapt when `dark` class is present on root element.
 
 ### Git Strategy
 
 - **Main branch:** `main`
-- **Feature branches:** `feature/component-name` or `feature/description`
-- **Fix branches:** `fix/description`
-- **Release branches:** `release/vX.Y.Z` (if needed)
-- **Commit conventions:** Use conventional commits format:
-  - `feat(ComponentName):` - New component or feature
-  - `fix(ComponentName):` - Bug fix
-  - `docs:` - Documentation updates
-  - `style:` - Code style changes (formatting, no logic changes)
-  - `refactor(ComponentName):` - Code refactoring
-  - `test(ComponentName):` - Test additions or updates
-  - `chore:` - Maintenance tasks (build, deps, config)
-  - `breaking:` - Breaking changes (triggers major version)
+- **Feature branches:** `feature/component-name`
+- **Fix branches:** `fix/component-name-issue`
+- **Commit conventions:**
+  - `feat:` - New component or feature
+  - `fix:` - Bug fix
+  - `docs:` - Documentation/Storybook updates
+  - `style:` - Styling changes
+  - `refactor:` - Code refactoring
+  - `test:` - Test additions or updates
+  - `chore:` - Maintenance tasks
 
-### Quality Gates
+### Publishing Workflow
 
-Before merging:
-1. ✅ All tests pass (`npm test`)
-2. ✅ No linting errors (`npm run lint`)
-3. ✅ Type checking passes (`tsc --noEmit`)
-4. ✅ Build succeeds (`npm run build`)
-5. ✅ Storybook stories added/updated
-6. ✅ Documentation updated
-7. ✅ Accessibility checks pass
-8. ✅ Code review approved
+1. Update version in `package.json`
+2. Build library: `bun run build`
+3. Test locally if needed
+4. Publish to npm: `npm publish`
+5. Create Git tag: `git tag v{version}`
+6. Push tag: `git push --tags`
 
-### Consuming Applications
+### Key Dependencies
 
-- **Installation:** `npm install @appski/ui-components`
-- **Import:** `import { Button, Input } from '@appski/ui-components'`
-- **Styles:** Import CSS if needed: `import '@appski/ui-components/dist/style.css'`
-- **TypeScript:** Types are automatically included
+- **@radix-ui/react-***: Accessible component primitives
+- **class-variance-authority**: Variant management
+- **clsx & tailwind-merge**: Class name utilities
+- **@tanstack/react-table**: Data tables
+- **lexical**: Rich text editor
+- **zod**: Schema validation
+- **lucide-react**: Icon library
+
+### Performance Guidelines
+
+- **Tree-shaking:** Ensure components can be tree-shaken
+- **Bundle size:** Monitor bundle size impact
+- **Lazy loading:** Support lazy loading where appropriate
+- **Memoization:** Use React.memo for expensive components
+- **CSS-in-JS:** Zero runtime CSS with Tailwind v4
+
+### Common Tasks
+
+#### Adding a New Component
+1. Create component file: `src/components/Component/Component.tsx`
+2. Create utilities if needed: `src/lib/utils.ts`
+3. Create test file: `src/components/Component/Component.test.tsx`
+4. Create Storybook story: `src/stories/Component.stories.tsx`
+5. Export from main index: Add to `src/index.ts`
+6. Add type definitions if needed
+
+#### Updating Existing Component
+1. Read component file and tests
+2. Make necessary changes
+3. Update tests if behavior changed
+4. Update Storybook story
+5. Run tests: `bun run test`
+6. Run lint: `bun run lint`
+7. Verify in Storybook: `bun run dev`
 
 ## Notes
 
-- **Shared library** used across multiple applications - breaking changes require major version bump
-- **Backward compatibility** is critical - maintain old APIs when possible
-- **Document component APIs thoroughly** for other developers
-- **Consider consumer compatibility** when making changes
-- **Run tests and linting before every commit**
-- **Bundle size matters** - keep the library lightweight
-- **Accessibility is non-negotiable** - all components must be accessible
-- **Performance:** Optimize for render performance in consuming applications
+- **Accessibility is non-negotiable** - all components use Radix UI for WCAG compliance
+- **Shadcn/ui patterns** - follow Shadcn conventions for variants and composition
+- **TypeScript strict mode** - maintain full type safety
+- **Test coverage** - maintain 900+ passing tests
+- **Storybook is the documentation** - keep stories up to date
+- **Tailwind CSS v4** - use native dark mode and @theme directive
+- **Bundle size matters** - be mindful of adding dependencies
