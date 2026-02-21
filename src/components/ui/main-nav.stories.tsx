@@ -124,7 +124,9 @@ export const Interactive: Story = {
     ].map((item) => ({
       ...item,
       active: item.href === activeHref,
-      onClick: () => { setActiveHref(item.href); },
+      onClick: () => {
+        setActiveHref(item.href);
+      },
     }));
 
     return <MainNav items={items} />;
@@ -140,22 +142,30 @@ export const WithClickHandler: Story = {
           href: '/',
           icon: Home,
           active: true,
-          onClick: () => { alert('Home clicked!'); },
+          onClick: () => {
+            alert('Home clicked!');
+          },
         },
         {
           label: 'Activity',
           href: '/activity',
           icon: Activity,
-          onClick: () => { alert('Activity clicked!'); },
+          onClick: () => {
+            alert('Activity clicked!');
+          },
         },
         {
           label: 'Settings',
           href: '/settings',
           icon: Settings,
-          onClick: () => { alert('Settings clicked!'); },
+          onClick: () => {
+            alert('Settings clicked!');
+          },
         },
       ]}
-      onItemClick={(item) => { console.log('Item clicked:', item.label); }}
+      onItemClick={(item) => {
+        console.log('Item clicked:', item.label);
+      }}
     />
   ),
 };

@@ -194,7 +194,7 @@ export const DropdownTrigger: React.FC<DropdownTriggerProps> = ({ children, asCh
     // Extract child props safely and merge with our props
     const childProps = (children.props || {}) as Record<string, unknown>;
 
-    return React.cloneElement(children as React.ReactElement, {
+    return React.cloneElement(children, {
       ...childProps,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref: triggerRef as any,
@@ -293,7 +293,9 @@ export const DropdownContent: React.FC<DropdownContentProps> = ({
     const currentContent = contentRef.current;
 
     contentRef.current?.addEventListener('keydown', handleKeyDown);
-    return () => currentContent?.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      currentContent?.removeEventListener('keydown', handleKeyDown);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, setOpen, getFocusableItems]);
 

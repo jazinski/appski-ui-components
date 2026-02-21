@@ -80,7 +80,9 @@ function InteractiveButton(props: Partial<React.ComponentProps<typeof LoadingBut
 
   const handleClick = () => {
     setLoading(true);
-    setTimeout(() => { setLoading(false); }, 2000);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   };
 
   return (
@@ -287,7 +289,9 @@ export const FormSubmit: Story = {
       setTimeout(() => {
         setSubmitting(false);
         setSuccess(true);
-        setTimeout(() => { setSuccess(false); }, 2000);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
       }, 2000);
     };
 

@@ -235,7 +235,9 @@ export const MobileInteractive: Story = {
     return (
       <div className="h-screen bg-slate-100">
         <button
-          onClick={() => { setOpen(true); }}
+          onClick={() => {
+            setOpen(true);
+          }}
           className="fixed top-4 left-4 z-50 rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 md:hidden"
         >
           Open Menu
@@ -269,7 +271,9 @@ export const MobileInteractive: Story = {
           </p>
           <div className="mt-4">
             <button
-              onClick={() => { setOpen(!open); }}
+              onClick={() => {
+                setOpen(!open);
+              }}
               className="rounded-md bg-slate-200 px-4 py-2 text-slate-900 hover:bg-slate-300"
             >
               {open ? 'Close' : 'Open'} Sidebar
@@ -351,7 +355,9 @@ export const FullExample: Story = {
       <div className="h-screen bg-slate-100">
         {/* Mobile menu button */}
         <button
-          onClick={() => { setOpen(true); }}
+          onClick={() => {
+            setOpen(true);
+          }}
           className="fixed top-4 left-4 z-50 rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 md:hidden"
         >
           Menu
@@ -374,9 +380,15 @@ export const FullExample: Story = {
               email="chris@appski.com"
               avatarSrc="https://i.pravatar.cc/150?img=14"
               avatarStatus="online"
-              onProfileClick={() => { alert('Profile clicked'); }}
-              onSettingsClick={() => { alert('Settings clicked'); }}
-              onSignOutClick={() => { alert('Sign out clicked'); }}
+              onProfileClick={() => {
+                alert('Profile clicked');
+              }}
+              onSettingsClick={() => {
+                alert('Settings clicked');
+              }}
+              onSignOutClick={() => {
+                alert('Sign out clicked');
+              }}
             />
           }
         >
@@ -447,7 +459,8 @@ export const Collapsed: Story = {
       <div className="ml-0 p-8 md:ml-[60px]">
         <h1 className="text-2xl font-bold text-slate-900">Collapsed Sidebar</h1>
         <p className="mt-4 text-slate-600">
-          On desktop, the sidebar shows only icons with tooltips. Hover over an icon to see its label.
+          On desktop, the sidebar shows only icons with tooltips. Hover over an icon to see its
+          label.
         </p>
       </div>
     </div>
@@ -488,10 +501,13 @@ export const CollapsedInteractive: Story = {
             )}
           />
         </Sidebar>
-        <div className={`transition-all duration-300 p-8 ${collapsed ? 'ml-0 md:ml-[60px]' : 'ml-0 md:ml-[240px]'}`}>
+        <div
+          className={`p-8 transition-all duration-300 ${collapsed ? 'ml-0 md:ml-[60px]' : 'ml-0 md:ml-[240px]'}`}
+        >
           <h1 className="text-2xl font-bold text-slate-900">Interactive Collapse</h1>
           <p className="mt-4 text-slate-600">
-            Click the hamburger button in the sidebar to toggle between collapsed and expanded states.
+            Click the hamburger button in the sidebar to toggle between collapsed and expanded
+            states.
           </p>
           <div className="mt-4 rounded-lg bg-white p-4 shadow">
             <p className="text-sm text-slate-700">

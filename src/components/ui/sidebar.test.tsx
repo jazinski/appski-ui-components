@@ -418,17 +418,16 @@ describe('Sidebar', () => {
   });
 });
 
-
-describe("Sidebar - Collapse Functionality", () => {
+describe('Sidebar - Collapse Functionality', () => {
   // Mock desktop width for collapse tests
   const mockDesktopWidth = () => {
-    Object.defineProperty(window, "innerWidth", {
+    Object.defineProperty(window, 'innerWidth', {
       writable: true,
       configurable: true,
       value: 1024,
     });
     window.matchMedia = vi.fn().mockImplementation((query: string) => ({
-      matches: query === "(min-width: 768px)",
+      matches: query === '(min-width: 768px)',
       media: query,
       onchange: null,
       addListener: vi.fn(),
@@ -443,61 +442,61 @@ describe("Sidebar - Collapse Functionality", () => {
     mockDesktopWidth();
   });
 
-  it("renders collapse toggle button on desktop by default", () => {
+  it('renders collapse toggle button on desktop by default', () => {
     render(<Sidebar>Content</Sidebar>);
-    
-    expect(screen.getByTestId("collapse-toggle")).toBeInTheDocument();
-    expect(screen.getByLabelText("Collapse sidebar")).toBeInTheDocument();
+
+    expect(screen.getByTestId('collapse-toggle')).toBeInTheDocument();
+    expect(screen.getByLabelText('Collapse sidebar')).toBeInTheDocument();
   });
 
-  it("does not render collapse toggle button when showCollapseButton is false", () => {
+  it('does not render collapse toggle button when showCollapseButton is false', () => {
     render(<Sidebar showCollapseButton={false}>Content</Sidebar>);
-    
-    expect(screen.queryByTestId("collapse-toggle")).not.toBeInTheDocument();
+
+    expect(screen.queryByTestId('collapse-toggle')).not.toBeInTheDocument();
   });
 
-  it("renders with collapsed state when collapsed prop is true", () => {
+  it('renders with collapsed state when collapsed prop is true', () => {
     const { container } = render(<Sidebar collapsed>Content</Sidebar>);
-    
-    const sidebar = container.querySelector("aside");
-    expect(sidebar).toHaveAttribute("data-collapsed", "true");
-    expect(sidebar).toHaveStyle({ width: "60px" });
+
+    const sidebar = container.querySelector('aside');
+    expect(sidebar).toHaveAttribute('data-collapsed', 'true');
+    expect(sidebar).toHaveStyle({ width: '60px' });
   });
 
-  it("toggles collapsed state when collapse button is clicked", async () => {
+  it('toggles collapsed state when collapse button is clicked', async () => {
     const user = userEvent.setup();
     render(<Sidebar>Content</Sidebar>);
-    
-    const toggleButton = screen.getByTestId("collapse-toggle");
-    const sidebar = screen.getByTestId("sidebar");
-    
+
+    const toggleButton = screen.getByTestId('collapse-toggle');
+    const sidebar = screen.getByTestId('sidebar');
+
     // Initially not collapsed
-    expect(sidebar).toHaveAttribute("data-collapsed", "false");
-    
+    expect(sidebar).toHaveAttribute('data-collapsed', 'false');
+
     // Click to collapse
     await user.click(toggleButton);
-    expect(sidebar).toHaveAttribute("data-collapsed", "true");
-    
+    expect(sidebar).toHaveAttribute('data-collapsed', 'true');
+
     // Click to expand
     await user.click(toggleButton);
-    expect(sidebar).toHaveAttribute("data-collapsed", "false");
+    expect(sidebar).toHaveAttribute('data-collapsed', 'false');
   });
 
-  it("calls onCollapsedChange callback when collapsed state changes", async () => {
+  it('calls onCollapsedChange callback when collapsed state changes', async () => {
     const onCollapsedChange = vi.fn();
     const user = userEvent.setup();
     render(<Sidebar onCollapsedChange={onCollapsedChange}>Content</Sidebar>);
-    
-    const toggleButton = screen.getByTestId("collapse-toggle");
-    
+
+    const toggleButton = screen.getByTestId('collapse-toggle');
+
     await user.click(toggleButton);
     expect(onCollapsedChange).toHaveBeenCalledWith(true);
-    
+
     await user.click(toggleButton);
     expect(onCollapsedChange).toHaveBeenCalledWith(false);
   });
 
-  it("supports controlled collapsed state", async () => {
+  it('supports controlled collapsed state', async () => {
     const onCollapsedChange = vi.fn();
     const user = userEvent.setup();
     render(
@@ -505,69 +504,73 @@ describe("Sidebar - Collapse Functionality", () => {
         Content
       </Sidebar>
     );
-    
-    const sidebar = screen.getByTestId("sidebar");
-    expect(sidebar).toHaveAttribute("data-collapsed", "false");
-    
-    await user.click(screen.getByTestId("collapse-toggle"));
+
+    const sidebar = screen.getByTestId('sidebar');
+    expect(sidebar).toHaveAttribute('data-collapsed', 'false');
+
+    await user.click(screen.getByTestId('collapse-toggle'));
     expect(onCollapsedChange).toHaveBeenCalledWith(true);
   });
 
-  it("hides logo when collapsed", () => {
+  it('hides logo when collapsed', () => {
     const { rerender } = render(
       <Sidebar logo={<div data-testid="logo">Logo</div>}>Content</Sidebar>
     );
-    
-    expect(screen.getByTestId("logo")).toBeInTheDocument();
-    
+
+    expect(screen.getByTestId('logo')).toBeInTheDocument();
+
     rerender(
       <Sidebar collapsed logo={<div data-testid="logo">Logo</div>}>
         Content
       </Sidebar>
     );
-    
-    expect(screen.queryByTestId("logo")).not.toBeInTheDocument();
+
+    expect(screen.queryByTestId('logo')).not.toBeInTheDocument();
   });
 
-  it("passes collapsed prop to children", () => {
+  it('passes collapsed prop to children', () => {
     const ChildComponent = ({ collapsed }: { collapsed?: boolean }) => (
       <div data-testid="child" data-collapsed={collapsed}>
         Child
       </div>
     );
-    
+
     render(
       <Sidebar collapsed>
         <ChildComponent />
       </Sidebar>
     );
-    
-    const child = screen.getByTestId("child");
-    expect(child).toHaveAttribute("data-collapsed", "true");
+
+    const child = screen.getByTestId('child');
+    expect(child).toHaveAttribute('data-collapsed', 'true');
   });
 
-  it("passes collapsed prop to footer", () => {
+  it('passes collapsed prop to footer', () => {
     const FooterComponent = ({ collapsed }: { collapsed?: boolean }) => (
       <div data-testid="footer" data-collapsed={collapsed}>
         Footer
       </div>
     );
-    
-    render(<Sidebar collapsed footer={<FooterComponent />}>Content</Sidebar>);
-    
-    const footer = screen.getByTestId("footer");
-    expect(footer).toHaveAttribute("data-collapsed", "true");
+
+    render(
+      <Sidebar collapsed footer={<FooterComponent />}>
+        Content
+      </Sidebar>
+    );
+
+    const footer = screen.getByTestId('footer');
+    expect(footer).toHaveAttribute('data-collapsed', 'true');
   });
 
-  it("updates aria-label based on collapsed state", async () => {
+  it('updates aria-label based on collapsed state', async () => {
     const user = userEvent.setup();
     render(<Sidebar>Content</Sidebar>);
-    
-    const toggleButton = screen.getByTestId("collapse-toggle");
-    
-    expect(toggleButton).toHaveAttribute("aria-label", "Collapse sidebar");
-    
+
+    const toggleButton = screen.getByTestId('collapse-toggle');
+
+    expect(toggleButton).toHaveAttribute('aria-label', 'Collapse sidebar');
+
     await user.click(toggleButton);
-    expect(toggleButton).toHaveAttribute("aria-label", "Expand sidebar");
+    expect(toggleButton).toHaveAttribute('aria-label', 'Expand sidebar');
   });
 });

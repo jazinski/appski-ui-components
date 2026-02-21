@@ -148,10 +148,15 @@ export const ActiveStatus: Story = {
     <Card status="active" className="w-[350px]">
       <CardHeader>
         <CardTitle>Active Card</CardTitle>
-        <CardDescription>This card has an active status with a colored left border.</CardDescription>
+        <CardDescription>
+          This card has an active status with a colored left border.
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Use the status prop to indicate active/inactive states without changing the card's overall appearance.</p>
+        <p>
+          Use the status prop to indicate active/inactive states without changing the card's overall
+          appearance.
+        </p>
       </CardContent>
       <CardFooter>
         <Button>Action</Button>
@@ -165,10 +170,15 @@ export const InactiveStatus: Story = {
     <Card status="inactive" className="w-[350px]">
       <CardHeader>
         <CardTitle>Inactive Card</CardTitle>
-        <CardDescription>This card has an inactive status with a muted left border.</CardDescription>
+        <CardDescription>
+          This card has an inactive status with a muted left border.
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <p>The inactive status provides a subtle visual distinction without making the card look washed out.</p>
+        <p>
+          The inactive status provides a subtle visual distinction without making the card look
+          washed out.
+        </p>
       </CardContent>
       <CardFooter>
         <Button variant="outline">Action</Button>
@@ -180,7 +190,9 @@ export const InactiveStatus: Story = {
 export const StatusComparison: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <h3 className="text-lg font-semibold text-foreground">Status Variants for Active/Inactive States</h3>
+      <h3 className="text-foreground text-lg font-semibold">
+        Status Variants for Active/Inactive States
+      </h3>
       <div className="flex flex-wrap gap-4">
         <Card status="active" className="w-[280px]">
           <CardHeader>

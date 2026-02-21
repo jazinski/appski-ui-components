@@ -68,17 +68,13 @@ type Story = StoryObj<typeof HybridEditor>;
 // Controlled component wrapper for stories
 function ControlledEditor(props: React.ComponentProps<typeof HybridEditor>) {
   const [value, setValue] = useState(props.value || '');
-  
+
   return (
     <div className="space-y-4">
-      <HybridEditor 
-        {...props} 
-        value={value}
-        onChange={setValue}
-      />
-      <div className="p-4 bg-muted rounded-lg">
-        <h4 className="font-semibold mb-2">Markdown Output:</h4>
-        <pre className="text-sm bg-background p-2 rounded border overflow-auto max-h-48">
+      <HybridEditor {...props} value={value} onChange={setValue} />
+      <div className="bg-muted rounded-lg p-4">
+        <h4 className="mb-2 font-semibold">Markdown Output:</h4>
+        <pre className="bg-background max-h-48 overflow-auto rounded border p-2 text-sm">
           {value || '(empty)'}
         </pre>
       </div>
@@ -98,7 +94,8 @@ export const Default: Story = {
 
 export const RichTextMode: Story = {
   args: {
-    value: '# Welcome to HybridEditor\n\nThis is a **powerful** editor with *rich* formatting capabilities.\n\n## Features\n\n- Bold and italic text\n- Multiple heading levels\n- Lists and quotes\n- And much more!\n\n> "The best editor is the one that adapts to you." - Unknown',
+    value:
+      '# Welcome to HybridEditor\n\nThis is a **powerful** editor with *rich* formatting capabilities.\n\n## Features\n\n- Bold and italic text\n- Multiple heading levels\n- Lists and quotes\n- And much more!\n\n> "The best editor is the one that adapts to you." - Unknown',
     initialMode: 'rich',
     minHeight: 400,
     showAI: true,
@@ -108,7 +105,8 @@ export const RichTextMode: Story = {
 
 export const CodeMode: Story = {
   args: {
-    value: '```javascript\nconst greet = (name) => {\n  console.log(`Hello, ${name}!`);\n};\n\ngreet("World");\n```\n\n## Code Block Example\n\nWrite Markdown with syntax highlighting!',
+    value:
+      '```javascript\nconst greet = (name) => {\n  console.log(`Hello, ${name}!`);\n};\n\ngreet("World");\n```\n\n## Code Block Example\n\nWrite Markdown with syntax highlighting!',
     initialMode: 'code',
     minHeight: 400,
     showAI: true,
@@ -119,7 +117,8 @@ export const CodeMode: Story = {
 
 export const WithAIIntegration: Story = {
   args: {
-    value: '# Ask AI for Help!\n\nSelect any text and click the "Ask AI" button to get assistance.\n\n**Try it:** Select this text and ask AI to improve it.',
+    value:
+      '# Ask AI for Help!\n\nSelect any text and click the "Ask AI" button to get assistance.\n\n**Try it:** Select this text and ask AI to improve it.',
     minHeight: 300,
     showAI: true,
     onAIClick: (selectedText, fullContent) => {
@@ -234,12 +233,14 @@ export const CustomPlaceholder: Story = {
 
 export const ModeComparisonSideBySide: Story = {
   render: () => {
-    const [value, setValue] = useState('# Side by Side\n\n**Edit** in one mode, see it update in the other!');
-    
+    const [value, setValue] = useState(
+      '# Side by Side\n\n**Edit** in one mode, see it update in the other!'
+    );
+
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div>
-          <h3 className="font-semibold mb-2">Rich Text Mode</h3>
+          <h3 className="mb-2 font-semibold">Rich Text Mode</h3>
           <HybridEditor
             value={value}
             onChange={setValue}
@@ -249,7 +250,7 @@ export const ModeComparisonSideBySide: Story = {
           />
         </div>
         <div>
-          <h3 className="font-semibold mb-2">Code Mode</h3>
+          <h3 className="mb-2 font-semibold">Code Mode</h3>
           <HybridEditor
             value={value}
             onChange={setValue}

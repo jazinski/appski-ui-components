@@ -128,9 +128,8 @@ export function Form<T extends z.ZodType>({
     setIsSubmitting(true);
 
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const validatedValues = await schema.parseAsync(values);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
       await onSubmit(validatedValues);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -209,18 +208,18 @@ export function FormField({ name, label, required, description, children }: Form
       const value = e.target.value;
       setFieldValue(name, value);
       // Call original onChange if it exists
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
       if (children.props.onChange) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         children.props.onChange(e);
       }
     },
     onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       setFieldTouched(name, true);
       // Call original onBlur if it exists
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
       if (children.props.onBlur) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         children.props.onBlur(e);
       }
     },

@@ -214,9 +214,15 @@ export const Interactive: Story = {
           avatarStatus="online"
           open={open}
           onOpenChange={setOpen}
-          onProfileClick={() => { setLastAction('Profile clicked'); }}
-          onSettingsClick={() => { setLastAction('Settings clicked'); }}
-          onSignOutClick={() => { setLastAction('Sign out clicked'); }}
+          onProfileClick={() => {
+            setLastAction('Profile clicked');
+          }}
+          onSettingsClick={() => {
+            setLastAction('Settings clicked');
+          }}
+          onSignOutClick={() => {
+            setLastAction('Sign out clicked');
+          }}
         />
         {lastAction && (
           <div className="mt-4 rounded-md bg-slate-800 p-3 text-sm text-white">
