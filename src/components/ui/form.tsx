@@ -84,7 +84,7 @@ export function Form<T extends z.ZodType>({
       try {
         // Access schema shape - requires type assertion as Zod doesn't expose this safely
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-        const fieldSchema = (schema as any).shape?.[name] as z.ZodTypeAny | undefined;
+        const fieldSchema = (schema as any).shape?.[name] as z.ZodType | undefined;
         if (fieldSchema) {
           await fieldSchema.parseAsync(value);
         }
@@ -125,7 +125,7 @@ export function Form<T extends z.ZodType>({
     [validateField, validateOnBlur, values]
   );
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 

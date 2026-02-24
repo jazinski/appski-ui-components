@@ -55,7 +55,7 @@ const Button = ({
 export const Default: Story = {
   render: () => {
     const schema = z.object({
-      email: z.string().email('Invalid email address'),
+      email: z.email('Invalid email address'),
       password: z.string().min(8, 'Password must be at least 8 characters'),
     });
 
@@ -103,7 +103,7 @@ export const WithValidationOnChange: Story = {
   render: () => {
     const schema = z.object({
       username: z.string().min(3, 'Username must be at least 3 characters'),
-      email: z.string().email('Invalid email address'),
+      email: z.email('Invalid email address'),
     });
 
     return (
@@ -212,7 +212,7 @@ export const WithInitialValues: Story = {
     const schema = z.object({
       firstName: z.string().min(2, 'First name must be at least 2 characters'),
       lastName: z.string().min(2, 'Last name must be at least 2 characters'),
-      email: z.string().email('Invalid email address'),
+      email: z.email('Invalid email address'),
     });
 
     return (
@@ -251,7 +251,7 @@ export const ContactForm: Story = {
   render: () => {
     const schema = z.object({
       name: z.string().min(2, 'Name must be at least 2 characters'),
-      email: z.string().email('Invalid email address'),
+      email: z.email('Invalid email address'),
       subject: z.string().min(5, 'Subject must be at least 5 characters'),
       message: z.string().min(10, 'Message must be at least 10 characters'),
     });
@@ -320,7 +320,7 @@ export const NoValidationOnBlur: Story = {
   render: () => {
     const schema = z.object({
       username: z.string().min(3, 'Username must be at least 3 characters'),
-      email: z.string().email('Invalid email address'),
+      email: z.email('Invalid email address'),
     });
 
     return (

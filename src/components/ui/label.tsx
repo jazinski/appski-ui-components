@@ -43,7 +43,7 @@ export interface LabelProps
  * <Label htmlFor="email">Email Address</Label>
  * <Label required>Username</Label>
  */
-const Label = React.forwardRef<React.ElementRef<typeof LabelPrimitive.Root>, LabelProps>(
+const Label = React.forwardRef<React.ComponentRef<typeof LabelPrimitive.Root>, LabelProps>(
   ({ className, variant, size, required, children, ...props }, ref) => (
     <LabelPrimitive.Root
       ref={ref}

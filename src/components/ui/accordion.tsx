@@ -72,7 +72,7 @@ export interface AccordionItemProps
 }
 
 const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentRef<typeof AccordionPrimitive.Item>,
   AccordionItemProps
 >(({ className, variant, ...props }, ref) => (
   <AccordionPrimitive.Item
@@ -95,7 +95,7 @@ export interface AccordionTriggerProps
 }
 
 const AccordionTrigger = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentRef<typeof AccordionPrimitive.Trigger>,
   AccordionTriggerProps
 >(({ className, children, variant, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
@@ -123,7 +123,7 @@ export interface AccordionContentProps
 }
 
 const AccordionContent = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentRef<typeof AccordionPrimitive.Content>,
   AccordionContentProps
 >(({ className, children, variant, ...props }, ref) => (
   <AccordionPrimitive.Content

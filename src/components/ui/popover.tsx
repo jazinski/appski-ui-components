@@ -54,7 +54,7 @@ export interface PopoverContentProps
 }
 
 const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Content>,
+  React.ComponentRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
 >(({ className, size, align = 'center', sideOffset = 4, ...props }, ref) => (
   <PopoverPrimitive.Portal>

@@ -208,7 +208,7 @@ export const CardStyle: Story = {
 
 export const InForm: Story = {
   render: () => {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
       e.preventDefault();
       const formData = new FormData(e.currentTarget);
       const plan = formData.get('plan');

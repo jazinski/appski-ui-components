@@ -41,7 +41,7 @@ export interface SeparatorProps
  * <Separator orientation="vertical" className="h-20" />
  */
 const Separator = React.forwardRef<
-  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentRef<typeof SeparatorPrimitive.Root>,
   SeparatorProps
 >(({ className, orientation = 'horizontal', variant, decorative = true, ...props }, ref) => (
   <SeparatorPrimitive.Root
