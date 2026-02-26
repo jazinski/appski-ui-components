@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Sidebar } from './sidebar';
 
@@ -333,8 +333,10 @@ describe('Sidebar', () => {
     expect(sidebar).toHaveClass('relative');
 
     // Simulate resize to mobile
-    mockMobileWidth();
-    window.dispatchEvent(new Event('resize'));
+    await act(async () => {
+      mockMobileWidth();
+      window.dispatchEvent(new Event('resize'));
+    });
 
     await waitFor(() => {
       expect(sidebar).toHaveClass('fixed');
@@ -350,8 +352,10 @@ describe('Sidebar', () => {
     expect(sidebar).toHaveClass('-translate-x-full');
 
     // Simulate resize to desktop
-    mockDesktopWidth();
-    window.dispatchEvent(new Event('resize'));
+    await act(async () => {
+      mockDesktopWidth();
+      window.dispatchEvent(new Event('resize'));
+    });
 
     await waitFor(() => {
       expect(sidebar).toHaveClass('translate-x-0');
@@ -530,7 +534,7 @@ describe('Sidebar - Collapse Functionality', () => {
 
   it('passes collapsed prop to children', () => {
     const ChildComponent = ({ collapsed }: { collapsed?: boolean }) => (
-      <div data-testid="child" data-collapsed={collapsed}>
+      <div data-testid="child" data-collapsed={collapsed ? 'true' : 'false'}>
         Child
       </div>
     );
@@ -547,7 +551,7 @@ describe('Sidebar - Collapse Functionality', () => {
 
   it('passes collapsed prop to footer', () => {
     const FooterComponent = ({ collapsed }: { collapsed?: boolean }) => (
-      <div data-testid="footer" data-collapsed={collapsed}>
+      <div data-testid="footer" data-collapsed={collapsed ? 'true' : 'false'}>
         Footer
       </div>
     );
