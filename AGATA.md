@@ -176,6 +176,28 @@ describe("Button", () => {
     
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
+
+  it("applies variant classes correctly", () => {
+    const { rerender } = render(<Button variant="default">Default</Button>);
+    expect(screen.getByRole("button")).toHaveClass("bg-primary");
+    
+    rerender(<Button variant="destructive">Destructive</Button>);
+    expect(screen.getByRole("button")).toHaveClass("bg-destructive");
+  });
+
+  it("is disabled when isDisabled is true", () => {
+    render(<Button disabled>Disabled</Button>);
+    expect(screen.getByRole("button")).toBeDisabled();
+  });
+
+  it("renders as child component when asChild is true", () => {
+    render(
+      <Button asChild>
+        <a href="/test">Link Button</a>
+      </Button>
+    );
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/test");
+  });
 });
 ```
 
@@ -197,6 +219,10 @@ const meta: Meta<typeof Button> = {
       control: "select",
       options: ["default", "destructive", "outline", "ghost"],
     },
+    size: {
+      control: "select",
+      options: ["default", "sm", "lg"],
+    },
   },
 };
 
@@ -206,6 +232,41 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     children: "Button",
+  },
+};
+
+export const Destructive: Story = {
+  args: {
+    children: "Delete",
+    variant: "destructive",
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    children: "Outline",
+    variant: "outline",
+  },
+};
+
+export const Small: Story = {
+  args: {
+    children: "Small",
+    size: "sm",
+  },
+};
+
+export const Large: Story = {
+  args: {
+    children: "Large",
+    size: "lg",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: "Disabled",
+    disabled: true,
   },
 };
 ```
@@ -221,7 +282,16 @@ Components use Tailwind CSS v4 with semantic theme variables:
   --color-secondary: #e0e8ff;
   --color-background: #f9fafb;
   --color-foreground: #344256;
-  /* ... see THEMING.md for full reference */
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #f3f4f6;
+  --color-accent-foreground: #1f2937;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e7eb;
+  --color-input: #e5e7eb;
+  --color-ring: #6366f1;
+  --radius: 0.5rem;
 }
 ```
 
@@ -286,6 +356,35 @@ Components use Tailwind CSS v4 with semantic theme variables:
 5. Run tests: `bun run test`
 6. Run lint: `bun run lint`
 7. Verify in Storybook: `bun run dev`
+
+#### Adding a New Variant
+1. Update CVA variants definition in component
+2. Add corresponding CSS classes in theme if needed
+3. Add test for new variant
+4. Add Storybook story for new variant
+5. Update component documentation
+
+### Troubleshooting
+
+#### Build Failures
+- **TypeScript errors:** Run `bun run typecheck` to identify issues
+- **Missing dependencies:** Run `bun install` to ensure all deps are installed
+- **Import errors:** Check barrel exports in `src/index.ts`
+
+#### Test Failures
+- **Snapshot mismatches:** Update snapshots with `bun run test -- -u`
+- **Async issues:** Ensure proper `await` usage with userEvent
+- **DOM not updated:** Use `waitFor` for async state changes
+
+#### Storybook Issues
+- **Stories not loading:** Check `.storybook/main.ts` configuration
+- **Styles not applied:** Verify Tailwind CSS imports in `.storybook/preview.ts`
+- **Components not rendering:** Check import paths and barrel exports
+
+#### Styling Issues
+- **Classes not applied:** Check Tailwind config and @theme directive
+- **Dark mode not working:** Ensure `dark` class on root element
+- **Inconsistent styles:** Check CSS specificity and CVA variant order
 
 ## Notes
 
