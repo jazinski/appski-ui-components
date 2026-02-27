@@ -83,7 +83,7 @@ export interface SliderProps
  * <Slider defaultValue={[50]} max={100} step={1} />
  * <Slider defaultValue={[25, 75]} max={100} step={1} showValue />
  */
-const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, SliderProps>(
+const Slider = React.forwardRef<React.ComponentRef<typeof SliderPrimitive.Root>, SliderProps>(
   ({ className, size, variant, showValue, ...props }, ref) => {
     const [values, setValues] = React.useState<number[]>(props.defaultValue || props.value || [0]);
 

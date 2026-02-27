@@ -55,7 +55,7 @@ export interface ProgressProps
  * <Progress value={60} />
  * <Progress value={75} variant="success" showValue />
  */
-const Progress = React.forwardRef<React.ElementRef<typeof ProgressPrimitive.Root>, ProgressProps>(
+const Progress = React.forwardRef<React.ComponentRef<typeof ProgressPrimitive.Root>, ProgressProps>(
   ({ className, value = 0, size, variant, showValue, ...props }, ref) => (
     <div className="relative">
       <ProgressPrimitive.Root

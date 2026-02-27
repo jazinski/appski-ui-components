@@ -256,7 +256,7 @@ export const FeedbackForm: Story = {
     const [feedback, setFeedback] = useState('');
     const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.SubmitEvent) => {
       e.preventDefault();
       setSubmitted(true);
       setTimeout(() => {

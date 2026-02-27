@@ -72,7 +72,9 @@ export function Form<T extends z.ZodType>({
   className,
   ...props
 }: FormProps<T>) {
-  const [values, setValues] = React.useState<z.infer<T>>(initialValues);
+  const [values, setValues] = React.useState<Record<string, unknown>>(
+    initialValues as Record<string, unknown>
+  );
   const [errors, setErrors] = React.useState<FormErrors>({});
   const [touched, setTouched] = React.useState<FormTouched>({});
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -82,14 +84,14 @@ export function Form<T extends z.ZodType>({
       try {
         // Access schema shape - requires type assertion as Zod doesn't expose this safely
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-        const fieldSchema = (schema as any).shape?.[name] as z.ZodTypeAny | undefined;
+        const fieldSchema = (schema as any).shape?.[name] as z.ZodType | undefined;
         if (fieldSchema) {
           await fieldSchema.parseAsync(value);
         }
         return undefined;
       } catch (error) {
         if (error instanceof z.ZodError) {
-          return error.errors[0]?.message;
+          return error.issues[0]?.message;
         }
         return 'Validation error';
       }
@@ -123,19 +125,18 @@ export function Form<T extends z.ZodType>({
     [validateField, validateOnBlur, values]
   );
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const validatedValues = await schema.parseAsync(values);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      const validatedValues = await schema.parseAsync(values) as z.infer<T>;
+
       await onSubmit(validatedValues);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors: FormErrors = {};
-        error.errors.forEach((err) => {
+        error.issues.forEach((err) => {
           const path = err.path.join('.');
           newErrors[path] = err.message;
         });
@@ -198,7 +199,11 @@ export function FormField({ name, label, required, description, children }: Form
   const error = touched[name] ? errors[name] : undefined;
   const id = `form-field-${name}`;
 
-  const childWithProps = React.cloneElement(children, {
+  // Extract child props safely
+  const childProps = children.props as Record<string, unknown>;
+
+  // Use type assertion to work around React.cloneElement strict typing
+  const childWithProps = React.cloneElement(children as React.ReactElement<Record<string, unknown>>, {
     id,
     name,
     'aria-invalid': !!error,
@@ -209,19 +214,15 @@ export function FormField({ name, label, required, description, children }: Form
       const value = e.target.value;
       setFieldValue(name, value);
       // Call original onChange if it exists
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if (children.props.onChange) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        children.props.onChange(e);
+      if (typeof childProps.onChange === 'function') {
+        (childProps.onChange as (e: unknown) => void)(e);
       }
     },
     onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       setFieldTouched(name, true);
       // Call original onBlur if it exists
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if (children.props.onBlur) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        children.props.onBlur(e);
+      if (typeof childProps.onBlur === 'function') {
+        (childProps.onBlur as (e: unknown) => void)(e);
       }
     },
   });

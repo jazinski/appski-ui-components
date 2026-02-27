@@ -162,7 +162,12 @@ export const ControlledSidebar: Story = {
     return (
       <>
         <div className="fixed top-4 right-4 z-50">
-          <Button onClick={() => { setOpen(!open); }} size="sm">
+          <Button
+            onClick={() => {
+              setOpen(!open);
+            }}
+            size="sm"
+          >
             {open ? 'Close' : 'Open'} Sidebar (Mobile)
           </Button>
         </div>
@@ -363,7 +368,9 @@ export const WithCollapsedInteractive: Story = {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-white">Interactive Collapse</h1>
-              <p className="mt-1 text-sm text-slate-400">Toggle sidebar with the hamburger button</p>
+              <p className="mt-1 text-sm text-slate-400">
+                Toggle sidebar with the hamburger button
+              </p>
             </div>
             <div className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-slate-300">
               Collapsed: {collapsed ? 'Yes' : 'No'}

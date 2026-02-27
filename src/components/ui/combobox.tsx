@@ -123,7 +123,9 @@ export const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
                   type="text"
                   placeholder={searchPlaceholder}
                   value={searchQuery}
-                  onChange={(e) => { setSearchQuery(e.target.value); }}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                  }}
                   className="border-border bg-background focus:ring-ring w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-offset-2"
                 />
               </div>

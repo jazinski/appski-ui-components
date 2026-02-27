@@ -10,7 +10,7 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => <input {..
 describe('Form', () => {
   it('renders form with fields', () => {
     const schema = z.object({
-      email: z.string().email(),
+      email: z.email(),
     });
 
     render(
@@ -27,7 +27,7 @@ describe('Form', () => {
   it('displays validation errors on submit with invalid data', async () => {
     const user = userEvent.setup();
     const schema = z.object({
-      email: z.string().email('Invalid email'),
+      email: z.email('Invalid email'),
     });
     const onSubmit = vi.fn();
 
@@ -51,7 +51,7 @@ describe('Form', () => {
   it('calls onSubmit with validated values on valid submission', async () => {
     const user = userEvent.setup();
     const schema = z.object({
-      email: z.string().email(),
+      email: z.email(),
     });
     const onSubmit = vi.fn();
 
@@ -76,7 +76,7 @@ describe('Form', () => {
   it('validates on blur when validateOnBlur is true', async () => {
     const user = userEvent.setup();
     const schema = z.object({
-      email: z.string().email('Invalid email'),
+      email: z.email('Invalid email'),
     });
 
     render(
@@ -160,7 +160,7 @@ describe('Form', () => {
   it('hides description when error is shown', async () => {
     const user = userEvent.setup();
     const schema = z.object({
-      email: z.string().email('Invalid email'),
+      email: z.email('Invalid email'),
     });
 
     render(
@@ -184,7 +184,7 @@ describe('Form', () => {
   it('sets isSubmitting state during submission', async () => {
     const user = userEvent.setup();
     const schema = z.object({
-      email: z.string().email(),
+      email: z.email(),
     });
     const onSubmit = vi
       .fn()

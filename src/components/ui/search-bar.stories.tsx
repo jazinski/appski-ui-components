@@ -131,7 +131,9 @@ export const WithSearchCallback: Story = {
         <SearchBar
           value={value}
           onChange={setValue}
-          onSearch={(v) => { setSearchedValue(v); }}
+          onSearch={(v) => {
+            setSearchedValue(v);
+          }}
           placeholder="Press Enter to search..."
         />
         <div className="text-muted-foreground text-sm">

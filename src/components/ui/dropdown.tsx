@@ -10,8 +10,8 @@ import { FaChevronRight } from 'react-icons/fa';
 export interface DropdownContextValue {
   open: boolean;
   setOpen: (open: boolean) => void;
-  triggerRef: React.RefObject<HTMLElement>;
-  contentRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLElement | null>;
+  contentRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export interface DropdownSubmenuContextValue {
@@ -191,18 +191,13 @@ export const DropdownTrigger: React.FC<DropdownTriggerProps> = ({ children, asCh
   };
 
   if (asChild && React.isValidElement(children)) {
-    // Extract child props safely and merge with our props
-    const childProps = (children.props || {}) as Record<string, unknown>;
-
-    return React.cloneElement(children as React.ReactElement, {
-      ...childProps,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref: triggerRef as any,
+    return React.cloneElement(children, {
+      ref: triggerRef,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
       'aria-expanded': open,
       'aria-haspopup': 'menu' as const,
-    });
+    } as React.HTMLAttributes<HTMLElement> & { ref: React.RefObject<HTMLElement | null> });
   }
 
   return (
@@ -293,7 +288,9 @@ export const DropdownContent: React.FC<DropdownContentProps> = ({
     const currentContent = contentRef.current;
 
     contentRef.current?.addEventListener('keydown', handleKeyDown);
-    return () => currentContent?.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      currentContent?.removeEventListener('keydown', handleKeyDown);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, setOpen, getFocusableItems]);
 

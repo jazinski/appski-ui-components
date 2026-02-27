@@ -73,7 +73,8 @@ export function ConfirmDialog({
       headerGradient: 'from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30',
       titleColor: 'from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400',
       buttonVariant: 'destructive' as const,
-      buttonClassName: 'bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700',
+      buttonClassName:
+        'bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700',
     },
     warning: {
       icon: AlertTriangle,
@@ -82,7 +83,8 @@ export function ConfirmDialog({
       headerGradient: 'from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30',
       titleColor: 'from-amber-600 to-yellow-600 dark:from-amber-400 dark:to-yellow-400',
       buttonVariant: 'default' as const,
-      buttonClassName: 'bg-yellow-600 hover:bg-yellow-700 dark:bg-yellow-600 dark:hover:bg-yellow-700',
+      buttonClassName:
+        'bg-yellow-600 hover:bg-yellow-700 dark:bg-yellow-600 dark:hover:bg-yellow-700',
     },
     info: {
       icon: Info,
@@ -100,7 +102,8 @@ export function ConfirmDialog({
       headerGradient: 'from-purple-50 to-fuchsia-50 dark:from-purple-950/30 dark:to-fuchsia-950/30',
       titleColor: 'from-purple-600 to-fuchsia-600 dark:from-purple-400 dark:to-fuchsia-400',
       buttonVariant: 'default' as const,
-      buttonClassName: 'bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700',
+      buttonClassName:
+        'bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700',
     },
   };
 
@@ -138,7 +141,13 @@ export function ConfirmDialog({
 
         {/* Actions */}
         <DialogFooter className="border-border bg-muted/50 border-t px-6 py-4">
-          <Button variant="outline" onClick={() => { onOpenChange(false); }} disabled={loading}>
+          <Button
+            variant="outline"
+            onClick={() => {
+              onOpenChange(false);
+            }}
+            disabled={loading}
+          >
             {cancelText}
           </Button>
           <Button

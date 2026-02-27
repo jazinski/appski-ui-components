@@ -1,6 +1,6 @@
 /**
  * HybridEditor - A dual-mode editor supporting both rich text (Lexical) and code (Monaco)
- * 
+ *
  * Features:
  * - Rich text editing with Lexical (WYSIWYG)
  * - Code editing with Monaco (Markdown)
@@ -22,10 +22,10 @@ import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { LinkNode } from '@lexical/link';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
-import { 
+import {
   TRANSFORMERS,
   $convertToMarkdownString,
-  $convertFromMarkdownString 
+  $convertFromMarkdownString,
 } from '@lexical/markdown';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { FORMAT_TEXT_COMMAND, $getSelection, $isRangeSelection } from 'lexical';
@@ -37,18 +37,7 @@ import type * as Monaco from 'monaco-editor';
 
 // Lazy load Monaco Editor - it's ~1MB and not needed until code mode is activated
 const MonacoEditor = React.lazy(() => import('@monaco-editor/react'));
-import { 
-  Code2, 
-  Type, 
-  Sparkles, 
-  Bold, 
-  Italic, 
-  List, 
-
-  Heading1,
-  Heading2,
-  Quote
-} from 'lucide-react';
+import { Code2, Type, Sparkles, Bold, Italic, List, Heading1, Heading2, Quote } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from './button';
 
@@ -105,12 +94,12 @@ const theme = {
 };
 
 // Toolbar Component
-function EditorToolbar({ 
-  mode, 
-  onModeChange, 
+function EditorToolbar({
+  mode,
+  onModeChange,
   onAIClick,
   showAI = true,
-}: { 
+}: {
   mode: EditorMode;
   onModeChange: (mode: EditorMode) => void;
   onAIClick?: (() => void) | undefined;
@@ -149,14 +138,16 @@ function EditorToolbar({
   };
 
   return (
-    <div className="flex items-center justify-between border-b border-border bg-muted/30 px-2 py-1.5">
+    <div className="border-border bg-muted/30 flex items-center justify-between border-b px-2 py-1.5">
       <div className="flex items-center gap-1">
         {/* Mode Toggle */}
-        <div className="flex items-center gap-0.5 mr-2 border-r border-border pr-2">
+        <div className="border-border mr-2 flex items-center gap-0.5 border-r pr-2">
           <Button
             variant={mode === 'rich' ? 'default' : 'ghost'}
             size="sm"
-            onClick={() => { onModeChange('rich'); }}
+            onClick={() => {
+              onModeChange('rich');
+            }}
             title="Rich Text Mode"
             className="h-8 px-2"
           >
@@ -165,7 +156,9 @@ function EditorToolbar({
           <Button
             variant={mode === 'code' ? 'default' : 'ghost'}
             size="sm"
-            onClick={() => { onModeChange('code'); }}
+            onClick={() => {
+              onModeChange('code');
+            }}
             title="Code Mode"
             className="h-8 px-2"
           >
@@ -194,11 +187,13 @@ function EditorToolbar({
             >
               <Italic className="h-4 w-4" />
             </Button>
-            <div className="w-px h-6 bg-border mx-1" />
+            <div className="bg-border mx-1 h-6 w-px" />
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => { insertHeading(1); }}
+              onClick={() => {
+                insertHeading(1);
+              }}
               title="Heading 1"
               className="h-8 px-2"
             >
@@ -207,13 +202,15 @@ function EditorToolbar({
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => { insertHeading(2); }}
+              onClick={() => {
+                insertHeading(2);
+              }}
               title="Heading 2"
               className="h-8 px-2"
             >
               <Heading2 className="h-4 w-4" />
             </Button>
-            <div className="w-px h-6 bg-border mx-1" />
+            <div className="bg-border mx-1 h-6 w-px" />
             <Button
               variant="ghost"
               size="sm"
@@ -242,7 +239,7 @@ function EditorToolbar({
           variant="gradient-purple"
           size="sm"
           onClick={onAIClick}
-          className="h-8 px-3 gap-1.5"
+          className="h-8 gap-1.5 px-3"
           title="Ask AI for help"
         >
           <Sparkles className="h-4 w-4" />
@@ -254,12 +251,12 @@ function EditorToolbar({
 }
 
 // Plugin to sync Markdown content
-function MarkdownSyncPlugin({ 
-  value, 
+function MarkdownSyncPlugin({
+  value,
   onChange,
   isInitialized,
-  setIsInitialized 
-}: { 
+  setIsInitialized,
+}: {
   value?: string;
   onChange?: (value: string) => void;
   isInitialized: boolean;
@@ -273,12 +270,15 @@ function MarkdownSyncPlugin({
   React.useEffect(() => {
     if (!isInitialized && value) {
       isInitializingRef.current = true;
-      editor.update(() => {
-        $convertFromMarkdownString(value, TRANSFORMERS);
-      }, {
-        // Use discrete update to batch this and prevent intermediate onChange
-        discrete: true,
-      });
+      editor.update(
+        () => {
+          $convertFromMarkdownString(value, TRANSFORMERS);
+        },
+        {
+          // Use discrete update to batch this and prevent intermediate onChange
+          discrete: true,
+        }
+      );
       // Small delay to ensure the update completes before allowing onChange
       requestAnimationFrame(() => {
         isInitializingRef.current = false;
@@ -296,7 +296,7 @@ function MarkdownSyncPlugin({
       if (isInitializingRef.current) return;
       // Skip if this is an initialization tag
       if (tags.has('history-merge')) return;
-      
+
       editorState.read(() => {
         const markdown = $convertToMarkdownString(TRANSFORMERS);
         onChange(markdown);
@@ -370,30 +370,33 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
     React.useEffect(() => {
       if (value !== content) {
         setContent(value);
-        
+
         // If we're in rich mode and the value changed externally (not from user editing),
         // we need to force the Lexical editor to remount with the new content
         // This happens when switching between files
         if (mode === 'rich' && value !== lastInitializedValueRef.current) {
           lastInitializedValueRef.current = value;
           setIsInitialized(false);
-          setLexicalKey(k => k + 1);
+          setLexicalKey((k) => k + 1);
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
-    const handleContentChange = React.useCallback((newContent: string) => {
-      setContent(newContent);
-      onChange?.(newContent);
-    }, [onChange]);
+    const handleContentChange = React.useCallback(
+      (newContent: string) => {
+        setContent(newContent);
+        onChange?.(newContent);
+      },
+      [onChange]
+    );
 
     const handleModeChange = React.useCallback((newMode: EditorMode) => {
       // When switching to rich mode, reset isInitialized and increment key
       // to force a complete remount of LexicalComposer with current content
       if (newMode === 'rich') {
         setIsInitialized(false);
-        setLexicalKey(k => k + 1);
+        setLexicalKey((k) => k + 1);
       }
       setMode(newMode);
     }, []);
@@ -406,7 +409,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
       if (!onAIClick) return;
 
       let selectedText = '';
-      
+
       if (mode === 'rich') {
         // Get selected text from Lexical (we'll implement this)
         selectedText = window.getSelection()?.toString() || '';
@@ -442,23 +445,23 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
       editable: !disabled,
     };
 
-    const editorHeight = maxHeight 
+    const editorHeight = maxHeight
       ? { minHeight, maxHeight, overflowY: 'auto' as const }
       : { minHeight };
 
     return (
-      <div 
+      <div
         ref={ref}
         className={cn(
-          'rounded-lg border border-border bg-background overflow-hidden',
-          disabled && 'opacity-60 pointer-events-none',
+          'border-border bg-background overflow-hidden rounded-lg border',
+          disabled && 'pointer-events-none opacity-60',
           className
         )}
       >
         {mode === 'rich' ? (
           <LexicalComposer key={lexicalKey} initialConfig={initialConfig}>
-            <EditorToolbar 
-              mode={mode} 
+            <EditorToolbar
+              mode={mode}
               onModeChange={handleModeChange}
               onAIClick={onAIClick ? handleAIClick : undefined}
               showAI={showAI}
@@ -466,13 +469,13 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
             <div className="relative" style={editorHeight}>
               <RichTextPlugin
                 contentEditable={
-                  <ContentEditable 
-                    className="outline-none px-4 py-3 prose prose-sm max-w-none dark:prose-invert text-slate-900 dark:text-slate-100"
+                  <ContentEditable
+                    className="prose prose-sm dark:prose-invert max-w-none px-4 py-3 text-slate-900 outline-none dark:text-slate-100"
                     style={{ minHeight }}
                   />
                 }
                 placeholder={
-                  <div className="absolute top-3 left-4 text-muted-foreground pointer-events-none">
+                  <div className="text-muted-foreground pointer-events-none absolute top-3 left-4">
                     {placeholder}
                   </div>
                 }
@@ -481,7 +484,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
               <HistoryPlugin />
               <ListPlugin />
               <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-              <MarkdownSyncPlugin 
+              <MarkdownSyncPlugin
                 value={content}
                 onChange={handleContentChange}
                 isInitialized={isInitialized}
@@ -491,12 +494,14 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
           </LexicalComposer>
         ) : (
           <>
-            <div className="flex items-center justify-between border-b border-border bg-muted/30 px-2 py-1.5">
+            <div className="border-border bg-muted/30 flex items-center justify-between border-b px-2 py-1.5">
               <div className="flex items-center gap-0.5">
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => { handleModeChange('rich'); }}
+                  onClick={() => {
+                    handleModeChange('rich');
+                  }}
                   title="Rich Text Mode"
                   className="h-8 px-2"
                 >
@@ -505,7 +510,9 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                 <Button
                   variant="default"
                   size="sm"
-                  onClick={() => { handleModeChange('code'); }}
+                  onClick={() => {
+                    handleModeChange('code');
+                  }}
                   title="Code Mode"
                   className="h-8 px-2"
                 >
@@ -518,7 +525,7 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                   variant="gradient-purple"
                   size="sm"
                   onClick={handleAIClick}
-                  className="h-8 px-3 gap-1.5"
+                  className="h-8 gap-1.5 px-3"
                   title="Ask AI for help"
                 >
                   <Sparkles className="h-4 w-4" />
@@ -526,22 +533,26 @@ export const HybridEditor = React.forwardRef<HTMLDivElement, HybridEditorProps>(
                 </Button>
               )}
             </div>
-            <React.Suspense fallback={
-              <div 
-                className="flex items-center justify-center bg-slate-900 text-slate-400"
-                style={{ height: maxHeight || minHeight }}
-              >
-                <div className="text-center">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-slate-600 border-t-purple-500 mb-2"></div>
-                  <p className="text-sm">Loading editor...</p>
+            <React.Suspense
+              fallback={
+                <div
+                  className="flex items-center justify-center bg-slate-900 text-slate-400"
+                  style={{ height: maxHeight || minHeight }}
+                >
+                  <div className="text-center">
+                    <div className="mb-2 inline-block h-8 w-8 animate-spin rounded-full border-2 border-slate-600 border-t-purple-500"></div>
+                    <p className="text-sm">Loading editor...</p>
+                  </div>
                 </div>
-              </div>
-            }>
+              }
+            >
               <MonacoEditor
                 height={maxHeight || minHeight}
                 defaultLanguage="markdown"
                 value={content}
-                onChange={(value: string | undefined) => { handleContentChange(value || ''); }}
+                onChange={(value: string | undefined) => {
+                  handleContentChange(value || '');
+                }}
                 beforeMount={handleMonacoBeforeMount}
                 onMount={handleMonacoMount}
                 theme={monacoTheme === 'vs-dark' ? 'appski-dark' : monacoTheme}

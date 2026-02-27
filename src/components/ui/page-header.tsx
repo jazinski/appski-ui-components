@@ -44,7 +44,8 @@ export interface StatItem {
 }
 
 export interface PageHeaderProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, 'title'>,
+  extends
+    Omit<React.HTMLAttributes<HTMLElement>, 'title'>,
     VariantProps<typeof pageHeaderVariants> {
   /** Page title */
   title: string | React.ReactNode;
@@ -63,7 +64,11 @@ export interface PageHeaderProps
   /** Custom breadcrumb separator */
   breadcrumbSeparator?: React.ReactNode;
   /** Link component to use for navigation (e.g., react-router Link) */
-  LinkComponent?: React.ComponentType<{ to: string; className?: string; children: React.ReactNode }>;
+  LinkComponent?: React.ComponentType<{
+    to: string;
+    className?: string;
+    children: React.ReactNode;
+  }>;
   /** Live indicator for auto-refresh pages */
   isLive?: boolean;
   /** Callback when live toggle is clicked */
@@ -199,7 +204,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                         <Info className="h-5 w-5" />
                         <span className="sr-only">Help</span>
                       </Button>
-                      <div className="absolute left-0 top-6 z-50 hidden w-64 max-w-sm whitespace-normal break-words rounded-lg bg-slate-800 p-3 text-xs text-white shadow-lg group-hover:block dark:bg-slate-700">
+                      <div className="absolute top-6 left-0 z-50 hidden w-64 max-w-sm rounded-lg bg-slate-800 p-3 text-xs break-words whitespace-normal text-white shadow-lg group-hover:block dark:bg-slate-700">
                         {helpText}
                         {helpLink && (
                           <a
@@ -215,9 +220,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
                     </div>
                   )}
                 </h1>
-                {description && (
-                  <p className="text-muted-foreground mt-1 text-sm">{description}</p>
-                )}
+                {description && <p className="text-muted-foreground mt-1 text-sm">{description}</p>}
               </div>
             </div>
 
@@ -333,9 +336,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
           )}
 
           {/* Controls Section */}
-          {controls && (
-            <div className="border-border mt-4 border-t pt-4">{controls}</div>
-          )}
+          {controls && <div className="border-border mt-4 border-t pt-4">{controls}</div>}
         </div>
       </header>
     );

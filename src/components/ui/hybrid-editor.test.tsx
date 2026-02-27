@@ -6,7 +6,12 @@ import { HybridEditor } from './hybrid-editor';
 // Mock Monaco Editor - it doesn't work well in jsdom
 vi.mock('@monaco-editor/react', () => ({
   __esModule: true,
-  default: ({ value, onChange, onMount, options }: {
+  default: ({
+    value,
+    onChange,
+    onMount,
+    options,
+  }: {
     value?: string;
     onChange?: (value: string | undefined) => void;
     onMount?: (editor: unknown) => void;
@@ -15,15 +20,22 @@ vi.mock('@monaco-editor/react', () => ({
     // Simulate onMount callback
     if (onMount) {
       const mockEditor = {
-        getSelection: () => ({ startLineNumber: 1, startColumn: 1, endLineNumber: 1, endColumn: 1 }),
+        getSelection: () => ({
+          startLineNumber: 1,
+          startColumn: 1,
+          endLineNumber: 1,
+          endColumn: 1,
+        }),
         getModel: () => ({
           getValueInRange: () => '',
         }),
       };
       // Call onMount after a tick to simulate async behavior
-      setTimeout(() => { onMount(mockEditor); }, 0);
+      setTimeout(() => {
+        onMount(mockEditor);
+      }, 0);
     }
-    
+
     return (
       <textarea
         data-testid="monaco-editor"
@@ -112,13 +124,13 @@ describe('HybridEditor', () => {
     it('switches from rich to code mode when code button is clicked', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       // Initially in rich mode - no monaco editor
       expect(screen.queryByTestId('monaco-editor')).not.toBeInTheDocument();
-      
+
       // Click code mode button
       await user.click(screen.getByTitle('Code Mode'));
-      
+
       // Should now show monaco editor
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
@@ -128,15 +140,15 @@ describe('HybridEditor', () => {
     it('switches from code to rich mode when rich button is clicked', async () => {
       const user = userEvent.setup();
       render(<HybridEditor initialMode="code" />);
-      
+
       // Initially in code mode
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
-      
+
       // Click rich mode button
       await user.click(screen.getByTitle('Rich Text Mode'));
-      
+
       // Should now hide monaco editor
       await waitFor(() => {
         expect(screen.queryByTestId('monaco-editor')).not.toBeInTheDocument();
@@ -163,11 +175,11 @@ describe('HybridEditor', () => {
     it('calls onAIClick when AI button is clicked in rich mode', async () => {
       const user = userEvent.setup();
       const handleAIClick = vi.fn();
-      
+
       render(<HybridEditor onAIClick={handleAIClick} />);
-      
+
       await user.click(screen.getByTitle('Ask AI for help'));
-      
+
       expect(handleAIClick).toHaveBeenCalledTimes(1);
       expect(handleAIClick).toHaveBeenCalledWith('', '');
     });
@@ -175,15 +187,15 @@ describe('HybridEditor', () => {
     it('calls onAIClick when AI button is clicked in code mode', async () => {
       const user = userEvent.setup();
       const handleAIClick = vi.fn();
-      
+
       render(<HybridEditor initialMode="code" onAIClick={handleAIClick} />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
-      
+
       await user.click(screen.getByTitle('Ask AI for help'));
-      
+
       expect(handleAIClick).toHaveBeenCalledTimes(1);
     });
 
@@ -210,10 +222,10 @@ describe('HybridEditor', () => {
     it('hides formatting buttons in code mode', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       // Click code mode button
       await user.click(screen.getByTitle('Code Mode'));
-      
+
       await waitFor(() => {
         expect(screen.queryByTitle('Bold (⌘B)')).not.toBeInTheDocument();
         expect(screen.queryByTitle('Italic (⌘I)')).not.toBeInTheDocument();
@@ -227,11 +239,11 @@ describe('HybridEditor', () => {
     it('clicking bold button dispatches format command', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       // Click bold button - should not throw
       const boldButton = screen.getByTitle('Bold (⌘B)');
       await user.click(boldButton);
-      
+
       // If we got here without error, the command was dispatched
       expect(boldButton).toBeInTheDocument();
     });
@@ -239,23 +251,23 @@ describe('HybridEditor', () => {
     it('clicking italic button dispatches format command', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       const italicButton = screen.getByTitle('Italic (⌘I)');
       await user.click(italicButton);
-      
+
       expect(italicButton).toBeInTheDocument();
     });
 
     it('clicking heading buttons updates editor', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       const h1Button = screen.getByTitle('Heading 1');
       const h2Button = screen.getByTitle('Heading 2');
-      
+
       await user.click(h1Button);
       await user.click(h2Button);
-      
+
       expect(h1Button).toBeInTheDocument();
       expect(h2Button).toBeInTheDocument();
     });
@@ -263,20 +275,20 @@ describe('HybridEditor', () => {
     it('clicking list button dispatches list command', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       const listButton = screen.getByTitle('Bullet List');
       await user.click(listButton);
-      
+
       expect(listButton).toBeInTheDocument();
     });
 
     it('clicking quote button updates editor', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       const quoteButton = screen.getByTitle('Quote');
       await user.click(quoteButton);
-      
+
       expect(quoteButton).toBeInTheDocument();
     });
   });
@@ -284,7 +296,7 @@ describe('HybridEditor', () => {
   describe('Code Mode', () => {
     it('renders Monaco editor in code mode', async () => {
       render(<HybridEditor initialMode="code" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
@@ -292,7 +304,7 @@ describe('HybridEditor', () => {
 
     it('passes content to Monaco editor', async () => {
       render(<HybridEditor initialMode="code" value="# Test Content" />);
-      
+
       await waitFor(() => {
         const editor = screen.getByTestId('monaco-editor');
         expect(editor).toHaveValue('# Test Content');
@@ -302,17 +314,17 @@ describe('HybridEditor', () => {
     it('calls onChange when Monaco content changes', async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
-      
+
       render(<HybridEditor initialMode="code" onChange={handleChange} />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
-      
+
       const editor = screen.getByTestId('monaco-editor');
       await user.clear(editor);
       await user.type(editor, 'New content');
-      
+
       expect(handleChange).toHaveBeenCalled();
     });
   });
@@ -326,7 +338,7 @@ describe('HybridEditor', () => {
 
     it('disables Monaco editor when disabled', async () => {
       render(<HybridEditor initialMode="code" disabled />);
-      
+
       await waitFor(() => {
         const editor = screen.getByTestId('monaco-editor');
         expect(editor).toBeDisabled();
@@ -337,13 +349,13 @@ describe('HybridEditor', () => {
   describe('Content Synchronization', () => {
     it('updates content when value prop changes', async () => {
       const { rerender } = render(<HybridEditor initialMode="code" value="Initial" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toHaveValue('Initial');
       });
-      
+
       rerender(<HybridEditor initialMode="code" value="Updated" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toHaveValue('Updated');
       });
@@ -366,7 +378,7 @@ describe('HybridEditor', () => {
   describe('Monaco Theme', () => {
     it('uses vs-dark theme by default', async () => {
       render(<HybridEditor initialMode="code" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
@@ -374,7 +386,7 @@ describe('HybridEditor', () => {
 
     it('accepts custom monacoTheme prop', async () => {
       render(<HybridEditor initialMode="code" monacoTheme="vs-light" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
@@ -384,7 +396,7 @@ describe('HybridEditor', () => {
   describe('Accessibility', () => {
     it('toolbar buttons have accessible titles', () => {
       render(<HybridEditor onAIClick={vi.fn()} />);
-      
+
       expect(screen.getByTitle('Rich Text Mode')).toBeInTheDocument();
       expect(screen.getByTitle('Code Mode')).toBeInTheDocument();
       expect(screen.getByTitle('Bold (⌘B)')).toBeInTheDocument();
@@ -399,11 +411,11 @@ describe('HybridEditor', () => {
     it('mode buttons are keyboard accessible', async () => {
       const user = userEvent.setup();
       render(<HybridEditor />);
-      
+
       const codeButton = screen.getByTitle('Code Mode');
       codeButton.focus();
       await user.keyboard('{Enter}');
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
@@ -414,21 +426,21 @@ describe('HybridEditor', () => {
     it('handles undefined onChange gracefully', async () => {
       const user = userEvent.setup();
       render(<HybridEditor initialMode="code" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
-      
+
       // Should not throw when typing without onChange handler
       const editor = screen.getByTestId('monaco-editor');
       await user.type(editor, 'test');
-      
+
       expect(editor).toBeInTheDocument();
     });
 
     it('handles undefined onAIClick gracefully in rich mode', () => {
       render(<HybridEditor showAI={true} />);
-      
+
       // AI button should not be rendered without handler
       expect(screen.queryByTitle('Ask AI for help')).not.toBeInTheDocument();
     });
@@ -443,14 +455,14 @@ describe('HybridEditor', () => {
   describe('Value Prop Changes (File Switching)', () => {
     it('updates content when value prop changes in code mode', async () => {
       const { rerender } = render(<HybridEditor initialMode="code" value="# File 1" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
-      
+
       // Simulate switching to a different file
       rerender(<HybridEditor initialMode="code" value="# File 2 - Different Content" />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
@@ -459,34 +471,39 @@ describe('HybridEditor', () => {
     it('updates content when value prop changes in rich mode', async () => {
       const onChange = vi.fn();
       const { rerender } = render(<HybridEditor value="Initial content" onChange={onChange} />);
-      
+
       // Wait for initial render
       await waitFor(() => {
         expect(screen.getByTitle('Rich Text Mode')).toBeInTheDocument();
       });
-      
+
       // Simulate switching to a different file (external value change)
       rerender(<HybridEditor value="Completely different file content" onChange={onChange} />);
-      
+
       // Wait for the editor to reinitialize with new content
-      await waitFor(() => {
-        expect(screen.getByTitle('Rich Text Mode')).toBeInTheDocument();
-      }, { timeout: 2000 });
+      await waitFor(
+        () => {
+          expect(screen.getByTitle('Rich Text Mode')).toBeInTheDocument();
+        },
+        { timeout: 2000 }
+      );
     });
 
     it('handles rapid file switching', async () => {
       const onChange = vi.fn();
-      const { rerender } = render(<HybridEditor initialMode="code" value="# File A" onChange={onChange} />);
-      
+      const { rerender } = render(
+        <HybridEditor initialMode="code" value="# File A" onChange={onChange} />
+      );
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });
-      
+
       // Rapid file switching
       rerender(<HybridEditor initialMode="code" value="# File B" onChange={onChange} />);
       rerender(<HybridEditor initialMode="code" value="# File C" onChange={onChange} />);
       rerender(<HybridEditor initialMode="code" value="# File D" onChange={onChange} />);
-      
+
       await waitFor(() => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
       });

@@ -82,7 +82,9 @@ export const NoData: Story = {
     description: 'Get started by creating your first item',
     action: {
       label: 'Create Item',
-      onClick: () => { alert('Create clicked'); },
+      onClick: () => {
+        alert('Create clicked');
+      },
       icon: <Plus className="h-4 w-4" />,
     },
   },
@@ -96,7 +98,9 @@ export const NoResults: Story = {
     description: 'Try adjusting your search or filters',
     action: {
       label: 'Clear Filters',
-      onClick: () => { alert('Clear clicked'); },
+      onClick: () => {
+        alert('Clear clicked');
+      },
       variant: 'ghost',
     },
   },
@@ -110,11 +114,15 @@ export const Error: Story = {
     description: 'We encountered an error loading your data',
     action: {
       label: 'Try Again',
-      onClick: () => { alert('Retry clicked'); },
+      onClick: () => {
+        alert('Retry clicked');
+      },
     },
     secondaryAction: {
       label: 'Contact Support',
-      onClick: () => { alert('Support clicked'); },
+      onClick: () => {
+        alert('Support clicked');
+      },
       variant: 'outline',
     },
   },
@@ -128,7 +136,9 @@ export const NoPermission: Story = {
     description: "You don't have permission to view this content",
     action: {
       label: 'Request Access',
-      onClick: () => { alert('Request clicked'); },
+      onClick: () => {
+        alert('Request clicked');
+      },
     },
   },
 };
@@ -163,7 +173,9 @@ export const LargeSize: Story = {
     size: 'lg',
     action: {
       label: 'Upload Document',
-      onClick: () => { alert('Upload clicked'); },
+      onClick: () => {
+        alert('Upload clicked');
+      },
     },
   },
 };
@@ -177,7 +189,9 @@ export const EmptyTable: Story = {
     description: 'Orders will appear here once customers start purchasing',
     action: {
       label: 'View Products',
-      onClick: () => { alert('View products clicked'); },
+      onClick: () => {
+        alert('View products clicked');
+      },
     },
   },
 };
@@ -190,7 +204,9 @@ export const SearchResults: Story = {
     description: 'We couldn\'t find any users matching "john.doe@example.com"',
     action: {
       label: 'Clear Search',
-      onClick: () => { alert('Clear search clicked'); },
+      onClick: () => {
+        alert('Clear search clicked');
+      },
       variant: 'ghost',
     },
   },
@@ -204,11 +220,15 @@ export const ErrorState: Story = {
     description: 'There was a problem loading your dashboard data',
     action: {
       label: 'Reload',
-      onClick: () => { alert('Reload clicked'); },
+      onClick: () => {
+        alert('Reload clicked');
+      },
     },
     secondaryAction: {
       label: 'Go Home',
-      onClick: () => { alert('Home clicked'); },
+      onClick: () => {
+        alert('Home clicked');
+      },
       variant: 'outline',
     },
   },
@@ -222,11 +242,15 @@ export const PermissionDenied: Story = {
     description: 'Upgrade to a team plan to access shared workspaces',
     action: {
       label: 'View Plans',
-      onClick: () => { alert('View plans clicked'); },
+      onClick: () => {
+        alert('View plans clicked');
+      },
     },
     secondaryAction: {
       label: 'Learn More',
-      onClick: () => { alert('Learn more clicked'); },
+      onClick: () => {
+        alert('Learn more clicked');
+      },
       variant: 'outline',
     },
   },
