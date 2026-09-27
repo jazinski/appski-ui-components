@@ -74,6 +74,29 @@ export {
   type DialogCloseProps,
 } from './dialog';
 export {
+  Sheet,
+  SheetTrigger,
+  SheetPortal,
+  SheetOverlay,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+  SheetClose,
+  sheetOverlayVariants,
+  sheetContentVariants,
+  type SheetProps,
+  type SheetTriggerProps,
+  type SheetOverlayProps,
+  type SheetContentProps,
+  type SheetHeaderProps,
+  type SheetFooterProps,
+  type SheetTitleProps,
+  type SheetDescriptionProps,
+  type SheetCloseProps,
+} from './sheet';
+export {
   Checkbox,
   CheckboxGroup,
   checkboxVariants,
@@ -230,3 +253,5 @@ export {
 export { UserMenu, userMenuVariants, type UserMenuProps } from './user-menu';
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
 export { AppShell, type AppShellProps } from './app-shell';
+export { Calendar, type CalendarBaseProps } from './calendar';
+export { DateRangePicker, type DateRange, type DateRangePickerProps } from './date-range-picker';
