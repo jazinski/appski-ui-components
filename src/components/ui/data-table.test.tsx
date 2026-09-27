@@ -424,6 +424,112 @@ describe('DataTable', () => {
     });
   });
 
+  describe('Virtualization', () => {
+    // jsdom reports offsetHeight 0 for every element; the virtualizer
+    // measures the scroll container synchronously, so give it a viewport.
+    beforeAll(() => {
+      vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(600);
+      vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(800);
+    });
+    afterAll(() => {
+      vi.restoreAllMocks();
+    });
+
+    const bigData: TestUser[] = Array.from({ length: 1000 }, (_, i) => ({
+      id: String(i + 1),
+      name: `User ${String(i + 1).padStart(4, '0')}`,
+      email: `user${i + 1}@example.com`,
+      role: i % 2 === 0 ? 'admin' : 'user',
+    }));
+
+    it('renders only a window of rows instead of all 1000', () => {
+      render(<DataTable columns={basicColumns} data={bigData} virtualization virtualRowHeight={48} />);
+
+      const dataRows = screen.getAllByRole('row').filter((row) => !row.querySelector('th'));
+      expect(dataRows.length).toBeGreaterThan(0);
+      expect(dataRows.length).toBeLessThan(bigData.length);
+    });
+
+    it('renders headers and first rows initially', () => {
+      render(<DataTable columns={basicColumns} data={bigData} virtualization />);
+
+      expect(screen.getByText('Name')).toBeInTheDocument();
+      expect(screen.getByText('User 0001')).toBeInTheDocument();
+    });
+
+    it('preserves sorting while virtualized', async () => {
+      const user = userEvent.setup();
+      render(
+        <DataTable columns={sortableColumns} data={bigData} virtualization virtualRowHeight={48} />
+      );
+
+      await user.click(screen.getByRole('button', { name: /Name/i }));
+
+      const dataRows = screen.getAllByRole('row').filter((row) => !row.querySelector('th'));
+      expect(dataRows.length).toBeGreaterThan(0);
+      expect(dataRows[0]).toHaveTextContent('User 0001');
+    });
+
+    it('preserves row selection while virtualized', async () => {
+      const user = userEvent.setup();
+      const handleSelectionChange = vi.fn();
+      const selectableColumns: ColumnDef<TestUser>[] = [
+        createSelectionColumn<TestUser>(),
+        ...basicColumns,
+      ];
+
+      render(
+        <DataTable
+          columns={selectableColumns}
+          data={bigData}
+          enableRowSelection
+          virtualization
+          virtualRowHeight={48}
+          onRowSelectionChange={handleSelectionChange}
+        />
+      );
+
+      const checkboxes = screen.getAllByRole('checkbox');
+      const firstRowCheckbox = checkboxes[1];
+      await user.click(firstRowCheckbox);
+
+      await waitFor(() => {
+        expect(firstRowCheckbox).toBeChecked();
+      });
+      expect(handleSelectionChange).toHaveBeenCalledWith([
+        expect.objectContaining({ id: '1' }),
+      ]);
+    });
+
+    it('forces sticky header when virtualization is enabled', () => {
+      render(<DataTable columns={basicColumns} data={bigData} virtualization />);
+
+      const thead = screen.getAllByRole('rowgroup')[0];
+      expect(thead).toHaveClass('sticky');
+    });
+
+    it('applies custom max height to the scroll container', () => {
+      render(
+        <DataTable columns={basicColumns} data={bigData} virtualization virtualMaxHeight={400} />
+      );
+
+      const scrollContainer = screen.getByRole('table').parentElement;
+      expect(scrollContainer).toHaveStyle({ maxHeight: '400px' });
+    });
+
+    it('shows empty message with virtualization enabled and no data', () => {
+      render(<DataTable columns={basicColumns} data={[]} virtualization />);
+
+      expect(screen.getByText('No results.')).toBeInTheDocument();
+    });
+
+    it('shows loading state with virtualization enabled', () => {
+      render(<DataTable columns={basicColumns} data={bigData} virtualization loading />);
+
+      expect(screen.getByText('Loading...')).toBeInTheDocument();
+    });
+  });
+
   describe('Helper Functions', () => {
     it('createSortableHeader returns a header function', () => {
       const header = createSortableHeader('Test');
