@@ -289,7 +289,7 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
           {/* Main Content (Navigation) */}
           <div className="flex-1 overflow-x-hidden overflow-y-auto px-3 py-4">
             {React.isValidElement(children)
-              ? React.cloneElement(children, { collapsed: effectiveCollapsed } as Partial<unknown>)
+              ? React.cloneElement(children, { collapsed: effectiveCollapsed } as Record<string, unknown>)
               : children}
           </div>
 
@@ -297,7 +297,7 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
           {footer && (
             <div className="border-t border-slate-800 p-3">
               {React.isValidElement(footer)
-                ? React.cloneElement(footer, { collapsed: effectiveCollapsed } as Partial<unknown>)
+                ? React.cloneElement(footer, { collapsed: effectiveCollapsed } as Record<string, unknown>)
                 : footer}
             </div>
           )}

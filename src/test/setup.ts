@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import { beforeEach, vi } from 'vitest';
 
 // Mock clipboard API globally for tests
 const writeTextMock = vi.fn().mockResolvedValue(undefined);
@@ -13,11 +13,12 @@ Object.defineProperty(navigator, 'clipboard', {
 });
 
 // Mock ResizeObserver for tests (required by Radix UI components like Slider)
-globalThis.ResizeObserver = class ResizeObserver {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-};
+class ResizeObserverMock {
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
+}
+globalThis.ResizeObserver = ResizeObserverMock;
 
 // Clear mock calls before each test
 beforeEach(() => {
