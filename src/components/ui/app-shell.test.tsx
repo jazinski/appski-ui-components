@@ -19,7 +19,7 @@ describe('AppShell', () => {
       addEventListener: vi.fn(),
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
-    })) as unknown as typeof window.matchMedia;
+    })) as typeof window.matchMedia;
   };
 
   const mockMobileWidth = () => {
@@ -37,7 +37,7 @@ describe('AppShell', () => {
       addEventListener: vi.fn(),
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
-    })) as unknown as typeof window.matchMedia;
+    })) as typeof window.matchMedia;
   };
 
   beforeEach(() => {
