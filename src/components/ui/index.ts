@@ -130,6 +130,28 @@ export {
   type DropdownSubmenuContextValue,
 } from './dropdown';
 export {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuSubmenu,
+  ContextMenuSubmenuTrigger,
+  ContextMenuSubmenuContent,
+  contextMenuContentVariants,
+  contextMenuItemVariants,
+  type ContextMenuProps,
+  type ContextMenuContentProps,
+  type ContextMenuItemProps,
+  type ContextMenuLabelProps,
+  type ContextMenuSeparatorProps,
+  type ContextMenuSubmenuProps,
+  type ContextMenuSubmenuTriggerProps,
+  type ContextMenuSubmenuContentProps,
+  type ContextMenuContextValue,
+  type ContextMenuSubmenuContextValue,
+} from './context-menu';
+export {
   Breadcrumb,
   breadcrumbVariants,
   breadcrumbItemVariants,
