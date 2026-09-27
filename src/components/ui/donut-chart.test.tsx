@@ -37,14 +37,14 @@ describe('DonutChart', () => {
   it('assigns color slots in order and cycles when exhausted', () => {
     const { container } = render(<DonutChart data={data} />);
     const paths = container.querySelectorAll('path');
-    expect(paths[0]).toHaveClass(DONUT_COLOR_CLASSES[0]!);
-    expect(paths[1]).toHaveClass(DONUT_COLOR_CLASSES[1]!);
+    expect(paths[0]).toHaveClass(DONUT_COLOR_CLASSES[0]);
+    expect(paths[1]).toHaveClass(DONUT_COLOR_CLASSES[1]);
 
     cleanup();
     const seven = Array.from({ length: 7 }, (_, i) => ({ label: `S${i}`, value: 1 }));
     const { container: cycled } = render(<DonutChart data={seven} />);
     const cycledPaths = cycled.querySelectorAll('path');
-    expect(cycledPaths[6]).toHaveClass(DONUT_COLOR_CLASSES[0]!);
+    expect(cycledPaths[6]).toHaveClass(DONUT_COLOR_CLASSES[0]);
   });
 
   it('honors an explicit colorClass override', () => {
@@ -61,7 +61,7 @@ describe('DonutChart', () => {
     const path = container.querySelector('path');
     expect(path).not.toBeNull();
     // Two closed subpaths joined by a space
-    expect((path!.getAttribute('d') ?? '').trim().split(/\s+/).filter((s) => s === 'Z')).toHaveLength(2);
+    expect((path?.getAttribute('d') ?? '').trim().split(/\s+/).filter((s) => s === 'Z')).toHaveLength(2);
   });
 
   it('renders the center label when provided', () => {

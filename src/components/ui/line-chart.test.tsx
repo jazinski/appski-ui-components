@@ -60,7 +60,9 @@ describe('LineChart', () => {
   it('renders x-axis labels for every data point', () => {
     const { container } = render(<LineChart data={data} />);
     const text = container.textContent ?? '';
-    data.forEach((d) => expect(text).toContain(d.label));
+    data.forEach((d) => {
+      expect(text).toContain(d.label);
+    });
   });
 
   it('applies variant classes', () => {

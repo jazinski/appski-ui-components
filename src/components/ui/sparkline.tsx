@@ -43,18 +43,23 @@ function buildPath(points: Array<{ x: number; y: number }>, closeToBottom: boole
   );
   if (closeToBottom) {
     const bottom = VIEWBOX_HEIGHT;
-    const first = points[0]!;
-    const last = points[points.length - 1]!;
-    segments.push(`L${last.x.toFixed(2)},${bottom}`);
-    segments.push(`L${first.x.toFixed(2)},${bottom}`);
-    segments.push('Z');
+    const first = points[0];
+    const last = points[points.length - 1];
+    if (first && last) {
+      segments.push(`L${last.x.toFixed(2)},${bottom}`);
+      segments.push(`L${first.x.toFixed(2)},${bottom}`);
+      segments.push('Z');
+    }
   }
   return segments.join(' ');
 }
 
 function trendDirection(data: number[]): string {
   if (data.length < 2) return 'insufficient data';
-  const delta = data[data.length - 1]! - data[0]!;
+  const first = data[0];
+  const last = data[data.length - 1];
+  if (first === undefined || last === undefined) return 'insufficient data';
+  const delta = last - first;
   if (delta > 0) return 'trending up';
   if (delta < 0) return 'trending down';
   return 'flat';

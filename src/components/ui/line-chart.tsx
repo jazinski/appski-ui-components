@@ -53,11 +53,13 @@ function buildPath(
   );
   if (closeToBottom) {
     const bottom = VIEWBOX_HEIGHT - PADDING.bottom;
-    const first = points[0]!;
-    const last = points[points.length - 1]!;
-    segments.push(`L${last.x.toFixed(2)},${bottom}`);
-    segments.push(`L${first.x.toFixed(2)},${bottom}`);
-    segments.push('Z');
+    const first = points[0];
+    const last = points[points.length - 1];
+    if (first && last) {
+      segments.push(`L${last.x.toFixed(2)},${bottom}`);
+      segments.push(`L${first.x.toFixed(2)},${bottom}`);
+      segments.push('Z');
+    }
   }
   return segments.join(' ');
 }
@@ -104,9 +106,11 @@ const LineChart = React.forwardRef<SVGSVGElement, LineChartProps>(
     const linePath = buildPath(points, false);
     const areaPath = buildPath(points, true);
 
+    const firstPoint = data[0];
+    const lastPoint = data[data.length - 1];
     const defaultLabel =
-      data.length > 0
-        ? `Line chart: ${data[0]!.label} ${data[0]!.value} to ${data[data.length - 1]!.label} ${data[data.length - 1]!.value}`
+      firstPoint && lastPoint
+        ? `Line chart: ${firstPoint.label} ${firstPoint.value} to ${lastPoint.label} ${lastPoint.value}`
         : 'Line chart with no data';
 
     return (

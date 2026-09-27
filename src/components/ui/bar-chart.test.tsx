@@ -48,11 +48,17 @@ describe('BarChart', () => {
 
   it('shows numeric values above bars only when showValues is true', () => {
     const { container } = render(<BarChart data={data} />);
-    expect(container.textContent).not.toContain('19');
+    // Only x-axis labels render as <text> by default
+    expect(container.querySelectorAll('text')).toHaveLength(data.length);
 
     cleanup();
     const { container: withValues } = render(<BarChart data={data} showValues />);
-    expect(withValues.textContent).toContain('19');
+    // Labels + one value per bar
+    expect(withValues.querySelectorAll('text')).toHaveLength(data.length * 2);
+    const valueTexts = Array.from(withValues.querySelectorAll('text'))
+      .map((t) => t.textContent)
+      .filter((t) => t === '19');
+    expect(valueTexts).toHaveLength(1);
   });
 
   it('renders grid lines by default and hides them when showGrid is false', () => {
