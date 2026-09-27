@@ -251,6 +251,20 @@ export {
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
 export { AppShell, type AppShellProps } from './app-shell';
 export {
+  PanelGroup,
+  Panel,
+  PanelResizeHandle,
+  panelGroupVariants,
+  panelVariants,
+  panelResizeHandleVariants,
+  handleGripVariants,
+  type PanelGroupProps,
+  type PanelProps,
+  type PanelResizeHandleProps,
+  type PanelGroupDirection,
+  type PanelConstraints,
+} from './panel-group';
+export {
   Dashboard,
   DashboardWidget,
   TimeRangeSelector,
