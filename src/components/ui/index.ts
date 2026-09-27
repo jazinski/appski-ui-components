@@ -266,3 +266,27 @@ export {
   type RefreshControlProps,
   type AutoRefreshInterval,
 } from './dashboard';
+export {
+  LineChart,
+  lineChartVariants,
+  type LineChartProps,
+  type LineChartDataPoint,
+} from './line-chart';
+export {
+  BarChart,
+  barChartVariants,
+  type BarChartProps,
+  type BarChartDataPoint,
+} from './bar-chart';
+export {
+  DonutChart,
+  donutChartVariants,
+  DONUT_COLOR_CLASSES,
+  type DonutChartProps,
+  type DonutChartSegment,
+} from './donut-chart';
+export {
+  Sparkline,
+  sparklineVariants,
+  type SparklineProps,
+} from './sparkline';
