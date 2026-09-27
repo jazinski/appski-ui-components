@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import { beforeEach, vi } from 'vitest';
 
 // Mock clipboard API globally for tests
 const writeTextMock = vi.fn().mockResolvedValue(undefined);
