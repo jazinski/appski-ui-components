@@ -138,6 +138,7 @@ export {
   type BreadcrumbItem as BreadcrumbItemType,
 } from './breadcrumb';
 export { Avatar, type AvatarProps } from './avatar';
+export { AvatarGroup, type AvatarGroupProps, type AvatarGroupItem } from './avatar-group';
 export {
   StatusIndicator,
   statusIndicatorVariants,
