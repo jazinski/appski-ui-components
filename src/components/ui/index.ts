@@ -89,6 +89,12 @@ export {
   type SwitchGroupProps,
 } from './switch';
 export { Textarea, textareaVariants, type TextareaProps } from './textarea';
+export {
+  NumberInput,
+  numberInputVariants,
+  type NumberInputProps,
+  type NumberInputFormat,
+} from './number-input';
 export { RadioGroup, RadioGroupItem } from './radio-group';
 export {
   ToastProvider,
@@ -124,6 +130,28 @@ export {
   type DropdownSubmenuContextValue,
 } from './dropdown';
 export {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuSubmenu,
+  ContextMenuSubmenuTrigger,
+  ContextMenuSubmenuContent,
+  contextMenuContentVariants,
+  contextMenuItemVariants,
+  type ContextMenuProps,
+  type ContextMenuContentProps,
+  type ContextMenuItemProps,
+  type ContextMenuLabelProps,
+  type ContextMenuSeparatorProps,
+  type ContextMenuSubmenuProps,
+  type ContextMenuSubmenuTriggerProps,
+  type ContextMenuSubmenuContentProps,
+  type ContextMenuContextValue,
+  type ContextMenuSubmenuContextValue,
+} from './context-menu';
+export {
   Breadcrumb,
   breadcrumbVariants,
   breadcrumbItemVariants,
@@ -132,6 +160,7 @@ export {
   type BreadcrumbItem as BreadcrumbItemType,
 } from './breadcrumb';
 export { Avatar, type AvatarProps } from './avatar';
+export { AvatarGroup, type AvatarGroupProps, type AvatarGroupItem } from './avatar-group';
 export {
   StatusIndicator,
   statusIndicatorVariants,
@@ -139,6 +168,7 @@ export {
 } from './status-indicator';
 export { Alert, AlertTitle, AlertDescription, type AlertProps } from './alert';
 export { CodeBlock, type CodeBlockProps } from './code-block';
+export { CopyButton, Kbd, type CopyButtonProps, type KbdProps } from './copy-button';
 export {
   DataTable,
   createSortableHeader,
@@ -192,6 +222,12 @@ export {
   type ProgressProps,
 } from './progress';
 export {
+  ProgressRing,
+  progressRingTrackVariants,
+  progressRingIndicatorVariants,
+  type ProgressRingProps,
+} from './progress-ring';
+export {
   Slider,
   sliderVariants,
   sliderTrackVariants,
@@ -228,6 +264,12 @@ export {
   type NavSection,
 } from './main-nav';
 export { UserMenu, userMenuVariants, type UserMenuProps } from './user-menu';
+export {
+  NotificationMenu,
+  notificationTriggerVariants,
+  type NotificationMenuProps,
+  type NotificationItem,
+} from './notification-menu';
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
 export { AppShell, type AppShellProps } from './app-shell';
 export {
@@ -246,3 +288,27 @@ export {
   type RefreshControlProps,
   type AutoRefreshInterval,
 } from './dashboard';
+export {
+  LineChart,
+  lineChartVariants,
+  type LineChartProps,
+  type LineChartDataPoint,
+} from './line-chart';
+export {
+  BarChart,
+  barChartVariants,
+  type BarChartProps,
+  type BarChartDataPoint,
+} from './bar-chart';
+export {
+  DonutChart,
+  donutChartVariants,
+  DONUT_COLOR_CLASSES,
+  type DonutChartProps,
+  type DonutChartSegment,
+} from './donut-chart';
+export {
+  Sparkline,
+  sparklineVariants,
+  type SparklineProps,
+} from './sparkline';
