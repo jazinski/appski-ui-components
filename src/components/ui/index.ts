@@ -192,6 +192,12 @@ export {
   type ProgressProps,
 } from './progress';
 export {
+  ProgressRing,
+  progressRingTrackVariants,
+  progressRingIndicatorVariants,
+  type ProgressRingProps,
+} from './progress-ring';
+export {
   Slider,
   sliderVariants,
   sliderTrackVariants,
