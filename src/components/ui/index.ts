@@ -228,5 +228,11 @@ export {
   type NavSection,
 } from './main-nav';
 export { UserMenu, userMenuVariants, type UserMenuProps } from './user-menu';
+export {
+  NotificationMenu,
+  notificationTriggerVariants,
+  type NotificationMenuProps,
+  type NotificationItem,
+} from './notification-menu';
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
 export { AppShell, type AppShellProps } from './app-shell';
