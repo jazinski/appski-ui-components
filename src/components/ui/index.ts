@@ -312,3 +312,14 @@ export {
   sparklineVariants,
   type SparklineProps,
 } from './sparkline';
+export {
+  Calendar,
+  getMonthMatrix,
+  type CalendarProps,
+  type DateRange,
+} from './calendar';
+export {
+  DateRangePicker,
+  type DateRangePickerProps,
+  type DateRangePreset,
+} from './date-range-picker';
