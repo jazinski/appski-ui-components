@@ -337,3 +337,8 @@ export {
   type DateRangePickerProps,
   type DateRangePreset,
 } from './date-range-picker';
+export {
+  QrCode,
+  type QrCodeProps,
+  type QrCodeErrorCorrectionLevel,
+} from './qr-code';
