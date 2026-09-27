@@ -230,3 +230,12 @@ export {
 export { UserMenu, userMenuVariants, type UserMenuProps } from './user-menu';
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
 export { AppShell, type AppShellProps } from './app-shell';
+export {
+  CommandPalette,
+  commandPaletteOverlayVariants,
+  commandPaletteContentVariants,
+  filterCommands,
+  fuzzyScore,
+  type CommandPaletteProps,
+  type CommandPaletteCommand,
+} from './command-palette';
