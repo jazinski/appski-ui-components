@@ -358,6 +358,16 @@ export {
   type CarouselProps,
 } from './carousel';
 export {
+  TimePicker,
+  TimeRangeInput,
+  timePickerVariants,
+  parseTimeToMinutes,
+  formatMinutes,
+  type TimePickerProps,
+  type TimePickerFormat,
+  type TimeRangeInputProps,
+} from './time-picker';
+export {
   ScrollArea,
   ScrollBar,
   scrollAreaVariants,
