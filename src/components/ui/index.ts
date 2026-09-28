@@ -358,6 +358,15 @@ export {
   type CarouselProps,
 } from './carousel';
 export {
+  ScrollArea,
+  ScrollBar,
+  scrollAreaVariants,
+  scrollAreaScrollbarVariants,
+  scrollAreaThumbVariants,
+  type ScrollAreaProps,
+  type ScrollBarProps,
+} from './scroll-area';
+export {
   CommandPalette,
   commandPaletteOverlayVariants,
   commandPaletteContentVariants,
