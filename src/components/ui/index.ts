@@ -368,6 +368,7 @@ export {
   type ColorPickerProps,
   type ColorSwatchSetProps,
 } from './color-picker';
+export {
   HoverCard,
   HoverCardTrigger,
   HoverCardContent,
