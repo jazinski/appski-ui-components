@@ -342,3 +342,11 @@ export {
   type QrCodeProps,
   type QrCodeErrorCorrectionLevel,
 } from './qr-code';
+export {
+  Carousel,
+  carouselVariants,
+  carouselSlideVariants,
+  carouselArrowVariants,
+  carouselDotVariants,
+  type CarouselProps,
+} from './carousel';
