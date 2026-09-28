@@ -358,6 +358,17 @@ export {
   type CarouselProps,
 } from './carousel';
 export {
+  ColorPicker,
+  ColorSwatchSet,
+  DEFAULT_COLOR_SWATCHES,
+  colorPickerTriggerVariants,
+  swatchVariants,
+  isValidHex,
+  normalizeHex,
+  type ColorPickerProps,
+  type ColorSwatchSetProps,
+} from './color-picker';
+export {
   CommandPalette,
   commandPaletteOverlayVariants,
   commandPaletteContentVariants,
