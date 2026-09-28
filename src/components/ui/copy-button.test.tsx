@@ -97,7 +97,7 @@ describe('CopyButton', () => {
     });
     const execCommand = vi.fn(() => true);
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    document.execCommand = execCommand as unknown as typeof document.execCommand;
+    document.execCommand = execCommand;
     try {
       render(<CopyButton value="fallback text" />);
       await user.click(getButton());

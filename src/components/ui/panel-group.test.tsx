@@ -209,7 +209,7 @@ describe('PanelResizeHandle', () => {
     );
     const handle = screen.getByRole('separator');
     fireEvent.pointerDown(handle, { button: 0, clientX: 100, clientY: 0 });
-    fireEvent(window, new Event('pointermove') as PointerEvent);
+    fireEvent(window, new Event('pointermove'));
     const sizes = flushSizes();
     // pointermove with same coordinates: sizes unchanged, but listener path works
     expect(sum(sizes)).toBeCloseTo(100, 5);
@@ -313,7 +313,7 @@ describe('pointer drag math', () => {
     window.localStorage.clear();
     // jsdom: give the group a real bounding rect (200px wide).
     Element.prototype.getBoundingClientRect = () =>
-      ({ width: 200, height: 100, top: 0, left: 0, bottom: 100, right: 200, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect;
+      ({ width: 200, height: 100, top: 0, left: 0, bottom: 100, right: 200, x: 0, y: 0, toJSON: () => ({}) });
   });
   afterEach(() => {
     vi.restoreAllMocks();

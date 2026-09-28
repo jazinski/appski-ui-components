@@ -251,7 +251,7 @@ export const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
           style={{ width: effectiveWidth }}
           aria-label="Sidebar navigation"
           data-testid="sidebar"
-          data-collapsed={effectiveCollapsed}
+          data-collapsed={effectiveCollapsed ? 'true' : 'false'}
           {...props}
         >
           {/* Close button (mobile only) */}
