@@ -162,6 +162,6 @@
   "overrides": {
     "minimatch": "^10.2.2",
     "dompurify": "^3.3.2",
-    "esbuild": "^0.27.3"
+    "esbuild": "^0.25.0"
   }
 }
