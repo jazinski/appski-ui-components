@@ -358,6 +358,23 @@ export {
   type CarouselProps,
 } from './carousel';
 export {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+  HoverCardHeader,
+  HoverCardTitle,
+  HoverCardDescription,
+  HoverCardFooter,
+  hoverCardContentVariants,
+  type HoverCardProps,
+  type HoverCardTriggerProps,
+  type HoverCardContentProps,
+  type HoverCardHeaderProps,
+  type HoverCardTitleProps,
+  type HoverCardDescriptionProps,
+  type HoverCardFooterProps,
+} from './hover-card';
+export {
   CommandPalette,
   commandPaletteOverlayVariants,
   commandPaletteContentVariants,
@@ -366,4 +383,26 @@ export {
   type CommandPaletteProps,
   type CommandPaletteCommand,
 } from './command-palette';
-export { TreeView, type TreeViewProps, type TreeNode } from './tree-view';
+export {
+  Sheet,
+  SheetTrigger,
+  SheetPortal,
+  SheetOverlay,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+  SheetClose,
+  sheetOverlayVariants,
+  sheetContentVariants,
+  type SheetProps,
+  type SheetTriggerProps,
+  type SheetOverlayProps,
+  type SheetContentProps,
+  type SheetHeaderProps,
+  type SheetFooterProps,
+  type SheetTitleProps,
+  type SheetDescriptionProps,
+  type SheetCloseProps,
+} from './sheet';
