@@ -358,6 +358,13 @@ export {
   type CarouselProps,
 } from './carousel';
 export {
+  Wizard,
+  stepIndicatorVariants,
+  type WizardProps,
+  type WizardStep,
+  type WizardRenderState,
+} from './wizard';
+export {
   TimePicker,
   TimeRangeInput,
   timePickerVariants,
