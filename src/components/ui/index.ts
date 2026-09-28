@@ -366,3 +366,4 @@ export {
   type CommandPaletteProps,
   type CommandPaletteCommand,
 } from './command-palette';
+export { TreeView, type TreeViewProps, type TreeNode } from './tree-view';
