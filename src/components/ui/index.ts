@@ -74,6 +74,13 @@ export {
   type DialogCloseProps,
 } from './dialog';
 export {
+  FileUpload,
+  fileUploadVariants,
+  formatBytes,
+  type FileUploadProps,
+  type FileUploadRejectedFile,
+} from './file-upload';
+export {
   Checkbox,
   CheckboxGroup,
   checkboxVariants,
