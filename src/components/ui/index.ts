@@ -271,6 +271,13 @@ export {
   type NotificationItem,
 } from './notification-menu';
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
+export {
+  FileUpload,
+  fileUploadVariants,
+  formatBytes,
+  type FileUploadProps,
+  type FileUploadRejectedFile,
+} from './file-upload';
 export { AppShell, type AppShellProps } from './app-shell';
 export {
   PanelGroup,
@@ -350,10 +357,3 @@ export {
   carouselDotVariants,
   type CarouselProps,
 } from './carousel';
-export {
-  FileUpload,
-  fileUploadVariants,
-  formatBytes,
-  type FileUploadProps,
-  type FileUploadRejectedFile,
-} from './file-upload';
