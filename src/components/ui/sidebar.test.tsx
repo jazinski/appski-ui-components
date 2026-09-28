@@ -333,7 +333,7 @@ describe('Sidebar', () => {
     expect(sidebar).toHaveClass('relative');
 
     // Simulate resize to mobile
-    await act(async () => {
+    act(() => {
       mockMobileWidth();
       window.dispatchEvent(new Event('resize'));
     });
@@ -352,7 +352,7 @@ describe('Sidebar', () => {
     expect(sidebar).toHaveClass('-translate-x-full');
 
     // Simulate resize to desktop
-    await act(async () => {
+    act(() => {
       mockDesktopWidth();
       window.dispatchEvent(new Event('resize'));
     });
