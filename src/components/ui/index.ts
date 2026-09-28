@@ -97,6 +97,13 @@ export {
   type SheetCloseProps,
 } from './sheet';
 export {
+  FileUpload,
+  fileUploadVariants,
+  formatBytes,
+  type FileUploadProps,
+  type FileUploadRejectedFile,
+} from './file-upload';
+export {
   Checkbox,
   CheckboxGroup,
   checkboxVariants,
@@ -373,3 +380,12 @@ export {
   carouselDotVariants,
   type CarouselProps,
 } from './carousel';
+export {
+  CommandPalette,
+  commandPaletteOverlayVariants,
+  commandPaletteContentVariants,
+  filterCommands,
+  fuzzyScore,
+  type CommandPaletteProps,
+  type CommandPaletteCommand,
+} from './command-palette';
