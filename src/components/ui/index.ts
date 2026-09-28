@@ -74,6 +74,13 @@ export {
   type DialogCloseProps,
 } from './dialog';
 export {
+  FileUpload,
+  fileUploadVariants,
+  formatBytes,
+  type FileUploadProps,
+  type FileUploadRejectedFile,
+} from './file-upload';
+export {
   Checkbox,
   CheckboxGroup,
   checkboxVariants,
@@ -271,13 +278,6 @@ export {
   type NotificationItem,
 } from './notification-menu';
 export { Sidebar, sidebarVariants, sidebarOverlayVariants, type SidebarProps } from './sidebar';
-export {
-  FileUpload,
-  fileUploadVariants,
-  formatBytes,
-  type FileUploadProps,
-  type FileUploadRejectedFile,
-} from './file-upload';
 export { AppShell, type AppShellProps } from './app-shell';
 export {
   PanelGroup,
