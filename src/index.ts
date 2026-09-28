@@ -6,3 +6,6 @@ export * from './components/ui';
 
 // Utilities
 export { cn } from './lib/utils';
+
+// Palettes
+export * from './palettes';

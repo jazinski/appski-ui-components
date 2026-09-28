@@ -13,6 +13,7 @@ import {
   type PaginationState,
   type RowSelectionState,
 } from '@tanstack/react-table';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { ArrowUpDown, ChevronDown, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from './button';
@@ -49,6 +50,14 @@ export interface DataTableProps<TData, TValue> {
   onRowClick?: (row: TData) => void;
   /** Show loading state */
   loading?: boolean;
+  /** Enable virtualized row rendering for large datasets (1k+ rows) */
+  virtualization?: boolean;
+  /** Fixed row height in pixels used for virtualization math (required when virtualization is on) */
+  virtualRowHeight?: number;
+  /** Max height of the scrollable table body in pixels when virtualization is on */
+  virtualMaxHeight?: number;
+  /** Number of extra rows rendered above/below the viewport when virtualization is on */
+  virtualOverscan?: number;
 }
 
 /**
@@ -61,6 +70,7 @@ export interface DataTableProps<TData, TValue> {
  * - Row selection with checkboxes
  * - Column visibility toggle
  * - Sticky headers
+ * - Virtualized row rendering for large datasets (1k+ rows)
  * - Fully accessible with ARIA attributes
  * - Dark mode support
  * - Responsive design
@@ -111,6 +121,10 @@ export function DataTable<TData, TValue>({
   getRowClassName,
   onRowClick,
   loading = false,
+  virtualization = false,
+  virtualRowHeight = 48,
+  virtualMaxHeight = 600,
+  virtualOverscan = 10,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -153,6 +167,24 @@ export function DataTable<TData, TValue>({
       onRowSelectionChange(selectedRows);
     }
   }, [rowSelection, table, onRowSelectionChange]);
+
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const rows = table.getRowModel().rows;
+
+  const rowVirtualizer = useVirtualizer({
+    count: rows.length,
+    getScrollElement: () => scrollContainerRef.current,
+    estimateSize: () => virtualRowHeight,
+    overscan: virtualOverscan,
+    enabled: virtualization,
+  });
+
+  const virtualRows = virtualization && !loading ? rowVirtualizer.getVirtualItems() : [];
+  const paddingTop = virtualRows.length > 0 ? virtualRows[0]?.start ?? 0 : 0;
+  const paddingBottom =
+    virtualRows.length > 0
+      ? rowVirtualizer.getTotalSize() - (virtualRows[virtualRows.length - 1]?.end ?? 0)
+      : 0;
 
   return (
     <div className={cn('w-full space-y-4', className)}>
@@ -197,12 +229,19 @@ export function DataTable<TData, TValue>({
 
       {/* Table */}
       <div className="overflow-hidden rounded-md border border-slate-200 dark:border-slate-800">
-        <div className={cn('overflow-auto', stickyHeader && 'max-h-[600px]')}>
+        <div
+          ref={scrollContainerRef}
+          className={cn(
+            'overflow-auto',
+            (stickyHeader || virtualization) && 'max-h-[600px]'
+          )}
+          style={virtualization ? { maxHeight: virtualMaxHeight } : undefined}
+        >
           <table className="w-full caption-bottom text-sm">
             <thead
               className={cn(
                 'border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900',
-                stickyHeader && 'sticky top-0 z-10'
+                (stickyHeader || virtualization) && 'sticky top-0 z-10'
               )}
             >
               {table.getHeaderGroups().map((headerGroup) => (
@@ -227,8 +266,44 @@ export function DataTable<TData, TValue>({
                     Loading...
                   </td>
                 </tr>
-              ) : table.getRowModel().rows?.length ? (
-                table.getRowModel().rows.map((row) => (
+              ) : virtualization && rows.length > 0 ? (
+                <>
+                  {paddingTop > 0 && (
+                    <tr aria-hidden="true">
+                      <td style={{ height: paddingTop, border: 0, padding: 0 }} colSpan={columns.length} />
+                    </tr>
+                  )}
+                  {virtualRows.map((virtualRow) => {
+                    const row = rows[virtualRow.index];
+                    if (!row) return null;
+                    return (
+                      <tr
+                        key={row.id}
+                        data-state={row.getIsSelected() && 'selected'}
+                        className={cn(
+                          'border-b border-slate-200 bg-white transition-colors hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900/50',
+                          row.getIsSelected() && 'bg-slate-50 dark:bg-slate-900',
+                          onRowClick && 'cursor-pointer',
+                          getRowClassName?.(row.original)
+                        )}
+                        onClick={() => onRowClick?.(row.original)}
+                      >
+                        {row.getVisibleCells().map((cell) => (
+                          <td key={cell.id} className="px-4 py-3 align-middle">
+                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                  {paddingBottom > 0 && (
+                    <tr aria-hidden="true">
+                      <td style={{ height: paddingBottom, border: 0, padding: 0 }} colSpan={columns.length} />
+                    </tr>
+                  )}
+                </>
+              ) : rows?.length ? (
+                rows.map((row) => (
                   <tr
                     key={row.id}
                     data-state={row.getIsSelected() && 'selected'}

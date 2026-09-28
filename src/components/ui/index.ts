@@ -97,6 +97,12 @@ export {
   type SwitchGroupProps,
 } from './switch';
 export { Textarea, textareaVariants, type TextareaProps } from './textarea';
+export {
+  NumberInput,
+  numberInputVariants,
+  type NumberInputProps,
+  type NumberInputFormat,
+} from './number-input';
 export { RadioGroup, RadioGroupItem } from './radio-group';
 export {
   ToastProvider,

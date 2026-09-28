@@ -32,6 +32,7 @@ tables\
 
 - **Button** - Versatile button with variants, sizes, and loading states
 - **Input** - Text input with validation support
+- **NumberInput** - Numeric stepper with currency/percent formats
 - **Textarea** - Multi-line text input
 - **Checkbox** - Checkboxes with indeterminate state
 - **Radio Group** - Radio button groups
