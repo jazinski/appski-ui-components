@@ -1,11 +1,3 @@
-export {
-  Carousel,
-  carouselVariants,
-  carouselSlideVariants,
-  carouselArrowVariants,
-  carouselDotVariants,
-  type CarouselProps,
-} from './carousel';
 export { Button, buttonVariants, type ButtonProps } from './button';
 export { LoadingButton, type LoadingButtonProps } from './loading-button';
 export { ModalFooter, type ModalFooterProps } from './modal-footer';
@@ -350,3 +342,11 @@ export {
   type QrCodeProps,
   type QrCodeErrorCorrectionLevel,
 } from './qr-code';
+export {
+  Carousel,
+  carouselVariants,
+  carouselSlideVariants,
+  carouselArrowVariants,
+  carouselDotVariants,
+  type CarouselProps,
+} from './carousel';
