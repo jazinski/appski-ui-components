@@ -358,6 +358,23 @@ export {
   type CarouselProps,
 } from './carousel';
 export {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+  HoverCardHeader,
+  HoverCardTitle,
+  HoverCardDescription,
+  HoverCardFooter,
+  hoverCardContentVariants,
+  type HoverCardProps,
+  type HoverCardTriggerProps,
+  type HoverCardContentProps,
+  type HoverCardHeaderProps,
+  type HoverCardTitleProps,
+  type HoverCardDescriptionProps,
+  type HoverCardFooterProps,
+} from './hover-card';
+export {
   CommandPalette,
   commandPaletteOverlayVariants,
   commandPaletteContentVariants,
