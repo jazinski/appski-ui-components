@@ -365,6 +365,36 @@ export {
   type WizardRenderState,
 } from './wizard';
 export {
+  TimePicker,
+  TimeRangeInput,
+  timePickerVariants,
+  parseTimeToMinutes,
+  formatMinutes,
+  type TimePickerProps,
+  type TimePickerFormat,
+  type TimeRangeInputProps,
+} from './time-picker';
+export {
+  ScrollArea,
+  ScrollBar,
+  scrollAreaVariants,
+  scrollAreaScrollbarVariants,
+  scrollAreaThumbVariants,
+  type ScrollAreaProps,
+  type ScrollBarProps,
+} from './scroll-area';
+export {
+  ColorPicker,
+  ColorSwatchSet,
+  DEFAULT_COLOR_SWATCHES,
+  colorPickerTriggerVariants,
+  swatchVariants,
+  isValidHex,
+  normalizeHex,
+  type ColorPickerProps,
+  type ColorSwatchSetProps,
+} from './color-picker';
+export {
   HoverCard,
   HoverCardTrigger,
   HoverCardContent,
