@@ -119,8 +119,7 @@ describe('TimePicker', () => {
     expect(screen.getByRole('spinbutton', { name: 'Hours' })).toHaveTextContent('08');
   });
 
-  it('disabled state prevents interaction', async () => {
-    const user = userEvent.setup();
+  it('disabled state prevents interaction', () => {
     const onChange = vi.fn();
     render(<TimePicker defaultValue="09:30" disabled onChange={onChange} />);
 
