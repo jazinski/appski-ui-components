@@ -368,6 +368,15 @@ export {
   type TimeRangeInputProps,
 } from './time-picker';
 export {
+  ScrollArea,
+  ScrollBar,
+  scrollAreaVariants,
+  scrollAreaScrollbarVariants,
+  scrollAreaThumbVariants,
+  type ScrollAreaProps,
+  type ScrollBarProps,
+} from './scroll-area';
+export {
   ColorPicker,
   ColorSwatchSet,
   DEFAULT_COLOR_SWATCHES,
