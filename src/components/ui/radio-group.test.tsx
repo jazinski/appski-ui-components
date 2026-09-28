@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { RadioGroup, RadioGroupItem } from './radio-group';
@@ -245,7 +245,10 @@ describe('RadioGroup', () => {
       const option2 = screen.getByLabelText('Option 2');
       const option3 = screen.getByLabelText('Option 3');
 
-      option1.focus();
+      act(() => {
+        option1.focus();
+      });
+      
       await user.keyboard('{ArrowDown}');
       expect(option2).toHaveFocus();
 
@@ -274,7 +277,10 @@ describe('RadioGroup', () => {
 
       const option1 = screen.getByLabelText('Option 1');
 
-      option1.focus();
+      act(() => {
+        option1.focus();
+      });
+      
       await user.keyboard(' ');
 
       expect(option1).toBeChecked();
