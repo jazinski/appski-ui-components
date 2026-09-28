@@ -78,7 +78,7 @@ export function normalizeHex(value: string): string {
   const v = value.trim();
   if (!v.startsWith('#')) return `#${v}`.toLowerCase();
   if (/^#[0-9a-fA-F]{3}$/.test(v)) {
-    const [r, g, b] = v.slice(1).split('');
+    const [r = '0', g = '0', b = '0'] = v.slice(1).split('');
     return `#${r}${r}${g}${g}${b}${b}`.toLowerCase();
   }
   return v.toLowerCase();

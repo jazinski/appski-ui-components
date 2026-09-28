@@ -115,7 +115,7 @@ describe('ColorPicker', () => {
     expect(await screen.findAllByRole('option')).toHaveLength(2);
   });
 
-  it('disabled trigger cannot open the popover', async () => {
+  it('disabled trigger cannot open the popover', () => {
     render(<ColorPicker disabled />);
 
     const trigger = screen.getByRole('button', { name: 'Color picker' });
