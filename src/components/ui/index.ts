@@ -367,6 +367,17 @@ export {
   type ScrollBarProps,
 } from './scroll-area';
 export {
+  ColorPicker,
+  ColorSwatchSet,
+  DEFAULT_COLOR_SWATCHES,
+  colorPickerTriggerVariants,
+  swatchVariants,
+  isValidHex,
+  normalizeHex,
+  type ColorPickerProps,
+  type ColorSwatchSetProps,
+} from './color-picker';
+export {
   HoverCard,
   HoverCardTrigger,
   HoverCardContent,
