@@ -357,3 +357,12 @@ export {
   carouselDotVariants,
   type CarouselProps,
 } from './carousel';
+export {
+  CommandPalette,
+  commandPaletteOverlayVariants,
+  commandPaletteContentVariants,
+  filterCommands,
+  fuzzyScore,
+  type CommandPaletteProps,
+  type CommandPaletteCommand,
+} from './command-palette';
