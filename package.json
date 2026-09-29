@@ -40,7 +40,9 @@
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "bash scripts/build-storybook-with-hash.sh",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "version": "changeset version",
+    "tag-release": "bash scripts/tag-release.sh"
   },
   "keywords": [
     "react",
@@ -117,6 +119,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
     "@eslint/js": "^9.39.3",
     "@heroicons/react": "^2.2.0",
     "@storybook/addon-a11y": "^8.6.17",
