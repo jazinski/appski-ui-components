@@ -136,7 +136,7 @@ All checks pass:
 
 ## Testing Required
 
-Please test the following in Storybook at **https://ui.appski.me** (after
+Please test the following in Storybook at **https://ui.blancski.me** (after
 deployment):
 
 1. **Visual Appearance** - All components should look identical
@@ -171,4 +171,4 @@ Then revert:
 ---
 
 **Commit**: `c82a45b - feat: upgrade to Tailwind CSS v4 with PostCSS plugin`
-**Pushed**: ✅ Ready for testing at https://ui.appski.me
+**Pushed**: ✅ Ready for testing at https://ui.blancski.me

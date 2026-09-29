@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to @appski/ui will be documented in this file.
+All notable changes to @blancski/ui will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
@@ -230,8 +230,8 @@ and this project adheres to
 ### Distribution
 
 - **Source**: GitHub repository
-- **Installation**: `bun add github:jazinski/appski-ui-components`
-- **Storybook**: https://ui.appski.me
+- **Installation**: `bun add github:jazinski/blancski-ui-components`
+- **Storybook**: https://ui.blancski.me
 
 ---
 
@@ -260,4 +260,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
 
 ## License
 
-MIT © Appski
+MIT © Blancski

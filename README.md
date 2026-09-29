@@ -1,4 +1,4 @@
-# @appski/ui
+# @blancski/ui
 
 A comprehensive React component library built with Shadcn/ui patterns, Tailwind
 CSS v4, and Zod validation. Production-ready with **46 components**, **900+
@@ -93,7 +93,7 @@ tables\
 - **Accordion** - Collapsible content sections
 - **View Mode Toggle** - List/Grid view switcher
 
-**Total: 46 Components** | [View in Storybook →](https://ui.appski.me)
+**Total: 46 Components** | [View in Storybook →](https://ui.blancski.me)
 
 ## Installation
 
@@ -102,26 +102,26 @@ tables\
 
 ```bash
 # Install from GitHub
-bun add github:jazinski/appski-ui-components
+bun add github:jazinski/blancski-ui-components
 # or
-npm install github:jazinski/appski-ui-components
+npm install github:jazinski/blancski-ui-components
 # or
-yarn add github:jazinski/appski-ui-components
+yarn add github:jazinski/blancski-ui-components
 ```
 
 **For local development:**
 
 ```bash
 # Clone and link locally
-git clone https://github.com/jazinski/appski-ui-components.git
-cd appski-ui-components
+git clone https://github.com/jazinski/blancski-ui-components.git
+cd blancski-ui-components
 bun install
 bun run build
 bun link
 
 # In your project
 cd your-project
-bun link @appski/ui
+bun link @blancski/ui
 ```
 
 ## Quick Start
@@ -130,18 +130,18 @@ bun link @appski/ui
 
 ```bash
 # Install directly from GitHub
-bun add github:jazinski/appski-ui-components
+bun add github:jazinski/blancski-ui-components
 ```
 
 ### 2. Import styles in your main CSS file
 
 ```css
-@import "@appski/ui/styles.css";
+@import "@blancski/ui/styles.css";
 ```
 
 ### 2. Configure Theming
 
-⚠️ **Important**: @appski/ui uses a semantic theming system. You **must** define
+⚠️ **Important**: @blancski/ui uses a semantic theming system. You **must** define
 theme variables in your Tailwind configuration for components to display
 correctly.
 
@@ -149,10 +149,10 @@ Add these variables to your `src/index.css` (or main CSS file):
 
 ```css
 @import "tailwindcss";
-@import "@appski/ui/styles.css";
+@import "@blancski/ui/styles.css";
 
 @theme {
-  /* @appski/ui - Required Theme Variables */
+  /* @blancski/ui - Required Theme Variables */
   --color-primary: #6366f1;
   --color-primary-foreground: #ffffff;
   --color-secondary: #e0e8ff;
@@ -223,7 +223,7 @@ body {
 }
 ```
 
-**📖 Customize colors for your brand!** The values above use Appski's indigo
+**📖 Customize colors for your brand!** The values above use Blancski's indigo
 palette. Change these to match your design system.
 
 See [THEMING.md](./THEMING.md) for complete theming documentation.
@@ -233,14 +233,14 @@ See [THEMING.md](./THEMING.md) for complete theming documentation.
 ### Basic Components
 
 ```tsx
-import { Badge, Button, Card, Input } from "@appski/ui";
+import { Badge, Button, Card, Input } from "@blancski/ui";
 
 function MyApp() {
   return (
     <Card>
       <Card.Header>
         <Card.Title>Welcome</Card.Title>
-        <Card.Description>Get started with @appski/ui</Card.Description>
+        <Card.Description>Get started with @blancski/ui</Card.Description>
       </Card.Header>
       <Card.Content>
         <Input placeholder="Enter your email" />
@@ -257,7 +257,7 @@ function MyApp() {
 ### Loading States
 
 ```tsx
-import { LoadingButton, SkeletonLoader, Spinner } from "@appski/ui";
+import { LoadingButton, SkeletonLoader, Spinner } from "@blancski/ui";
 
 function MyForm() {
   const [loading, setLoading] = useState(false);
@@ -280,7 +280,7 @@ function MyForm() {
 ### Data Display
 
 ```tsx
-import { DataTable, EmptyState, MetricCard } from "@appski/ui";
+import { DataTable, EmptyState, MetricCard } from "@blancski/ui";
 
 function Dashboard() {
   return (
@@ -315,7 +315,7 @@ function Dashboard() {
 ### Dialogs & Confirmations
 
 ```tsx
-import { ConfirmDialog, useConfirmDialog } from "@appski/ui";
+import { ConfirmDialog, useConfirmDialog } from "@blancski/ui";
 
 function DeleteButton() {
   const { confirm, ConfirmDialogComponent } = useConfirmDialog({
@@ -387,7 +387,7 @@ bun run lint
 
 ## Documentation
 
-- **Storybook**: [https://ui.appski.me](https://ui.appski.me) - Interactive
+- **Storybook**: [https://ui.blancski.me](https://ui.blancski.me) - Interactive
   component documentation
 - **Theming Guide**: [THEMING.md](./THEMING.md) - Complete theming and
   customization guide
@@ -419,13 +419,13 @@ guidelines.
 
 ## License
 
-MIT © Appski
+MIT © Blancski
 
 ## Links
 
 - **GitHub**:
-  [https://github.com/jazinski/appski-ui-components](https://github.com/jazinski/appski-ui-components)
-- **npm**: [@appski/ui](https://www.npmjs.com/package/@appski/ui)
-- **Storybook**: [https://ui.appski.me](https://ui.appski.me)
+  [https://github.com/jazinski/blancski-ui-components](https://github.com/jazinski/blancski-ui-components)
+- **npm**: [@blancski/ui](https://www.npmjs.com/package/@blancski/ui)
+- **Storybook**: [https://ui.blancski.me](https://ui.blancski.me)
 - **Issues**:
-  [Report a bug](https://github.com/jazinski/appski-ui-components/issues)
+  [Report a bug](https://github.com/jazinski/blancski-ui-components/issues)

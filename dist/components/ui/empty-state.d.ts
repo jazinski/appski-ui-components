@@ -1,6 +1,10 @@
+import { VariantProps } from 'class-variance-authority';
 import { ButtonProps } from './button';
 import * as React from 'react';
-export interface EmptyStateProps {
+declare const emptyStateVariants: (props?: ({
+    variant?: "default" | "error" | "no-data" | "no-results" | "no-permission" | null | undefined;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
+export interface EmptyStateProps extends VariantProps<typeof emptyStateVariants> {
     /** Icon component or element to display */
     icon?: React.ReactNode;
     /** Main heading text */
@@ -37,6 +41,7 @@ export interface EmptyStateProps {
  *   icon={<DatabaseIcon className="w-16 h-16" />}
  *   title="No memories found"
  *   description="Create your first memory to get started"
+ *   variant="no-data"
  * />
  *
  * @example
@@ -45,6 +50,7 @@ export interface EmptyStateProps {
  *   icon={<FolderIcon className="w-16 h-16" />}
  *   title="No projects yet"
  *   description="Get started by creating your first project"
+ *   variant="no-data"
  *   action={{
  *     label: "Create Project",
  *     onClick: handleCreate,
@@ -58,12 +64,35 @@ export interface EmptyStateProps {
  *   icon={<MagnifyingGlassIcon className="w-12 h-12" />}
  *   title="No results found"
  *   description="Try adjusting your search or filters"
+ *   variant="no-results"
  *   size="sm"
  *   action={{
  *     label: "Clear Filters",
  *     onClick: handleClearFilters,
  *     variant: "ghost"
  *   }}
+ * />
+ *
+ * @example
+ * // Error state
+ * <EmptyState
+ *   icon={<ExclamationTriangleIcon className="w-16 h-16" />}
+ *   title="Something went wrong"
+ *   description="We encountered an error loading your data"
+ *   variant="error"
+ *   action={{
+ *     label: "Try Again",
+ *     onClick: handleRetry
+ *   }}
+ * />
+ *
+ * @example
+ * // No permission state
+ * <EmptyState
+ *   icon={<LockClosedIcon className="w-16 h-16" />}
+ *   title="Access denied"
+ *   description="You don't have permission to view this content"
+ *   variant="no-permission"
  * />
  *
  * @example
@@ -83,5 +112,6 @@ export interface EmptyStateProps {
  *   }}
  * />
  */
-export declare function EmptyState({ icon, title, description, action, secondaryAction, className, size, children, }: EmptyStateProps): import("react/jsx-runtime").JSX.Element;
+export declare function EmptyState({ icon, title, description, action, secondaryAction, className, size, variant, children, }: EmptyStateProps): React.JSX.Element;
+export {};
 //# sourceMappingURL=empty-state.d.ts.map

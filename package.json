@@ -1,11 +1,11 @@
 {
-  "name": "@appski/ui",
+  "name": "@blancski/ui",
   "version": "0.1.7",
   "description": "Production-ready React UI component library with 46 components, Tailwind CSS v4, TypeScript, and full Storybook documentation. Built on Shadcn/ui patterns and Radix UI primitives.",
   "type": "module",
-  "homepage": "https://ui.appski.me",
+  "homepage": "https://ui.blancski.me",
   "bugs": {
-    "url": "https://github.com/jazinski/appski-ui-components/issues"
+    "url": "https://github.com/jazinski/blancski-ui-components/issues"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -65,13 +65,13 @@
     "zod"
   ],
   "author": {
-    "name": "Appski",
+    "name": "Blancski",
     "url": "https://github.com/jazinski"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jazinski/appski-ui-components.git"
+    "url": "git+https://github.com/jazinski/blancski-ui-components.git"
   },
   "peerDependencies": {
     "qrcode.react": "^4.2.0",

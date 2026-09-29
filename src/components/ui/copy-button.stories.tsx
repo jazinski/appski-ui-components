@@ -36,13 +36,13 @@ type Story = StoryObj<typeof CopyButton>;
 
 export const Default: Story = {
   args: {
-    value: 'npm install @appski/ui',
+    value: 'npm install @blancski/ui',
   },
 };
 
 export const WithShortcutHint: Story = {
   args: {
-    value: 'https://ui.appski.me/docs/copy-button',
+    value: 'https://ui.blancski.me/docs/copy-button',
     shortcutHint: 'C',
   },
 };
@@ -57,7 +57,7 @@ export const WithFeedbackTooltip: Story = {
 
 export const Outline: Story = {
   args: {
-    value: 'git clone git@github.com:jazinski/appski-ui-components.git',
+    value: 'git clone git@github.com:jazinski/blancski-ui-components.git',
     variant: 'outline',
   },
 };
@@ -71,7 +71,7 @@ export const Small: Story = {
 
 export const LargeWithShortcut: Story = {
   args: {
-    value: 'APPSKI-UI-12',
+    value: 'BLANCSKI-UI-12',
     size: 'lg',
     shortcutHint: 'K',
   },

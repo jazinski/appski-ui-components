@@ -1,6 +1,6 @@
-# Theming Guide for @appski/ui
+# Theming Guide for @blancski/ui
 
-The @appski/ui component library is **brand-agnostic** and uses a **semantic
+The @blancski/ui component library is **brand-agnostic** and uses a **semantic
 theming system**. This means components reference semantic color names (like
 `primary`, `secondary`, `destructive`) rather than hardcoded color values.
 
@@ -12,7 +12,7 @@ be reused across different brands and design systems.
 
 ## 🎨 Two Theming Systems
 
-@appski/ui uses two complementary theming approaches:
+@blancski/ui uses two complementary theming approaches:
 
 ### 1. HSL Variables (for Component Library Internal Use)
 
@@ -54,7 +54,7 @@ Add these variables to your `src/index.css` (or main CSS file):
 @import "tailwindcss";
 
 @theme {
-  /* @appski/ui Design System - Semantic Colors */
+  /* @blancski/ui Design System - Semantic Colors */
 
   /* Primary colors */
   --color-primary: #6366f1; /* Main brand color */
@@ -240,7 +240,7 @@ These **MUST** be defined in `:root` and `.dark` for light/dark mode support:
 
 ## 🎨 Customizing Colors for Your Brand
 
-The example values above use the Appski indigo color palette. **You can and
+The example values above use the Blancski indigo color palette. **You can and
 should change these** to match your brand:
 
 ### Example: Blue Brand
@@ -403,8 +403,8 @@ semantic naming system encourages consistency across your design system.
 ## 🔗 Related Resources
 
 - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs/v4-beta)
-- [Storybook - @appski/ui](https://ui.appski.me)
-- [GitHub Repository](https://github.com/jazinski/appski-ui-components)
+- [Storybook - @blancski/ui](https://ui.blancski.me)
+- [GitHub Repository](https://github.com/jazinski/blancski-ui-components)
 
 ---
 
@@ -414,7 +414,7 @@ If you encounter theming issues:
 
 1. Verify all required variables are defined in your `@theme` block
 2. Check that HSL variables are defined in `:root` and `.dark`
-3. Ensure your Tailwind build process includes the `@appski/ui` components
+3. Ensure your Tailwind build process includes the `@blancski/ui` components
 4. Check the browser console for CSS variable errors
 5. Open an issue on
-   [GitHub](https://github.com/jazinski/appski-ui-components/issues)
+   [GitHub](https://github.com/jazinski/blancski-ui-components/issues)

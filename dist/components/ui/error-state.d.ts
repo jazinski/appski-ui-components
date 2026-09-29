@@ -14,5 +14,5 @@ export interface ErrorStateProps {
  * ErrorState component for displaying user-friendly error messages.
  * Supports different variants for common error types (network, auth, not found).
  */
-export declare function ErrorState({ error, onRetry, variant, className, compact, }: ErrorStateProps): import("react/jsx-runtime").JSX.Element;
+export declare function ErrorState({ error, onRetry, variant, className, compact, }: ErrorStateProps): import("react").JSX.Element;
 //# sourceMappingURL=error-state.d.ts.map

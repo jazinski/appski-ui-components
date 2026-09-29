@@ -1,7 +1,7 @@
 # ✅ Storybook Dark Theme & Logo - COMPLETE
 
 **Status**: All fixes deployed to production\
-**Production URL**: https://ui.appski.me\
+**Production URL**: https://ui.blancski.me\
 **Latest Commit**: `f3fc55d`\
 **Date**: 2026-01-25
 
@@ -75,7 +75,7 @@
 ### 1. Check Deployment Status
 
 ```bash
-cd /home/cjazinski/projects/appski-ui-components
+cd /home/cjazinski/projects/blancski-ui-components
 gh run list --limit 3
 ```
 
@@ -85,7 +85,7 @@ The Storybook build is in `storybook-static/` with commit hash: `1b2a961`
 
 ### 3. Test on Production
 
-Visit: **https://ui.appski.me**
+Visit: **https://ui.blancski.me**
 
 **What to Check**:
 
@@ -167,10 +167,10 @@ Access with:
 
 ```bash
 # View all project knowledge
-jazinski-dev_memory_list --projectId appski-ui-components
+jazinski-dev_memory_list --projectId blancski-ui-components
 
 # Search for specific topics
-jazinski-dev_memory_search --projectId appski-ui-components --query "dark theme"
+jazinski-dev_memory_search --projectId blancski-ui-components --query "dark theme"
 ```
 
 ---
@@ -212,7 +212,7 @@ When you come back:
 ### If Need to Rebuild
 
 ```bash
-cd /home/cjazinski/projects/appski-ui-components
+cd /home/cjazinski/projects/blancski-ui-components
 bun run build-storybook
 ```
 
@@ -232,7 +232,7 @@ gh run list --limit 3
 gh run view --log
 
 # View project memory
-jazinski-dev_memory_get_context --projectId appski-ui-components
+jazinski-dev_memory_get_context --projectId blancski-ui-components
 ```
 
 ---

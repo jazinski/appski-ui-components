@@ -23,7 +23,7 @@ A hover card component that shows rich preview content when the trigger is hover
 Built on Radix UI HoverCard with graceful degradation on touch devices.
 
 \`\`\`tsx
-import { HoverCard, HoverCardTrigger, HoverCardContent } from '@appski/ui';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@blancski/ui';
 
 <HoverCard>
   <HoverCardTrigger>@chris</HoverCardTrigger>

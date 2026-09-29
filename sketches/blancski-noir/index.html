@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>blancski — Noir</title>
+<style>
+  :root {
+    /* Noir: dark-first identity — deep slate-navy surfaces, powder text, alpine-violet accent */
+    --bg: hsl(230 30% 8%);
+    --bg-raised: hsl(230 28% 11%);
+    --fg: hsl(220 45% 94%);
+    --card: hsl(230 26% 13%);
+    --muted-fg: hsl(222 18% 64%);
+    --primary: hsl(258 85% 68%);
+    --primary-hover: hsl(258 85% 74%);
+    --primary-fg: hsl(230 30% 8%);
+    --secondary: hsl(250 30% 18%);
+    --secondary-fg: hsl(256 70% 80%);
+    --border: hsl(228 22% 21%);
+    --ring: hsl(258 85% 68%);
+    --success: hsl(152 60% 48%);
+    --warning: hsl(40 90% 58%);
+    --destructive: hsl(0 78% 66%);
+    --glow: 0 0 24px hsl(258 85% 60% / 0.25);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, hsl(258 60% 16% / .55), transparent 60%),
+      var(--bg);
+    color: var(--fg); line-height: 1.55; -webkit-font-smoothing: antialiased;
+    padding: 0 0 64px; min-height: 100vh;
+  }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px; border-bottom: 1px solid var(--border);
+    background: hsl(230 30% 8% / .8); backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
+  .logo .mark {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: linear-gradient(145deg, hsl(258 85% 62%), hsl(230 70% 45%));
+    display: grid; place-items: center; color: #fff; font-size: 15px;
+    box-shadow: var(--glow);
+  }
+  .logo .pkg { color: var(--muted-fg); font-weight: 500; font-size: 13px; }
+  nav { display: flex; gap: 22px; align-items: center; font-size: 14px; color: var(--muted-fg); }
+  nav a { color: inherit; text-decoration: none; cursor: pointer; }
+  nav a:hover { color: var(--fg); }
+  .tag {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--primary); border: 1px solid hsl(258 60% 40%); padding: 4px 10px; border-radius: 6px;
+  }
+  .hero { padding: 80px 32px 48px; max-width: 1080px; margin: 0 auto; }
+  .hero .eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--secondary-fg); background: var(--secondary);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  h1 { font-size: 48px; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px; }
+  h1 em { font-style: normal; background: linear-gradient(120deg, hsl(258 90% 74%), hsl(210 80% 66%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { font-size: 18px; color: var(--muted-fg); max-width: 580px; }
+  .hero .cta { display: flex; gap: 12px; margin-top: 28px; }
+  section { max-width: 1080px; margin: 0 auto; padding: 24px 32px; }
+  h2 { font-size: 22px; letter-spacing: -0.01em; margin: 40px 0 16px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600;
+    padding: 10px 20px; border-radius: 10px; border: 1px solid transparent; cursor: pointer;
+    transition: all .15s; font-family: inherit;
+  }
+  .btn-primary { background: var(--primary); color: var(--primary-fg); box-shadow: var(--glow); }
+  .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+  .btn-secondary { background: var(--secondary); color: var(--secondary-fg); }
+  .btn-ghost { background: transparent; color: var(--fg); border-color: var(--border); }
+  .btn-ghost:hover { border-color: var(--ring); color: var(--secondary-fg); }
+  .btn-destructive { background: transparent; color: var(--destructive); border-color: hsl(0 60% 30%); }
+  .btn-destructive:hover { background: hsl(0 60% 16%); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card {
+    background: linear-gradient(180deg, var(--card), var(--bg-raised));
+    border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+    transition: transform .15s, border-color .15s, box-shadow .15s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: hsl(258 60% 45%); box-shadow: var(--glow); }
+  .card h3 { font-size: 15px; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--muted-fg); }
+  .card .icon {
+    width: 36px; height: 36px; border-radius: 10px; background: var(--secondary);
+    color: var(--secondary-fg); display: grid; place-items: center; font-size: 17px; margin-bottom: 12px;
+  }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+  .badge.ok { background: hsl(152 40% 14%); color: var(--success); }
+  .badge.warn { background: hsl(38 50% 15%); color: var(--warning); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  input[type="text"] {
+    font-family: inherit; font-size: 14px; padding: 10px 14px; border-radius: 10px;
+    border: 1px solid var(--border); background: hsl(230 28% 10%); color: var(--fg);
+    outline: none; transition: border-color .15s, box-shadow .15s; width: 260px;
+  }
+  input[type="text"]:focus { border-color: var(--ring); box-shadow: 0 0 0 3px hsl(258 85% 60% / .2); }
+  input[type="text"]::placeholder { color: var(--muted-fg); }
+  .alert { display: flex; gap: 12px; padding: 14px 16px; border-radius: 12px; font-size: 14px; margin-top: 8px; border: 1px solid; }
+  .alert.info { background: hsl(250 35% 13%); color: var(--secondary-fg); border-color: hsl(250 40% 25%); }
+  .alert.err { background: hsl(0 35% 13%); color: var(--destructive); border-color: hsl(0 45% 25%); }
+  footer { text-align: center; color: var(--muted-fg); font-size: 13px; padding-top: 48px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; background: var(--secondary); color: var(--secondary-fg); padding: 2px 7px; border-radius: 6px; }
+  .switchrow { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted-fg); cursor: pointer; user-select: none; }
+  .switchrow .switch { width: 34px; height: 20px; border-radius: 999px; background: var(--border); position: relative; transition: background .2s; }
+  .switchrow .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .2s; }
+  .switchrow.on .switch { background: var(--primary); }
+  .switchrow.on .switch::after { transform: translateX(14px); }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><div class="mark">▲</div> blancski <span class="pkg">@blancski/ui</span></div>
+  <nav>
+    <a>Docs</a><a>Components</a><a>Palettes</a><a>GitHub</a>
+    <span class="tag">dark-first</span>
+  </nav>
+</header>
+
+<div class="hero">
+  <span class="eyebrow">v2 · Night run</span>
+  <h1>Built for the <em>night shift</em>.</h1>
+  <p>blancski Noir is a dark-first identity: deep slate-navy surfaces, powder-white text, an alpine-violet accent that glows. Light mode exists — but this is the default and the point.</p>
+  <div class="cta">
+    <button class="btn btn-primary">Get started</button>
+    <button class="btn btn-ghost">View palettes</button>
+  </div>
+</div>
+
+<section>
+  <h2>Buttons</h2>
+  <div class="row">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-secondary">Secondary</button>
+    <button class="btn btn-ghost">Ghost</button>
+    <button class="btn btn-destructive">Delete</button>
+  </div>
+
+  <h2>Cards</h2>
+  <div class="grid" id="cards">
+    <div class="card"><div class="icon">◉</div><h3>Wizard / Stepper</h3><p>Multi-step flows with progress, back-nav, and per-step validation. <span class="badge ok">stable</span></p></div>
+    <div class="card"><div class="icon">⏱</div><h3>TimeRangeInput</h3><p>Paired pickers with overlap guard for scheduling surfaces. <span class="badge ok">stable</span></p></div>
+    <div class="card"><div class="icon">▤</div><h3>Kanban board</h3><p>Drag-and-drop lanes with agent-assignee avatars. <span class="badge warn">beta</span></p></div>
+  </div>
+
+  <h2>Forms &amp; feedback</h2>
+  <div class="row" style="margin-bottom:10px">
+    <input type="text" placeholder="Search components…" oninput="filterCards(this.value)">
+    <span style="font-size:13px;color:var(--muted-fg)" id="count">3 components</span>
+  </div>
+  <div class="alert info">ℹ Noir ships dark-only as default; the light palette remains available as an opt-in for docs sites.</div>
+  <div class="alert err" style="margin-top:8px">⚠ Connection to the board was lost — retrying in 30s.</div>
+
+  <h2>Preferences</h2>
+  <div class="card" style="max-width:420px">
+    <div class="switchrow on" onclick="this.classList.toggle('on')"><span class="switch"></span> Reduce glow effects</div>
+    <div class="switchrow" style="margin-top:12px" onclick="this.classList.toggle('on')"><span class="switch"></span> Follow system appearance</div>
+  </div>
+
+  <h2>Install</h2>
+  <p style="margin-top:8px"><code>npm i @blancski/ui</code></p>
+</section>
+
+<footer>Noir palette mockup — blancski rebrand, option 3 · toggle the preference switches</footer>
+
+<script>
+function filterCards(v) {
+  const cards = document.querySelectorAll('#cards .card');
+  let n = 0;
+  cards.forEach(c => {
+    const hit = c.textContent.toLowerCase().includes(v.toLowerCase());
+    c.style.display = hit ? '' : 'none'; if (hit) n++;
+  });
+  document.getElementById('count').textContent = n + (n === 1 ? ' component' : ' components');
+}
+</script>
+</body>
+</html>

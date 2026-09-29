@@ -2,7 +2,7 @@
 
 ## Overview
 
-`appski-ui-components` is a reusable React component library built with TypeScript and styled with Tailwind CSS. It provides a consistent UI foundation for Appski applications.
+`blancski-ui-components` is a reusable React component library built with TypeScript and styled with Tailwind CSS. It provides a consistent UI foundation for Blancski applications.
 
 ## Available Components
 
@@ -12,7 +12,7 @@
 Responsive layout wrapper with max-width constraints.
 
 ```tsx
-import { Container } from '@appski/ui-components';
+import { Container } from '@blancski/ui-components';
 
 <Container>
   <h1>My Content</h1>
@@ -29,7 +29,7 @@ import { Container } from '@appski/ui-components';
 Flexbox-based vertical or horizontal stack with spacing.
 
 ```tsx
-import { Stack } from '@appski/ui-components';
+import { Stack } from '@blancski/ui-components';
 
 <Stack direction="vertical" spacing={4}>
   <div>Item 1</div>
@@ -53,7 +53,7 @@ import { Stack } from '@appski/ui-components';
 Primary button component with variants and sizes.
 
 ```tsx
-import { Button } from '@appski/ui-components';
+import { Button } from '@blancski/ui-components';
 
 <Button variant="primary" size="md" onClick={handleClick}>
   Click Me
@@ -77,7 +77,7 @@ import { Button } from '@appski/ui-components';
 Button with icon-only content.
 
 ```tsx
-import { IconButton } from '@appski/ui-components';
+import { IconButton } from '@blancski/ui-components';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
 <IconButton icon={<TrashIcon />} onClick={handleDelete} />
@@ -99,7 +99,7 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 Text input field with label and validation.
 
 ```tsx
-import { Input } from '@appski/ui-components';
+import { Input } from '@blancski/ui-components';
 
 <Input
   label="Email"
@@ -129,7 +129,7 @@ import { Input } from '@appski/ui-components';
 Multi-line text input.
 
 ```tsx
-import { TextArea } from '@appski/ui-components';
+import { TextArea } from '@blancski/ui-components';
 
 <TextArea
   label="Description"
@@ -157,7 +157,7 @@ import { TextArea } from '@appski/ui-components';
 Dropdown select input.
 
 ```tsx
-import { Select } from '@appski/ui-components';
+import { Select } from '@blancski/ui-components';
 
 const options = [
   { value: 'option1', label: 'Option 1' },
@@ -189,7 +189,7 @@ const options = [
 Checkbox input with label.
 
 ```tsx
-import { Checkbox } from '@appski/ui-components';
+import { Checkbox } from '@blancski/ui-components';
 
 <Checkbox
   label="I agree to terms"
@@ -213,7 +213,7 @@ import { Checkbox } from '@appski/ui-components';
 Radio button input with label.
 
 ```tsx
-import { Radio } from '@appski/ui-components';
+import { Radio } from '@blancski/ui-components';
 
 <Radio
   name="choice"
@@ -241,7 +241,7 @@ import { Radio } from '@appski/ui-components';
 Alert message box for notifications and errors.
 
 ```tsx
-import { Alert } from '@appski/ui-components';
+import { Alert } from '@blancski/ui-components';
 
 <Alert variant="success" title="Success!" dismissible>
   Your changes have been saved.
@@ -262,7 +262,7 @@ import { Alert } from '@appski/ui-components';
 Small label for statuses and counts.
 
 ```tsx
-import { Badge } from '@appski/ui-components';
+import { Badge } from '@blancski/ui-components';
 
 <Badge variant="success">Active</Badge>
 <Badge variant="danger" size="sm">3</Badge>
@@ -280,7 +280,7 @@ import { Badge } from '@appski/ui-components';
 Loading spinner indicator.
 
 ```tsx
-import { Spinner } from '@appski/ui-components';
+import { Spinner } from '@blancski/ui-components';
 
 <Spinner size="md" />
 ```
@@ -296,7 +296,7 @@ import { Spinner } from '@appski/ui-components';
 Temporary notification message.
 
 ```tsx
-import { Toast, useToast } from '@appski/ui-components';
+import { Toast, useToast } from '@blancski/ui-components';
 
 const { showToast } = useToast();
 
@@ -326,7 +326,7 @@ showToast({
 Modal dialog overlay.
 
 ```tsx
-import { Modal } from '@appski/ui-components';
+import { Modal } from '@blancski/ui-components';
 
 <Modal
   isOpen={isOpen}
@@ -353,7 +353,7 @@ import { Modal } from '@appski/ui-components';
 Dropdown menu overlay.
 
 ```tsx
-import { Dropdown } from '@appski/ui-components';
+import { Dropdown } from '@blancski/ui-components';
 
 <Dropdown
   trigger={<Button>Menu</Button>}
@@ -378,7 +378,7 @@ import { Dropdown } from '@appski/ui-components';
 Content card with optional header and footer.
 
 ```tsx
-import { Card } from '@appski/ui-components';
+import { Card } from '@blancski/ui-components';
 
 <Card
   title="Card Title"
@@ -401,7 +401,7 @@ import { Card } from '@appski/ui-components';
 Data table with sorting and pagination.
 
 ```tsx
-import { Table } from '@appski/ui-components';
+import { Table } from '@blancski/ui-components';
 
 const columns = [
   { key: 'name', label: 'Name', sortable: true },
@@ -433,7 +433,7 @@ const data = [
 User avatar with fallback initials.
 
 ```tsx
-import { Avatar } from '@appski/ui-components';
+import { Avatar } from '@blancski/ui-components';
 
 <Avatar src="/avatar.jpg" alt="John Doe" size="md" />
 <Avatar name="Jane Smith" size="lg" />
@@ -454,7 +454,7 @@ import { Avatar } from '@appski/ui-components';
 Tabbed navigation.
 
 ```tsx
-import { Tabs } from '@appski/ui-components';
+import { Tabs } from '@blancski/ui-components';
 
 const tabs = [
   { id: 'profile', label: 'Profile', content: <ProfileTab /> },
@@ -477,7 +477,7 @@ const tabs = [
 Breadcrumb navigation trail.
 
 ```tsx
-import { Breadcrumbs } from '@appski/ui-components';
+import { Breadcrumbs } from '@blancski/ui-components';
 
 const items = [
   { label: 'Home', href: '/' },
@@ -500,14 +500,14 @@ const items = [
 ### Installation
 
 ```bash
-npm install @appski/ui-components
+npm install @blancski/ui-components
 ```
 
 ### Basic Usage
 
 ```tsx
-import { Button, Input, Card } from '@appski/ui-components';
-import '@appski/ui-components/dist/styles.css';
+import { Button, Input, Card } from '@blancski/ui-components';
+import '@blancski/ui-components/dist/styles.css';
 
 function MyComponent() {
   return (
@@ -528,7 +528,7 @@ Extend your Tailwind config to include component library paths:
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@appski/ui-components/**/*.js',
+    './node_modules/@blancski/ui-components/**/*.js',
   ],
   // ... rest of config
 };

@@ -13,7 +13,7 @@ A swatch-based color picker with optional free-form hex entry, plus a
 read-only ColorSwatchSet for displaying palettes.
 
 \`\`\`tsx
-import { ColorPicker, ColorSwatchSet } from '@appski/ui';
+import { ColorPicker, ColorSwatchSet } from '@blancski/ui';
 
 <ColorPicker defaultValue="#2563eb" onChange={(hex) => console.log(hex)} />
 <ColorSwatchSet colors={['#dc2626', '#2563eb']} />
