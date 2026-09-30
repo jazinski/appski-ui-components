@@ -13,7 +13,7 @@ An accessible time picker with steppable hours/minutes segments, optional
 12-hour AM/PM mode, and a paired TimeRangeInput for start/end ranges.
 
 \`\`\`tsx
-import { TimePicker, TimeRangeInput } from '@appski/ui';
+import { TimePicker, TimeRangeInput } from '@blancski/ui';
 
 <TimePicker defaultValue="09:30" format="12h" onChange={(v) => console.log(v)} />
 <TimeRangeInput start="09:00" end="17:00" onChange={(r) => console.log(r)} />

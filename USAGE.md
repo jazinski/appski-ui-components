@@ -1,4 +1,4 @@
-# Using @appski/ui in Your Project
+# Using @blancski/ui in Your Project
 
 ## 📦 Installation
 
@@ -143,11 +143,11 @@ Add these CSS variables to your main CSS file (e.g., `src/index.css`):
 
   .dark {
     --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --foreground: 190 30% 96%;
     --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card-foreground: 190 30% 96%;
     --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover-foreground: 190 30% 96%;
     --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;

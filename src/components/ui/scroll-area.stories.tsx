@@ -18,7 +18,7 @@ Built on Radix UI ScrollArea — the native scrollbar is hidden and replaced wit
 a themeable one.
 
 \`\`\`tsx
-import { ScrollArea } from '@appski/ui';
+import { ScrollArea } from '@blancski/ui';
 
 <ScrollArea height="220px">
   <div className="p-4">Long content…</div>

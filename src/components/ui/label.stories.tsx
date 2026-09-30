@@ -23,7 +23,7 @@ A label component for form fields with support for required indicators and varia
 ## Usage
 
 \`\`\`tsx
-import { Label } from '@appski/ui';
+import { Label } from '@blancski/ui';
 
 <Label htmlFor="email" required>
   Email Address

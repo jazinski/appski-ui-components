@@ -1,11 +1,11 @@
 import { addons } from '@storybook/manager-api';
-import { appskiDarkTheme } from './theme';
+import { blancskiDarkTheme } from './theme';
 
 // Get commit hash - replaced at build time by build-storybook-with-hash.sh
 const COMMIT_HASH = '__COMMIT_HASH__';
 
 addons.setConfig({
-  theme: appskiDarkTheme,
+  theme: blancskiDarkTheme,
   sidebar: {
     showRoots: true,
     collapsedRoots: [],
@@ -59,12 +59,12 @@ style.innerHTML = `
   }
   
   /* Hide default brand title (but not our custom one) */
-  .sidebar-header a > div:not(.appski-brand-text) {
+  .sidebar-header a > div:not(.blancski-brand-text) {
     display: none !important;
   }
   
   /* Custom brand text container */
-  .appski-brand-text {
+  .blancski-brand-text {
     display: flex !important;
     flex-direction: column !important;
     gap: 4px !important;
@@ -72,7 +72,7 @@ style.innerHTML = `
     padding-top: 2px !important;
   }
   
-  .appski-brand-text .brand-name {
+  .blancski-brand-text .brand-name {
     font-size: 24px !important;
     font-weight: 700 !important;
     color: #f1f5f9 !important;
@@ -80,7 +80,7 @@ style.innerHTML = `
     line-height: 1.2 !important;
   }
   
-  .appski-brand-text .brand-commit {
+  .blancski-brand-text .brand-commit {
     font-size: 11px !important;
     font-weight: 500 !important;
     color: #94a3b8 !important;
@@ -111,21 +111,21 @@ const initBranding = () => {
   }
 
   // Check if already initialized
-  if (brandLink.querySelector('.appski-brand-text')) {
+  if (brandLink.querySelector('.blancski-brand-text')) {
     console.log('Brand already initialized');
     return;
   }
 
-  console.log('Initializing AppSki branding...');
+  console.log('Initializing BlancSki branding...');
 
   // Create text container
   const textContainer = document.createElement('div');
-  textContainer.className = 'appski-brand-text';
+  textContainer.className = 'blancski-brand-text';
 
   // Add brand name
   const brandName = document.createElement('div');
   brandName.className = 'brand-name';
-  brandName.textContent = 'AppSki';
+  brandName.textContent = 'BlancSki';
 
   // Add commit hash
   const commitHash = document.createElement('div');
@@ -138,7 +138,7 @@ const initBranding = () => {
   // Add to brand link after the logo
   brandLink.appendChild(textContainer);
 
-  console.log('AppSki branding initialized!');
+  console.log('BlancSki branding initialized!');
 };
 
 // Try multiple times to ensure it loads

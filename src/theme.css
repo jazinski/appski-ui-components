@@ -95,112 +95,112 @@
 /* CSS Variable Definitions */
 @layer base {
   :root {
-    /* Appski Design System - Indigo Primary with Slate Neutrals */
+    /* Blancski Design System - Glacier: glacier-cyan primary on arctic slate */
 
     /* Backgrounds - Slate based */
-    --background: 210 20% 98%; /* slate-50 */
-    --foreground: 215 25% 27%; /* slate-700 */
+    --background: 200 30% 98%; /* arctic slate-50 */
+    --foreground: 205 32% 24%; /* cool slate-800 */
 
     /* Cards - Clean white with slate text */
-    --card: 0 0% 100%; /* white */
-    --card-foreground: 215 25% 27%; /* slate-700 */
+    --card: 0 0% 100%;
+    --card-foreground: 205 32% 24%; /* cool slate-800 */
 
     /* Popovers - White background */
-    --popover: 0 0% 100%; /* white */
-    --popover-foreground: 215 25% 27%; /* slate-700 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 205 32% 24%; /* cool slate-800 */
 
-    /* Primary - Indigo (matching MCP dashboard) */
-    --primary: 239 84% 63%; /* indigo-500 darkened for WCAG AA contrast (4.9:1 vs 4.4:1) */
-    --primary-foreground: 0 0% 100%; /* white text on indigo */
+    /* Primary - Glacier cyan (AA 4.59:1 on white) */
+    --primary: 191 90% 32%; /* glacier cyan-700 (AA 4.59:1 on white) */
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Lighter indigo */
-    --secondary: 226 100% 94%; /* indigo-100: #e0e7ff */
-    --secondary-foreground: 234 89% 74%; /* indigo-400: #818cf8 */
+    /* Secondary - Light glacier cyan */
+    --secondary: 189 70% 93%; /* cyan-100 */
+    --secondary-foreground: 192 85% 26%; /* cyan-800 */
 
     /* Muted - Slate backgrounds */
-    --muted: 210 40% 96%; /* slate-100 */
-    --muted-foreground: 215 20% 40%; /* Updated 2026-01-25: Better contrast for light mode */
+    --muted: 200 25% 95%; /* cool slate-100 */
+    --muted-foreground: 205 25% 30%; /* cool slate-700 */
 
-    /* Accent - Indigo accent */
-    --accent: 226 100% 94%; /* indigo-100 */
-    --accent-foreground: 239 84% 63%; /* indigo-500 darkened for WCAG AA */
+    /* Accent - Glacier cyan accent */
+    --accent: 189 70% 93%; /* cyan-100 */
+    --accent-foreground: 191 90% 28%; /* glacier cyan deep */
 
     /* Destructive - Red for errors (vibrant) */
-    --destructive: 0 72% 51%; /* red-600: more saturated */
-    --destructive-foreground: 0 0% 100%; /* white */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Success - Green for positive states (WCAG AA compliant) */
-    --success: 142 76% 28%; /* green-800: 4.5:1 contrast with white */
-    --success-foreground: 0 0% 100%; /* white */
+    --success: 142 76% 28%;
+    --success-foreground: 0 0% 100%;
 
     /* Warning - Amber for caution states (vibrant) */
-    --warning: 25 95% 53%; /* amber-500: more vibrant */
-    --warning-foreground: 222 47% 11%; /* dark text for contrast */
+    --warning: 25 95% 53%;
+    --warning-foreground: 222 47% 11%;
 
     /* Info - Blue for informational states (WCAG AA compliant) */
-    --info: 217 91% 50%; /* blue-600: 4.5:1 contrast with white */
-    --info-foreground: 0 0% 100%; /* white */
+    --info: 217 91% 50%;
+    --info-foreground: 0 0% 100%;
 
     /* Borders and inputs - Slate */
-    --border: 214 32% 91%; /* slate-200 */
-    --input: 214 32% 91%; /* slate-200 */
-    --ring: 239 84% 63%; /* indigo-500 darkened for WCAG AA */
+    --border: 200 22% 87%; /* cool slate-200 */
+    --input: 200 22% 87%; /* cool slate-200 */
+    --ring: 191 90% 32%; /* glacier cyan-700 (AA 4.59:1 on white) */
 
     /* Border radius */
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark mode - Slate backgrounds with Indigo accents */
+    /* Dark mode - Arctic slate backgrounds with glacier-cyan accents */
 
     /* Backgrounds - Deep slate */
-    --background: 222 47% 11%; /* slate-900 */
-    --foreground: 210 40% 98%; /* slate-50 */
+    --background: 206 45% 8%; /* arctic navy-950 */
+    --foreground: 190 30% 96%; /* glacier white */
 
     /* Cards - Slightly lighter slate */
-    --card: 215 28% 17%; /* slate-800 */
-    --card-foreground: 210 40% 98%; /* slate-50 */
+    --card: 204 35% 13%; /* arctic slate-900 */
+    --card-foreground: 190 30% 96%; /* glacier white */
 
     /* Popovers */
-    --popover: 215 28% 17%; /* slate-800 */
-    --popover-foreground: 210 40% 98%; /* slate-50 */
+    --popover: 204 35% 13%; /* arctic slate-900 */
+    --popover-foreground: 190 30% 96%; /* glacier white */
 
-    /* Primary - Brighter indigo for dark mode */
-    --primary: 239 84% 63%; /* indigo-500 darkened for WCAG AA contrast */
-    --primary-foreground: 0 0% 100%; /* white */
+    /* Primary - Bright glacier cyan for dark mode */
+    --primary: 189 90% 60%; /* glacier cyan-400 */
+    --primary-foreground: 206 60% 9%;
 
-    /* Secondary - Darker indigo with slate tint */
-    --secondary: 217 33% 17%; /* slate-800 */
-    --secondary-foreground: 210 40% 85%; /* Updated: slate-300 for better visibility */
+    /* Secondary - Arctic slate with cyan tint */
+    --secondary: 204 30% 16%; /* arctic slate-800 */
+    --secondary-foreground: 190 35% 80%; /* cyan-200 */
 
     /* Muted - Dark slate */
-    --muted: 217 33% 17%; /* slate-800 */
-    --muted-foreground: 215 20% 82%; /* Increased from 65% for better breadcrumb readability in dark mode (11.47:1 contrast ratio) */
+    --muted: 204 30% 16%; /* arctic slate-800 */
+    --muted-foreground: 205 20% 80%; /* cool slate-300 */
 
-    /* Accent - Indigo in dark mode */
-    --accent: 217 33% 17%; /* slate-800 */
-    --accent-foreground: 239 84% 63%; /* indigo-500 darkened for WCAG AA */
+    /* Accent - Glacier cyan in dark mode */
+    --accent: 204 30% 16%; /* arctic slate-800 */
+    --accent-foreground: 189 85% 70%; /* cyan-300 */
 
     /* Destructive - Vibrant red for dark mode */
-    --destructive: 0 84% 60%; /* red-500: brighter for dark mode */
-    --destructive-foreground: 0 0% 100%; /* white */
+    --destructive: 0 74% 53%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Success - Green for positive states in dark mode (WCAG AA compliant) */
-    --success: 142 76% 28%; /* green-800: 4.5:1 contrast with white */
-    --success-foreground: 0 0% 100%; /* white */
+    --success: 142 76% 28%;
+    --success-foreground: 0 0% 100%;
 
     /* Warning - Vibrant amber for caution states in dark mode */
-    --warning: 38 92% 50%; /* amber-500: vivid yellow-orange */
-    --warning-foreground: 222 47% 11%; /* dark text for contrast */
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
 
     /* Info - Blue for informational states in dark mode (WCAG AA compliant) */
-    --info: 217 91% 50%; /* blue-600: 4.5:1 contrast with white */
-    --info-foreground: 0 0% 100%; /* white */
+    --info: 217 91% 50%;
+    --info-foreground: 0 0% 100%;
 
     /* Borders and inputs - Darker slate */
-    --border: 217 33% 17%; /* slate-800 */
-    --input: 217 33% 17%; /* slate-800 */
-    --ring: 239 84% 63%; /* indigo-500 darkened for WCAG AA */
+    --border: 204 28% 22%; /* arctic slate-700 */
+    --input: 204 28% 22%; /* arctic slate-700 */
+    --ring: 189 90% 62%; /* glacier cyan-400 */
   }
 }
 

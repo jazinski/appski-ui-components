@@ -1,4 +1,4 @@
-# @appski/ui
+# @blancski/ui
 
 A comprehensive React component library built with Shadcn/ui patterns, Tailwind
 CSS v4, and Zod validation. Production-ready with **46 components**, **900+
@@ -114,14 +114,14 @@ yarn add github:jazinski/appski-ui-components
 ```bash
 # Clone and link locally
 git clone https://github.com/jazinski/appski-ui-components.git
-cd appski-ui-components
+cd blancski-ui-components
 bun install
 bun run build
 bun link
 
 # In your project
 cd your-project
-bun link @appski/ui
+bun link @blancski/ui
 ```
 
 ## Quick Start
@@ -136,12 +136,12 @@ bun add github:jazinski/appski-ui-components
 ### 2. Import styles in your main CSS file
 
 ```css
-@import "@appski/ui/styles.css";
+@import "@blancski/ui/styles.css";
 ```
 
 ### 2. Configure Theming
 
-⚠️ **Important**: @appski/ui uses a semantic theming system. You **must** define
+⚠️ **Important**: @blancski/ui uses a semantic theming system. You **must** define
 theme variables in your Tailwind configuration for components to display
 correctly.
 
@@ -149,68 +149,68 @@ Add these variables to your `src/index.css` (or main CSS file):
 
 ```css
 @import "tailwindcss";
-@import "@appski/ui/styles.css";
+@import "@blancski/ui/styles.css";
 
 @theme {
-  /* @appski/ui - Required Theme Variables */
-  --color-primary: #6366f1;
+  /* @blancski/ui - Required Theme Variables */
+  --color-primary: #08809b;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #e0e8ff;
-  --color-secondary-foreground: #828df8;
+  --color-secondary: #e1f6fa;
+  --color-secondary-foreground: #0a647b;
   --color-accent: #e0e8ff;
-  --color-accent-foreground: #6467f2;
+  --color-accent-foreground: #077088;
   --color-destructive: #ef4343;
   --color-destructive-foreground: #ffffff;
-  --color-background: #f9fafb;
-  --color-foreground: #344256;
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #64748b;
+  --color-background: #f8fafb;
+  --color-foreground: #2a4051;
+  --color-muted: #eff3f5;
+  --color-muted-foreground: #395060;
   --color-card: #ffffff;
-  --color-card-foreground: #344256;
-  --color-border: #e1e7ef;
-  --color-input: #e1e7ef;
-  --color-ring: #6467f2;
+  --color-card-foreground: #2a4051;
+  --color-border: #d9e2e8;
+  --color-input: #d9e2e8;
+  --color-ring: #08809b;
 }
 
 /* HSL variables for light/dark mode */
 :root {
-  --background: 210 20% 98%;
-  --foreground: 215 25% 27%;
+  --background: 200 30% 98%;
+  --foreground: 205 32% 24%;
   --card: 0 0% 100%;
-  --card-foreground: 215 25% 27%;
-  --primary: 239 84% 67%;
+  --card-foreground: 205 32% 24%;
+  --primary: 191 90% 32%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 226 100% 94%;
-  --secondary-foreground: 234 89% 74%;
-  --muted: 210 40% 96%;
-  --muted-foreground: 215 16% 47%;
-  --accent: 226 100% 94%;
-  --accent-foreground: 239 84% 67%;
+  --secondary: 189 70% 93%;
+  --secondary-foreground: 192 85% 26%;
+  --muted: 200 25% 95%;
+  --muted-foreground: 205 25% 30%;
+  --accent: 189 70% 93%;
+  --accent-foreground: 191 90% 28%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 239 84% 67%;
+  --border: 200 22% 87%;
+  --input: 200 22% 87%;
+  --ring: 191 90% 32%;
 }
 
 .dark {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --card: 215 28% 17%;
-  --card-foreground: 210 40% 98%;
-  --primary: 239 84% 67%;
+  --background: 206 45% 8%;
+  --foreground: 190 30% 96%;
+  --card: 204 35% 13%;
+  --card-foreground: 190 30% 96%;
+  --primary: 191 90% 32%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 226 100% 94%;
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 217 33% 17%;
-  --accent-foreground: 239 84% 67%;
+  --secondary: 204 30% 16%;
+  --secondary-foreground: 190 35% 80%;
+  --muted: 204 30% 16%;
+  --muted-foreground: 205 20% 80%;
+  --accent: 204 30% 16%;
+  --accent-foreground: 191 90% 28%;
   --destructive: 0 63% 31%;
   --destructive-foreground: 210 40% 98%;
-  --border: 217 33% 17%;
-  --input: 217 33% 17%;
-  --ring: 239 84% 67%;
+  --border: 204 28% 22%;
+  --input: 204 28% 22%;
+  --ring: 191 90% 32%;
 }
 
 * {
@@ -223,7 +223,7 @@ body {
 }
 ```
 
-**📖 Customize colors for your brand!** The values above use Appski's indigo
+**📖 Customize colors for your brand!** The values above use Blancski's indigo
 palette. Change these to match your design system.
 
 See [THEMING.md](./THEMING.md) for complete theming documentation.
@@ -233,14 +233,14 @@ See [THEMING.md](./THEMING.md) for complete theming documentation.
 ### Basic Components
 
 ```tsx
-import { Badge, Button, Card, Input } from "@appski/ui";
+import { Badge, Button, Card, Input } from "@blancski/ui";
 
 function MyApp() {
   return (
     <Card>
       <Card.Header>
         <Card.Title>Welcome</Card.Title>
-        <Card.Description>Get started with @appski/ui</Card.Description>
+        <Card.Description>Get started with @blancski/ui</Card.Description>
       </Card.Header>
       <Card.Content>
         <Input placeholder="Enter your email" />
@@ -257,7 +257,7 @@ function MyApp() {
 ### Loading States
 
 ```tsx
-import { LoadingButton, SkeletonLoader, Spinner } from "@appski/ui";
+import { LoadingButton, SkeletonLoader, Spinner } from "@blancski/ui";
 
 function MyForm() {
   const [loading, setLoading] = useState(false);
@@ -280,7 +280,7 @@ function MyForm() {
 ### Data Display
 
 ```tsx
-import { DataTable, EmptyState, MetricCard } from "@appski/ui";
+import { DataTable, EmptyState, MetricCard } from "@blancski/ui";
 
 function Dashboard() {
   return (
@@ -315,7 +315,7 @@ function Dashboard() {
 ### Dialogs & Confirmations
 
 ```tsx
-import { ConfirmDialog, useConfirmDialog } from "@appski/ui";
+import { ConfirmDialog, useConfirmDialog } from "@blancski/ui";
 
 function DeleteButton() {
   const { confirm, ConfirmDialogComponent } = useConfirmDialog({
@@ -419,13 +419,13 @@ guidelines.
 
 ## License
 
-MIT © Appski
+MIT © Blancski
 
 ## Links
 
 - **GitHub**:
   [https://github.com/jazinski/appski-ui-components](https://github.com/jazinski/appski-ui-components)
-- **npm**: [@appski/ui](https://www.npmjs.com/package/@appski/ui)
+- **npm**: [@blancski/ui](https://www.npmjs.com/package/@blancski/ui)
 - **Storybook**: [https://ui.appski.me](https://ui.appski.me)
 - **Issues**:
   [Report a bug](https://github.com/jazinski/appski-ui-components/issues)

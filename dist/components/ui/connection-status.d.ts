@@ -15,5 +15,5 @@ export interface ConnectionStatusProps extends React.HTMLAttributes<HTMLDivEleme
  * ConnectionStatus component to indicate real-time connectivity state.
  * Use for server status, WebSocket connections, or heartbeat indicators.
  */
-export declare function ConnectionStatus({ status, label, pulse, asBadge, showLabel, className, ...props }: ConnectionStatusProps): import("react/jsx-runtime").JSX.Element;
+export declare function ConnectionStatus({ status, label, pulse, asBadge, showLabel, className, ...props }: ConnectionStatusProps): React.JSX.Element;
 //# sourceMappingURL=connection-status.d.ts.map

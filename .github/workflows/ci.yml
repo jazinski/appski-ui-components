@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches: [master, develop]
   pull_request:
-    branches: [main, develop]
+    branches: [master, develop]
 
 jobs:
   lint-and-test:
@@ -155,8 +155,8 @@ jobs:
     name: Build and Push Docker Image
     runs-on: self-hosted
     needs: [lint-and-test, storybook]
-    # Only build Docker image on pushes to main branch (not PRs or develop)
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Only build Docker image on pushes to master branch (not PRs or develop)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     steps:
       - name: Checkout code
@@ -214,8 +214,8 @@ jobs:
     name: Deploy to Production Server
     runs-on: [self-hosted, Linux, deploy]
     needs: docker-build
-    # Only deploy on pushes to main branch (not PRs or develop)
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Only deploy on pushes to master branch (not PRs or develop)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     steps:
       - name: Checkout code for compose file
@@ -232,7 +232,7 @@ jobs:
 
       - name: Pull latest Docker image and restart service
         run: |
-          echo "🔄 Deploying Appski UI Components Storybook..."
+          echo "🔄 Deploying Blancski UI Components Storybook..."
           echo ""
           echo "📦 Pulling latest Docker image..."
           cd /opt/appski-ui-components
@@ -253,7 +253,7 @@ jobs:
 
           echo ""
           echo "🔍 Checking status..."
-          docker ps | grep appski-ui || true
+          docker ps | grep blancski-ui || true
 
           echo ""
           echo "✅ Testing endpoint..."
