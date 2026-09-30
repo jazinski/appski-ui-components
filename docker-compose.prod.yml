@@ -2,18 +2,18 @@ version: '3.8'
 
 services:
   storybook-nginx:
-    image: code-server.jazinski.com/appski-ui-components:latest
-    container_name: appski-ui-storybook-nginx
+    image: code-server.jazinski.com/blancski-ui-components:latest
+    container_name: blancski-ui-storybook-nginx
     ports:
       - "3010:80"
     restart: unless-stopped
     environment:
       - NODE_ENV=production
     networks:
-      - appski-network
+      - blancski-network
     labels:
-      - "com.appski.component=ui-storybook"
-      - "com.appski.server=nginx"
+      - "com.blancski.component=ui-storybook"
+      - "com.blancski.server=nginx"
     # Resource limits for lightweight deployment
     deploy:
       resources:
@@ -25,5 +25,5 @@ services:
           memory: 32M
 
 networks:
-  appski-network:
+  blancski-network:
     driver: bridge

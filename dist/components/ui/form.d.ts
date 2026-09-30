@@ -44,7 +44,7 @@ export interface FormProps<T extends z.ZodType> extends Omit<React.FormHTMLAttri
  *   </FormField>
  * </Form>
  */
-export declare function Form<T extends z.ZodType>({ schema, initialValues, onSubmit, validateOnBlur, validateOnChange, children, className, ...props }: FormProps<T>): import("react/jsx-runtime").JSX.Element;
+export declare function Form<T extends z.ZodType>({ schema, initialValues, onSubmit, validateOnBlur, validateOnChange, children, className, ...props }: FormProps<T>): React.JSX.Element;
 export interface FormFieldProps {
     /** Field name (must match schema key) */
     name: string;
@@ -65,7 +65,7 @@ export interface FormFieldProps {
  *   <Input type="email" />
  * </FormField>
  */
-export declare function FormField({ name, label, required, description, children }: FormFieldProps): import("react/jsx-runtime").JSX.Element;
+export declare function FormField({ name, label, required, description, children }: FormFieldProps): React.JSX.Element;
 export interface FormMessageProps extends React.HTMLAttributes<HTMLParagraphElement> {
     /** Message type */
     variant?: 'default' | 'error' | 'success';
@@ -73,6 +73,6 @@ export interface FormMessageProps extends React.HTMLAttributes<HTMLParagraphElem
 /**
  * FormMessage component - Display form-level messages.
  */
-export declare function FormMessage({ variant, className, children, ...props }: FormMessageProps): import("react/jsx-runtime").JSX.Element | null;
+export declare function FormMessage({ variant, className, children, ...props }: FormMessageProps): React.JSX.Element | null;
 export {};
 //# sourceMappingURL=form.d.ts.map

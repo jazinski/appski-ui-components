@@ -46,7 +46,11 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLElement>,
     /** Custom breadcrumb separator */
     breadcrumbSeparator?: React.ReactNode;
     /** Link component to use for navigation (e.g., react-router Link) */
-    LinkComponent?: React.ComponentType<any>;
+    LinkComponent?: React.ComponentType<{
+        to: string;
+        className?: string;
+        children: React.ReactNode;
+    }>;
     /** Live indicator for auto-refresh pages */
     isLive?: boolean;
     /** Callback when live toggle is clicked */

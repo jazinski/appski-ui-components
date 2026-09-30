@@ -49,5 +49,5 @@ export interface ViewModeToggleProps<T extends string> {
  *   ]}
  * />
  */
-export declare function ViewModeToggle<T extends string>({ value, onChange, options, className, size, }: ViewModeToggleProps<T>): import("react/jsx-runtime").JSX.Element;
+export declare function ViewModeToggle<T extends string>({ value, onChange, options, className, size, }: ViewModeToggleProps<T>): React.JSX.Element;
 //# sourceMappingURL=view-mode-toggle.d.ts.map

@@ -1,5 +1,5 @@
 /**
- * Curated color palettes for @appski/ui — light and dark mode pairs.
+ * Curated color palettes for @blancski/ui — light and dark mode pairs.
  *
  * Every palette uses the same semantic token names as `src/theme.css`, so a
  * palette can be applied by overriding the CSS custom properties (see
@@ -336,7 +336,66 @@ export const mono: Palette = {
   },
 };
 
+export const frost: Palette = {
+  description: 'Alpine-winter identity — glacier-blue primary on powder-white in light mode, ice-cyan over deep slate in dark. Default palette.',
+  light: {
+    background: '210 40% 98%',
+    foreground: '215 25% 27%',
+    card: '0 0% 100%',
+    'card-foreground': '215 25% 27%',
+    popover: '0 0% 100%',
+    'popover-foreground': '215 25% 27%',
+    primary: '199 89% 36%',
+    'primary-foreground': '0 0% 100%',
+    secondary: '199 60% 94%',
+    'secondary-foreground': '201 90% 27%',
+    muted: '210 30% 95%',
+    'muted-foreground': '215 20% 40%',
+    accent: '199 60% 94%',
+    'accent-foreground': '199 89% 32%',
+    destructive: '0 72% 48%',
+    'destructive-foreground': '0 0% 100%',
+    success: '142 76% 28%',
+    'success-foreground': '0 0% 100%',
+    warning: '25 95% 53%',
+    'warning-foreground': '222 47% 11%',
+    info: '217 91% 50%',
+    'info-foreground': '0 0% 100%',
+    border: '210 30% 90%',
+    input: '210 30% 90%',
+    ring: '199 89% 42%',
+  },
+  dark: {
+    background: '215 30% 9%',
+    foreground: '210 40% 96%',
+    card: '215 26% 14%',
+    'card-foreground': '210 40% 96%',
+    popover: '215 26% 14%',
+    'popover-foreground': '210 40% 96%',
+    primary: '187 90% 56%',
+    'primary-foreground': '212 40% 9%',
+    secondary: '200 30% 17%',
+    'secondary-foreground': '187 75% 72%',
+    muted: '216 25% 15%',
+    'muted-foreground': '214 20% 76%',
+    accent: '200 30% 17%',
+    'accent-foreground': '187 85% 75%',
+    destructive: '0 80% 65%',
+    'destructive-foreground': '222 47% 11%',
+    success: '152 60% 45%',
+    'success-foreground': '222 47% 11%',
+    warning: '38 92% 55%',
+    'warning-foreground': '222 47% 11%',
+    info: '199 90% 60%',
+    'info-foreground': '212 40% 9%',
+    border: '214 25% 22%',
+    input: '214 25% 22%',
+    ring: '187 90% 56%',
+  },
+};
+
 export const palettes = {
+  frost,
   'indigo-slate': indigo_slate,
   ocean,
   forest,

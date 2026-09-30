@@ -1,4 +1,4 @@
-# Using @appski/ui in Your Project
+# Using @blancski/ui in Your Project
 
 ## 📦 Installation
 
@@ -471,8 +471,8 @@ All components accept a `className` prop:
 
 View the full component documentation and interactive examples:
 
-- **Storybook:** https://ui.appski.me
-- **GitHub:** https://github.com/jazinski/appski-ui-components
+- **Storybook:** https://ui.blancski.me
+- **GitHub:** https://github.com/jazinski/blancski-ui-components
 
 ---
 

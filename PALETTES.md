@@ -1,6 +1,6 @@
 # Color Palettes
 
-Curated light/dark color palettes for `@appski/ui`, built on the library's
+Curated light/dark color palettes for `@blancski/ui`, built on the library's
 existing semantic token system (`src/theme.css`). The default theme is
 unchanged; palettes are opt-in.
 
@@ -24,7 +24,7 @@ warning, info, border, input, ring — plus each `*-foreground` pair) in both
 Palettes are plain data + a tiny runtime helper:
 
 ```tsx
-import { palettes, applyPalette } from '@appski/ui/palettes';
+import { palettes, applyPalette } from '@blancski/ui/palettes';
 // or: import { palettes, applyPalette } from './src/palettes';
 
 // On theme init / mode toggle:

@@ -1,4 +1,4 @@
-# AGATA.md - Project Rules & Intelligence (appski-ui-components)
+# AGATA.md - Project Rules & Intelligence (blancski-ui-components)
 
 ## Agata Agent
 
@@ -26,7 +26,7 @@ You are **Agata**, an autonomous AI engineering agent. Your primary goal is to h
 
 ## Project Specifics
 
-**@appski/ui** is a comprehensive React component library built with Shadcn/ui patterns, Tailwind CSS v4, and Zod validation. Production-ready with **46 components**, **900+ tests**, and full Storybook documentation.
+**@blancski/ui** is a comprehensive React component library built with Shadcn/ui patterns, Tailwind CSS v4, and Zod validation. Production-ready with **46 components**, **900+ tests**, and full Storybook documentation.
 
 - **Runtime:** Node.js / Browser
 - **Primary Language:** TypeScript

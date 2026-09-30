@@ -1,6 +1,6 @@
 # Migration Guide
 
-This guide helps you integrate @appski/ui into existing React projects or
+This guide helps you integrate @blancski/ui into existing React projects or
 migrate from other component libraries.
 
 ## Table of Contents
@@ -18,13 +18,13 @@ migrate from other component libraries.
 
 ## Quick Start for Existing Projects
 
-### 1. Install @appski/ui
+### 1. Install @blancski/ui
 
 ```bash
 # Install from GitHub
-bun add github:jazinski/appski-ui-components
+bun add github:jazinski/blancski-ui-components
 # or
-npm install github:jazinski/appski-ui-components
+npm install github:jazinski/blancski-ui-components
 ```
 
 ### 2. Install Tailwind CSS v4 (if not already installed)
@@ -51,10 +51,10 @@ Add to your main CSS file (e.g., `src/index.css` or `src/App.css`):
 
 ```css
 @import "tailwindcss";
-@import "@appski/ui/styles.css";
+@import "@blancski/ui/styles.css";
 
 @theme {
-  /* @appski/ui - Required Theme Variables */
+  /* @blancski/ui - Required Theme Variables */
   --color-primary: #6366f1;
   --color-primary-foreground: #ffffff;
   --color-secondary: #e0e8ff;
@@ -128,7 +128,7 @@ body {
 ### 5. Start Using Components
 
 ```tsx
-import { Button, Card, Input } from "@appski/ui";
+import { Button, Card, Input } from "@blancski/ui";
 
 function MyComponent() {
   return (
@@ -149,13 +149,13 @@ function MyComponent() {
 
 ## Migrating from Shadcn/ui
 
-If you're already using shadcn/ui, migration is straightforward since @appski/ui
+If you're already using shadcn/ui, migration is straightforward since @blancski/ui
 follows similar patterns.
 
 ### Key Differences
 
-1. **Installation**: @appski/ui is a package, not copy-paste components
-2. **Import Path**: Import from `@appski/ui` instead of `@/components/ui`
+1. **Installation**: @blancski/ui is a package, not copy-paste components
+2. **Import Path**: Import from `@blancski/ui` instead of `@/components/ui`
 3. **Theming**: Uses Tailwind v4 `@theme` instead of CSS variables
 
 ### Migration Steps
@@ -167,17 +167,17 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 ```
 
-**After (@appski/ui):**
+**After (@blancski/ui):**
 
 ```tsx
-import { Button, Card } from "@appski/ui";
+import { Button, Card } from "@blancski/ui";
 ```
 
 ### Component Mapping
 
 Most components have identical APIs:
 
-| shadcn/ui  | @appski/ui | Notes                        |
+| shadcn/ui  | @blancski/ui | Notes                        |
 | ---------- | ---------- | ---------------------------- |
 | `Button`   | `Button`   | Same API                     |
 | `Card`     | `Card`     | Same API with sub-components |
@@ -201,7 +201,7 @@ You can use these regex patterns to migrate imports:
 import \{ (.*?) \} from ['"]@\/components\/ui\/(.*?)['"
 
 # Replace with
-import { $1 } from '@appski/ui'
+import { $1 } from '@blancski/ui'
 ```
 
 ---
@@ -210,7 +210,7 @@ import { $1 } from '@appski/ui'
 
 ### Component Mapping
 
-| Material-UI          | @appski/ui                | Notes                                    |
+| Material-UI          | @blancski/ui                | Notes                                    |
 | -------------------- | ------------------------- | ---------------------------------------- |
 | `<Button>`           | `<Button>`                | Similar variants                         |
 | `<TextField>`        | `<Input>` or `<Textarea>` | No `multiline` prop, use `Textarea`      |
@@ -249,10 +249,10 @@ function MyForm() {
 }
 ```
 
-**After (@appski/ui):**
+**After (@blancski/ui):**
 
 ```tsx
-import { Button, Card, Input, Label } from "@appski/ui";
+import { Button, Card, Input, Label } from "@blancski/ui";
 
 function MyForm() {
   return (
@@ -271,7 +271,7 @@ function MyForm() {
 
 ### Key Differences
 
-1. **Styling**: @appski/ui uses Tailwind CSS, not emotion/styled-components
+1. **Styling**: @blancski/ui uses Tailwind CSS, not emotion/styled-components
 2. **Theme Provider**: No `ThemeProvider` needed, use Tailwind's dark mode
 3. **Props**: Some props have different names (e.g., `variant` values differ)
 4. **Icons**: Use Lucide React or Heroicons instead of Material Icons
@@ -282,7 +282,7 @@ function MyForm() {
 
 ### Component Mapping
 
-| Chakra UI    | @appski/ui         | Notes                             |
+| Chakra UI    | @blancski/ui         | Notes                             |
 | ------------ | ------------------ | --------------------------------- |
 | `<Button>`   | `<Button>`         | Similar variants                  |
 | `<Input>`    | `<Input>`          | No `size` variants, use className |
@@ -327,10 +327,10 @@ function MyForm() {
 }
 ```
 
-**After (@appski/ui):**
+**After (@blancski/ui):**
 
 ```tsx
-import { Button, Card, Input } from "@appski/ui";
+import { Button, Card, Input } from "@blancski/ui";
 
 function MyForm() {
   return (
@@ -400,7 +400,7 @@ Add to your main CSS file:
 
 ```css
 @import "tailwindcss";
-@import "@appski/ui/styles.css";
+@import "@blancski/ui/styles.css";
 ```
 
 ---
@@ -411,7 +411,7 @@ Add to your main CSS file:
 
 ```tsx
 import { useEffect, useState } from "react";
-import { Button } from "@appski/ui";
+import { Button } from "@blancski/ui";
 import { Moon, Sun } from "lucide-react";
 
 function DarkModeToggle() {
@@ -461,14 +461,14 @@ function useDarkMode() {
 
 ### Phase 1: Setup (Week 1)
 
-1. Install @appski/ui
+1. Install @blancski/ui
 2. Configure Tailwind CSS v4
 3. Add theme variables to CSS
 4. Test with a single component
 
 ### Phase 2: New Features (Weeks 2-3)
 
-Use @appski/ui for all new features:
+Use @blancski/ui for all new features:
 
 - New pages
 - New components
@@ -498,13 +498,13 @@ Migrate remaining pages incrementally:
 
 ### Coexistence Tips
 
-You can run @appski/ui alongside other libraries:
+You can run @blancski/ui alongside other libraries:
 
 ```tsx
 // Old library
 import { Button as MuiButton } from "@mui/material";
 // New library
-import { Button } from "@appski/ui";
+import { Button } from "@blancski/ui";
 
 function MixedComponent() {
   return (
@@ -527,7 +527,7 @@ function MixedComponent() {
 **Solution**: Ensure you've imported the theme variables in your main CSS file:
 
 ```css
-@import "@appski/ui/styles.css";
+@import "@blancski/ui/styles.css";
 ```
 
 ### Dark Mode Not Working
@@ -542,7 +542,7 @@ function MixedComponent() {
 
 ### TypeScript Errors
 
-**Problem**: TypeScript can't find types for @appski/ui components.
+**Problem**: TypeScript can't find types for @blancski/ui components.
 
 **Solution**: Ensure you have TypeScript configured correctly:
 
@@ -551,7 +551,7 @@ function MixedComponent() {
 {
   "compilerOptions": {
     "moduleResolution": "bundler",
-    "types": ["@appski/ui"]
+    "types": ["@blancski/ui"]
   }
 }
 ```
@@ -571,15 +571,15 @@ function MixedComponent() {
 **Problem**: Changing props doesn't update component appearance.
 
 **Solution**: Check that you're using the correct prop names. See component
-documentation in Storybook: https://ui.appski.me
+documentation in Storybook: https://ui.blancski.me
 
 ### CSS Conflicts with Existing Styles
 
-**Problem**: @appski/ui styles conflict with existing CSS.
+**Problem**: @blancski/ui styles conflict with existing CSS.
 
 **Solution**:
 
-1. Import @appski/ui styles **after** your existing styles
+1. Import @blancski/ui styles **after** your existing styles
 2. Use CSS specificity to override specific styles
 3. Consider using Tailwind's `@layer` directive for better organization
 
@@ -588,16 +588,16 @@ documentation in Storybook: https://ui.appski.me
 ## Need Help?
 
 - **Documentation**: [README.md](./README.md)
-- **Storybook**: https://ui.appski.me
+- **Storybook**: https://ui.blancski.me
 - **Issues**:
-  [GitHub Issues](https://github.com/jazinski/appski-ui-components/issues)
+  [GitHub Issues](https://github.com/jazinski/blancski-ui-components/issues)
 - **Contributing**: [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ---
 
 ## Success Stories
 
-After migrating to @appski/ui:
+After migrating to @blancski/ui:
 
 ✅ **Faster Development** - Build features 2-3x faster with pre-built
 components\
@@ -615,7 +615,7 @@ Use this checklist to track your migration progress:
 
 ### Setup
 
-- [ ] Install @appski/ui package
+- [ ] Install @blancski/ui package
 - [ ] Install Tailwind CSS v4
 - [ ] Configure PostCSS
 - [ ] Add theme variables to CSS

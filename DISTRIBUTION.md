@@ -1,6 +1,6 @@
 # 📦 Private Distribution Guide
 
-## How to Share @appski/ui Components Privately
+## How to Share @blancski/ui Components Privately
 
 This component library is **private** and will NOT be published to any public
 npm registry. Here are your options for distribution.
@@ -15,7 +15,7 @@ npm registry. Here are your options for distribution.
    ```bash
    bun run build
    npm pack
-   # Creates: appski-ui-0.1.0.tgz
+   # Creates: blancski-ui-0.1.0.tgz
    ```
 
 2. **Commit the build artifacts** (one-time setup):
@@ -36,20 +36,20 @@ npm registry. Here are your options for distribution.
 
 ```bash
 # Install from specific tag/version
-bun add git+ssh://git@github.com/jazinski/appski-ui-components.git#v0.1.0
+bun add git+ssh://git@github.com/jazinski/blancski-ui-components.git#v0.1.0
 
 # Or install from releases branch
-bun add git+ssh://git@github.com/jazinski/appski-ui-components.git#releases
+bun add git+ssh://git@github.com/jazinski/blancski-ui-components.git#releases
 ```
 
 **Method B: Install from Tarball**
 
 ```bash
 # Download the .tgz file you built
-bun add /path/to/appski-ui-0.1.0.tgz
+bun add /path/to/blancski-ui-0.1.0.tgz
 
 # Or from a URL (if hosted on your network)
-bun add https://code-server.jazinski.com/packages/appski-ui-0.1.0.tgz
+bun add https://code-server.jazinski.com/packages/blancski-ui-0.1.0.tgz
 ```
 
 ---
@@ -60,14 +60,14 @@ bun add https://code-server.jazinski.com/packages/appski-ui-0.1.0.tgz
 
 ```bash
 # Using Git (auto-updates with bun install)
-bun add git+ssh://git@github.com/jazinski/appski-ui-components.git#v0.1.0
+bun add git+ssh://git@github.com/jazinski/blancski-ui-components.git#v0.1.0
 ```
 
 ### 2. Import Styles
 
 ```tsx
 // In your main app file (e.g., src/index.tsx or src/App.tsx)
-import "@appski/ui/styles.css";
+import "@blancski/ui/styles.css";
 ```
 
 ### 3. Configure Tailwind CSS
@@ -82,7 +82,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     // Include component library
-    "./node_modules/@appski/ui/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@blancski/ui/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -184,7 +184,7 @@ Add to your global CSS file (e.g., `src/index.css` or `src/globals.css`):
 ### 5. Use Components
 
 ```tsx
-import { Badge, Button, Card, Input } from "@appski/ui";
+import { Badge, Button, Card, Input } from "@blancski/ui";
 
 function App() {
   return (
@@ -192,7 +192,7 @@ function App() {
       <Card>
         <Card.Header>
           <Card.Title>Welcome</Card.Title>
-          <Card.Description>Using @appski/ui components</Card.Description>
+          <Card.Description>Using @blancski/ui components</Card.Description>
         </Card.Header>
         <Card.Content>
           <Input placeholder="Enter text..." />
@@ -215,10 +215,10 @@ function App() {
 
 ```bash
 # Update to specific version
-bun add git+ssh://git@github.com/jazinski/appski-ui-components.git#v0.2.0
+bun add git+ssh://git@github.com/jazinski/blancski-ui-components.git#v0.2.0
 
 # Or update to latest on releases branch
-bun update @appski/ui
+bun update @blancski/ui
 ```
 
 ---
@@ -256,11 +256,11 @@ npm publish
 ### Configure in Consumer Projects
 
 ```bash
-# Set registry for @appski scope
-npm config set @appski:registry http://code-server.jazinski.com:4873
+# Set registry for @blancski scope
+npm config set @blancski:registry http://code-server.jazinski.com:4873
 
 # Install normally
-bun add @appski/ui
+bun add @blancski/ui
 ```
 
 ---
@@ -278,11 +278,11 @@ bun add @appski/ui
 
 ## 🎯 Recommended Workflow
 
-1. **Development:** Work in `appski-ui-components` repo
+1. **Development:** Work in `blancski-ui-components` repo
 2. **Build:** Run `bun run build` when ready
 3. **Tag:** Create Git tag: `git tag v0.1.0 && git push --tags`
 4. **Distribute:** Team installs via Git URL with tag
-5. **Storybook:** View docs at https://ui.appski.me (Docker deployment)
+5. **Storybook:** View docs at https://ui.blancski.me (Docker deployment)
 
 ---
 
@@ -300,6 +300,6 @@ bun add @appski/ui
 
 For questions about using the components:
 
-1. Check Storybook: https://ui.appski.me
+1. Check Storybook: https://ui.blancski.me
 2. View component source code
 3. Check this documentation

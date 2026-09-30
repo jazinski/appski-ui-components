@@ -1,12 +1,12 @@
-# Appski UI Components - Production Deployment Summary
+# Blancski UI Components - Production Deployment Summary
 
 ## ✅ Successfully Deployed!
 
 **Date:** January 25, 2026\
 **Status:** 🟢 LIVE AND RUNNING\
 **URL (Internal):** http://10.15.10.9:6606\
-**Container:** appski-ui-storybook\
-**Image:** code-server.jazinski.com/appski-ui-components:latest
+**Container:** blancski-ui-storybook\
+**Image:** code-server.jazinski.com/blancski-ui-components:latest
 
 ---
 
@@ -17,16 +17,16 @@
 - **Host:** 10.15.10.9 (Debian)
 - **Port:** 6606 (HTTP)
 - **User:** cjazinski
-- **Installation Path:** `/opt/appski-ui-components`
+- **Installation Path:** `/opt/blancski-ui-components`
 
 ### Docker Setup
 
 ```yaml
-# /opt/appski-ui-components/docker-compose.yml
+# /opt/blancski-ui-components/docker-compose.yml
 services:
-  appski-ui-storybook:
-    image: code-server.jazinski.com/appski-ui-components:latest
-    container_name: appski-ui-storybook
+  blancski-ui-storybook:
+    image: code-server.jazinski.com/blancski-ui-components:latest
+    container_name: blancski-ui-storybook
     ports:
       - "6606:80"
     restart: unless-stopped
@@ -34,8 +34,8 @@ services:
 
 ### Systemd Service
 
-- **Service Name:** `appski-ui-storybook.service`
-- **Location:** `/etc/systemd/system/appski-ui-storybook.service`
+- **Service Name:** `blancski-ui-storybook.service`
+- **Location:** `/etc/systemd/system/blancski-ui-storybook.service`
 - **Status:** Enabled (starts on boot)
 - **Type:** oneshot with RemainAfterExit
 
@@ -47,20 +47,20 @@ services:
 
 ```bash
 # Check status
-sudo systemctl status appski-ui-storybook
-docker ps | grep appski-ui
+sudo systemctl status blancski-ui-storybook
+docker ps | grep blancski-ui
 curl http://localhost:6606
 
 # Update to latest version
-cd /opt/appski-ui-components
+cd /opt/blancski-ui-components
 ./update.sh
 
 # Manual restart
-sudo systemctl restart appski-ui-storybook
+sudo systemctl restart blancski-ui-storybook
 
 # View logs
-docker logs appski-ui-storybook
-docker logs -f appski-ui-storybook  # Follow mode
+docker logs blancski-ui-storybook
+docker logs -f blancski-ui-storybook  # Follow mode
 ```
 
 ---
@@ -190,7 +190,7 @@ docker logs -f appski-ui-storybook  # Follow mode
 
 ### 1. Configure Cloudflare Tunnel
 
-Add public route: `ui.appski.me` → `http://10.15.10.9:6606`
+Add public route: `ui.blancski.me` → `http://10.15.10.9:6606`
 
 ### 2. Build EmptyState Component
 
@@ -224,10 +224,10 @@ Add public route: `ui.appski.me` → `http://10.15.10.9:6606`
 
 ### Server Files
 
-- **/opt/appski-ui-components/README.md** - Server deployment guide
-- **/opt/appski-ui-components/update.sh** - Update script
-- **/opt/appski-ui-components/docker-compose.yml** - Container config
-- **/etc/systemd/system/appski-ui-storybook.service** - Service definition
+- **/opt/blancski-ui-components/README.md** - Server deployment guide
+- **/opt/blancski-ui-components/update.sh** - Update script
+- **/opt/blancski-ui-components/docker-compose.yml** - Container config
+- **/etc/systemd/system/blancski-ui-storybook.service** - Service definition
 
 ---
 
@@ -243,7 +243,7 @@ Add public route: `ui.appski.me` → `http://10.15.10.9:6606`
 
 ## 📞 Support
 
-- **GitHub:** https://github.com/jazinski/appski-ui-components
+- **GitHub:** https://github.com/jazinski/blancski-ui-components
 - **Registry:** code-server.jazinski.com
 - **Git User:** AI Bot <ai@jazinski.com>
 
@@ -291,7 +291,7 @@ Created `docker-compose.prod.yml` that:
 ssh 10.15.10.9
 
 # Update service file
-sudo nano /etc/systemd/system/appski-ui-storybook.service
+sudo nano /etc/systemd/system/blancski-ui-storybook.service
 
 # Change:
 #   ExecStart=/usr/bin/docker compose up -d
@@ -300,7 +300,7 @@ sudo nano /etc/systemd/system/appski-ui-storybook.service
 
 # Reload and restart
 sudo systemctl daemon-reload
-sudo systemctl restart appski-ui-storybook
+sudo systemctl restart blancski-ui-storybook
 ```
 
 ---

@@ -73,5 +73,5 @@ export interface ModalFooterProps {
  *   </span>
  * </ModalFooter>
  */
-export declare function ModalFooter({ onCancel, onConfirm, cancelText, confirmText, confirmDisabled, confirmLoading, confirmLoadingText, confirmVariant, cancelVariant, className, buttonContainerClassName, children, confirmType, hideCancelButton, }: ModalFooterProps): import("react/jsx-runtime").JSX.Element;
+export declare function ModalFooter({ onCancel, onConfirm, cancelText, confirmText, confirmDisabled, confirmLoading, confirmLoadingText, confirmVariant, cancelVariant, className, buttonContainerClassName, children, confirmType, hideCancelButton, }: ModalFooterProps): React.JSX.Element;
 //# sourceMappingURL=modal-footer.d.ts.map

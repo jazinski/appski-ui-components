@@ -24,7 +24,7 @@ A popover component that displays floating content relative to a trigger element
 ## Usage
 
 \`\`\`tsx
-import { Popover, PopoverTrigger, PopoverContent } from '@appski/ui';
+import { Popover, PopoverTrigger, PopoverContent } from '@blancski/ui';
 
 <Popover>
   <PopoverTrigger>Open</PopoverTrigger>

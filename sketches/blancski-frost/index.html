@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>blancski — Frost</title>
+<style>
+  :root {
+    /* Frost light: powder-white surfaces, glacier-blue primary, silver-slate neutrals */
+    --bg: hsl(210 40% 98%);
+    --fg: hsl(215 25% 27%);
+    --card: hsl(0 0% 100%);
+    --muted-fg: hsl(215 16% 47%);
+    --primary: hsl(199 89% 42%);
+    --primary-hover: hsl(199 89% 36%);
+    --primary-fg: hsl(0 0% 100%);
+    --secondary: hsl(199 60% 94%);
+    --secondary-fg: hsl(200 80% 32%);
+    --border: hsl(210 30% 90%);
+    --ring: hsl(199 89% 48%);
+    --success: hsl(152 65% 32%);
+    --warning: hsl(28 92% 48%);
+    --destructive: hsl(0 72% 48%);
+    --shadow: 0 1px 3px hsl(215 30% 20% / 0.08), 0 8px 24px hsl(215 30% 20% / 0.06);
+  }
+  html[data-mode="dark"] {
+    /* Frost dark: ice-cyan primary, deep-slate surfaces */
+    --bg: hsl(215 30% 9%);
+    --fg: hsl(210 40% 96%);
+    --card: hsl(215 26% 14%);
+    --muted-fg: hsl(214 18% 68%);
+    --primary: hsl(187 92% 56%);
+    --primary-hover: hsl(187 92% 62%);
+    --primary-fg: hsl(210 40% 8%);
+    --secondary: hsl(200 30% 18%);
+    --secondary-fg: hsl(187 70% 70%);
+    --border: hsl(214 25% 22%);
+    --ring: hsl(187 92% 56%);
+    --success: hsl(152 60% 46%);
+    --warning: hsl(38 92% 55%);
+    --destructive: hsl(0 80% 65%);
+    --shadow: 0 1px 3px hsl(0 0% 0% / 0.4), 0 8px 24px hsl(0 0% 0% / 0.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    background: var(--bg); color: var(--fg); line-height: 1.55;
+    -webkit-font-smoothing: antialiased; transition: background .25s, color .25s;
+    padding: 0 0 64px;
+  }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--bg); z-index: 10;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
+  .logo .mark {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: linear-gradient(145deg, hsl(190 90% 60%), hsl(210 85% 55%));
+    display: grid; place-items: center; color: #fff; font-size: 15px;
+    box-shadow: var(--shadow);
+  }
+  .logo .pkg { color: var(--muted-fg); font-weight: 500; font-size: 13px; margin-left: 2px; }
+  nav { display: flex; gap: 22px; align-items: center; font-size: 14px; color: var(--muted-fg); }
+  nav a { color: inherit; text-decoration: none; cursor: pointer; }
+  nav a:hover { color: var(--fg); }
+  .toggle {
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
+    font-size: 13px; color: var(--muted-fg);
+    background: var(--card); border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 14px; transition: all .2s;
+  }
+  .toggle:hover { border-color: var(--ring); color: var(--fg); }
+  .toggle .switch {
+    width: 34px; height: 20px; border-radius: 999px; background: var(--border);
+    position: relative; transition: background .2s;
+  }
+  .toggle .switch::after {
+    content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+    border-radius: 50%; background: #fff; transition: transform .2s;
+    box-shadow: 0 1px 2px hsl(0 0% 0% / .3);
+  }
+  html[data-mode="dark"] .toggle .switch { background: var(--primary); }
+  html[data-mode="dark"] .toggle .switch::after { transform: translateX(14px); }
+  .hero { padding: 72px 32px 48px; max-width: 1080px; margin: 0 auto; }
+  .hero .eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--secondary-fg); background: var(--secondary);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  h1 { font-size: 46px; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+  h1 em { font-style: normal; color: var(--primary); }
+  .hero p { font-size: 18px; color: var(--muted-fg); max-width: 560px; }
+  .hero .cta { display: flex; gap: 12px; margin-top: 28px; }
+  section { max-width: 1080px; margin: 0 auto; padding: 24px 32px; }
+  h2 { font-size: 22px; letter-spacing: -0.01em; margin: 40px 0 16px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600;
+    padding: 10px 20px; border-radius: 10px; border: 1px solid transparent; cursor: pointer;
+    transition: all .15s; font-family: inherit;
+  }
+  .btn-primary { background: var(--primary); color: var(--primary-fg); box-shadow: var(--shadow); }
+  .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+  .btn-secondary { background: var(--secondary); color: var(--secondary-fg); }
+  .btn-secondary:hover { filter: brightness(.97); }
+  .btn-ghost { background: transparent; color: var(--fg); border-color: var(--border); }
+  .btn-ghost:hover { border-color: var(--ring); }
+  .btn-destructive { background: var(--destructive); color: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px; box-shadow: var(--shadow); transition: transform .15s, border-color .15s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--ring); }
+  .card h3 { font-size: 15px; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--muted-fg); }
+  .card .icon {
+    width: 36px; height: 36px; border-radius: 10px; background: var(--secondary);
+    color: var(--secondary-fg); display: grid; place-items: center; font-size: 17px; margin-bottom: 12px;
+  }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+  .badge.ok { background: hsl(152 65% 90%); color: var(--success); }
+  html[data-mode="dark"] .badge.ok { background: hsl(152 40% 16%); }
+  .badge.warn { background: hsl(38 92% 88%); color: var(--warning); }
+  html[data-mode="dark"] .badge.warn { background: hsl(35 50% 16%); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  input[type="text"] {
+    font-family: inherit; font-size: 14px; padding: 10px 14px; border-radius: 10px;
+    border: 1px solid var(--border); background: var(--card); color: var(--fg);
+    outline: none; transition: border-color .15s, box-shadow .15s; width: 260px;
+  }
+  input[type="text"]:focus { border-color: var(--ring); box-shadow: 0 0 0 3px hsl(199 89% 48% / .18); }
+  .alert {
+    display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px;
+    font-size: 14px; margin-top: 8px;
+  }
+  .alert.info { background: var(--secondary); color: var(--secondary-fg); }
+  .alert.err { background: hsl(0 72% 96%); color: var(--destructive); }
+  html[data-mode="dark"] .alert.err { background: hsl(0 40% 15%); }
+  footer { text-align: center; color: var(--muted-fg); font-size: 13px; padding-top: 48px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; background: var(--secondary); color: var(--secondary-fg); padding: 2px 7px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><div class="mark">❄</div> blancski <span class="pkg">@blancski/ui</span></div>
+  <nav>
+    <a>Docs</a><a>Components</a><a>Palettes</a><a>GitHub</a>
+    <label class="toggle" onclick="toggleMode()">
+      <span id="modeLabel">Dark</span><span class="switch"></span>
+    </label>
+  </nav>
+</header>
+
+<div class="hero">
+  <span class="eyebrow">v2 · Alpine winter</span>
+  <h1>Components with a <em>glacier</em> edge.</h1>
+  <p>blancski is the fleet's design system — powder-white surfaces in the light, ice-cyan over deep slate after dark. AA contrast in both modes, zero API changes from blancski.</p>
+  <div class="cta">
+    <button class="btn btn-primary">Get started</button>
+    <button class="btn btn-ghost">View palettes</button>
+  </div>
+</div>
+
+<section>
+  <h2>Buttons</h2>
+  <div class="row">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-secondary">Secondary</button>
+    <button class="btn btn-ghost">Ghost</button>
+    <button class="btn btn-destructive">Delete</button>
+  </div>
+
+  <h2>Cards</h2>
+  <div class="grid">
+    <div class="card"><div class="icon">◉</div><h3>Wizard / Stepper</h3><p>Multi-step flows with progress, back-nav, and per-step validation. <span class="badge ok">stable</span></p></div>
+    <div class="card"><div class="icon">⏱</div><h3>TimeRangeInput</h3><p>Paired pickers with overlap guard for scheduling surfaces. <span class="badge ok">stable</span></p></div>
+    <div class="card"><div class="icon">▤</div><h3>Kanban board</h3><p>Drag-and-drop lanes with agent-assignee avatars. <span class="badge warn">beta</span></p></div>
+  </div>
+
+  <h2>Forms &amp; feedback</h2>
+  <div class="row" style="margin-bottom:10px">
+    <input type="text" placeholder="Search components…" id="q" oninput="filterCards(this.value)">
+    <span style="font-size:13px;color:var(--muted-fg)" id="count">3 components</span>
+  </div>
+  <div class="alert info">ℹ Heads up — type in the search box to filter the cards above.</div>
+  <div class="alert err" style="margin-top:8px">⚠ Connection to the board was lost — retrying in 30s.</div>
+
+  <h2>Install</h2>
+  <p style="font-size:14px;color:var(--muted-fg)">Nothing changes for consumers:</p>
+  <p style="margin-top:8px"><code>npm i @blancski/ui</code></p>
+</section>
+
+<footer>Frost palette mockup — blancski rebrand, option 2 · toggle lives the light/dark pair</footer>
+
+<script>
+function toggleMode() {
+  const h = document.documentElement;
+  h.dataset.mode = h.dataset.mode === 'dark' ? 'light' : 'dark';
+  document.getElementById('modeLabel').textContent = h.dataset.mode === 'dark' ? 'Dark' : 'Light';
+}
+function filterCards(v) {
+  const cards = document.querySelectorAll('.grid .card');
+  let n = 0;
+  cards.forEach(c => {
+    const hit = c.textContent.toLowerCase().includes(v.toLowerCase());
+    c.style.display = hit ? '' : 'none'; if (hit) n++;
+  });
+  document.getElementById('count').textContent = n + (n === 1 ? ' component' : ' components');
+}
+</script>
+</body>
+</html>

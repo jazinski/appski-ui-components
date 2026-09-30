@@ -1,16 +1,16 @@
 import { create } from '@storybook/theming/create';
 
 /**
- * Unified dark theme for Appski UI Components Storybook
+ * Unified dark theme for Blancski UI Components Storybook
  * Used by both manager (sidebar/UI) and preview (docs/canvas)
  * Last updated: 2026-01-25 - Testing cache purge
  */
-export const appskiDarkTheme = create({
+export const blancskiDarkTheme = create({
   base: 'dark',
 
   // Brand
-  brandTitle: 'Appski',
-  brandUrl: 'https://ui.appski.me',
+  brandTitle: 'Blancski',
+  brandUrl: 'https://ui.blancski.me',
   brandImage: '/logo-dark.png',
   brandTarget: '_self',
 
@@ -56,4 +56,4 @@ export const appskiDarkTheme = create({
   gridCellSize: 12,
 });
 
-export default appskiDarkTheme;
+export default blancskiDarkTheme;
