@@ -232,7 +232,7 @@ jobs:
 
       - name: Pull latest Docker image and restart service
         run: |
-          echo "🔄 Deploying Appski UI Components Storybook..."
+          echo "🔄 Deploying Blancski UI Components Storybook..."
           echo ""
           echo "📦 Pulling latest Docker image..."
           cd /opt/appski-ui-components
@@ -253,7 +253,7 @@ jobs:
 
           echo ""
           echo "🔍 Checking status..."
-          docker ps | grep appski-ui || true
+          docker ps | grep blancski-ui || true
 
           echo ""
           echo "✅ Testing endpoint..."

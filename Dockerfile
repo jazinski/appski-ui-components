@@ -25,7 +25,7 @@ EXPOSE 80
 
 # Labels for metadata
 LABEL org.opencontainers.image.source="https://github.com/jazinski/appski-ui-components"
-LABEL org.opencontainers.image.description="Appski UI Component Library - Storybook Documentation"
+LABEL org.opencontainers.image.description="Blancski UI Component Library - Storybook Documentation"
 LABEL org.opencontainers.image.licenses="MIT"
 
 # Switch to non-root user

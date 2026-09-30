@@ -23,7 +23,7 @@ lines, content area (node or render-prop), and Back/Next footer navigation.
 Completed steps are clickable to jump back.
 
 \`\`\`tsx
-import { Wizard } from '@appski/ui';
+import { Wizard } from '@blancski/ui';
 
 <Wizard
   steps={[{ id: 'a', label: 'Account' }, { id: 'b', label: 'Profile' }]}

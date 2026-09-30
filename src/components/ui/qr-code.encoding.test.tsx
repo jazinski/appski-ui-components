@@ -4,7 +4,7 @@ import { createElement } from 'react';
 import { QrCode } from './qr-code';
 
 /**
- * APPSKI-UI-28 — real-encoding checks: renders the UNMOCKED component through
+ * BLANCSKI-UI-28 — real-encoding checks: renders the UNMOCKED component through
  * react-dom/server so a genuine QR matrix (not a mocked stub) must be produced.
  * qrcode.react draws all modules as subpaths of a single <path>; we count the
  * M commands in the path data.

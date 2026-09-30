@@ -26,7 +26,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@appski/ui';
+} from '@blancski/ui';
 
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">

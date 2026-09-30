@@ -1,5 +1,5 @@
 {
-  "name": "@appski/ui",
+  "name": "@blancski/ui",
   "version": "0.1.7",
   "description": "Production-ready React UI component library with 46 components, Tailwind CSS v4, TypeScript, and full Storybook documentation. Built on Shadcn/ui patterns and Radix UI primitives.",
   "type": "module",
@@ -67,7 +67,7 @@
     "zod"
   ],
   "author": {
-    "name": "Appski",
+    "name": "Blancski",
     "url": "https://github.com/jazinski"
   },
   "license": "MIT",

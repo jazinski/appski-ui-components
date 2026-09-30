@@ -63,7 +63,7 @@ const notifications: NotificationItem[] = [
   },
   {
     id: '3',
-    title: 'New comment on APPSKI-UI-12',
+    title: 'New comment on BLANCSKI-UI-12',
     timestamp: '3h ago',
     unread: false,
   },

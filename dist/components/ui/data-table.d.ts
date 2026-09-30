@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
-
+import * as React from 'react';
 export interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
@@ -31,6 +31,14 @@ export interface DataTableProps<TData, TValue> {
     onRowClick?: (row: TData) => void;
     /** Show loading state */
     loading?: boolean;
+    /** Enable virtualized row rendering for large datasets (1k+ rows) */
+    virtualization?: boolean;
+    /** Fixed row height in pixels used for virtualization math (required when virtualization is on) */
+    virtualRowHeight?: number;
+    /** Max height of the scrollable table body in pixels when virtualization is on */
+    virtualMaxHeight?: number;
+    /** Number of extra rows rendered above/below the viewport when virtualization is on */
+    virtualOverscan?: number;
 }
 /**
  * DataTable - A powerful, accessible data table built with TanStack Table
@@ -42,6 +50,7 @@ export interface DataTableProps<TData, TValue> {
  * - Row selection with checkboxes
  * - Column visibility toggle
  * - Sticky headers
+ * - Virtualized row rendering for large datasets (1k+ rows)
  * - Fully accessible with ARIA attributes
  * - Dark mode support
  * - Responsive design
@@ -75,7 +84,7 @@ export interface DataTableProps<TData, TValue> {
  * />
  * ```
  */
-export declare function DataTable<TData, TValue>({ columns, data, searchable, searchPlaceholder, pagination, pageSize, pageSizeOptions, enableRowSelection, onRowSelectionChange, enableColumnVisibility, emptyMessage, className, stickyHeader, getRowClassName, onRowClick, loading, }: DataTableProps<TData, TValue>): import("react/jsx-runtime").JSX.Element;
+export declare function DataTable<TData, TValue>({ columns, data, searchable, searchPlaceholder, pagination, pageSize, pageSizeOptions, enableRowSelection, onRowSelectionChange, enableColumnVisibility, emptyMessage, className, stickyHeader, getRowClassName, onRowClick, loading, virtualization, virtualRowHeight, virtualMaxHeight, virtualOverscan, }: DataTableProps<TData, TValue>): React.JSX.Element;
 /**
  * Helper function to create a sortable column header
  */

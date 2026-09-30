@@ -1,14 +1,15 @@
 # Color Palettes
 
-Curated light/dark color palettes for `@appski/ui`, built on the library's
+Curated light/dark color palettes for `@blancski/ui`, built on the library's
 existing semantic token system (`src/theme.css`). The default theme is
-unchanged; palettes are opt-in.
+`glacier` (shipped in `src/theme.css`); all other palettes are opt-in.
 
 ## Available palettes
 
 | Palette         | Vibe / intended use                                                        |
 | --------------- | -------------------------------------------------------------------------- |
-| `indigo-slate`  | Refined default family: indigo primary on slate neutrals.                   |
+| `glacier`       | Glacier-cyan primary on arctic slate — the Blancski house style (default).  |
+| `indigo-slate`  | Refined indigo family: indigo primary on slate neutrals (previous default). |
 | `ocean`         | Trustworthy blue/cyan family — dashboards, data-heavy internal tools.       |
 | `forest`        | Calm green family — sustainability, monitoring, "operational" feel.         |
 | `sunset`        | Warm orange/amber family — energy, highlights, consumer-flavored apps.      |
@@ -24,7 +25,7 @@ warning, info, border, input, ring — plus each `*-foreground` pair) in both
 Palettes are plain data + a tiny runtime helper:
 
 ```tsx
-import { palettes, applyPalette } from '@appski/ui/palettes';
+import { palettes, applyPalette } from '@blancski/ui/palettes';
 // or: import { palettes, applyPalette } from './src/palettes';
 
 // On theme init / mode toggle:
@@ -57,6 +58,8 @@ shipped token values on every test run):
 
 | Palette         | Mode  | lowest text | lowest UI |
 | --------------- | ----- | ----------- | --------- |
+| glacier         | light | 4.59        | 4.40      |
+| glacier         | dark  | 4.56        | 4.02      |
 | indigo-slate    | light | 4.80        | 4.58      |
 | indigo-slate    | dark  | 4.56        | 3.65      |
 | ocean           | light | 4.80        | 4.58      |

@@ -35,7 +35,7 @@ export interface DialogProps {
  *   </DialogContent>
  * </Dialog>
  */
-declare function Dialog({ open: controlledOpen, defaultOpen, onOpenChange, children, }: DialogProps): import("react/jsx-runtime").JSX.Element;
+declare function Dialog({ open: controlledOpen, defaultOpen, onOpenChange, children, }: DialogProps): React.JSX.Element;
 export interface DialogTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     /** Render as child element instead of button */
     asChild?: boolean;
@@ -45,7 +45,7 @@ interface DialogPortalProps {
     children: React.ReactNode;
     container?: HTMLElement | undefined;
 }
-declare function DialogPortal({ children, container }: DialogPortalProps): import("react/jsx-runtime").JSX.Element | null;
+declare function DialogPortal({ children, container }: DialogPortalProps): React.JSX.Element | null;
 export type DialogOverlayProps = React.HTMLAttributes<HTMLDivElement>;
 declare const DialogOverlay: React.ForwardRefExoticComponent<DialogOverlayProps & React.RefAttributes<HTMLDivElement>>;
 export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof dialogContentVariants> {

@@ -36,7 +36,7 @@ type Story = StoryObj<typeof CopyButton>;
 
 export const Default: Story = {
   args: {
-    value: 'npm install @appski/ui',
+    value: 'npm install @blancski/ui',
   },
 };
 
@@ -71,7 +71,7 @@ export const Small: Story = {
 
 export const LargeWithShortcut: Story = {
   args: {
-    value: 'APPSKI-UI-12',
+    value: 'BLANCSKI-UI-12',
     size: 'lg',
     shortcutHint: 'K',
   },

@@ -1,6 +1,6 @@
-# Contributing to @appski/ui
+# Contributing to @blancski/ui
 
-Thank you for your interest in contributing to @appski/ui! This document
+Thank you for your interest in contributing to @blancski/ui! This document
 provides guidelines and instructions for contributing to the project.
 
 ## Table of Contents
@@ -32,8 +32,8 @@ professional in all interactions.
 1. Fork the repository on GitHub
 2. Clone your fork locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/appski-ui-components.git
-   cd appski-ui-components
+   git clone https://github.com/YOUR_USERNAME/blancski-ui-components.git
+   cd blancski-ui-components
    ```
 
 3. Install dependencies:
@@ -496,5 +496,5 @@ We use:
 
 ## Thank You!
 
-Thank you for contributing to @appski/ui! Your contributions help make this
+Thank you for contributing to @blancski/ui! Your contributions help make this
 library better for everyone.

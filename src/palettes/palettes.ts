@@ -1,5 +1,5 @@
 /**
- * Curated color palettes for @appski/ui — light and dark mode pairs.
+ * Curated color palettes for @blancski/ui — light and dark mode pairs.
  *
  * Every palette uses the same semantic token names as `src/theme.css`, so a
  * palette can be applied by overriding the CSS custom properties (see
@@ -45,9 +45,72 @@ export interface Palette {
   dark: PaletteTokens;
 }
 
-/** Default palette family (refined). */
+/**
+ * Default palette — "Glacier": glacier-cyan primary on arctic slate neutrals.
+ * The Blancski house style; also shipped as the default in `src/theme.css`.
+ */
+export const glacier: Palette = {
+  description:
+    'Glacier-cyan primary on arctic slate neutrals — the Blancski house style (default).',
+  light: {
+    background: '200 30% 98%',
+    foreground: '205 32% 24%',
+    card: '0 0% 100%',
+    'card-foreground': '205 32% 24%',
+    popover: '0 0% 100%',
+    'popover-foreground': '205 32% 24%',
+    primary: '191 90% 32%',
+    'primary-foreground': '0 0% 100%',
+    secondary: '189 70% 93%',
+    'secondary-foreground': '192 85% 26%',
+    muted: '200 25% 95%',
+    'muted-foreground': '205 25% 30%',
+    accent: '189 70% 93%',
+    'accent-foreground': '191 90% 28%',
+    destructive: '0 72% 51%',
+    'destructive-foreground': '0 0% 100%',
+    success: '142 76% 28%',
+    'success-foreground': '0 0% 100%',
+    warning: '25 95% 53%',
+    'warning-foreground': '222 47% 11%',
+    info: '217 91% 50%',
+    'info-foreground': '0 0% 100%',
+    border: '200 22% 87%',
+    input: '200 22% 87%',
+    ring: '191 90% 32%',
+  },
+  dark: {
+    background: '206 45% 8%',
+    foreground: '190 30% 96%',
+    card: '204 35% 13%',
+    'card-foreground': '190 30% 96%',
+    popover: '204 35% 13%',
+    'popover-foreground': '190 30% 96%',
+    primary: '189 90% 60%',
+    'primary-foreground': '206 60% 9%',
+    secondary: '204 30% 16%',
+    'secondary-foreground': '190 35% 80%',
+    muted: '204 30% 16%',
+    'muted-foreground': '205 20% 80%',
+    accent: '204 30% 16%',
+    'accent-foreground': '189 85% 70%',
+    destructive: '0 74% 53%',
+    'destructive-foreground': '0 0% 100%',
+    success: '142 76% 28%',
+    'success-foreground': '0 0% 100%',
+    warning: '38 92% 50%',
+    'warning-foreground': '222 47% 11%',
+    info: '217 91% 50%',
+    'info-foreground': '0 0% 100%',
+    border: '204 28% 22%',
+    input: '204 28% 22%',
+    ring: '189 90% 62%',
+  },
+};
+
+/** Previous default palette family (refined). */
 export const indigo_slate: Palette = {
-  description: 'Indigo primary on slate neutrals — the house style (refined default; brighter dark-mode primary for AA).',
+  description: 'Indigo primary on slate neutrals — the previous default family (brighter dark-mode primary for AA).',
   light: {
     background: '210 20% 98%',
     foreground: '215 25% 27%',
@@ -337,6 +400,7 @@ export const mono: Palette = {
 };
 
 export const palettes = {
+  glacier,
   'indigo-slate': indigo_slate,
   ocean,
   forest,

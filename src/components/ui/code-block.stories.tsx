@@ -83,7 +83,7 @@ function getUserName(user: User): string {
 }`;
 
 const jsonCode = `{
-  "name": "@appski/ui",
+  "name": "@blancski/ui",
   "version": "0.1.0",
   "description": "UI component library",
   "dependencies": {

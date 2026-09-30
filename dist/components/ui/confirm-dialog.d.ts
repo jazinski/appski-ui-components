@@ -34,7 +34,7 @@ export interface ConfirmDialogProps {
  *   loading={isDeleting}
  * />
  */
-export declare function ConfirmDialog({ open, onOpenChange, onConfirm, title, message, confirmText, cancelText, variant, loading, }: ConfirmDialogProps): import("react/jsx-runtime").JSX.Element;
+export declare function ConfirmDialog({ open, onOpenChange, onConfirm, title, message, confirmText, cancelText, variant, loading, }: ConfirmDialogProps): React.JSX.Element;
 export interface UseConfirmDialogOptions {
     title: string;
     message: string;

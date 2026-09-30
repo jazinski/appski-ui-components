@@ -17,5 +17,5 @@ export interface TooltipProps {
  * Tooltip component for displaying contextual information.
  * Uses custom positioning logic to avoid heavy dependencies.
  */
-export declare function Tooltip({ content, children, side, disabled, interactive, className, }: TooltipProps): import("react/jsx-runtime").JSX.Element;
+export declare function Tooltip({ content, children, side, disabled, interactive, className, }: TooltipProps): React.JSX.Element;
 //# sourceMappingURL=tooltip.d.ts.map
