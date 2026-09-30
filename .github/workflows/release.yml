@@ -18,13 +18,25 @@ jobs:
         with:
           clean: true
 
+      - name: Disable sparse-checkout from previous jobs
+        run: |
+          git sparse-checkout disable || true
+          git checkout HEAD -- . || true
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install
+        run: |
+          if [ ! -f package.json ]; then
+            echo "ERROR: package.json not found!"
+            pwd
+            ls -la
+            exit 1
+          fi
+          bun install
 
       - name: Create Release Pull Request or Version
         uses: changesets/action@v1
