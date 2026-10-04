@@ -403,7 +403,7 @@ semantic naming system encourages consistency across your design system.
 ## 🔗 Related Resources
 
 - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs/v4-beta)
-- [Storybook - @blancski/ui](https://ui.appski.me)
+- [Storybook - @blancski/ui](https://ui.blancski.com)
 - [GitHub Repository](https://github.com/jazinski/appski-ui-components)
 
 ---

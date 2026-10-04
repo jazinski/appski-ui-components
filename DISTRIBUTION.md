@@ -282,7 +282,7 @@ bun add @blancski/ui
 2. **Build:** Run `bun run build` when ready
 3. **Tag:** Create Git tag: `git tag v0.1.0 && git push --tags`
 4. **Distribute:** Team installs via Git URL with tag
-5. **Storybook:** View docs at https://ui.appski.me (Docker deployment)
+5. **Storybook:** View docs at https://ui.blancski.com (Docker deployment)
 
 ---
 
@@ -300,6 +300,6 @@ bun add @blancski/ui
 
 For questions about using the components:
 
-1. Check Storybook: https://ui.appski.me
+1. Check Storybook: https://ui.blancski.com
 2. View component source code
 3. Check this documentation
