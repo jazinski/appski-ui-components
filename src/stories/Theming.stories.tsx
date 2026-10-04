@@ -252,7 +252,7 @@ export default meta;
  *
  * - [Complete Theming Guide (THEMING.md)](https://github.com/jazinski/appski-ui-components/blob/master/THEMING.md)
  * - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs/v4-beta)
- * - [Component Examples](https://ui.appski.me)
+ * - [Component Examples](https://ui.blancski.com)
  *
  * ---
  *
