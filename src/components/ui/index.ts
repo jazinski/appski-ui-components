@@ -443,3 +443,13 @@ export {
   type SheetDescriptionProps,
   type SheetCloseProps,
 } from './sheet';
+export {
+  Timeline,
+  ActivityFeed,
+  timelineMarkerVariants,
+  type TimelineProps,
+  type TimelineEvent,
+  type TimelineActor,
+  type TimelineTone,
+  type TimelineLabels,
+} from './timeline';
