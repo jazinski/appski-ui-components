@@ -329,6 +329,15 @@ export {
   type DonutChartSegment,
 } from './donut-chart';
 export {
+  Gauge,
+  gaugeVariants,
+  GAUGE_TONE_CLASSES,
+  GAUGE_TONE_CYCLE,
+  type GaugeProps,
+  type GaugeTone,
+  type GaugeThreshold,
+} from './gauge';
+export {
   Sparkline,
   sparklineVariants,
   type SparklineProps,
