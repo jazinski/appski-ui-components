@@ -468,3 +468,20 @@ export {
   type CommentAuthor,
   type CommentThreadLabels,
 } from './comment-thread';
+export { Chip, chipVariants, type ChipProps, type ChipLabels } from './chip';
+export {
+  TagInput,
+  tagInputVariants,
+  type TagInputProps,
+  type TagInputLabels,
+} from './tag-input';
+export {
+  FiltersBar,
+  filtersBarVariants,
+  type FiltersBarProps,
+  type ActiveFilter,
+  type FilterChoice,
+  type FilterSelect,
+  type SavedView,
+  type FiltersBarLabels,
+} from './filters-bar';
