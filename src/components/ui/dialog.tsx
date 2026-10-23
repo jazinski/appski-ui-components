@@ -343,8 +343,8 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
         }
         const firstFocusable = contentRef.current.querySelector(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        ) as HTMLElement | null;
-        if (autoFocusFirst && firstFocusable) {
+        );
+        if (autoFocusFirst && firstFocusable instanceof HTMLElement) {
           firstFocusable.focus();
         } else if (autoFocusFirst) {
           contentRef.current.focus();

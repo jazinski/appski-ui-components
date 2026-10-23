@@ -367,7 +367,7 @@ describe('Dialog', () => {
       const trigger = screen.getByRole('button', { name: 'Open' });
       await user.click(trigger);
       expect(screen.getByRole('dialog')).toBeInTheDocument();
-      await waitFor(() => expect(document.activeElement).toBe(trigger));
+      await waitFor(() => { expect(document.activeElement).toBe(trigger); });
     });
 
     it('focuses the initialFocusRef element when provided', async () => {
@@ -386,7 +386,7 @@ describe('Dialog', () => {
       );
 
       await user.click(screen.getByRole('button', { name: 'Open' }));
-      await waitFor(() => expect(inputRef.current).toHaveFocus());
+      await waitFor(() => { expect(inputRef.current).toHaveFocus(); });
     });
 
     it('lands focus even when rAF ticks are delayed (late mount)', async () => {
@@ -419,10 +419,10 @@ describe('Dialog', () => {
 
         // Flushing the withheld frames must not disturb focus
         act(() => {
-          frameQueue.splice(0).forEach((cb) => cb(0));
+          frameQueue.splice(0).forEach((cb) => { cb(0); });
         });
         act(() => {
-          frameQueue.splice(0).forEach((cb) => cb(0));
+          frameQueue.splice(0).forEach((cb) => { cb(0); });
         });
         expect(dialog.contains(document.activeElement)).toBe(true);
       } finally {
@@ -445,8 +445,7 @@ describe('Dialog', () => {
       );
 
       await user.click(screen.getByRole('button', { name: 'Open' }));
-      await waitFor(() =>
-        expect(screen.getByPlaceholderText('Auto')).toHaveFocus()
+      await waitFor(() => { expect(screen.getByPlaceholderText('Auto')).toHaveFocus(); }
       );
     });
   });
