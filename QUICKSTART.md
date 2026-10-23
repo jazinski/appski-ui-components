@@ -2,7 +2,7 @@
 
 ## Production Deployment to ui.appski.me
 
-This guide will help you deploy the Appski UI Component Library to production
+This guide will help you deploy the Blancski UI Component Library to production
 using **Cloudflare Tunnel** (no reverse proxy needed).
 
 ---
@@ -42,8 +42,8 @@ docker login code-server.jazinski.com
 
 ```bash
 # Create directory for the project
-mkdir -p /opt/appski-ui
-cd /opt/appski-ui
+mkdir -p /opt/blancski-ui
+cd /opt/blancski-ui
 ```
 
 ### 4. Create docker-compose.yml
@@ -101,7 +101,7 @@ docker-compose logs -f
 
 ```bash
 # Check Docker container
-docker ps | grep appski-ui
+docker ps | grep blancski-ui
 
 # Test endpoint locally
 curl http://localhost:3010/health
@@ -119,7 +119,7 @@ curl https://ui.appski.me
 When a new version is released:
 
 ```bash
-cd /opt/appski-ui
+cd /opt/blancski-ui
 
 # Pull latest image
 docker-compose pull
@@ -213,7 +213,7 @@ sudo ufw allow 443/tcp
 sudo systemctl status nginx
 
 # Check if container is running
-docker ps | grep appski-ui
+docker ps | grep blancski-ui
 ```
 
 ---
@@ -259,7 +259,7 @@ docker ps | grep appski-ui
 
 ```bash
 # Backup docker-compose.yml
-sudo cp /opt/appski-ui/docker-compose.yml /opt/appski-ui/docker-compose.yml.backup
+sudo cp /opt/blancski-ui/docker-compose.yml /opt/blancski-ui/docker-compose.yml.backup
 
 # Backup nginx config
 sudo cp /etc/nginx/sites-available/ui.appski.me /root/nginx-backup/
@@ -272,7 +272,7 @@ sudo cp -r /etc/letsencrypt/live/ui.appski.me /root/ssl-backup/
 
 ```bash
 # Stop container
-cd /opt/appski-ui
+cd /opt/blancski-ui
 docker-compose down
 
 # Remove container
@@ -293,38 +293,38 @@ docker-compose up -d
 
 ```bash
 # Create monitoring script
-cat > /opt/appski-ui/monitor.sh <<'EOF'
+cat > /opt/blancski-ui/monitor.sh <<'EOF'
 #!/bin/bash
 
 # Check if container is running
 if ! docker ps | grep -q appski-ui-storybook; then
     echo "Container is down! Restarting..."
-    cd /opt/appski-ui
+    cd /opt/blancski-ui
     docker-compose up -d
-    echo "Container restarted at $(date)" >> /var/log/appski-ui-monitor.log
+    echo "Container restarted at $(date)" >> /var/log/blancski-ui-monitor.log
 fi
 
 # Check health endpoint
 if ! curl -f http://localhost:3010/health &>/dev/null; then
     echo "Health check failed! Restarting container..."
-    cd /opt/appski-ui
+    cd /opt/blancski-ui
     docker-compose restart
-    echo "Health check failed, container restarted at $(date)" >> /var/log/appski-ui-monitor.log
+    echo "Health check failed, container restarted at $(date)" >> /var/log/blancski-ui-monitor.log
 fi
 EOF
 
 # Make executable
-chmod +x /opt/appski-ui/monitor.sh
+chmod +x /opt/blancski-ui/monitor.sh
 
 # Add to crontab (check every 5 minutes)
-(crontab -l 2>/dev/null; echo "*/5 * * * * /opt/appski-ui/monitor.sh") | crontab -
+(crontab -l 2>/dev/null; echo "*/5 * * * * /opt/blancski-ui/monitor.sh") | crontab -
 ```
 
 ---
 
 ## 🎉 Success!
 
-Your Appski UI Component Library is now live at: **https://ui.appski.me**
+Your Blancski UI Component Library is now live at: **https://ui.appski.me**
 
 You can now:
 

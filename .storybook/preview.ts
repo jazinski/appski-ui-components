@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react';
-import { appskiDarkTheme } from './theme';
+import { blancskiDarkTheme } from './theme';
 import '../src/styles.css';
 
 const preview: Preview = {
@@ -24,7 +24,7 @@ const preview: Preview = {
       ],
     },
     docs: {
-      theme: appskiDarkTheme, // Use our custom dark theme for docs
+      theme: blancskiDarkTheme, // Use our custom dark theme for docs
     },
     layout: 'padded',
   },

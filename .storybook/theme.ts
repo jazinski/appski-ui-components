@@ -1,22 +1,22 @@
 import { create } from '@storybook/theming/create';
 
 /**
- * Unified dark theme for Appski UI Components Storybook
+ * Unified dark theme for Blancski UI Components Storybook
  * Used by both manager (sidebar/UI) and preview (docs/canvas)
  * Last updated: 2026-01-25 - Testing cache purge
  */
-export const appskiDarkTheme = create({
+export const blancskiDarkTheme = create({
   base: 'dark',
 
   // Brand
-  brandTitle: 'Appski',
+  brandTitle: 'Blancski',
   brandUrl: 'https://ui.appski.me',
   brandImage: '/logo-dark.png',
   brandTarget: '_self',
 
-  // Colors - Using Tailwind slate colors
-  colorPrimary: '#3b82f6', // blue-500
-  colorSecondary: '#60a5fa', // blue-400
+  // Colors - Glacier cyan accents on arctic slate
+  colorPrimary: '#22d3ee', // cyan-400 (glacier)
+  colorSecondary: '#67e8f9', // cyan-300 (glacier light)
 
   // UI backgrounds
   appBg: '#0f172a', // slate-900 - Main app background
@@ -36,15 +36,15 @@ export const appskiDarkTheme = create({
 
   // Toolbar and addons
   barTextColor: '#cbd5e1', // slate-300 - Toolbar text
-  barSelectedColor: '#3b82f6', // blue-500 - Selected item
-  barHoverColor: '#60a5fa', // blue-400 - Hover state
+  barSelectedColor: '#22d3ee', // cyan-400 (glacier)
+  barHoverColor: '#67e8f9', // cyan-300 (glacier light)
   barBg: '#1e293b', // slate-800 - Toolbar background
 
   // Buttons
   buttonBg: '#334155', // slate-700 - Button background
   buttonBorder: '#475569', // slate-600 - Button border
   booleanBg: '#475569', // slate-600 - Boolean toggle background
-  booleanSelectedBg: '#3b82f6', // blue-500 - Boolean toggle selected
+  booleanSelectedBg: '#22d3ee', // cyan-400 (glacier)
 
   // Form inputs
   inputBg: '#1e293b', // slate-800 - Input background
@@ -56,4 +56,4 @@ export const appskiDarkTheme = create({
   gridCellSize: 12,
 });
 
-export default appskiDarkTheme;
+export default blancskiDarkTheme;

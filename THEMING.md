@@ -1,6 +1,6 @@
-# Theming Guide for @appski/ui
+# Theming Guide for @blancski/ui
 
-The @appski/ui component library is **brand-agnostic** and uses a **semantic
+The @blancski/ui component library is **brand-agnostic** and uses a **semantic
 theming system**. This means components reference semantic color names (like
 `primary`, `secondary`, `destructive`) rather than hardcoded color values.
 
@@ -12,7 +12,7 @@ be reused across different brands and design systems.
 
 ## 🎨 Two Theming Systems
 
-@appski/ui uses two complementary theming approaches:
+@blancski/ui uses two complementary theming approaches:
 
 ### 1. HSL Variables (for Component Library Internal Use)
 
@@ -21,7 +21,7 @@ switching:
 
 ```css
 :root {
-  --primary: 239 84% 67%;
+  --primary: 191 90% 32%;
   --primary-foreground: 0 0% 100%;
   /* ... more HSL variables ... */
 }
@@ -34,7 +34,7 @@ These are defined in Tailwind's `@theme` block and generate utility classes like
 
 ```css
 @theme {
-  --color-primary: #6366f1;
+  --color-primary: #08809b;
   --color-primary-foreground: #ffffff;
   /* ... more Tailwind theme variables ... */
 }
@@ -54,38 +54,38 @@ Add these variables to your `src/index.css` (or main CSS file):
 @import "tailwindcss";
 
 @theme {
-  /* @appski/ui Design System - Semantic Colors */
+  /* @blancski/ui Design System - Semantic Colors */
 
   /* Primary colors */
-  --color-primary: #6366f1; /* Main brand color */
+  --color-primary: #08809b; /* Main brand color */
   --color-primary-foreground: #ffffff; /* Text on primary background */
 
   /* Secondary colors */
-  --color-secondary: #e0e8ff; /* Secondary background */
-  --color-secondary-foreground: #828df8; /* Text on secondary background */
+  --color-secondary: #e1f6fa; /* Secondary background */
+  --color-secondary-foreground: #0a647b; /* Text on secondary background */
 
   /* Accent colors */
   --color-accent: #e0e8ff; /* Accent background for hover states */
-  --color-accent-foreground: #6467f2; /* Text on accent background */
+  --color-accent-foreground: #077088; /* Text on accent background */
 
   /* Destructive colors */
   --color-destructive: #ef4343; /* Error/destructive color */
   --color-destructive-foreground: #ffffff; /* Text on destructive background */
 
   /* Neutral colors */
-  --color-background: #f9fafb; /* Page background */
-  --color-foreground: #344256; /* Main text color */
-  --color-muted: #f1f5f9; /* Muted background */
-  --color-muted-foreground: #64748b; /* Muted text color */
+  --color-background: #f8fafb; /* Page background */
+  --color-foreground: #2a4051; /* Main text color */
+  --color-muted: #eff3f5; /* Muted background */
+  --color-muted-foreground: #395060; /* Muted text color */
 
   /* Card colors */
   --color-card: #ffffff; /* Card background */
-  --color-card-foreground: #344256; /* Card text color */
+  --color-card-foreground: #2a4051; /* Card text color */
 
   /* Border and form colors */
-  --color-border: #e1e7ef; /* Border color */
-  --color-input: #e1e7ef; /* Input border color */
-  --color-ring: #6467f2; /* Focus ring color */
+  --color-border: #d9e2e8; /* Border color */
+  --color-input: #d9e2e8; /* Input border color */
+  --color-ring: #08809b; /* Focus ring color */
 
   /* Optional: Primary color scale for extended utilities */
   --color-primary-50: #eef2ff;
@@ -103,47 +103,47 @@ Add these variables to your `src/index.css` (or main CSS file):
 
 /* HSL variables for light/dark mode support */
 :root {
-  --background: 210 20% 98%;
-  --foreground: 215 25% 27%;
+  --background: 200 30% 98%;
+  --foreground: 205 32% 24%;
   --card: 0 0% 100%;
-  --card-foreground: 215 25% 27%;
+  --card-foreground: 205 32% 24%;
   --popover: 0 0% 100%;
-  --popover-foreground: 215 25% 27%;
-  --primary: 239 84% 67%;
+  --popover-foreground: 205 32% 24%;
+  --primary: 191 90% 32%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 226 100% 94%;
-  --secondary-foreground: 234 89% 74%;
-  --muted: 210 40% 96%;
-  --muted-foreground: 215 16% 47%;
-  --accent: 226 100% 94%;
-  --accent-foreground: 239 84% 67%;
+  --secondary: 189 70% 93%;
+  --secondary-foreground: 192 85% 26%;
+  --muted: 200 25% 95%;
+  --muted-foreground: 205 25% 30%;
+  --accent: 189 70% 93%;
+  --accent-foreground: 191 90% 28%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 239 84% 67%;
+  --border: 200 22% 87%;
+  --input: 200 22% 87%;
+  --ring: 191 90% 32%;
 }
 
 .dark {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --card: 215 28% 17%;
-  --card-foreground: 210 40% 98%;
-  --popover: 215 28% 17%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 239 84% 67%;
+  --background: 206 45% 8%;
+  --foreground: 190 30% 96%;
+  --card: 204 35% 13%;
+  --card-foreground: 190 30% 96%;
+  --popover: 204 35% 13%;
+  --popover-foreground: 190 30% 96%;
+  --primary: 191 90% 32%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 226 100% 94%;
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 217 33% 17%;
-  --accent-foreground: 239 84% 67%;
+  --secondary: 204 30% 16%;
+  --secondary-foreground: 190 35% 80%;
+  --muted: 204 30% 16%;
+  --muted-foreground: 205 20% 80%;
+  --accent: 204 30% 16%;
+  --accent-foreground: 191 90% 28%;
   --destructive: 0 63% 31%;
   --destructive-foreground: 210 40% 98%;
-  --border: 217 33% 17%;
-  --input: 217 33% 17%;
-  --ring: 239 84% 67%;
+  --border: 204 28% 22%;
+  --input: 204 28% 22%;
+  --ring: 191 90% 32%;
 }
 
 * {
@@ -191,48 +191,48 @@ These **MUST** be defined in `:root` and `.dark` for light/dark mode support:
 ```css
 :root {
   /* Light mode values */
-  --background: 210 20% 98%;
-  --foreground: 215 25% 27%;
+  --background: 200 30% 98%;
+  --foreground: 205 32% 24%;
   --card: 0 0% 100%;
-  --card-foreground: 215 25% 27%;
+  --card-foreground: 205 32% 24%;
   --popover: 0 0% 100%;
-  --popover-foreground: 215 25% 27%;
-  --primary: 239 84% 67%;
+  --popover-foreground: 205 32% 24%;
+  --primary: 191 90% 32%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 226 100% 94%;
-  --secondary-foreground: 234 89% 74%;
-  --muted: 210 40% 96%;
-  --muted-foreground: 215 16% 47%;
-  --accent: 226 100% 94%;
-  --accent-foreground: 239 84% 67%;
+  --secondary: 189 70% 93%;
+  --secondary-foreground: 192 85% 26%;
+  --muted: 200 25% 95%;
+  --muted-foreground: 205 25% 30%;
+  --accent: 189 70% 93%;
+  --accent-foreground: 191 90% 28%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 239 84% 67%;
+  --border: 200 22% 87%;
+  --input: 200 22% 87%;
+  --ring: 191 90% 32%;
 }
 
 .dark {
   /* Dark mode values */
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --card: 215 28% 17%;
-  --card-foreground: 210 40% 98%;
-  --popover: 215 28% 17%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 239 84% 67%;
+  --background: 206 45% 8%;
+  --foreground: 190 30% 96%;
+  --card: 204 35% 13%;
+  --card-foreground: 190 30% 96%;
+  --popover: 204 35% 13%;
+  --popover-foreground: 190 30% 96%;
+  --primary: 191 90% 32%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 226 100% 94%;
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 217 33% 17%;
-  --accent-foreground: 239 84% 67%;
+  --secondary: 204 30% 16%;
+  --secondary-foreground: 190 35% 80%;
+  --muted: 204 30% 16%;
+  --muted-foreground: 205 20% 80%;
+  --accent: 204 30% 16%;
+  --accent-foreground: 191 90% 28%;
   --destructive: 0 63% 31%;
   --destructive-foreground: 210 40% 98%;
-  --border: 217 33% 17%;
-  --input: 217 33% 17%;
-  --ring: 239 84% 67%;
+  --border: 204 28% 22%;
+  --input: 204 28% 22%;
+  --ring: 191 90% 32%;
 }
 ```
 
@@ -240,7 +240,7 @@ These **MUST** be defined in `:root` and `.dark` for light/dark mode support:
 
 ## 🎨 Customizing Colors for Your Brand
 
-The example values above use the Appski indigo color palette. **You can and
+The example values above use the Blancski indigo color palette. **You can and
 should change these** to match your brand:
 
 ### Example: Blue Brand
@@ -376,7 +376,7 @@ Both are necessary for the complete theming system to work.
 
 For Tailwind theme variables (`@theme`), yes! You can use:
 
-- Hex: `--color-primary: #6366f1;`
+- Hex: `--color-primary: #08809b;`
 - RGB: `--color-primary: rgb(99 102 241);`
 - oklch: `--color-primary: oklch(62% 0.21 264);`
 
@@ -403,7 +403,7 @@ semantic naming system encourages consistency across your design system.
 ## 🔗 Related Resources
 
 - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs/v4-beta)
-- [Storybook - @appski/ui](https://ui.appski.me)
+- [Storybook - @blancski/ui](https://ui.appski.me)
 - [GitHub Repository](https://github.com/jazinski/appski-ui-components)
 
 ---
@@ -414,7 +414,7 @@ If you encounter theming issues:
 
 1. Verify all required variables are defined in your `@theme` block
 2. Check that HSL variables are defined in `:root` and `.dark`
-3. Ensure your Tailwind build process includes the `@appski/ui` components
+3. Ensure your Tailwind build process includes the `@blancski/ui` components
 4. Check the browser console for CSS variable errors
 5. Open an issue on
    [GitHub](https://github.com/jazinski/appski-ui-components/issues)

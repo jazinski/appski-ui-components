@@ -1,4 +1,4 @@
-# Appski UI Components - Production Deployment Summary
+# Blancski UI Components - Production Deployment Summary
 
 ## ✅ Successfully Deployed!
 
@@ -48,7 +48,7 @@ services:
 ```bash
 # Check status
 sudo systemctl status appski-ui-storybook
-docker ps | grep appski-ui
+docker ps | grep blancski-ui
 curl http://localhost:6606
 
 # Update to latest version

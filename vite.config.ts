@@ -25,7 +25,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'AppskiUI',
+      name: 'BlancskiUI',
       formats: ['es', 'cjs'],
       fileName: (format) => `index.${format === 'es' ? 'es' : 'cjs'}.js`,
     },

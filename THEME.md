@@ -115,7 +115,7 @@ All theme tokens are defined in `src/theme.css`:
 
   .dark {
     /* Dark mode values */
-    --muted-foreground: 215 20% 65%;
+    --muted-foreground: 205 20% 80%;
   }
 }
 ```
@@ -126,7 +126,7 @@ Colors use HSL format without the `hsl()` wrapper:
 
 ```css
 /* ✅ CORRECT */
---primary: 239 84% 67%;
+--primary: 191 90% 32%;
 
 /* ❌ WRONG */
 --primary: hsl(239, 84%, 67%);

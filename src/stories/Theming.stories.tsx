@@ -14,9 +14,9 @@ const meta: Meta = {
 export default meta;
 
 /**
- * # Theming Guide for @appski/ui
+ * # Theming Guide for @blancski/ui
  *
- * The @appski/ui component library is **brand-agnostic** and uses a **semantic theming system**.
+ * The @blancski/ui component library is **brand-agnostic** and uses a **semantic theming system**.
  * Components reference semantic color names (like `primary`, `secondary`, `destructive`) rather than hardcoded color values.
  *
  * **Your application defines what these semantic names mean** by providing color values in your Tailwind configuration.
@@ -25,7 +25,7 @@ export default meta;
  *
  * ## 🎨 Two Theming Systems
  *
- * @appski/ui uses two complementary theming approaches:
+ * @blancski/ui uses two complementary theming approaches:
  *
  * ### 1. HSL Variables (for Component Library Internal Use)
  *
@@ -63,7 +63,7 @@ export default meta;
  * @import "tailwindcss";
  *
  * @theme {
- *   // @appski/ui Design System - Semantic Colors
+ *   // @blancski/ui Design System - Semantic Colors
  *
  *   // Primary colors
  *   --color-primary: #6366f1;
@@ -179,7 +179,7 @@ export default meta;
  *
  * ## 🎨 Customizing for Your Brand
  *
- * The example values use Appski's indigo palette. **Change these to match your brand:**
+ * The example values use the glacier palette (the Blancski default). **Change these to match your brand:**
  *
  * ### Example: Blue Brand
  *
@@ -250,7 +250,7 @@ export default meta;
  *
  * ## 📚 Additional Resources
  *
- * - [Complete Theming Guide (THEMING.md)](https://github.com/jazinski/appski-ui-components/blob/main/THEMING.md)
+ * - [Complete Theming Guide (THEMING.md)](https://github.com/jazinski/appski-ui-components/blob/master/THEMING.md)
  * - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs/v4-beta)
  * - [Component Examples](https://ui.appski.me)
  *
@@ -259,7 +259,7 @@ export default meta;
  * ## 💡 Need Help?
  *
  * 1. Check that all variables are defined in `@theme` and `:root`
- * 2. Verify Tailwind includes `@appski/ui` components in build
+ * 2. Verify Tailwind includes `@blancski/ui` components in build
  * 3. Open an issue: [GitHub Issues](https://github.com/jazinski/appski-ui-components/issues)
  */
 export const ThemingGuide = () => null;

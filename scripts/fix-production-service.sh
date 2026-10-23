@@ -4,7 +4,7 @@
 
 set -e
 
-echo "🔧 Updating Appski UI Storybook systemd service..."
+echo "🔧 Updating Blancski UI Storybook systemd service..."
 echo ""
 
 # Backup existing service file
@@ -15,7 +15,7 @@ sudo cp /etc/systemd/system/appski-ui-storybook.service /etc/systemd/system/apps
 echo "✏️  Creating updated service file..."
 sudo tee /etc/systemd/system/appski-ui-storybook.service > /dev/null <<'EOF'
 [Unit]
-Description=Appski UI Component Library Storybook
+Description=Blancski UI Component Library Storybook
 Requires=docker.service
 After=docker.service
 
@@ -50,7 +50,7 @@ sudo systemctl status appski-ui-storybook.service --no-pager -l
 
 echo ""
 echo "🐳 Checking Docker container..."
-docker ps | grep appski-ui
+docker ps | grep blancski-ui
 
 echo ""
 echo "🎉 Done! The service now uses docker-compose.prod.yml with :latest tag from registry."

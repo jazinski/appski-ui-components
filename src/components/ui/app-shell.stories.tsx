@@ -97,7 +97,7 @@ export const Default: Story = {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500">
             <span className="font-bold text-white">A</span>
           </div>
-          <span className="text-lg font-semibold text-white">Appski</span>
+          <span className="text-lg font-semibold text-white">Blancski</span>
         </div>
       }
       sidebarFooter={<UserMenu {...userMenuProps} />}
@@ -115,7 +115,7 @@ export const WithHeader: Story = {
       sidebarLogo={
         <div className="flex items-center gap-3 px-3 py-4">
           <div className="h-8 w-8 rounded-lg bg-blue-500" />
-          <span className="text-lg font-semibold text-white">Appski</span>
+          <span className="text-lg font-semibold text-white">Blancski</span>
         </div>
       }
       sidebarFooter={<UserMenu {...userMenuProps} />}
@@ -176,7 +176,7 @@ export const ControlledSidebar: Story = {
           sidebarLogo={
             <div className="flex items-center gap-3 px-3 py-4">
               <div className="h-8 w-8 rounded-lg bg-blue-500" />
-              <span className="font-semibold text-white">Appski</span>
+              <span className="font-semibold text-white">Blancski</span>
             </div>
           }
           sidebarFooter={<UserMenu {...userMenuProps} />}
@@ -230,7 +230,7 @@ export const WithSections: Story = {
         sidebarLogo={
           <div className="flex items-center gap-3 px-3 py-4">
             <div className="h-8 w-8 rounded-lg bg-blue-500" />
-            <span className="font-semibold text-white">Appski</span>
+            <span className="font-semibold text-white">Blancski</span>
           </div>
         }
         sidebarFooter={<UserMenu {...userMenuProps} />}
@@ -249,7 +249,7 @@ export const WithUserStatus: Story = {
       sidebarLogo={
         <div className="flex items-center gap-3 px-3 py-4">
           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600" />
-          <span className="font-semibold text-white">Appski</span>
+          <span className="font-semibold text-white">Blancski</span>
         </div>
       }
       sidebarFooter={<UserMenu {...userMenuProps} avatarStatus="online" />}
@@ -267,7 +267,7 @@ export const EmptyState: Story = {
       sidebarLogo={
         <div className="flex items-center gap-3 px-3 py-4">
           <div className="h-8 w-8 rounded-lg bg-blue-500" />
-          <span className="font-semibold text-white">Appski</span>
+          <span className="font-semibold text-white">Blancski</span>
         </div>
       }
       sidebarFooter={<UserMenu {...userMenuProps} />}
@@ -299,7 +299,7 @@ export const MobileView: Story = {
       sidebarLogo={
         <div className="flex items-center gap-3 px-3 py-4">
           <div className="h-8 w-8 rounded-lg bg-blue-500" />
-          <span className="font-semibold text-white">Appski</span>
+          <span className="font-semibold text-white">Blancski</span>
         </div>
       }
       sidebarFooter={<UserMenu {...userMenuProps} />}
@@ -358,7 +358,7 @@ export const WithCollapsedInteractive: Story = {
         sidebarLogo={
           <div className="flex items-center gap-3">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600" />
-            {!collapsed && <span className="font-semibold text-white">Appski</span>}
+            {!collapsed && <span className="font-semibold text-white">Blancski</span>}
           </div>
         }
         sidebarFooter={<UserMenu {...userMenuProps} avatarStatus="online" />}

@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitest/config';
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
@@ -8,10 +9,6 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, './src'),
     },
-    conditions: ['development'],
-  },
-  define: {
-    'process.env.NODE_ENV': JSON.stringify('development'),
   },
   test: {
     globals: true,

@@ -262,6 +262,31 @@ export const StickyHeader: Story = {
   },
 };
 
+export const Virtualized: Story = {
+  args: {
+    columns: selectableColumns,
+    data: generateUsers(1000),
+    searchable: true,
+    searchPlaceholder: 'Search 1,000 users...',
+    enableRowSelection: true,
+    virtualization: true,
+    virtualRowHeight: 48,
+    virtualMaxHeight: 500,
+    pagination: false,
+    onRowSelectionChange: (rows) => {
+      console.log('Selected rows:', rows);
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Virtualized table rendering 1,000 rows. Only the visible window of rows is mounted in the DOM; sorting, selection, and the sticky header keep working as usual.',
+      },
+    },
+  },
+};
+
 export const DarkMode: Story = {
   args: {
     columns: selectableColumns,

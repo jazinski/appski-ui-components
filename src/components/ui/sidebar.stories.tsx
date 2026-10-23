@@ -371,13 +371,13 @@ export const FullExample: Story = {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white">
                 A
               </div>
-              <span className="text-lg font-semibold text-white">Appski</span>
+              <span className="text-lg font-semibold text-white">Blancski</span>
             </div>
           }
           footer={
             <UserMenu
               name="Christopher Wilson"
-              email="chris@appski.com"
+              email="chris@blancski.com"
               avatarSrc="https://i.pravatar.cc/150?img=14"
               avatarStatus="online"
               onProfileClick={() => {
@@ -483,7 +483,7 @@ export const CollapsedInteractive: Story = {
           logo={
             <div className="flex items-center gap-3">
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600" />
-              {!collapsed && <span className="font-semibold text-white">Appski</span>}
+              {!collapsed && <span className="font-semibold text-white">Blancski</span>}
             </div>
           }
           footer={

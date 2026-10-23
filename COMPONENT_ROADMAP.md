@@ -1,6 +1,6 @@
 # Component Implementation Roadmap
 
-This document tracks the progress of building the Appski UI component library
+This document tracks the progress of building the Blancski UI component library
 based on requirements from the mcp-jazinski-dev project.
 
 ## Overview

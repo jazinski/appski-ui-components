@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 declare const metricCardVariants: (props?: ({
-    variant?: "default" | "emerald" | "blue" | "purple" | "amber" | "rose" | null | undefined;
+    variant?: "default" | "blue" | "purple" | "emerald" | "amber" | "rose" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export interface MetricCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'loading'>, VariantProps<typeof metricCardVariants> {
     /** The icon to display */
