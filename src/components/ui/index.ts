@@ -453,3 +453,18 @@ export {
   type TimelineTone,
   type TimelineLabels,
 } from './timeline';
+export {
+  KanbanBoard,
+  type KanbanBoardProps,
+  type KanbanCard,
+  type KanbanColumn,
+  type KanbanCardMove,
+  type KanbanCardLabels,
+} from './kanban-board';
+export {
+  CommentThread,
+  type CommentThreadProps,
+  type ThreadComment,
+  type CommentAuthor,
+  type CommentThreadLabels,
+} from './comment-thread';
