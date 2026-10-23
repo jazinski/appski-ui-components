@@ -1,5 +1,4 @@
 import { ColumnDef } from '@tanstack/react-table';
-import * as React from 'react';
 export interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
@@ -84,7 +83,7 @@ export interface DataTableProps<TData, TValue> {
  * />
  * ```
  */
-export declare function DataTable<TData, TValue>({ columns, data, searchable, searchPlaceholder, pagination, pageSize, pageSizeOptions, enableRowSelection, onRowSelectionChange, enableColumnVisibility, emptyMessage, className, stickyHeader, getRowClassName, onRowClick, loading, virtualization, virtualRowHeight, virtualMaxHeight, virtualOverscan, }: DataTableProps<TData, TValue>): React.JSX.Element;
+export declare function DataTable<TData, TValue>({ columns, data, searchable, searchPlaceholder, pagination, pageSize, pageSizeOptions, enableRowSelection, onRowSelectionChange, enableColumnVisibility, emptyMessage, className, stickyHeader, getRowClassName, onRowClick, loading, virtualization, virtualRowHeight, virtualMaxHeight, virtualOverscan, }: DataTableProps<TData, TValue>): import("react/jsx-runtime").JSX.Element;
 /**
  * Helper function to create a sortable column header
  */
