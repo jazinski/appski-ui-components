@@ -45,7 +45,7 @@ const dropdownContentVariants = cva(
 );
 
 const dropdownItemVariants = cva(
-  'relative flex cursor-pointer select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-slate-100 dark:focus:bg-slate-700',
+  'relative flex cursor-pointer select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-[color,background-color,transform] duration-100 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 focus:bg-slate-100 dark:focus:bg-slate-700',
   {
     variants: {
       variant: {

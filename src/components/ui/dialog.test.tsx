@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   Dialog,
@@ -11,6 +11,13 @@ import {
   DialogDescription,
   DialogClose,
 } from './dialog';
+
+// The dialog stays mounted briefly after close so exit animations can play.
+async function expectDialogRemoved() {
+  await waitFor(() => { expect(screen.queryByRole('dialog')).not.toBeInTheDocument(); }, {
+    timeout: 1000,
+  });
+}
 
 describe('Dialog', () => {
   describe('Basic Rendering', () => {
@@ -136,7 +143,7 @@ describe('Dialog', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
 
       await user.click(screen.getByRole('button', { name: 'Close' }));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
 
     it('closes when ESC key is pressed', async () => {
@@ -155,7 +162,7 @@ describe('Dialog', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
 
       await user.keyboard('{Escape}');
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
 
     it('does not close on ESC when closeOnEscape is false', async () => {
@@ -190,7 +197,7 @@ describe('Dialog', () => {
 
       await user.click(screen.getByRole('button', { name: 'Open' }));
       await user.click(screen.getByRole('button', { name: 'Cancel' }));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
   });
 
@@ -411,7 +418,7 @@ describe('Dialog', () => {
 
       await user.click(screen.getByRole('button', { name: 'Open' }));
       await user.click(screen.getByRole('button', { name: 'Custom Close' }));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
   });
 

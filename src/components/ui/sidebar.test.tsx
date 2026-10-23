@@ -210,7 +210,7 @@ describe('Sidebar', () => {
     expect(overlay).toBeInTheDocument();
 
     if (overlay) {
-      await user.click(overlay as HTMLElement);
+      await user.click(overlay);
       expect(onOpenChange).toHaveBeenCalledWith(false);
     }
   });
@@ -439,7 +439,7 @@ describe('Sidebar - Collapse Functionality', () => {
       addEventListener: vi.fn(),
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
-    })) as unknown as typeof window.matchMedia;
+    }));
   };
 
   beforeEach(() => {

@@ -3,8 +3,8 @@ import * as React from 'react';
 export interface DropdownContextValue {
     open: boolean;
     setOpen: (open: boolean) => void;
-    triggerRef: React.RefObject<HTMLElement>;
-    contentRef: React.RefObject<HTMLDivElement>;
+    triggerRef: React.RefObject<HTMLElement | null>;
+    contentRef: React.RefObject<HTMLDivElement | null>;
 }
 export interface DropdownSubmenuContextValue {
     open: boolean;
