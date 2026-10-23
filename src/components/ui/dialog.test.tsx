@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   Dialog,
@@ -387,6 +387,47 @@ describe('Dialog', () => {
 
       await user.click(screen.getByRole('button', { name: 'Open' }));
       await waitFor(() => expect(inputRef.current).toHaveFocus());
+    });
+
+    it('lands focus even when rAF ticks are delayed (late mount)', async () => {
+      // Withhold every frame: focus must not depend on rAF firing at all,
+      // and must still be inside the content after delayed ticks flush.
+      const frameQueue: FrameRequestCallback[] = [];
+      vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => {
+        frameQueue.push(cb);
+        return frameQueue.length;
+      });
+      vi.stubGlobal('cancelAnimationFrame', vi.fn());
+      const user = userEvent.setup();
+
+      try {
+        render(
+          <Dialog>
+            <DialogTrigger>Open</DialogTrigger>
+            <DialogContent>
+              <DialogTitle>Test</DialogTitle>
+              <input placeholder="Name" />
+            </DialogContent>
+          </Dialog>
+        );
+
+        await user.click(screen.getByRole('button', { name: 'Open' }));
+        const dialog = screen.getByRole('dialog');
+        // No frame has fired, yet the commit-time ref callback already moved
+        // focus inside — a late mount cannot lose the race anymore.
+        expect(dialog.contains(document.activeElement)).toBe(true);
+
+        // Flushing the withheld frames must not disturb focus
+        act(() => {
+          frameQueue.splice(0).forEach((cb) => cb(0));
+        });
+        act(() => {
+          frameQueue.splice(0).forEach((cb) => cb(0));
+        });
+        expect(dialog.contains(document.activeElement)).toBe(true);
+      } finally {
+        vi.unstubAllGlobals();
+      }
     });
 
     it('leaves native autofocus inputs in charge', async () => {
