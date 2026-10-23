@@ -28,6 +28,11 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Setup Node 22 (changesets CLI needs enableCompileCache)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Install dependencies
         run: |
           if [ ! -f package.json ]; then
@@ -41,7 +46,7 @@ jobs:
       - name: Create Release Pull Request or Version
         uses: changesets/action@v1
         with:
-          version: bun run version
+          version: node node_modules/@changesets/cli/bin.js version
           publish: bun run tag-release
           commit: "chore(release): version package"
           title: "chore(release): version package"
