@@ -453,6 +453,7 @@ export {
   type TimelineTone,
   type TimelineLabels,
 } from './timeline';
+export {
   KanbanBoard,
   type KanbanBoardProps,
   type KanbanCard,

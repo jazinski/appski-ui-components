@@ -69,4 +69,6 @@ export { HoverCard, HoverCardTrigger, HoverCardContent, HoverCardHeader, HoverCa
 export { CommandPalette, commandPaletteOverlayVariants, commandPaletteContentVariants, filterCommands, fuzzyScore, type CommandPaletteProps, type CommandPaletteCommand, } from './command-palette';
 export { Sheet, SheetTrigger, SheetPortal, SheetOverlay, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription, SheetClose, sheetOverlayVariants, sheetContentVariants, type SheetProps, type SheetTriggerProps, type SheetOverlayProps, type SheetContentProps, type SheetHeaderProps, type SheetFooterProps, type SheetTitleProps, type SheetDescriptionProps, type SheetCloseProps, } from './sheet';
 export { Timeline, ActivityFeed, timelineMarkerVariants, type TimelineProps, type TimelineEvent, type TimelineActor, type TimelineTone, type TimelineLabels, } from './timeline';
+export { KanbanBoard, type KanbanBoardProps, type KanbanCard, type KanbanColumn, type KanbanCardMove, type KanbanCardLabels, } from './kanban-board';
+export { CommentThread, type CommentThreadProps, type ThreadComment, type CommentAuthor, type CommentThreadLabels, } from './comment-thread';
 //# sourceMappingURL=index.d.ts.map
