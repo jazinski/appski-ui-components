@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [#58](https://github.com/jazinski/appski-ui-components/pull/58) [`4500e34`](https://github.com/jazinski/appski-ui-components/commit/4500e345bc04fd4d8bc852318f7da28ced8ced56) Thanks [@cjazinski](https://github.com/cjazinski)! - UX audit fixes: add pointer-down press feedback (`active:scale` + 100ms ease-out, reduced-motion aware) to Button, DropdownMenuItem, TabsTrigger and pagination buttons; make Dialog enter/exit animations actually work by importing `tw-animate-css` in the styles entry and keeping content mounted briefly on close so `animate-out` plays; wire `aria-labelledby` to the DialogTitle id, focus the dialog on open with a content fallback (`tabIndex={-1}`); ensure only the top-most stacked dialog closes on Escape (module-level dialog stack); give the Dialog close (✕) button a visible hover (`bg-muted/60`) and focus ring.
+
+- [#55](https://github.com/jazinski/appski-ui-components/pull/55) [`4492fba`](https://github.com/jazinski/appski-ui-components/commit/4492fba836fd144824b086c60946e6405721092c) Thanks [@cjazinski](https://github.com/cjazinski)! - Add KanbanBoard and CommentThread — the flagship dogfooding components for the kanban board system (APPSKI-UI-1).
+
+  **KanbanBoard**: columns of draggable cards with three ways to move a card — pointer drag (drop indicator + column highlight), keyboard drag (Space to grab, arrows to preview, Space to drop, Escape to cancel), and a per-card "Move card to" menu. All three report the same controlled `onCardMove` event with a ready-to-apply splice index. Cards support labels, member avatar stacks, meta text, and a highlighted (warning ring) state; columns support accent colors and WAI-ARIA list semantics with live card counts.
+
+  **CommentThread**: chronological comment list with an inline composer — the core of a card detail view. Own comments right-align with a primary-tinted bubble; Enter submits (Shift+Enter for newline); async submissions drive the button's pending state and only clear the composer once they resolve; failed submits keep the text for retry.
+
+  Both components are theme-token only (light/dark automatic), fully localized via `labels`, skeleton-loading states included, and covered by 41 new tests (full suite: 1382 passing).
+
+- [#56](https://github.com/jazinski/appski-ui-components/pull/56) [`6e78e6b`](https://github.com/jazinski/appski-ui-components/commit/6e78e6b7a4336bf5ad6c70db7efc3602b12ab037) Thanks [@cjazinski](https://github.com/cjazinski)! - Add Chip, TagInput, and FiltersBar — the kanban dogfooding follow-ups (APPSKI-UI-1, closes [#143](https://github.com/jazinski/appski-ui-components/issues/143) and [#144](https://github.com/jazinski/appski-ui-components/issues/144) in the appski-ui-components project tracker).
+
+  **Chip**: a compact removable token, the visual unit for tags and active filters. Seven token-only variants (default/primary/success/warning/destructive/info/outline), an accessible "Remove <chip>" affordance when removable, and a toggle-button mode for click-to-filter chips. Rendered as a span wrapper so the label button and remove control are siblings (valid HTML even when both are present).
+
+  **TagInput**: tokenized tag entry — the controlled counterpart of Chip. Typeahead listbox with keyboard navigation (ArrowUp/Down, Enter to pick, Tab completes the highlighted suggestion), Enter or comma commits, Backspace on an empty input removes the last tag, and a dangling typed tag is committed on blur so nothing is silently lost. Duplicates are rejected by default and `maxTags` skips adds past the cap — both surface as a polite hint tied to the field via aria-describedby. Suggestions listbox anchors to the field wrapper (relative) so it overlays rather than inlining.
+
+  **FiltersBar**: the active-filter toolbar for above a DataTable or KanbanBoard. Filter menus on the left (each reflects its current value on the trigger and resets via "Any"), removable chips for active filters, saved views with the active one highlighted, optional save-current-view (only rendered when an `onSaveView` handler is wired — the bar never shows a control it can't drive), clear-all, and a trailing children slot for result counts. Fully controlled and data-driven; role=toolbar with an accessible label.
+
+  All three are theme-token only (light and dark mode automatic), localizable via `labels` props, and covered by 41 new tests.
+
+- [#57](https://github.com/jazinski/appski-ui-components/pull/57) [`f0fac9c`](https://github.com/jazinski/appski-ui-components/commit/f0fac9ce3c99784ec3d7e1fd87a42c7807032278) Thanks [@cjazinski](https://github.com/cjazinski)! - Add Timeline (ActivityFeed) — vertical activity feed with per-event markers (Lucide icon + tone accent: default/info/success/warning/danger), optional actor avatar + name, timestamps (Date objects participate in automatic day grouping with Today/Yesterday/weekday headers; strings render as-is), preformatted-string support, skeleton and empty states, and paginated loading via explicit load-more button (LoadingButton with pending state) or automatic IntersectionObserver infinite scroll. Optional `onEventClick` renders events as buttons reporting the full event payload; `locale` + `labels` cover localization; WAI-ARIA list semantics with aria-busy and a polite live region for page fetches (APPSKI-UI-61, restores the component lost in the UI-17 merge).
+
+- [#53](https://github.com/jazinski/appski-ui-components/pull/53) [`2ef0816`](https://github.com/jazinski/appski-ui-components/commit/2ef081625777bc449b54d8055fab5522dbfe5ec3) Thanks [@cjazinski](https://github.com/cjazinski)! - Rebrand appski → blancski across the package, Storybook, stories, and docs, and ship a new default **glacier** palette (glacier-cyan primary on arctic slate, WCAG 2.1 AA verified). The previous default is available as the `indigo-slate` palette. Package name changes from `@appski/ui` to `@blancski/ui` — update imports when upgrading. Infra identifiers (repo URL, `ui.appski.me`, docker image, deploy paths) are unchanged for now.
+
+### Patch Changes
+
+- [#53](https://github.com/jazinski/appski-ui-components/pull/53) [`2ef0816`](https://github.com/jazinski/appski-ui-components/commit/2ef081625777bc449b54d8055fab5522dbfe5ec3) Thanks [@cjazinski](https://github.com/cjazinski)! - Fix CI: docker/deploy jobs were gated on the removed `main` branch (now `master`), correct Docker image name in publish workflow, and add changesets for semantic versioning with an automated Version Packages PR flow.
+
+- [#60](https://github.com/jazinski/appski-ui-components/pull/60) [`920ec6f`](https://github.com/jazinski/appski-ui-components/commit/920ec6f7df2435522ca8fb135f06e7fc9fd0af2d) Thanks [@cjazinski](https://github.com/cjazinski)! - Dialog initial focus no longer loses the mount race: the single-rAF deferral could fire before React committed the dialog content (ref still null, focus silently skipped). Focus now runs from the content ref callback at commit time, with a frame-capped rAF retry (≤60 frames) as a safety net. Initial focus also yields when focus is already inside the dialog (e.g. React autoFocus inputs).
+
+- [#59](https://github.com/jazinski/appski-ui-components/pull/59) [`0f949ee`](https://github.com/jazinski/appski-ui-components/commit/0f949eef628ff56428f95747c2ce3d74708b46a9) Thanks [@cjazinski](https://github.com/cjazinski)! - Fix Dialog initial focus: focus now reliably lands inside the dialog on open (the portal mounts content one frame after `open`, which previously left `activeElement` on the trigger). `DialogContent` gains `autoFocusFirst` (default true — focuses first focusable element, falling back to the content container) and `initialFocusRef` (override); elements with a native `autofocus` attribute always win.
+
 All notable changes to @appski/ui will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
