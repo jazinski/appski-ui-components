@@ -51,6 +51,8 @@ const dialogStack: number[] = [];
 let dialogIdCounter = 0;
 // Matches the `duration-200` class on overlay and content.
 const EXIT_ANIMATION_MS = 200;
+// Safety cap for the initial-focus retry loop (~1s at 60fps).
+const FOCUS_RETRY_MAX_FRAMES = 60;
 
 // ============================================================================
 // Dialog Root
@@ -254,6 +256,9 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
     const contentRef = React.useRef<HTMLDivElement>(null);
     const previouslyFocusedElement = React.useRef<HTMLElement | null>(null);
     const dialogIdRef = React.useRef(0);
+    const initialFocusPendingRef = React.useRef(false);
+    const initialFocusDoneRef = React.useRef(false);
+    const applyInitialFocusRef = React.useRef<() => void>(() => {});
     const titleId = React.useId();
     // Keep rendering briefly after close so exit animations can play.
     const [shouldRender, setShouldRender] = React.useState(open);
@@ -320,27 +325,56 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       // The portal mounts content one frame after `open` flips, so defer
       // initial focus until the content element actually exists.
       const applyInitialFocus = () => {
+        if (initialFocusDoneRef.current) return;
+        if (!contentRef.current) return;
+        initialFocusDoneRef.current = true;
+        initialFocusPendingRef.current = false;
         if (initialFocusRef?.current) {
           initialFocusRef.current.focus();
           return;
         }
-        // Native autofocus (e.g. modal inputs) wins over autoFocusFirst
-        if (contentRef.current?.querySelector('[autofocus]')) return;
-        const firstFocusable = contentRef.current?.querySelector(
+        // Native autofocus (e.g. modal inputs) wins over autoFocusFirst;
+        // also yield if something already moved focus inside the dialog
+        if (
+          contentRef.current.querySelector('[autofocus]') ||
+          contentRef.current.contains(document.activeElement)
+        ) {
+          return;
+        }
+        const firstFocusable = contentRef.current.querySelector(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         ) as HTMLElement | null;
         if (autoFocusFirst && firstFocusable) {
           firstFocusable.focus();
         } else if (autoFocusFirst) {
-          contentRef.current?.focus();
+          contentRef.current.focus();
         }
       };
+      applyInitialFocusRef.current = applyInitialFocus;
+
+      // The portal mounts content after `open` flips, sometimes later than a
+      // single frame. Focus runs from the content ref callback as soon as the
+      // element commits, with a frame-capped rAF retry as a safety net.
       let frame = 0;
+      initialFocusDoneRef.current = false;
       if (contentRef.current) {
         applyInitialFocus();
       } else {
-        frame = requestAnimationFrame(applyInitialFocus);
+        initialFocusPendingRef.current = true;
+        let frames = 0;
+        const tryFocus = () => {
+          if (initialFocusDoneRef.current) return;
+          if (contentRef.current) {
+            applyInitialFocus();
+            return;
+          }
+          if (frames++ < FOCUS_RETRY_MAX_FRAMES) {
+            frame = requestAnimationFrame(tryFocus);
+          }
+        };
+        frame = requestAnimationFrame(tryFocus);
       }
+
 
       // Lock body scroll
       const originalOverflow = document.body.style.overflow;
@@ -396,7 +430,12 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
         <DialogOverlay onClick={open && closeOnOverlayClick ? handleClose : undefined} />
         <DialogContext.Provider value={{ ...dialogContext, open, onOpenChange, titleId }}>
           <div
-            ref={contentRef}
+            ref={(el: HTMLDivElement | null) => {
+              contentRef.current = el;
+              if (el && initialFocusPendingRef.current) {
+                applyInitialFocusRef.current();
+              }
+            }}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
