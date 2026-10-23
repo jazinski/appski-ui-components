@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -327,6 +328,85 @@ describe('Dialog', () => {
 
       // Focus should be restored to trigger
       expect(trigger).toHaveFocus();
+    });
+  });
+
+  describe('Initial Focus', () => {
+    it('moves focus into the dialog content when opened', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Test</DialogTitle>
+            <input placeholder="Name" />
+          </DialogContent>
+        </Dialog>
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Open' }));
+      const dialog = screen.getByRole('dialog');
+      await waitFor(() => {
+        expect(dialog.contains(document.activeElement)).toBe(true);
+      });
+    });
+
+    it('does not move focus when autoFocusFirst is false', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent autoFocusFirst={false}>
+            <DialogTitle>Test</DialogTitle>
+          </DialogContent>
+        </Dialog>
+      );
+
+      const trigger = screen.getByRole('button', { name: 'Open' });
+      await user.click(trigger);
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+      await waitFor(() => expect(document.activeElement).toBe(trigger));
+    });
+
+    it('focuses the initialFocusRef element when provided', async () => {
+      const user = userEvent.setup();
+      const inputRef = React.createRef<HTMLInputElement>();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent initialFocusRef={inputRef}>
+            <DialogTitle>Test</DialogTitle>
+            <button>First Button</button>
+            <input ref={inputRef} placeholder="Pinned" />
+          </DialogContent>
+        </Dialog>
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Open' }));
+      await waitFor(() => expect(inputRef.current).toHaveFocus());
+    });
+
+    it('leaves native autofocus inputs in charge', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Test</DialogTitle>
+            <input placeholder="Name" />
+            <input autoFocus placeholder="Auto" />
+          </DialogContent>
+        </Dialog>
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Open' }));
+      await waitFor(() =>
+        expect(screen.getByPlaceholderText('Auto')).toHaveFocus()
+      );
     });
   });
 

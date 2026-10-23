@@ -4858,95 +4858,106 @@ const E0 = m.forwardRef(
     closeOnEscape: o = !0,
     showCloseButton: s = !0,
     onClose: i,
-    container: a,
-    ...l
-  }, c) => {
-    const { open: u, onOpenChange: d, ...f } = Ns(), g = m.useRef(null), p = m.useRef(null), h = m.useRef(0), y = m.useId(), [b, w] = m.useState(u);
+    autoFocusFirst: a = !0,
+    initialFocusRef: l,
+    container: c,
+    ...u
+  }, d) => {
+    const { open: f, onOpenChange: g, ...p } = Ns(), h = m.useRef(null), y = m.useRef(null), b = m.useRef(0), w = m.useId(), [v, S] = m.useState(f);
     m.useEffect(() => {
-      if (u) {
-        w(!0);
+      if (f) {
+        S(!0);
         return;
       }
-      const S = setTimeout(() => {
-        w(!1);
+      const C = setTimeout(() => {
+        S(!1);
       }, mk);
       return () => {
-        clearTimeout(S);
+        clearTimeout(C);
       };
-    }, [u]), m.useImperativeHandle(c, () => {
-      if (!g.current)
+    }, [f]), m.useImperativeHandle(d, () => {
+      if (!h.current)
         throw new Error("Content ref is not attached");
-      return g.current;
+      return h.current;
     });
-    const v = m.useCallback(() => {
-      d(!1), i == null || i();
-    }, [d, i]);
+    const _ = m.useCallback(() => {
+      g(!1), i == null || i();
+    }, [g, i]);
     return m.useEffect(() => {
-      if (!u || !o) return;
-      const S = ++hk;
-      return h.current = S, Xo.push(S), () => {
-        const _ = Xo.indexOf(S);
-        _ !== -1 && Xo.splice(_, 1);
+      if (!f || !o) return;
+      const C = ++hk;
+      return b.current = C, Xo.push(C), () => {
+        const E = Xo.indexOf(C);
+        E !== -1 && Xo.splice(E, 1);
       };
-    }, [u, o]), m.useEffect(() => {
-      if (!u || !o) return;
-      const S = (_) => {
-        _.key === "Escape" && Xo[Xo.length - 1] === h.current && (_.preventDefault(), v());
+    }, [f, o]), m.useEffect(() => {
+      if (!f || !o) return;
+      const C = (E) => {
+        E.key === "Escape" && Xo[Xo.length - 1] === b.current && (E.preventDefault(), _());
       };
-      return document.addEventListener("keydown", S), () => {
-        document.removeEventListener("keydown", S);
+      return document.addEventListener("keydown", C), () => {
+        document.removeEventListener("keydown", C);
       };
-    }, [u, o, v]), m.useEffect(() => {
-      var E, N;
-      if (!u) return;
-      p.current = document.activeElement;
-      const S = (E = g.current) == null ? void 0 : E.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      ), _ = S == null ? void 0 : S[0];
-      _ ? _.focus() : (N = g.current) == null || N.focus();
-      const C = document.body.style.overflow;
-      return document.body.style.overflow = "hidden", () => {
-        var k;
-        document.body.style.overflow = C, (k = p.current) == null || k.focus();
-      };
-    }, [u]), m.useEffect(() => {
-      if (!u) return;
-      const S = (_) => {
-        var k;
-        if (_.key !== "Tab") return;
-        const C = (k = g.current) == null ? void 0 : k.querySelectorAll(
+    }, [f, o, _]), m.useEffect(() => {
+      if (!f) return;
+      y.current = document.activeElement;
+      const C = () => {
+        var R, A, O;
+        if (l != null && l.current) {
+          l.current.focus();
+          return;
+        }
+        if ((R = h.current) != null && R.querySelector("[autofocus]")) return;
+        const k = (A = h.current) == null ? void 0 : A.querySelector(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         );
-        if (!(C != null && C.length)) return;
-        const E = C[0], N = C[C.length - 1];
-        _.shiftKey ? document.activeElement === E && (_.preventDefault(), N.focus()) : document.activeElement === N && (_.preventDefault(), E.focus());
+        a && k ? k.focus() : a && ((O = h.current) == null || O.focus());
       };
-      return document.addEventListener("keydown", S), () => {
-        document.removeEventListener("keydown", S);
+      let E = 0;
+      h.current ? C() : E = requestAnimationFrame(C);
+      const N = document.body.style.overflow;
+      return document.body.style.overflow = "hidden", () => {
+        var k;
+        E && cancelAnimationFrame(E), document.body.style.overflow = N, (k = y.current) == null || k.focus();
       };
-    }, [u]), b ? /* @__PURE__ */ P(vk, { container: a, children: [
-      /* @__PURE__ */ x(C0, { onClick: u && r ? v : void 0 }),
-      /* @__PURE__ */ x(hd.Provider, { value: { ...f, open: u, onOpenChange: d, titleId: y }, children: /* @__PURE__ */ P(
+    }, [f, a, l]), m.useEffect(() => {
+      if (!f) return;
+      const C = (E) => {
+        var A;
+        if (E.key !== "Tab") return;
+        const N = (A = h.current) == null ? void 0 : A.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!(N != null && N.length)) return;
+        const k = N[0], R = N[N.length - 1];
+        E.shiftKey ? document.activeElement === k && (E.preventDefault(), R.focus()) : document.activeElement === R && (E.preventDefault(), k.focus());
+      };
+      return document.addEventListener("keydown", C), () => {
+        document.removeEventListener("keydown", C);
+      };
+    }, [f]), v ? /* @__PURE__ */ P(vk, { container: c, children: [
+      /* @__PURE__ */ x(C0, { onClick: f && r ? _ : void 0 }),
+      /* @__PURE__ */ x(hd.Provider, { value: { ...p, open: f, onOpenChange: g, titleId: w }, children: /* @__PURE__ */ P(
         "div",
         {
-          ref: g,
+          ref: h,
           role: "dialog",
           "aria-modal": "true",
-          "aria-labelledby": y,
+          "aria-labelledby": w,
           tabIndex: -1,
-          "data-state": u ? "open" : "closed",
+          "data-state": f ? "open" : "closed",
           className: $(pk({ size: n }), e),
-          onClick: (S) => {
-            S.stopPropagation();
+          onClick: (C) => {
+            C.stopPropagation();
           },
-          ...l,
+          ...u,
           children: [
             t,
             s && /* @__PURE__ */ x(
               "button",
               {
                 type: "button",
-                onClick: v,
+                onClick: _,
                 className: "ring-offset-background focus:ring-ring absolute top-4 right-4 rounded-sm opacity-70 transition-colors hover:bg-muted/60 hover:text-foreground hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none",
                 "aria-label": "Close",
                 children: /* @__PURE__ */ x(Es, { className: "h-4 w-4" })

@@ -57,6 +57,10 @@ export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement>
     showCloseButton?: boolean;
     /** Callback when close button is clicked */
     onClose?: () => void;
+    /** Focus the first focusable element on open (default true); elements with a native autofocus attribute always win */
+    autoFocusFirst?: boolean;
+    /** Element to focus when the dialog opens; overrides autoFocusFirst */
+    initialFocusRef?: React.RefObject<HTMLElement | null>;
     /** Portal container */
     container?: HTMLElement;
 }

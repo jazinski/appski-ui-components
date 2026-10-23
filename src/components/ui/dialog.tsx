@@ -225,6 +225,10 @@ export interface DialogContentProps
   showCloseButton?: boolean;
   /** Callback when close button is clicked */
   onClose?: () => void;
+  /** Focus the first focusable element on open (default true); elements with a native autofocus attribute always win */
+  autoFocusFirst?: boolean;
+  /** Element to focus when the dialog opens; overrides autoFocusFirst */
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   /** Portal container */
   container?: HTMLElement;
 }
@@ -239,6 +243,8 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       closeOnEscape = true,
       showCloseButton = true,
       onClose,
+      autoFocusFirst = true,
+      initialFocusRef,
       container,
       ...props
     },
@@ -311,15 +317,29 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       // Save previously focused element
       previouslyFocusedElement.current = document.activeElement as HTMLElement;
 
-      // Focus the first focusable element, falling back to the content itself
-      const focusableElements = contentRef.current?.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      const firstFocusable = focusableElements?.[0] as HTMLElement | undefined;
-      if (firstFocusable) {
-        firstFocusable.focus();
+      // The portal mounts content one frame after `open` flips, so defer
+      // initial focus until the content element actually exists.
+      const applyInitialFocus = () => {
+        if (initialFocusRef?.current) {
+          initialFocusRef.current.focus();
+          return;
+        }
+        // Native autofocus (e.g. modal inputs) wins over autoFocusFirst
+        if (contentRef.current?.querySelector('[autofocus]')) return;
+        const firstFocusable = contentRef.current?.querySelector(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        ) as HTMLElement | null;
+        if (autoFocusFirst && firstFocusable) {
+          firstFocusable.focus();
+        } else if (autoFocusFirst) {
+          contentRef.current?.focus();
+        }
+      };
+      let frame = 0;
+      if (contentRef.current) {
+        applyInitialFocus();
       } else {
-        contentRef.current?.focus();
+        frame = requestAnimationFrame(applyInitialFocus);
       }
 
       // Lock body scroll
@@ -327,12 +347,13 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       document.body.style.overflow = 'hidden';
 
       return () => {
+        if (frame) cancelAnimationFrame(frame);
         // Restore body scroll
         document.body.style.overflow = originalOverflow;
         // Restore focus
         previouslyFocusedElement.current?.focus();
       };
-    }, [open]);
+    }, [open, autoFocusFirst, initialFocusRef]);
 
     // Focus trap
     React.useEffect(() => {
