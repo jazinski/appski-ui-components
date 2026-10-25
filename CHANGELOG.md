@@ -1,5 +1,7 @@
 # Changelog
 
+All notable changes to @blancski/ui will be documented in this file.
+
 ## 0.2.0
 
 ### Minor Changes
@@ -26,7 +28,7 @@
 
 - [#57](https://github.com/jazinski/appski-ui-components/pull/57) [`f0fac9c`](https://github.com/jazinski/appski-ui-components/commit/f0fac9ce3c99784ec3d7e1fd87a42c7807032278) Thanks [@cjazinski](https://github.com/cjazinski)! - Add Timeline (ActivityFeed) — vertical activity feed with per-event markers (Lucide icon + tone accent: default/info/success/warning/danger), optional actor avatar + name, timestamps (Date objects participate in automatic day grouping with Today/Yesterday/weekday headers; strings render as-is), preformatted-string support, skeleton and empty states, and paginated loading via explicit load-more button (LoadingButton with pending state) or automatic IntersectionObserver infinite scroll. Optional `onEventClick` renders events as buttons reporting the full event payload; `locale` + `labels` cover localization; WAI-ARIA list semantics with aria-busy and a polite live region for page fetches (APPSKI-UI-61, restores the component lost in the UI-17 merge).
 
-- [#53](https://github.com/jazinski/appski-ui-components/pull/53) [`2ef0816`](https://github.com/jazinski/appski-ui-components/commit/2ef081625777bc449b54d8055fab5522dbfe5ec3) Thanks [@cjazinski](https://github.com/cjazinski)! - Rebrand appski → blancski across the package, Storybook, stories, and docs, and ship a new default **glacier** palette (glacier-cyan primary on arctic slate, WCAG 2.1 AA verified). The previous default is available as the `indigo-slate` palette. Package name changes from `@appski/ui` to `@blancski/ui` — update imports when upgrading. Infra identifiers (repo URL, `ui.appski.me`, docker image, deploy paths) are unchanged for now.
+- [#53](https://github.com/jazinski/appski-ui-components/pull/53) [`2ef0816`](https://github.com/jazinski/appski-ui-components/commit/2ef081625777bc449b54d8055fab5522dbfe5ec3) Thanks [@cjazinski](https://github.com/cjazinski)! - Rebrand appski → blancski across the package, Storybook, stories, and docs, and ship a new default **glacier** palette (glacier-cyan primary on arctic slate, WCAG 2.1 AA verified). The previous default is available as the `indigo-slate` palette. Package name changes from `@appski/ui` to `@blancski/ui` — update imports when upgrading. Infra identifiers (repo URL, `ui.blancski.com`, docker image, deploy paths) are unchanged for now.
 
 ### Patch Changes
 
@@ -36,7 +38,7 @@
 
 - [#59](https://github.com/jazinski/appski-ui-components/pull/59) [`0f949ee`](https://github.com/jazinski/appski-ui-components/commit/0f949eef628ff56428f95747c2ce3d74708b46a9) Thanks [@cjazinski](https://github.com/cjazinski)! - Fix Dialog initial focus: focus now reliably lands inside the dialog on open (the portal mounts content one frame after `open`, which previously left `activeElement` on the trigger). `DialogContent` gains `autoFocusFirst` (default true — focuses first focusable element, falling back to the content container) and `initialFocusRef` (override); elements with a native `autofocus` attribute always win.
 
-All notable changes to @appski/ui will be documented in this file.
+All notable changes to @blancski/ui will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
@@ -267,7 +269,7 @@ and this project adheres to
 
 - **Source**: GitHub repository
 - **Installation**: `bun add github:jazinski/appski-ui-components`
-- **Storybook**: https://ui.appski.me
+- **Storybook**: https://ui.blancski.com
 
 ---
 

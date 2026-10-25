@@ -190,7 +190,7 @@ docker logs -f appski-ui-storybook  # Follow mode
 
 ### 1. Configure Cloudflare Tunnel
 
-Add public route: `ui.appski.me` → `http://10.15.10.9:6606`
+Add public route: `ui.blancski.com` → `http://10.15.10.9:6606`
 
 ### 2. Build EmptyState Component
 

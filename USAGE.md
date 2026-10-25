@@ -471,7 +471,7 @@ All components accept a `className` prop:
 
 View the full component documentation and interactive examples:
 
-- **Storybook:** https://ui.appski.me
+- **Storybook:** https://ui.blancski.com
 - **GitHub:** https://github.com/jazinski/appski-ui-components
 
 ---
