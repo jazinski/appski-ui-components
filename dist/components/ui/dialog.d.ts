@@ -35,7 +35,7 @@ export interface DialogProps {
  *   </DialogContent>
  * </Dialog>
  */
-declare function Dialog({ open: controlledOpen, defaultOpen, onOpenChange, children, }: DialogProps): React.JSX.Element;
+declare function Dialog({ open: controlledOpen, defaultOpen, onOpenChange, children, }: DialogProps): import("react/jsx-runtime").JSX.Element;
 export interface DialogTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     /** Render as child element instead of button */
     asChild?: boolean;
@@ -45,7 +45,7 @@ interface DialogPortalProps {
     children: React.ReactNode;
     container?: HTMLElement | undefined;
 }
-declare function DialogPortal({ children, container }: DialogPortalProps): React.JSX.Element | null;
+declare function DialogPortal({ children, container }: DialogPortalProps): import("react/jsx-runtime").JSX.Element | null;
 export type DialogOverlayProps = React.HTMLAttributes<HTMLDivElement>;
 declare const DialogOverlay: React.ForwardRefExoticComponent<DialogOverlayProps & React.RefAttributes<HTMLDivElement>>;
 export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof dialogContentVariants> {
@@ -57,6 +57,10 @@ export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement>
     showCloseButton?: boolean;
     /** Callback when close button is clicked */
     onClose?: () => void;
+    /** Focus the first focusable element on open (default true); elements with a native autofocus attribute always win */
+    autoFocusFirst?: boolean;
+    /** Element to focus when the dialog opens; overrides autoFocusFirst */
+    initialFocusRef?: React.RefObject<HTMLElement | null>;
     /** Portal container */
     container?: HTMLElement;
 }

@@ -68,4 +68,10 @@ export { ColorPicker, ColorSwatchSet, DEFAULT_COLOR_SWATCHES, colorPickerTrigger
 export { HoverCard, HoverCardTrigger, HoverCardContent, HoverCardHeader, HoverCardTitle, HoverCardDescription, HoverCardFooter, hoverCardContentVariants, type HoverCardProps, type HoverCardTriggerProps, type HoverCardContentProps, type HoverCardHeaderProps, type HoverCardTitleProps, type HoverCardDescriptionProps, type HoverCardFooterProps, } from './hover-card';
 export { CommandPalette, commandPaletteOverlayVariants, commandPaletteContentVariants, filterCommands, fuzzyScore, type CommandPaletteProps, type CommandPaletteCommand, } from './command-palette';
 export { Sheet, SheetTrigger, SheetPortal, SheetOverlay, SheetContent, SheetHeader, SheetFooter, SheetTitle, SheetDescription, SheetClose, sheetOverlayVariants, sheetContentVariants, type SheetProps, type SheetTriggerProps, type SheetOverlayProps, type SheetContentProps, type SheetHeaderProps, type SheetFooterProps, type SheetTitleProps, type SheetDescriptionProps, type SheetCloseProps, } from './sheet';
+export { Timeline, ActivityFeed, timelineMarkerVariants, type TimelineProps, type TimelineEvent, type TimelineActor, type TimelineTone, type TimelineLabels, } from './timeline';
+export { KanbanBoard, type KanbanBoardProps, type KanbanCard, type KanbanColumn, type KanbanCardMove, type KanbanCardLabels, } from './kanban-board';
+export { CommentThread, type CommentThreadProps, type ThreadComment, type CommentAuthor, type CommentThreadLabels, } from './comment-thread';
+export { Chip, chipVariants, type ChipProps, type ChipLabels } from './chip';
+export { TagInput, tagInputVariants, type TagInputProps, type TagInputLabels, } from './tag-input';
+export { FiltersBar, filtersBarVariants, type FiltersBarProps, type ActiveFilter, type FilterChoice, type FilterSelect, type SavedView, type FiltersBarLabels, } from './filters-bar';
 //# sourceMappingURL=index.d.ts.map

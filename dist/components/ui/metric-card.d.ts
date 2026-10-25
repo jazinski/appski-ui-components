@@ -23,6 +23,6 @@ export interface MetricCardProps extends Omit<React.HTMLAttributes<HTMLDivElemen
  * MetricCard component for displaying statistics and key performance indicators.
  * Supports various color themes, trend indicators, and loading states.
  */
-export declare function MetricCard({ className, variant, icon, value, label, trend, loading, ...props }: MetricCardProps): React.JSX.Element;
+export declare function MetricCard({ className, variant, icon, value, label, trend, loading, ...props }: MetricCardProps): import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=metric-card.d.ts.map

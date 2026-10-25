@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   Dialog,
@@ -11,6 +12,13 @@ import {
   DialogDescription,
   DialogClose,
 } from './dialog';
+
+// The dialog stays mounted briefly after close so exit animations can play.
+async function expectDialogRemoved() {
+  await waitFor(() => { expect(screen.queryByRole('dialog')).not.toBeInTheDocument(); }, {
+    timeout: 1000,
+  });
+}
 
 describe('Dialog', () => {
   describe('Basic Rendering', () => {
@@ -136,7 +144,7 @@ describe('Dialog', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
 
       await user.click(screen.getByRole('button', { name: 'Close' }));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
 
     it('closes when ESC key is pressed', async () => {
@@ -155,7 +163,7 @@ describe('Dialog', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
 
       await user.keyboard('{Escape}');
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
 
     it('does not close on ESC when closeOnEscape is false', async () => {
@@ -190,7 +198,7 @@ describe('Dialog', () => {
 
       await user.click(screen.getByRole('button', { name: 'Open' }));
       await user.click(screen.getByRole('button', { name: 'Cancel' }));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
   });
 
@@ -323,6 +331,125 @@ describe('Dialog', () => {
     });
   });
 
+  describe('Initial Focus', () => {
+    it('moves focus into the dialog content when opened', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Test</DialogTitle>
+            <input placeholder="Name" />
+          </DialogContent>
+        </Dialog>
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Open' }));
+      const dialog = screen.getByRole('dialog');
+      await waitFor(() => {
+        expect(dialog.contains(document.activeElement)).toBe(true);
+      });
+    });
+
+    it('does not move focus when autoFocusFirst is false', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent autoFocusFirst={false}>
+            <DialogTitle>Test</DialogTitle>
+          </DialogContent>
+        </Dialog>
+      );
+
+      const trigger = screen.getByRole('button', { name: 'Open' });
+      await user.click(trigger);
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+      await waitFor(() => { expect(document.activeElement).toBe(trigger); });
+    });
+
+    it('focuses the initialFocusRef element when provided', async () => {
+      const user = userEvent.setup();
+      const inputRef = React.createRef<HTMLInputElement>();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent initialFocusRef={inputRef}>
+            <DialogTitle>Test</DialogTitle>
+            <button>First Button</button>
+            <input ref={inputRef} placeholder="Pinned" />
+          </DialogContent>
+        </Dialog>
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Open' }));
+      await waitFor(() => { expect(inputRef.current).toHaveFocus(); });
+    });
+
+    it('lands focus even when rAF ticks are delayed (late mount)', async () => {
+      // Withhold every frame: focus must not depend on rAF firing at all,
+      // and must still be inside the content after delayed ticks flush.
+      const frameQueue: FrameRequestCallback[] = [];
+      vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => {
+        frameQueue.push(cb);
+        return frameQueue.length;
+      });
+      vi.stubGlobal('cancelAnimationFrame', vi.fn());
+      const user = userEvent.setup();
+
+      try {
+        render(
+          <Dialog>
+            <DialogTrigger>Open</DialogTrigger>
+            <DialogContent>
+              <DialogTitle>Test</DialogTitle>
+              <input placeholder="Name" />
+            </DialogContent>
+          </Dialog>
+        );
+
+        await user.click(screen.getByRole('button', { name: 'Open' }));
+        const dialog = screen.getByRole('dialog');
+        // No frame has fired, yet the commit-time ref callback already moved
+        // focus inside — a late mount cannot lose the race anymore.
+        expect(dialog.contains(document.activeElement)).toBe(true);
+
+        // Flushing the withheld frames must not disturb focus
+        act(() => {
+          frameQueue.splice(0).forEach((cb) => { cb(0); });
+        });
+        act(() => {
+          frameQueue.splice(0).forEach((cb) => { cb(0); });
+        });
+        expect(dialog.contains(document.activeElement)).toBe(true);
+      } finally {
+        vi.unstubAllGlobals();
+      }
+    });
+
+    it('leaves native autofocus inputs in charge', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <Dialog>
+          <DialogTrigger>Open</DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Test</DialogTitle>
+            <input placeholder="Name" />
+            <input autoFocus placeholder="Auto" />
+          </DialogContent>
+        </Dialog>
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Open' }));
+      await waitFor(() => { expect(screen.getByPlaceholderText('Auto')).toHaveFocus(); }
+      );
+    });
+  });
+
   describe('Sizes', () => {
     it('applies small size class', async () => {
       const user = userEvent.setup();
@@ -411,7 +538,7 @@ describe('Dialog', () => {
 
       await user.click(screen.getByRole('button', { name: 'Open' }));
       await user.click(screen.getByRole('button', { name: 'Custom Close' }));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      await expectDialogRemoved();
     });
   });
 

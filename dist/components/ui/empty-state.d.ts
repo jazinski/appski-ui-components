@@ -112,6 +112,6 @@ export interface EmptyStateProps extends VariantProps<typeof emptyStateVariants>
  *   }}
  * />
  */
-export declare function EmptyState({ icon, title, description, action, secondaryAction, className, size, variant, children, }: EmptyStateProps): React.JSX.Element;
+export declare function EmptyState({ icon, title, description, action, secondaryAction, className, size, variant, children, }: EmptyStateProps): import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=empty-state.d.ts.map
