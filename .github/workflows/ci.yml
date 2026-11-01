@@ -280,7 +280,7 @@ jobs:
 
       - name: Purge Cloudflare cache
         run: |
-          echo "🔥 Purging Cloudflare cache for ui.appski.me..."
+          echo "🔥 Purging Cloudflare cache for ui.blancski.com..."
 
           RESPONSE=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
@@ -291,7 +291,7 @@ jobs:
 
           if [ "$SUCCESS" == "true" ]; then
             echo "✅ Cloudflare cache purged successfully!"
-            echo "🌐 Fresh content will be served at https://ui.appski.me"
+            echo "🌐 Fresh content will be served at https://ui.blancski.com"
           else
             echo "⚠️  Cache purge may have failed. Response:"
             echo "$RESPONSE"

@@ -1,7 +1,7 @@
 # ✅ Storybook Dark Theme & Logo - COMPLETE
 
 **Status**: All fixes deployed to production\
-**Production URL**: https://ui.appski.me\
+**Production URL**: https://ui.blancski.com\
 **Latest Commit**: `f3fc55d`\
 **Date**: 2026-01-25
 
@@ -85,7 +85,7 @@ The Storybook build is in `storybook-static/` with commit hash: `1b2a961`
 
 ### 3. Test on Production
 
-Visit: **https://ui.appski.me**
+Visit: **https://ui.blancski.com**
 
 **What to Check**:
 

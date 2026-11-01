@@ -1,6 +1,6 @@
 # 🚀 Quick Start Deployment Guide
 
-## Production Deployment to ui.appski.me
+## Production Deployment to ui.blancski.com
 
 This guide will help you deploy the Blancski UI Component Library to production
 using **Cloudflare Tunnel** (no reverse proxy needed).
@@ -11,7 +11,7 @@ using **Cloudflare Tunnel** (no reverse proxy needed).
 
 - Server with Docker installed
 - Access to `code-server.jazinski.com` (private Docker registry)
-- Cloudflare Tunnel already configured for `ui.appski.me` → `localhost:3010`
+- Cloudflare Tunnel already configured for `ui.blancski.com` → `localhost:3010`
 
 ---
 
@@ -108,7 +108,7 @@ curl http://localhost:3010/health
 # Should return: "healthy"
 
 # Test public URL (via Cloudflare Tunnel)
-curl https://ui.appski.me
+curl https://ui.blancski.com
 # Should return HTML content
 ```
 
@@ -161,10 +161,10 @@ docker inspect appski-ui-storybook
 sudo nginx -t
 
 # View access logs
-sudo tail -f /var/log/nginx/ui.appski.me.access.log
+sudo tail -f /var/log/nginx/ui.blancski.com.access.log
 
 # View error logs
-sudo tail -f /var/log/nginx/ui.appski.me.error.log
+sudo tail -f /var/log/nginx/ui.blancski.com.error.log
 
 # Check nginx status
 sudo systemctl status nginx
@@ -198,11 +198,11 @@ sudo certbot renew
 sudo nginx -t
 ```
 
-#### Can't access ui.appski.me
+#### Can't access ui.blancski.com
 
 ```bash
 # Check DNS
-dig ui.appski.me
+dig ui.blancski.com
 
 # Check firewall
 sudo ufw status
@@ -262,10 +262,10 @@ docker ps | grep blancski-ui
 sudo cp /opt/blancski-ui/docker-compose.yml /opt/blancski-ui/docker-compose.yml.backup
 
 # Backup nginx config
-sudo cp /etc/nginx/sites-available/ui.appski.me /root/nginx-backup/
+sudo cp /etc/nginx/sites-available/ui.blancski.com /root/nginx-backup/
 
 # Backup SSL certificates
-sudo cp -r /etc/letsencrypt/live/ui.appski.me /root/ssl-backup/
+sudo cp -r /etc/letsencrypt/live/ui.blancski.com /root/ssl-backup/
 ```
 
 ### Disaster Recovery
@@ -324,7 +324,7 @@ chmod +x /opt/blancski-ui/monitor.sh
 
 ## 🎉 Success!
 
-Your Blancski UI Component Library is now live at: **https://ui.appski.me**
+Your Blancski UI Component Library is now live at: **https://ui.blancski.com**
 
 You can now:
 

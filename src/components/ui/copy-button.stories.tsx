@@ -42,7 +42,7 @@ export const Default: Story = {
 
 export const WithShortcutHint: Story = {
   args: {
-    value: 'https://ui.appski.me/docs/copy-button',
+    value: 'https://ui.blancski.com/docs/copy-button',
     shortcutHint: 'C',
   },
 };

@@ -10,7 +10,7 @@ export const blancskiDarkTheme = create({
 
   // Brand
   brandTitle: 'Blancski',
-  brandUrl: 'https://ui.appski.me',
+  brandUrl: 'https://ui.blancski.com',
   brandImage: '/logo-dark.png',
   brandTarget: '_self',
 
