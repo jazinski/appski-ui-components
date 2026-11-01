@@ -2,6 +2,12 @@
 
 All notable changes to @blancski/ui will be documented in this file.
 
+## 0.3.0
+
+### Minor Changes
+
+- [#64](https://github.com/jazinski/appski-ui-components/pull/64) [`85a7369`](https://github.com/jazinski/appski-ui-components/commit/85a7369bfaaafbfc02cab2db82df9d5d5218ff6e) Thanks [@cjazinski](https://github.com/cjazinski)! - Add Gauge: a radial dial for single-value metrics with threshold bands. The value arc takes the tone of the green/amber/red band it lands in (tones fully configurable per band), rendered as inline SVG with theme tokens via currentColor — light and dark mode automatic. Supports min/max scales, unit/decimals formatting for the center value, sublabel, centerLabel override, size variants, and WAI-ARIA img semantics with a generated label. Companion to MetricCard for at-a-glance limit metrics (CPU %, disk, memory, NAS capacity, bowling-average dials).
+
 ## 0.2.0
 
 ### Minor Changes
