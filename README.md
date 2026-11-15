@@ -1,12 +1,12 @@
 # @blancski/ui
 
 A comprehensive React component library built with Shadcn/ui patterns, Tailwind
-CSS v4, and Zod validation. Production-ready with **46 components**, **900+
+CSS v4, and Zod validation. Production-ready with **78 components**, **900+
 tests**, and full Storybook documentation.
 
 ## Features
 
-✅ **46 Production-Ready Components** - From basic buttons to complex data
+✅ **78 Production-Ready Components** - From basic buttons to complex data
 tables\
 ✅ **900+ Tests** - Comprehensive test coverage with Vitest & Testing Library\
 ✅ **Full TypeScript Support** - Strict type safety throughout\
@@ -93,20 +93,19 @@ tables\
 - **Accordion** - Collapsible content sections
 - **View Mode Toggle** - List/Grid view switcher
 
-**Total: 46 Components** | [View in Storybook →](https://ui.blancski.com)
+**Total: 78 Components** | [View in Storybook →](https://ui.blancski.com)
 
 ## Installation
 
-> **Note**: This package is not yet published to npm. Install directly from
-> GitHub:
+> **Note**: This package is not published to npm. Install the CI-built tarball
+> attached to each GitHub Release (a plain `github:` git dependency does **not**
+> work — `dist/` is not committed and there is no `prepare` script):
 
 ```bash
-# Install from GitHub
-bun add github:jazinski/appski-ui-components
+# Install from a GitHub Release tarball (pick the latest tag)
+bun add https://github.com/jazinski/appski-ui-components/releases/download/v0.3.0/blancski-ui-0.3.0.tgz
 # or
-npm install github:jazinski/appski-ui-components
-# or
-yarn add github:jazinski/appski-ui-components
+npm install https://github.com/jazinski/appski-ui-components/releases/download/v0.3.0/blancski-ui-0.3.0.tgz
 ```
 
 **For local development:**
@@ -114,7 +113,7 @@ yarn add github:jazinski/appski-ui-components
 ```bash
 # Clone and link locally
 git clone https://github.com/jazinski/appski-ui-components.git
-cd blancski-ui-components
+cd appski-ui-components
 bun install
 bun run build
 bun link
@@ -129,8 +128,8 @@ bun link @blancski/ui
 ### 1. Install the package
 
 ```bash
-# Install directly from GitHub
-bun add github:jazinski/appski-ui-components
+# Install from a GitHub Release tarball
+bun add https://github.com/jazinski/appski-ui-components/releases/download/v0.3.0/blancski-ui-0.3.0.tgz
 ```
 
 ### 2. Import styles in your main CSS file
@@ -357,7 +356,7 @@ element:
 </html>;
 ```
 
-All 46 components include optimized dark mode styles out of the box.
+All 78 components include optimized dark mode styles out of the box.
 
 ## Development
 
@@ -398,7 +397,7 @@ bun run lint
 
 ## Project Stats
 
-- **Components**: 46 production-ready components
+- **Components**: 78 production-ready components
 - **Tests**: 900+ passing tests (100% coverage)
 - **Documentation**: Complete Storybook with 200+ stories
 - **Bundle Size**: Tree-shakeable, optimized builds
